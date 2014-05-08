@@ -46,7 +46,6 @@ C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\bin\Microsoft.Owin.Sec
 C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
 C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa\Textaleysa\Textaleysa\bin\Textaleysa.dll.config
