@@ -35,7 +35,7 @@ namespace Textaleysa.Models.Repositories
             return result;
         }
 
-        public void AddComment(Comment c)
+        public void AddComment(Comment c) // hae
         {
             int newID = 1;
             if (comments.Count() > 0)
