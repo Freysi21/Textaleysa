@@ -3,7 +3,7 @@
 $(document).ready(function () { // function loads then the document is loaded
 
     getAllComments();
-
+    /*
     $("#postbutton").click(function () { // function runs when the post button is clicked
 
         $(".comment-item").remove(); // first we remove all the comments 
@@ -22,7 +22,7 @@ $(document).ready(function () { // function loads then the document is loaded
             // comment field was empty and we display another placeholder
             $("#CommentText").attr("placeholder", "Empty comments are not allowed.");
         }
-    });
+    }); */
 });
 
 function getAllComments() {
