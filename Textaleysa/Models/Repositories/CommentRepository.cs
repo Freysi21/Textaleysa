@@ -23,7 +23,7 @@ namespace Textaleysa.Models.Repositories
 
         private CommentRepository()
         {
-            this.m_comments = new List<Comment>();
+			this.m_comments = new List<Comment>();
         }
 
         public IEnumerable<Comment> GetComments()
