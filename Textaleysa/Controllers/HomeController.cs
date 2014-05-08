@@ -15,7 +15,7 @@ namespace Textaleysa.Controllers
 
 		public ActionResult About()
 		{
-			ViewBag.Message = "Kings of kings!";
+			ViewBag.Message = "Hvernig kemst textalaust fólk af í lífinu?";
 
 			return View();
 		}
