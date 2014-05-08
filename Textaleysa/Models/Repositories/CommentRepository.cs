@@ -13,9 +13,15 @@ namespace Textaleysa.Models.Repositories
         {
             get
             {
+<<<<<<< HEAD
                 if (_instance == null)
                     _instance = new CommentRepository();
                 return _instance;
+=======
+                if (instance == null)
+                    instance = new CommentRepository(); // comment fra gunna
+                return instance;
+>>>>>>> 6bf0c206fd3c285a66fc62b4ec5fcc9be92e7acd
             }
         }
 
