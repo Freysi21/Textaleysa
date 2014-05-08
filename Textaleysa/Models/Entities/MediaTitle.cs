@@ -8,7 +8,6 @@ namespace Textaleysa.Models
     public class MediaTitle
     {
         public int ID { get; set; }
-        public int subtitleFileID { get; set; }
         public string title { get; set; }
     }
 }

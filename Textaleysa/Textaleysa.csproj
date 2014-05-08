@@ -178,6 +178,7 @@
     <Compile Include="Models\Repositories\CommentRepository.cs" />
     <Compile Include="Models\Repositories\GradeRepository.cs" />
     <Compile Include="Models\Repositories\LikeRepository.cs" />
+    <Compile Include="Models\Repositories\MediaTitleRepository.cs" />
     <Compile Include="Models\Repositories\RequestRepository.cs" />
     <Compile Include="Models\Repositories\SubtitleFileRepository.cs" />
     <Compile Include="Models\Repositories\VoteRepository.cs" />
