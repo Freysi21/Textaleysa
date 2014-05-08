@@ -15,7 +15,7 @@ namespace Textaleysa.Controllers
 
 		public ActionResult About()
 		{
-			ViewBag.Message = "Your application description page.";
+			ViewBag.Message = "Kings of kings!";
 
 			return View();
 		}
