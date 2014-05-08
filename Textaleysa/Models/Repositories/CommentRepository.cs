@@ -25,6 +25,8 @@ namespace Textaleysa.Models.Repositories
         private CommentRepository()
         {
 			this.comments = new List<Comment>();
+			Comment c1 = new Comment { ID = 1, userName = "Arnar", fileID = 1, date = DateTime.Now, content = "BlessarModdari" };
+			this.comments.Add(c1);
         }
 
         public IEnumerable<Comment> GetComments() // blafjfjjfjf

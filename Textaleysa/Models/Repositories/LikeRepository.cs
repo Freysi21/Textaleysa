@@ -22,7 +22,10 @@ namespace Textaleysa.Models.Repositories
         private LikeRepository()
         {
             this.likes = new List<Like>();
+			Like like1 = new Like { ID = 1, commentID = 1, userID = 1 };
+			this.likes.Add(like1);
         }
+
         public IEnumerable<Like> GetLikes()
         {
             var result = from l in likes

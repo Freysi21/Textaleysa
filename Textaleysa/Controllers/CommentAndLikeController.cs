@@ -20,7 +20,17 @@ namespace Textaleysa.Controllers
 		// Gets all the comments
 		public ActionResult GetComments()
 		{
-			return View();
+			// get all comments
+			var comments = CommentRepository.Instance.GetComments();
+			var result = from c in comments
+						 select new
+						 {
+							 commentDate = c.date.ToString("dd. MMMM HH:mm"),
+							 ID = c.ID,
+							 commentContent = c.content,
+							 userName = c.userName
+						 };
+			return Json(result, JsonRequestBehavior.AllowGet);
 		}
 
 		// Posts a new comment
