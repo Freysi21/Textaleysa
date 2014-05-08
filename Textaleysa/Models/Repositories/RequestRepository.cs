@@ -8,28 +8,28 @@ namespace Textaleysa.Models.Repositories
     public class RequestRepository
     {
 
-        private static RequestRepository _instance;
+        private static RequestRepository instance;
 
         public static RequestRepository Instance
         {
             get
             {
-                if (_instance == null)
-                    _instance = new RequestRepository();
-                return _instance;
+                if (instance == null)
+                    instance = new RequestRepository();
+                return instance;
             }
         }
 
-        private List<Request> m_requests = null;
+        private List<Request> requests = null;
 
         private RequestRepository()
         {
-            this.m_requests = new List<Request>();
+            this.requests = new List<Request>();
         }
 
         public IEnumerable<Request> GetRequests()
         {
-            var result = from r in m_requests
+            var result = from r in requests
                          orderby r.date ascending
                          select r;
             return result;
@@ -38,13 +38,13 @@ namespace Textaleysa.Models.Repositories
         public void AddComment(Request r)
         {
             int newID = 1;
-            if (m_requests.Count() > 0)
+            if (requests.Count() > 0)
             {
-                newID = m_requests.Max(x => x.ID) + 1;
+                newID = requests.Max(x => x.ID) + 1;
             }
             r.ID = newID;
             r.date = DateTime.Now;
-            m_requests.Add(r);
+            requests.Add(r);
         }
     }
 }
