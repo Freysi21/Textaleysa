@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Textaleysa.Models;
 
 namespace Textaleysa.Controllers
 {
@@ -13,12 +14,23 @@ namespace Textaleysa.Controllers
 			return View();
 		}
 
-		public ActionResult About()
-		{
-			ViewBag.Message = "Kings of kings!";
+        [HttpPost]
+        public ActionResult About(HttpPostedFileBase file)
+        {
 
-			return View();
-		}
+            if (file.ContentLength > 0)
+            {
+                string newFile = file.ToString();
+                SubtitleFile subs = new SubtitleFile();
+                subs.content = newFile;
+                subs.userID = System.Web.HttpContext.Current.User;
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                file.SaveAs(path);
+            }
+
+            return RedirectToAction("Index");
+        }
 
 		public ActionResult Contact()
 		{
