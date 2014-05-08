@@ -27,7 +27,7 @@ namespace Textaleysa.Models.Repositories
 			this.comments = new List<Comment>();
         }
 
-        public IEnumerable<Comment> GetComments()
+        public IEnumerable<Comment> GetComments() // blafjfjjfjf
         {
             var result = from c in comments
                          orderby c.date ascending
