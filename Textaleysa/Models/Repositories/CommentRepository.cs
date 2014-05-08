@@ -29,7 +29,7 @@ namespace Textaleysa.Models.Repositories
 			this.comments.Add(c1);
         }
 
-        public IEnumerable<Comment> GetComments() // blafjfjjfjf
+        public IEnumerable<Comment> GetComments()
         {
             var result = from c in comments
                          orderby c.date ascending

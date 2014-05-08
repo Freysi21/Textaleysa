@@ -36,7 +36,14 @@ namespace Textaleysa.Controllers
 		// Posts a new comment
 		public ActionResult PostComment(Comment comment)
 		{
-			return View();
+			Comment c = new Comment();
+			// get the user name
+			var userName = User.Identity.Name;
+			c.userName = userName;
+			c.content = comment.content;
+			c.date = DateTime.Now;
+			CommentRepository.Instance.AddComment(c);
+			return Json(c, JsonRequestBehavior.AllowGet);
 		}
 
 
