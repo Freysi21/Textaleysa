@@ -12,6 +12,6 @@ namespace Textaleysa.Models
         public DateTime date { get; set; }
         public string mediaType { get; set; }
         public string mediaTitle { get; set; }
-        public string language { get; set; }
+        public string language { get; set; } // this is a commet
     }
 }
