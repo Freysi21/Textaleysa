@@ -36,11 +36,11 @@ namespace Textaleysa.Controllers
 				SubtitleFile f = new SubtitleFile();
 				f.language = file.language;
 				f.userName = User.Identity.Name;
+				f.ID = 1;
 
 				StreamReader asdf = new StreamReader(test.InputStream);
 				var line = asdf.ReadLine();
-
-				if (string.IsNullOrWhiteSpace(line))
+				if (!string.IsNullOrWhiteSpace(line))
 				{
 					SubtitleFileChunk sfc = new SubtitleFileChunk();
 					sfc.ID = 1;
