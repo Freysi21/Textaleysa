@@ -47,6 +47,17 @@ namespace Textaleysa.Migrations
 					date = DateTime.Now
 				}
 			);
+
+			context.subtitleFile.AddOrUpdate(
+				new SubtitleFile
+				{
+					ID = 1,
+					date = DateTime.Now,
+					downloadCount = 0,
+					userName = "TheHacker",
+					language = "Íslenska"
+				}
+			);
         }
     }
 }

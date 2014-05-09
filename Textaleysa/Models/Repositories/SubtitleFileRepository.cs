@@ -1,31 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Textaleysa.DAL;
 
 namespace Textaleysa.Models.Repositories
 {
     public class SubtitleFileRepository
     {
-        private static SubtitleFileRepository instance;
+		HRContext db = new HRContext();
 
-        public static SubtitleFileRepository Instance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new SubtitleFileRepository();
-                return instance;
-            }
-        }
-        private List<SubtitleFile> files = null;
-        private SubtitleFileRepository()
-        {
-            this.files = new List<SubtitleFile>();
-        }
         public IEnumerable<SubtitleFile> GetSubtitles()
         {
-            var result = from f in files
+            var result = from f in db.subtitleFile
                          orderby f.ID ascending
                          select f;
             return result;
@@ -34,11 +22,45 @@ namespace Textaleysa.Models.Repositories
         public void AddFile(SubtitleFile f)
         {
             int newID = 1;
-            if (files.Count() > 0)
+			if (db.subtitleFile.Count() > 0)
             {
-                newID = files.Max(x => x.ID) + 1;
+				newID = db.subtitleFile.Max(x => x.ID) + 1;
             }
             f.ID = newID;
         }
+
+		public void AddSubtitleFile(SubtitleFile sf)
+		{
+			db.subtitleFile.Add(sf);
+			db.SaveChanges();
+		}
+
+		public void Modify(SubtitleFile sf)
+		{
+			db.Entry(sf).State = EntityState.Modified;
+			db.SaveChanges();
+		}
+
+		// *************  SubtitleFileChunk starts here ***********
+
+		public IEnumerable<SubtitleFileChunk> GetSubtitleFileChunks()
+		{
+			var result = from s in db.subtitleFileChunk
+						 orderby s.ID ascending
+						 select s;
+			return result;
+		}
+
+		public void AddSubtitleChunk(SubtitleFileChunk sfc)
+		{
+			db.subtitleFileChunk.Add(sfc);
+			db.SaveChanges();
+		}
+
+		public void Modify(SubtitleFileChunk sfc)
+		{
+			db.Entry(sfc).State = EntityState.Modified;
+			db.SaveChanges();
+		}
     }
 }

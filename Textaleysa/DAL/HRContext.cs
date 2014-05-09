@@ -16,6 +16,8 @@ namespace Textaleysa.DAL
         }
         
         public DbSet<Comment> comments { get; set; }
+		public DbSet<SubtitleFile> subtitleFile { get; set; }
+		public DbSet<SubtitleFileChunk> subtitleFileChunk { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
