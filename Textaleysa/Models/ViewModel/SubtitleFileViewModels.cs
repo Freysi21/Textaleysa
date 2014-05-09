@@ -47,6 +47,7 @@ namespace Textaleysa.Models.ViewModel
 		public int episode { get; set; }
 
 		[Required]
+		[Display(Name = "Upload File")]
 		public HttpPostedFileBase file { get; set; }
 	}
 }

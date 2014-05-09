@@ -40,5 +40,27 @@ namespace Textaleysa.Models.Repositories
 			db.Entry(sf).State = EntityState.Modified;
 			db.SaveChanges();
 		}
+
+		// *************  SubtitleFileChunk starts here ***********
+
+		public IEnumerable<SubtitleFileChunk> GetSubtitleFileChunks()
+		{
+			var result = from s in db.subtitleFileChunk
+						 orderby s.ID ascending
+						 select s;
+			return result;
+		}
+
+		public void AddSubtitleChunk(SubtitleFileChunk sfc)
+		{
+			db.subtitleFileChunk.Add(sfc);
+			db.SaveChanges();
+		}
+
+		public void Modify(SubtitleFileChunk sfc)
+		{
+			db.Entry(sfc).State = EntityState.Modified;
+			db.SaveChanges();
+		}
     }
 }

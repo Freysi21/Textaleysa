@@ -22,26 +22,33 @@ namespace Textaleysa.Controllers
             return View();
         }
 
-		public ActionResult UploadFile()
+		public ActionResult UploadMovieFile()
 		{
 			return View();
 		}
 
-		// TODO: Add autorized !
+		// TODO: Add authorized !
 		[HttpPost]
 		public ActionResult UploadMovieFile(UploadMovieModelView file)
 		{
-			SubtitleFile f = new SubtitleFile();
-			f.language = file.language;
-			f.userName = User.Identity.Name;
+			if (file != null)
+			{
+				SubtitleFile f = new SubtitleFile();
+				f.language = file.language;
+				
+				f.userName = User.Identity.Name;
 
-			int contentLength = file.file.ContentLength;
-			byte[] byteFile = new byte[contentLength];
-			file.file.InputStream.Read(byteFile, 0, contentLength);
+				int contentLength = file.file.ContentLength;
+				byte[] byteFile = new byte[contentLength];
+				file.file.InputStream.Read(byteFile, 0, contentLength);
 
-
-
-			return View();
+				// TODO split in to chuncks.
+				SubtitleFileChunk sfc = new SubtitleFileChunk();
+				sfc.subtitleFileID = f.ID;
+				sfc.subtitleContent = byteFile.ToString();
+			}
+			
+			return RedirectToAction("UploadMovieFile");
 		}
 
 		protected override void Dispose(bool disposing)
