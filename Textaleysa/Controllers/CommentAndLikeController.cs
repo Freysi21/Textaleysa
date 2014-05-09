@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Textaleysa.DAL;
 using Textaleysa.Models;
 using Textaleysa.Models.Repositories;
 
@@ -10,8 +11,10 @@ namespace Textaleysa.Controllers
 {
     public class CommentAndLikeController : Controller
     {
-        //
-        // GET: /CommentAndLike/
+		private HRContext db = new HRContext();
+		CommentRepository repo = new CommentRepository();
+
+
         public ActionResult Index()
         {
             return View();
@@ -21,7 +24,7 @@ namespace Textaleysa.Controllers
 		public ActionResult GetComments()
 		{
 			// get all comments
-			var comments = CommentRepository.Instance.GetComments();
+			var comments = repo.GetComments();
 			var result = from c in comments
 						 select new
 						 {
@@ -42,10 +45,9 @@ namespace Textaleysa.Controllers
 			c.userName = userName;
 			c.content = comment.content;
 			c.date = DateTime.Now;
-			CommentRepository.Instance.AddComment(c);
+			repo.AddComment(c);
 			return Json(c, JsonRequestBehavior.AllowGet);
 		}
-
 
 		public ActionResult GetLikes()
 		{
@@ -55,6 +57,15 @@ namespace Textaleysa.Controllers
 		public ActionResult PostLike(Like like)
 		{
 			return View();
+		}
+
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				db.Dispose();
+			}
+			base.Dispose(disposing);
 		}
 	}
 }

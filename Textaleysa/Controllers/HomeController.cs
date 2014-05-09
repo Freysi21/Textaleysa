@@ -23,7 +23,7 @@ namespace Textaleysa.Controllers
             
             if (file.ContentLength > 0)
             {
-                if (year == null)
+                if (year == 0)
                 {
                     Serie serie = new Serie();
                     serie.season = season;
