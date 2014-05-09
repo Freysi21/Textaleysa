@@ -314,8 +314,9 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
+  background-repeat: repeat-x;
   color: #333333;
-  background-color: #ffffff;
+  background: rgba(0, 0, 0, 0.075);
 }
 
 input,
@@ -430,7 +431,11 @@ cite {
 }
 
 .text-primary {
-  color: #428bca;
+  color: #f3e284;
+}
+
+.like-comment{
+    color: #f3e284;
 }
 
 .text-warning {
@@ -855,7 +860,8 @@ pre code {
 .col-lg-9,
 .col-lg-10,
 .col-lg-11,
-.col-lg-12 {
+.col-lg-12
+.col-hs-1 {
   position: relative;
   min-height: 1px;
   padding-right: 15px;
@@ -4086,7 +4092,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   max-height: 340px;
   padding-right: 15px;
   padding-left: 15px;
-  overflow-x: visible;
+  overflow-x: visible;  
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   -webkit-overflow-scrolling: touch;
@@ -4501,8 +4507,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
-  border-color: #080808;
+  background: #a0c9ec;
+  border-color: #a0c9ec;
 }
 
 .navbar-inverse .navbar-brand {
