@@ -46,7 +46,6 @@ C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\bin\Microsoft.Owin.Sec
 C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
 C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Textaleysa.dll.config
@@ -100,3 +99,8 @@ C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\b
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
+<<<<<<< HEAD
+=======
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.Migrations.InitialCreate.resources
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csproj.GenerateResource.Cache
+>>>>>>> TheHacker
