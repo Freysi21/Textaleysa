@@ -17,40 +17,36 @@ namespace Textaleysa.Controllers
 			return View();
 		}
 
-        [HttpPost]
-        public ActionResult About(string title, int year, int season, int episode, HttpPostedFileBase file, ApplicationUser user)
-        {
-            
-            if (file.ContentLength > 0)
-            {
-                if (year == null)
-                {
-                    Serie serie = new Serie();
-                    serie.season = season;
-                    serie.episode = episode;
-                    serie.title = title;
-                    MediaTitleRepository.Instance.AddMediaTitle(serie);
-                }
-                else
-                {
-                    
-                }
-                string newFile = file.ToString();
-                SubtitleFile subs = new SubtitleFile();
-                subs.content = newFile;
-                subs.userID = Int32.Parse(user.Id);
-                subs.date = DateTime.Now;
-                //vantar language
-                subs.downloadCount = 0;
-                SubtitleFileRepository.Instance.AddFile(subs);
-            }
+		public ActionResult Help()
+		{
+			ViewBag.Message = "Tekka hvort help message virkar ;)";
 
-            return RedirectToAction("Index");
+			return View();
+		}
+
+		public ActionResult Popular()
+		{
+			ViewBag.Message = "Tekka hvort popular message virkar ;)";
+
+			return View();
+		}
+		public ActionResult Requests()
+		{
+			ViewBag.Message = "Tekka hvort requests message virkar ;)";
+
+			return View();
+		}
+
+        public ActionResult About()
+        {
+			ViewBag.Message = "About bitches";
+
+			return View();
         }
 
 		public ActionResult Contact()
 		{
-			ViewBag.Message = "Your contact page.";
+			//ViewBag.Message = "Your contact page.";
 
 			return View();
 		}
