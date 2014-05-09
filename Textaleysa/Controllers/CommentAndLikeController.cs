@@ -38,13 +38,20 @@ namespace Textaleysa.Controllers
 		// Posts a new comment
 		public ActionResult PostComment(Comment comment)
 		{
-			Comment c = new Comment();
-			// get the user name
-			c.userName = User.Identity.Name;
-			c.content = comment.content;
-			c.date = DateTime.Now;
-			repo.AddComment(c);
-			return Json(c, JsonRequestBehavior.AllowGet);
+			if (User.Identity.IsAuthenticated)
+			{ 
+				Comment c = new Comment();
+				// get the user name
+				c.userName = User.Identity.Name;
+				c.content = comment.content;
+				c.date = DateTime.Now;
+				repo.AddComment(c);
+				return Json(c, JsonRequestBehavior.AllowGet);
+			}
+			else
+			{
+				return RedirectToAction("Login", "Account");
+			}
 		}
 
 		public ActionResult GetLikes()
