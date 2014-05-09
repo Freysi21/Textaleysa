@@ -22,6 +22,14 @@ namespace Textaleysa.DAL
 					content = "Nú er gaman",
 					date = DateTime.Now
 				},
+				new Comment
+				{
+					ID = 2,
+					userName = "!C#",
+					fileID = 1,
+					content = "Ég er eyzisharp",
+					date = DateTime.Now
+}
 			};
 			comments.ForEach(c => context.comments.Add(c));
 			context.SaveChanges();

@@ -14,7 +14,6 @@ namespace Textaleysa.Controllers
 		private HRContext db = new HRContext();
 		CommentRepository repo = new CommentRepository();
 
-
         public ActionResult Index()
         {
             return View();
