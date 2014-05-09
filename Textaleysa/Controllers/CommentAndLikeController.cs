@@ -40,8 +40,7 @@ namespace Textaleysa.Controllers
 		{
 			Comment c = new Comment();
 			// get the user name
-			var userName = User.Identity.Name;
-			c.userName = userName;
+			c.userName = User.Identity.Name;
 			c.content = comment.content;
 			c.date = DateTime.Now;
 			repo.AddComment(c);

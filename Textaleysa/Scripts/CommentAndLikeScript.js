@@ -3,26 +3,26 @@
 $(document).ready(function () { // function loads then the document is loaded
 
     getAllComments();
-    /*
+  
     $("#postbutton").click(function () { // function runs when the post button is clicked
 
         $(".comment-item").remove(); // first we remove all the comments 
 
-        var new_comment = { "CommentText": $("#CommentText").val() }; // get text from input box and make a json object
+        var new_comment = { "commentContent": $("#commentContent").val() }; // get text from input box and make a json object
 
-        if (new_comment.CommentText != null && new_comment.CommentText.trim() != "") { // if the input field is nonempty 
+        if (new_comment.commentContent != null && new_comment.commentContent.trim() != "") { // if the input field is nonempty 
             $.post("/CommentAndLike/PostComment/", new_comment, function (comments) { // post the comment 
                 getAllComments();
             });
-            $("#CommentText").val(""); // resets the input field
-            $("#CommentText").attr("placeholder", "Enter a comment."); // resets the placeholder
+            $("#commentContent").val(""); // resets the input field
+            $("#commentContent").attr("placeholder", "Enter a comment."); // resets the placeholder
         }
         else {
             getAllComments();
             // comment field was empty and we display another placeholder
-            $("#CommentText").attr("placeholder", "Empty comments are not allowed.");
+            $("#commentContent").attr("placeholder", "Empty comments are not allowed.");
         }
-    }); */
+    }); 
 });
 
 function getAllComments() {
