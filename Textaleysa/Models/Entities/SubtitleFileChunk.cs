@@ -12,6 +12,7 @@ namespace Textaleysa.Models
         public int lineID { get; set; }
         public TimeSpan startTime { get; set; }
 		public TimeSpan stopTime { get; set; }
-        public string subtitleContent { get; set; }
+        public string subtitleLineOne { get; set; }
+		public string subtitleLineTwo { get; set; }
     }
 }

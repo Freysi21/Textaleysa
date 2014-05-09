@@ -40,7 +40,7 @@ namespace Textaleysa.Controllers
 
 				StreamReader asdf = new StreamReader(test.InputStream);
 				var line = asdf.ReadLine();
-				if (!string.IsNullOrWhiteSpace(line))
+				while (!string.IsNullOrWhiteSpace(line) && !string.IsNullOrEmpty(line))
 				{
 					SubtitleFileChunk sfc = new SubtitleFileChunk();
 					// sfc gets his ID when added to DB
@@ -51,14 +51,18 @@ namespace Textaleysa.Controllers
 
 					TimeSpan startTime = TimeSpan.Parse(startString[0]);
 					sfc.startTime = startTime;
- 					startTime.Add(TimeSpan.FromSeconds(3));
-					var stringbla = startTime.ToString();
+ 					//startTime.Add(TimeSpan.FromSeconds(3));
+					//var stringbla = startTime.ToString();
+					TimeSpan stopTime = TimeSpan.Parse(startString[2]);
+					sfc.stopTime = stopTime;
 
-					DateTime stopTime = DateTime.ParseExact(startString[2], "HH:mm:ss,fff",
-					System.Globalization.CultureInfo.InvariantCulture);
-					
-					//sfc.stopTime = stopTime;
-
+					var contentText = asdf.ReadLine();
+					sfc.subtitleLineOne = contentText;
+					line = asdf.ReadLine();
+					if (!string.IsNullOrWhiteSpace(line))
+					{
+						sfc.subtitleLineTwo = line;
+					}
 				}
 				// TODO split in to chuncks.
 			}
