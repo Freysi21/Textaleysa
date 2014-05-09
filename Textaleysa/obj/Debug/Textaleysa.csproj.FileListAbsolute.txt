@@ -152,9 +152,9 @@ C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\b
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
-<<<<<<< HEAD
-=======
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.Migrations.InitialCreate.resources
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csproj.GenerateResource.Cache
 >>>>>>> TheHacker
 >>>>>>> 77cbce21d2fa77e9ccc2ba6da1dec9bf0b889352
+C:\Users\Notandi\Desktop\HR vorönn 2014\Verklegt námskeið\þriðji_hluti\Textaleysa\Textaleysa\obj\Debug\Textaleysa.Migrations.InitialCreate.resources
+C:\Users\Notandi\Desktop\HR vorönn 2014\Verklegt námskeið\þriðji_hluti\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csproj.GenerateResource.Cache
