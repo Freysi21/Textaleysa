@@ -51,7 +51,7 @@ namespace Textaleysa.Controllers
 
 					TimeSpan startTime = TimeSpan.Parse(startString[0]);
 					sfc.startTime = startTime;
-
+ 					startTime.Add(TimeSpan.FromSeconds(3));
 					var stringbla = startTime.ToString();
 
 					DateTime stopTime = DateTime.ParseExact(startString[2], "HH:mm:ss,fff",
