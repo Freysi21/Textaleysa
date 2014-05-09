@@ -29,7 +29,7 @@ namespace Textaleysa.Controllers
 						 {
 							 commentDate = c.date.ToString("dd. MMMM HH:mm"),
 							 ID = c.ID,
-							 commentContent = c.content,
+							 content = c.content,
 							 userName = c.userName
 						 };
 			return Json(result, JsonRequestBehavior.AllowGet);
