@@ -17,6 +17,7 @@ namespace Textaleysa.Controllers
 			return View();
 		}
 
+<<<<<<< HEAD
 		public ActionResult About() 
 		{ 
 			return View();
@@ -49,11 +50,38 @@ namespace Textaleysa.Controllers
                 SubtitleFileRepository.Instance.AddFile(subs);
             }
             return RedirectToAction("Index");  
+=======
+		public ActionResult Help()
+		{
+			ViewBag.Message = "Tekka hvort help message virkar frá HomeController";
+
+			return View();
+		}
+
+		public ActionResult Popular()
+		{
+			ViewBag.Message = "Tekka hvort popular message virkar frá HomeController";
+
+			return View();
+		}
+		public ActionResult Requests()
+		{
+			ViewBag.Message = "Tekka hvort requests message virkar frá HomeController";
+
+			return View();
+		}
+
+        public ActionResult About()
+        {
+			ViewBag.Message = "Tekka hvort about message virkar frá HomeController";
+
+			return View();
+>>>>>>> 400658eb6585affe6bb5db68b16473d695393cc3
         }
 
 		public ActionResult Contact()
 		{
-			ViewBag.Message = "Your contact page.";
+			ViewBag.Message = "Tekka hvort contact message virkar frá HomeController";
 
 			return View();
 		}
