@@ -29,23 +29,26 @@ namespace Textaleysa.Controllers
 
 		// TODO: Add authorized !
 		[HttpPost]
-		public ActionResult UploadMovieFile(UploadMovieModelView file)
+		public ActionResult UploadMovieFile(UploadMovieModelView file, HttpPostedFileBase test)
 		{
 			if (file != null)
 			{
 				SubtitleFile f = new SubtitleFile();
 				f.language = file.language;
-				
 				f.userName = User.Identity.Name;
 
-				int contentLength = file.file.ContentLength;
-				byte[] byteFile = new byte[contentLength];
-				file.file.InputStream.Read(byteFile, 0, contentLength);
+				StreamReader asdf = new StreamReader(test.InputStream);
+				var line = asdf.ReadLine();
 
+				if (string.IsNullOrWhiteSpace(line))
+				{
+					SubtitleFileChunk sfc = new SubtitleFileChunk();
+					sfc.ID = 1;
+					sfc.lineID = Convert.ToInt32(line);
+					sfc.subtitleFileID = f.ID;
+
+				}
 				// TODO split in to chuncks.
-				SubtitleFileChunk sfc = new SubtitleFileChunk();
-				sfc.subtitleFileID = f.ID;
-				sfc.subtitleContent = byteFile.ToString();
 			}
 			
 			return RedirectToAction("UploadMovieFile");

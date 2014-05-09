@@ -23,9 +23,6 @@ namespace Textaleysa.Models.ViewModel
 		[Required]
 		[Display(Name = "Year released")]
 		public int yearReleased { get; set; }
-
-		[Required]
-		public HttpPostedFileBase file { get; set; }
 	}
 
 	public class UploadSerieModelView
