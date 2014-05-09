@@ -43,9 +43,21 @@ namespace Textaleysa.Controllers
 				if (!string.IsNullOrWhiteSpace(line))
 				{
 					SubtitleFileChunk sfc = new SubtitleFileChunk();
-					sfc.ID = 1;
-					sfc.lineID = Convert.ToInt32(line);
+					// sfc gets his ID when added to DB
 					sfc.subtitleFileID = f.ID;
+					sfc.lineID = Convert.ToInt32(line);
+
+					var startString = asdf.ReadLine().Split(' ');
+
+					TimeSpan startTime = TimeSpan.Parse(startString[0]);
+					sfc.startTime = startTime;
+
+					var stringbla = startTime.ToString();
+
+					DateTime stopTime = DateTime.ParseExact(startString[2], "HH:mm:ss,fff",
+					System.Globalization.CultureInfo.InvariantCulture);
+					
+					//sfc.stopTime = stopTime;
 
 				}
 				// TODO split in to chuncks.
