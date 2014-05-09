@@ -17,6 +17,10 @@ namespace Textaleysa.Controllers
 			return View();
 		}
 
+		public ActionResult About() 
+		{ 
+			return View();
+		}
         [HttpPost]
         public ActionResult About(string title, int year, int season, int episode, HttpPostedFileBase file, ApplicationUser user)
         {
@@ -44,7 +48,7 @@ namespace Textaleysa.Controllers
                 subs.downloadCount = 0;
                 SubtitleFileRepository.Instance.AddFile(subs);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index");  
         }
 
 		public ActionResult Contact()
