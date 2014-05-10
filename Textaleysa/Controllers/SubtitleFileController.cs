@@ -40,7 +40,7 @@ namespace Textaleysa.Controllers
 
 				StreamReader asdf = new StreamReader(test.InputStream);
 				var line = asdf.ReadLine();
-				while (!string.IsNullOrWhiteSpace(line) && !string.IsNullOrEmpty(line))
+				while (!string.IsNullOrWhiteSpace(line) || !string.IsNullOrEmpty(line))
 				{
 					SubtitleFileChunk sfc = new SubtitleFileChunk();
 					// sfc gets his ID when added to DB
@@ -59,7 +59,7 @@ namespace Textaleysa.Controllers
 					var contentText = asdf.ReadLine();
 					sfc.subtitleLineOne = contentText;
 					line = asdf.ReadLine();
-					if (!string.IsNullOrWhiteSpace(line))
+					if (!string.IsNullOrWhiteSpace(line) || !string.IsNullOrEmpty(line))
 					{
 						sfc.subtitleLineTwo = line;
 					}
