@@ -14,7 +14,7 @@ namespace Textaleysa.Controllers
 {
     public class SubtitleFileController : Controller
     {
-		private HRContext db = new HRContext();
+		private CommentContext db = new CommentContext();
 		SubtitleFileRepository subtitleFileRepo = new SubtitleFileRepository();
 
         // GET: /SubtitleFile/

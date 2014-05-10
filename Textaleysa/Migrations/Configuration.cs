@@ -6,7 +6,7 @@ namespace Textaleysa.Migrations
     using System.Linq;
 	using Textaleysa.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Textaleysa.DAL.HRContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Textaleysa.DAL.CommentContext>
     {
         public Configuration()
         {
@@ -14,7 +14,7 @@ namespace Textaleysa.Migrations
             ContextKey = "Textaleysa.DAL.HRContext";
         }
 
-        protected override void Seed(Textaleysa.DAL.HRContext context)
+        protected override void Seed(Textaleysa.DAL.CommentContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -45,17 +45,6 @@ namespace Textaleysa.Migrations
 					fileID = 1,
 					content = "Ég er eyzisharp",
 					date = DateTime.Now
-				}
-			);
-
-			context.subtitleFile.AddOrUpdate(
-				new SubtitleFile
-				{
-					ID = 1,
-					date = DateTime.Now,
-					downloadCount = 0,
-					userName = "TheHacker",
-					language = "Íslenska"
 				}
 			);
         }

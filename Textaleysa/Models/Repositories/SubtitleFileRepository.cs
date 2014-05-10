@@ -9,7 +9,8 @@ namespace Textaleysa.Models.Repositories
 {
     public class SubtitleFileRepository
     {
-		HRContext db = new HRContext();
+		SubtitleFileContext db = new SubtitleFileContext();
+		SubtitleFileChunkContext chunkDb = new SubtitleFileChunkContext();
 
         public IEnumerable<SubtitleFile> GetSubtitles()
         {
@@ -37,7 +38,7 @@ namespace Textaleysa.Models.Repositories
 
 		public IEnumerable<SubtitleFileChunk> GetSubtitleFileChunks()
 		{
-			var result = from s in db.subtitleFileChunk
+			var result = from s in chunkDb.subtitleFileChunk
 						 orderby s.ID ascending
 						 select s;
 			return result;
@@ -45,14 +46,14 @@ namespace Textaleysa.Models.Repositories
 
 		public void AddSubtitleChunk(SubtitleFileChunk sfc)
 		{
-			db.subtitleFileChunk.Add(sfc);
-			db.SaveChanges();
+			chunkDb.subtitleFileChunk.Add(sfc);
+			chunkDb.SaveChanges();
 		}
 
 		public void Modify(SubtitleFileChunk sfc)
 		{
-			db.Entry(sfc).State = EntityState.Modified;
-			db.SaveChanges();
+			chunkDb.Entry(sfc).State = EntityState.Modified;
+			chunkDb.SaveChanges();
 		}
     }
 }
