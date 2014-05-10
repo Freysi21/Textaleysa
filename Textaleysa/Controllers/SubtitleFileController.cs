@@ -79,10 +79,10 @@ namespace Textaleysa.Controllers
 					// Split the Subtitle time in to 3 parts (ex. line2[0] = "00:00:55,573" 
 					// line2[1] = "-->" line2[2] = "00:00:58,867")
 					var line2 = fileInput.ReadLine().Split(' ');
-					TimeSpan startTime = TimeSpan.Parse(line2[0]);
-					sfc.startTime = startTime;
-					TimeSpan stopTime = TimeSpan.Parse(line2[2]);
-					sfc.stopTime = stopTime;
+					// TimeSpan startTime = TimeSpan.Parse(line2[0]);
+					sfc.startTime = line2[0];
+					//TimeSpan stopTime = TimeSpan.Parse(line2[2]);
+					sfc.stopTime = line2[2];
 
 					// Read the first line of text in the subtitlechunk
 					var line3 = fileInput.ReadLine(); 
