@@ -17,6 +17,11 @@ namespace Textaleysa.Controllers
 		private CommentContext db = new CommentContext();
 		SubtitleFileRepository subtitleFileRepo = new SubtitleFileRepository();
 
+		private MovieContext movieDb = new MovieContext();
+		MediaTitleRepository meditaTitleRepo = new MediaTitleRepository();
+
+		private SubtitleFileChunkContext chunkDb = new SubtitleFileChunkContext();
+
         // GET: /SubtitleFile/
         public ActionResult Index()
         {
@@ -36,6 +41,21 @@ namespace Textaleysa.Controllers
 			{
 				// Create new SubtitleFile
 				SubtitleFile f = new SubtitleFile();
+				var movie = meditaTitleRepo.GetMovie(fileInfo.title);
+				if (movie == null)
+				{
+					Movie m = new Movie();
+					m.title = fileInfo.title;
+					m.yearReleased = fileInfo.yearReleased;
+					// TODo : add movietitle to db
+					meditaTitleRepo.AddMediaTitle(m);
+					f.mediaTitleID = m.ID;
+				}
+				else 
+				{
+					f.mediaTitleID = movie.ID;
+				}
+
 				f.language = fileInfo.language;
 				// Get the username
 				f.userName = User.Identity.Name;
@@ -66,19 +86,31 @@ namespace Textaleysa.Controllers
 
 					// Read the first line of text in the subtitlechunk
 					var line3 = fileInput.ReadLine(); 
-					sfc.subtitleLineOne = line3;
+					sfc.subtitleLine1 = line3;
 
 					// Read the second line of text but if the line is empty
 					var line4 = fileInput.ReadLine(); 
 					if(!string.IsNullOrEmpty(line4))
 					{
-						sfc.subtitleLineTwo = line4;
-						fileInput.ReadLine(); // "" 
+						sfc.subtitleLine2 = line4;
+						var line5 = fileInput.ReadLine(); // "" 
+
+						if(!string.IsNullOrEmpty(line5))
+						{
+							sfc.subtitleLine3 = line5;
+							fileInput.ReadLine();
+						}
+						else
+						{
+							sfc.subtitleLine3 = null;
+						}
 					}
 					else
 					{
-						sfc.subtitleLineTwo = null;
+						sfc.subtitleLine2 = null;
+						sfc.subtitleLine3 = null;
 					}
+					subtitleFileRepo.AddSubtitleChunk(sfc);
 
 				} while(!fileInput.EndOfStream);
 			}

@@ -162,9 +162,10 @@
     <Compile Include="Controllers\CommentAndLikeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SubtitleFileController.cs" />
+    <Compile Include="DAL\MovieContext.cs" />
     <Compile Include="DAL\SubtitleFileContext.cs" />
     <Compile Include="DAL\SubtitleFileChunkContext.cs" />
-    <Compile Include="DAL\HRContext.cs" />
+    <Compile Include="DAL\CommentContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -244,6 +245,7 @@
     <Content Include="Views\CommentAndLike\Index.cshtml" />
     <Content Include="Views\SubtitleFile\Index.cshtml" />
     <Content Include="Views\SubtitleFile\UploadMovieFile.cshtml" />
+    <Content Include="Views\SubtitleFile\EditMovie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
