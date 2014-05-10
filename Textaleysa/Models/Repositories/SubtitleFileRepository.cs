@@ -19,18 +19,10 @@ namespace Textaleysa.Models.Repositories
             return result;
         }
 
-        public void AddFile(SubtitleFile f)
-        {
-            int newID = 1;
-			if (db.subtitleFile.Count() > 0)
-            {
-				newID = db.subtitleFile.Max(x => x.ID) + 1;
-            }
-            f.ID = newID;
-        }
-
 		public void AddSubtitleFile(SubtitleFile sf)
 		{
+			sf.downloadCount = 0;
+			sf.date = DateTime.Now;
 			db.subtitleFile.Add(sf);
 			db.SaveChanges();
 		}

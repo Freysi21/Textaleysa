@@ -14,6 +14,5 @@ namespace Textaleysa.Models
         public DateTime date { get; set; }
         public string language { get; set; }
         public int downloadCount { get; set; }
-        public HttpPostedFileBase content { get; set; }
     }
 }
