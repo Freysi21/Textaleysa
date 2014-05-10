@@ -29,25 +29,32 @@ namespace Textaleysa.Controllers
 
 		// TODO: Add authorized !
 		[HttpPost]
-		public ActionResult UploadMovieFile(UploadMovieModelView file, HttpPostedFileBase test)
+		public ActionResult UploadMovieFile(UploadMovieModelView fileInfo, HttpPostedFileBase file)
 		{
-			if (file != null)
+			if (file != null && fileInfo != null)
 			{
+				// Create new SubtitleFile
 				SubtitleFile f = new SubtitleFile();
-				f.language = file.language;
+				f.language = fileInfo.language;
+				// Get the username
 				f.userName = User.Identity.Name;
+				
+				// TODO: FIX ID
 				f.ID = 1;
 
-				StreamReader asdf = new StreamReader(test.InputStream);
-				var line = asdf.ReadLine();
+
+				// Read the whole input file
+				StreamReader fileInput = new StreamReader(file.InputStream);
+				var line = fileInput.ReadLine();
 				while (!string.IsNullOrWhiteSpace(line) || !string.IsNullOrEmpty(line))
 				{
+					// Create new SubtitleFileChunk 
 					SubtitleFileChunk sfc = new SubtitleFileChunk();
 					// sfc gets his ID when added to DB
 					sfc.subtitleFileID = f.ID;
 					sfc.lineID = Convert.ToInt32(line);
 
-					var startString = asdf.ReadLine().Split(' ');
+					var startString = fileInput.ReadLine().Split(' ');
 
 					TimeSpan startTime = TimeSpan.Parse(startString[0]);
 					sfc.startTime = startTime;
@@ -56,15 +63,14 @@ namespace Textaleysa.Controllers
 					TimeSpan stopTime = TimeSpan.Parse(startString[2]);
 					sfc.stopTime = stopTime;
 
-					var contentText = asdf.ReadLine();
+					var contentText = fileInput.ReadLine();
 					sfc.subtitleLineOne = contentText;
-					line = asdf.ReadLine();
+					line = fileInput.ReadLine();
 					if (!string.IsNullOrWhiteSpace(line) || !string.IsNullOrEmpty(line))
 					{
 						sfc.subtitleLineTwo = line;
 					}
 				}
-				// TODO split in to chuncks.
 			}
 			
 			return RedirectToAction("UploadMovieFile");
