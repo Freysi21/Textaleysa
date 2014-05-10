@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Textaleysa.Models.ViewModel;
 
 namespace Textaleysa.Models.ViewModel
 {
@@ -46,5 +47,29 @@ namespace Textaleysa.Models.ViewModel
 		[Required]
 		[Display(Name = "Upload File")]
 		public HttpPostedFileBase file { get; set; }
+	}
+
+	public class DisplayMovieView
+	{
+		[Display(Name = "Title")]
+		public string title { get; set; }
+
+		[Display(Name = "Language")]
+		public string language { get; set; }
+
+		[Display(Name = "Year released")]
+		public int yearReleased { get; set; }
+
+		[Display(Name = "User")]
+		public string userName { get; set; }
+
+		[Display(Name = "Grade")]
+		public double grade { get; set; }
+
+		[Display(Name = "Date")]
+		public DateTime date { get; set; }
+
+		[Display(Name = "Comments")]
+		public List<CommentAndLikeViewModel.CommentView> commentlist { get; set; }
 	}
 }

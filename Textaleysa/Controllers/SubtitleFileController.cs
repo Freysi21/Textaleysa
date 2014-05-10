@@ -28,6 +28,33 @@ namespace Textaleysa.Controllers
             return View();
         }
 
+		public ActionResult DisplayFile()
+		{
+			var movie = meditaTitleRepo.GetMovie("Die Hard");
+			var subtitlFiles = subtitleFileRepo.GetSubtitles();
+
+			var subtitle = (from s in subtitlFiles
+							where s.mediaTitleID == movie.ID
+							select s).FirstOrDefault();
+
+			if (subtitle == null)
+			{
+				return View("Index");
+			}
+			else
+			{
+				DisplayMovieView dmv = new DisplayMovieView();
+				dmv.title = movie.title;
+				dmv.yearReleased = movie.yearReleased;
+				dmv.grade = 10;
+				dmv.userName = subtitle.userName;
+				dmv.language = subtitle.language;
+				dmv.date = subtitle.date;
+				return View(dmv);
+			}
+			
+		}
+
 		public ActionResult UploadMovieFile()
 		{
 			return View();
