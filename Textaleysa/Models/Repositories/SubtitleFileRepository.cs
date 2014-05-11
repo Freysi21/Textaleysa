@@ -20,6 +20,14 @@ namespace Textaleysa.Models.Repositories
             return result;
         }
 
+		public SubtitleFile GetSubtitleById(int? id)
+		{
+			var result = (from m in db.subtitleFile
+						  where m.ID == id.Value
+						  select m).FirstOrDefault();
+			return result;
+		}
+
 		public void AddSubtitleFile(SubtitleFile sf)
 		{
 			sf.downloadCount = 0;
@@ -55,5 +63,6 @@ namespace Textaleysa.Models.Repositories
 			chunkDb.Entry(sfc).State = EntityState.Modified;
 			chunkDb.SaveChanges();
 		}
+
     }
 }
