@@ -19,29 +19,37 @@ namespace Textaleysa.Controllers
         RequestRepository repo = new RequestRepository();
         //
         // GET: /Request/
-        public ActionResult RequestView()
+        public ActionResult RequestList()
         {
             var model = repo.GetRequests();
+            if(model == null)
+            {
+                return View("Error");
+            }
             return View(model);
         }
-        public ActionResult CreateRequest(Request request)
+        public ActionResult CreateRequest()
         {
-            if (!User.Identity.IsAuthenticated)
+            return View();
+        }
+        [HttpPost]
+        //[Authorize]
+        public ActionResult CreateRequest(UploadMovieRequestViewModel request)
+        {
+            if(request == null)
             {
+                return RedirectToAction("CreateRequest");
+            }
                 Request r = new Request();
                 r.userName = User.Identity.Name;
                 r.mediaTitle = request.mediaTitle; // setting the CommentText we got from the input field
                 r.date = DateTime.Now;
-                r.mediaType = request.mediaType;
                 r.language = request.language;
                 repo.AddRequest(r); // add the comment to the db
 
-                return Json(r, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return RedirectToAction("Login", "Account");
-            }
+                return RedirectToAction("RequestList");
+                //return Json(r, JsonRequestBehavior.AllowGet);
+
         }
 
         public ActionResult getRequests()

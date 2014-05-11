@@ -192,7 +192,7 @@
     <Compile Include="Models\Repositories\SubtitleFileRepository.cs" />
     <Compile Include="Models\Repositories\VoteRepository.cs" />
     <Compile Include="Models\ViewModel\CommentAndLikeViewModel.cs" />
-    <Compile Include="Models\ViewModel\RequestAndVoteViewModel.cs" />
+    <Compile Include="Models\ViewModel\UploadMovieRequestViewModel.cs" />
     <Compile Include="Models\ViewModel\SubtitleFileViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -256,10 +256,8 @@
     <Content Include="Views\SubtitleFile\UploadMovieFile.cshtml" />
     <Content Include="Views\SubtitleFile\EditMovie.cshtml" />
     <Content Include="Views\SubtitleFile\DisplayFile.cshtml" />
-<<<<<<< HEAD
-    <Content Include="Views\Request\RequestView.cshtml" />
-=======
->>>>>>> 506bca90bc2e70c673ff623a8a1cab92f1cae3ce
+    <Content Include="Views\Request\CreateRequest.cshtml" />
+    <Content Include="Views\Request\RequestList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
