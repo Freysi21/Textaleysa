@@ -2,49 +2,40 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Textaleysa.DAL;
+using System.Data.Entity;
 
 namespace Textaleysa.Models.Repositories
 {
     public class RequestRepository
     {
-
-        private static RequestRepository instance;
-
-        public static RequestRepository Instance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new RequestRepository();
-                return instance;
-            }
-        }
-
-        private List<Request> requests = null;
-
-        private RequestRepository()
-        {
-            this.requests = new List<Request>();
-        }
+        RequestContext db = new RequestContext();
 
         public IEnumerable<Request> GetRequests()
         {
-            var result = from r in requests
-                         orderby r.date ascending
+            var result = from r in db.requests
                          select r;
             return result;
         }
 
-        public void AddComment(Request r)
+		public Request GetRequestById(int id)
+		{
+			var result = (from s in db.requests
+						  where s.ID == id
+						  select s).SingleOrDefault();
+			return result;
+		}
+
+        public void AddRequest(Request r) 
         {
-            int newID = 1;
-            if (requests.Count() > 0)
-            {
-                newID = requests.Max(x => x.ID) + 1;
-            }
-            r.ID = newID;
-            r.date = DateTime.Now;
-            requests.Add(r);
+			db.requests.Add(r);
+			db.SaveChanges();
         }
+
+		public void Modify(Request r)
+		{
+			db.Entry(c).State = EntityState.Modified;
+			db.SaveChanges();
+		}
     }
 }
