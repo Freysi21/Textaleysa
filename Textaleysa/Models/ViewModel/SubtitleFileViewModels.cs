@@ -51,6 +51,8 @@ namespace Textaleysa.Models.ViewModel
 
 	public class DisplayMovieView
 	{
+		public int ID { get; set; }
+
 		[Display(Name = "Title")]
 		public string title { get; set; }
 
@@ -71,5 +73,8 @@ namespace Textaleysa.Models.ViewModel
 
 		[Display(Name = "Comments")]
 		public List<CommentAndLikeViewModel.CommentView> commentlist { get; set; }
+
+		[Display(Name = "Download count")]
+		public int downloadCount { get; set; }
 	}
 }
