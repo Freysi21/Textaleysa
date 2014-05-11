@@ -1,53 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Textaleysa.DAL;
 
 namespace Textaleysa.Models.Repositories
 {
     public class MediaTitleRepository
     {
-    private static MediaTitleRepository instance;
+		MovieContext movieDb = new MovieContext();
 
-        public static MediaTitleRepository Instance
+		public Movie GetMovie(string title)
+		{
+			var result = (from m in movieDb.movies
+						 where m.title == title
+						 select m).SingleOrDefault();
+			return result;
+		}
+
+        public IEnumerable<Movie> GetMovieTitles()
         {
-            get
-            {
-                if (instance == null)
-                    instance = new MediaTitleRepository();
-                return instance;
-            }
-        }
-
-        private List<MediaTitle> mediaTitles = null;
-
-        private MediaTitleRepository()
-        {
-            this.mediaTitles = new List<MediaTitle>();
-        }
-
-        public IEnumerable<MediaTitle> GetMediaTitles()
-        {
-            var result = from t in mediaTitles
-                         orderby t.title ascending
-                         select t;
+			var result = from m in movieDb.movies
+                         orderby m.title ascending
+                         select m;
             return result;
         }
 
-        public void AddMediaTitle(MediaTitle t)
+        public void AddMediaTitle(Movie mt)
         {
-            var result = from m in mediaTitles
-                         where m.title == t.title
-                         select m;
-            if (result == null)
-            {
-                int newID = 1;
-                if (mediaTitles.Count() > 0)
-                {
-                    newID = mediaTitles.Max(x => x.ID) + 1;
-                }
-                t.ID = newID;
-            }
+			movieDb.movies.Add(mt);
+			movieDb.SaveChanges();
         }
+
+		public void Modify(Movie mt)
+		{
+			movieDb.Entry(mt).State = EntityState.Modified;
+			movieDb.SaveChanges();
+		}
+
     }
 }

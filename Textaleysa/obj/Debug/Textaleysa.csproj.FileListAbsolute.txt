@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\bin\Textaleysa.dll.config
 C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\bin\Textaleysa.dll
 C:\Users\Arnit13\Desktop\Textaleysa\textaleysa\Textaleysa\bin\Textaleysa.pdb
@@ -153,6 +154,8 @@ C:\Users\Notandi\Desktop\HR vorönn 2014\Verklegt námskeið\þriðji_hluti\Text
 C:\Users\Notandi\Desktop\HR vorönn 2014\Verklegt námskeið\þriðji_hluti\Textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Notandi\Desktop\HR vorönn 2014\Verklegt námskeið\þriðji_hluti\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
 >>>>>>> 400658eb6585affe6bb5db68b16473d695393cc3
+=======
+>>>>>>> fc2e884da6b59981864aded698a1f0d9cffdb155
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Textaleysa.dll.config
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Textaleysa.dll
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Textaleysa.pdb
@@ -204,6 +207,7 @@ C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\b
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
+<<<<<<< HEAD
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.Migrations.InitialCreate.resources
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csproj.GenerateResource.Cache
 >>>>>>> TheHacker
@@ -263,3 +267,5 @@ C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Debug\Textaleysa.Migrations.InitialC
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Debug\Textaleysa.csproj.GenerateResource.Cache
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
+=======
+>>>>>>> fc2e884da6b59981864aded698a1f0d9cffdb155

@@ -162,13 +162,12 @@
     <Compile Include="Controllers\CommentAndLikeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SubtitleFileController.cs" />
-    <Compile Include="DAL\HRContext.cs" />
+    <Compile Include="DAL\MovieContext.cs" />
+    <Compile Include="DAL\SubtitleFileContext.cs" />
+    <Compile Include="DAL\SubtitleFileChunkContext.cs" />
+    <Compile Include="DAL\CommentContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405091115067_InitialCreate.cs" />
-    <Compile Include="Migrations\201405091115067_InitialCreate.Designer.cs">
-      <DependentUpon>201405091115067_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -190,6 +189,7 @@
     <Compile Include="Models\Repositories\RequestRepository.cs" />
     <Compile Include="Models\Repositories\SubtitleFileRepository.cs" />
     <Compile Include="Models\Repositories\VoteRepository.cs" />
+    <Compile Include="Models\ViewModel\CommentAndLikeViewModel.cs" />
     <Compile Include="Models\ViewModel\SubtitleFileViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -250,6 +250,8 @@
     <Content Include="Views\CommentAndLike\Index.cshtml" />
     <Content Include="Views\SubtitleFile\Index.cshtml" />
     <Content Include="Views\SubtitleFile\UploadMovieFile.cshtml" />
+    <Content Include="Views\SubtitleFile\EditMovie.cshtml" />
+    <Content Include="Views\SubtitleFile\DisplayFile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
@@ -260,11 +262,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201405091115067_InitialCreate.resx">
-      <DependentUpon>201405091115067_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

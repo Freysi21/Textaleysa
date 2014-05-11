@@ -100,7 +100,5 @@ C:\Users\Eysteinn\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Eysteinn\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Eysteinn\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.csprojResolveAssemblyReference.cache
-C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.Migrations.InitialCreate.resources
-C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.csproj.GenerateResource.Cache
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.dll
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.pdb
