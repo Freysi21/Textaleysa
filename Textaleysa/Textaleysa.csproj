@@ -164,6 +164,7 @@
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\SubtitleFileController.cs" />
     <Compile Include="DAL\MovieContext.cs" />
+    <Compile Include="DAL\RequestContext.cs" />
     <Compile Include="DAL\SubtitleFileContext.cs" />
     <Compile Include="DAL\SubtitleFileChunkContext.cs" />
     <Compile Include="DAL\CommentContext.cs" />

@@ -10,7 +10,7 @@
 
         if (new_request.mediaTitle != null && new_request.mediaTitle.trim() != "") {
 
-            jQuery.post("/Home/CreateRequest/", new_request, function (requests) {
+            jQuery.post("/Request/CreateRequest/", new_request, function (requests) {
 
                 getRequests();
 
@@ -28,7 +28,7 @@
     jQuery("#vote-request").click(function () {
         alert("Hallo!");
         var new_vote = { requestID: jQuery(this).closest("tr.request-item").attr("id") }
-        jQuery.post("/Home/postVotes", new_vote, function (data) {
+        jQuery.post("/Request/postVotes", new_vote, function (data) {
             getVote();
         });
     });
@@ -53,7 +53,7 @@ function getRequests() {
     jQuery.ajax({
         type: "GET",
         contentType: "application/json; charset=utf­8",
-        url: "/Home/getRequests/",
+        url: "/Request/getRequests/",
         data: "{}",
         dataType: "json",
         success: function (requests) {
@@ -84,7 +84,7 @@ function getVote(requests) {
     jQuery.ajax({
         type: "GET",
         contentType: "application/json; charset=utf­8",
-        url: "/Home/getVotes/",
+        url: "/Request/getVotes/",
         data: "{}",
         dataType: "json",
         success: function (votes, requests) {
