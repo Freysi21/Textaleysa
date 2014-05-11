@@ -36,7 +36,7 @@ namespace Textaleysa.Models.Repositories
 			db.SaveChanges();
 		}
 
-		public void Modify(SubtitleFile sf)
+		public void ModifySubtitleFile(SubtitleFile sf)
 		{
 			db.Entry(sf).State = EntityState.Modified;
 			db.SaveChanges();
@@ -58,7 +58,7 @@ namespace Textaleysa.Models.Repositories
 			chunkDb.SaveChanges();
 		}
 
-		public void Modify(SubtitleFileChunk sfc)
+		public void ModifySubtitleFileChunk(SubtitleFileChunk sfc)
 		{
 			chunkDb.Entry(sfc).State = EntityState.Modified;
 			chunkDb.SaveChanges();

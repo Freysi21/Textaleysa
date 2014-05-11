@@ -116,8 +116,9 @@ namespace Textaleysa.Controllers
 
 			var fileTitle = "";
 			fileTitle += (movie.title + " " + movie.yearReleased.ToString() + " " + subtitleFile.language + ".srt");
-
+			
 			subtitleFile.downloadCount++;
+			subtitleFileRepo.ModifySubtitleFile(subtitleFile);
 			return File(stream, "text/plain", fileTitle);
 		}
 
