@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Textaleysa.DAL;
@@ -28,31 +29,97 @@ namespace Textaleysa.Controllers
             return View();
         }
 
-		public ActionResult DisplayFile()
+		public ActionResult DisplayFile(int? id)
 		{
-			var movie = meditaTitleRepo.GetMovie("Die Hard");
-			var subtitlFiles = subtitleFileRepo.GetSubtitles();
-
-			var subtitle = (from s in subtitlFiles
-							where s.mediaTitleID == movie.ID
-							select s).FirstOrDefault();
-
-			if (subtitle == null)
+			if (id == null)
 			{
-				return View("Index");
+				return View("Error");
+			}
+			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+
+			if (subtitleFile == null)
+			{
+				return View("Error");
+			}
+
+			var movie = meditaTitleRepo.GetMovieById(subtitleFile.mediaTitleID);
+
+			if (movie == null)
+			{
+				return View("Error");
 			}
 			else
 			{
 				DisplayMovieView dmv = new DisplayMovieView();
+				dmv.ID = subtitleFile.ID;
 				dmv.title = movie.title;
 				dmv.yearReleased = movie.yearReleased;
 				dmv.grade = 10;
-				dmv.userName = subtitle.userName;
-				dmv.language = subtitle.language;
-				dmv.date = subtitle.date;
+				dmv.userName = subtitleFile.userName;
+				dmv.language = subtitleFile.language;
+				dmv.date = subtitleFile.date;
+				dmv.downloadCount = subtitleFile.downloadCount;
 				return View(dmv);
 			}
 			
+		}
+
+		public FileStreamResult DownloadFile(int? id)
+		{
+			if (id == null)
+			{
+				return null;
+			}
+
+			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+			if (subtitleFile == null)
+			{
+				return null;
+			}
+			var movie = meditaTitleRepo.GetMovieById(subtitleFile.mediaTitleID);
+			if (movie == null)
+			{
+				return null;
+			}
+
+			var subtitleFileChunks = from c in subtitleFileRepo.GetSubtitleFileChunks()
+									 where c.subtitleFileID == id
+									 orderby c.lineID ascending
+									 select c;
+
+			var result = "";
+			foreach (var item in subtitleFileChunks)
+			{
+				result += item.lineID.ToString();
+				result += Environment.NewLine;
+
+				result += (item.startTime + " --> ");
+				result += item.stopTime;
+				result += Environment.NewLine;
+				result += item.subtitleLine1;
+				result += Environment.NewLine;
+				if (item.subtitleLine2 != null)
+				{
+					result += item.subtitleLine2;
+					result += Environment.NewLine;
+					if (item.subtitleLine3 != null)
+					{
+						result += item.subtitleLine3;
+						result += Environment.NewLine;
+					}
+				}
+				result += Environment.NewLine;
+			}
+
+			var byteArray = Encoding.ASCII.GetBytes(result);
+			var stream = new MemoryStream(byteArray);
+
+			var fileTitle = "";
+			fileTitle += (movie.title + " " + movie.yearReleased.ToString() + " " + subtitleFile.language + ".srt");
+			
+			subtitleFile.downloadCount++;
+			subtitleFileRepo.ModifySubtitleFile(subtitleFile);
+			return File(stream, "text/plain", fileTitle);
 		}
 
 		public ActionResult UploadMovieFile()
@@ -67,10 +134,13 @@ namespace Textaleysa.Controllers
 			if (file != null && fileInfo != null)
 			{
 				// Create new SubtitleFile
-				SubtitleFile f = new SubtitleFile();
-				var movie = meditaTitleRepo.GetMovie(fileInfo.title);
+				SubtitleFile f = new SubtitleFile(); 
+				var movie = (from m in meditaTitleRepo.GetMovieTitles()
+							 where m.title == fileInfo.title
+							 select m).FirstOrDefault();
+
 				if (movie == null)
-				{
+				{ 
 					Movie m = new Movie();
 					m.title = fileInfo.title;
 					m.yearReleased = fileInfo.yearReleased;
@@ -79,7 +149,7 @@ namespace Textaleysa.Controllers
 					f.mediaTitleID = m.ID;
 				}
 				else 
-				{
+				{ 
 					f.mediaTitleID = movie.ID;
 				}
 
