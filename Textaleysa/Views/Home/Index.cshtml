@@ -1,7 +1,59 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<div class="jumbotron">
-   <p>This is the forsíða</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12" id="FirstDivFrontPage"></div>
+    </div>
+    <div class="row">
+        <h1 id="FrontPageH1">Textaleysa</h1>
+        <div class="col-xs-12" id="SearchBarDiv">
+            <span>
+                <input type="text" id="SearchBar" maxlength="60">
+            </span>
+            <button class="btn btn-default" type="button">Leita</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" id="SearchForFilter">
+            <span>Leita eftir:</span>
+            <div class="btn-group ">
+                <select class="form-control">
+                    <option value="Danish">Danska</option>
+                    <option value="English">Enska</option>
+                    <option value="Icelandic">Íslenska</option>
+                </select>
+            </div>
+            <label for="Serie">Þáttur</label>
+            <input type="checkbox" name="Serie" value="Þáttur" />
+            <label for="Movie">Kvikmynd</label>
+            <input type="checkbox" name="Movie" value="Kvikmynd" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" id=""></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Vantar þig aðstoð?</h2>
+            <p>
+                Vantar þig aðstoð við notkun skjátextaskráa?
+                Á hjálparsíðu okkar er að finna leiðbeiningar við notkun skjátextaskráa.
+            <p><a class="btn btn-default" href="/home/hjalp">Fá aðstoð &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Vinsælast</h2>
+            <p>Vinsælustu skjátextaskrár Textaleysu frá upphafi.</p>
+            <ol>
+                <li><a href="http://www.linkToFile.is">Die Hard 1</a></li>
+            </ol>
+        </div>
+        <div class="col-md-4">
+            <h2>Nýjast</h2>
+            <p> Nýjustu skjátextaskrár Textaleysu.</p>
+            <ol>
+                <li><a href="http://www.linkToFile.is">Kitty kitty bang bang</a></li>
+            </ol>
+        </div>
+    </div>
 </div>
