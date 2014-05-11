@@ -27,6 +27,13 @@
     height: 6em;
     text-align: center;
 }
+#SearcFilterSpaceDiv{
+margin-right: 2.8em;
+margin-left: 0.8em;
+}
+#SearcFilterSpaceDiv2{
+margin-right: 0.8em;
+}
 #FrontPageH1{
     font-size:4em;
     text-align: center;
