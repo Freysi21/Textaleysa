@@ -1,7 +1,26 @@
-﻿<!--<form class="navbar-form navbar-left" role="search">
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
+﻿<div class="row" id="SearchPartialRow">
+    <div class="col-xs-12" id="SearchPartialBarDiv">
+        <span>
+            <input type="text" id="SearchBar" maxlength="60">
+        </span>
+        <button class="btn btn-default" type="button">Leita</button>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
-    -->
+</div>
+<div class="row">
+    <div class="col-xs-12" id="SearchForFilter">
+        <span>Leita eftir:</span>
+        <div class="btn-group ">
+            <select class="form-control">
+                <option value="Danish">Danska</option>
+                <option value="English">Enska</option>
+                <option value="Icelandic">Íslenska</option>
+            </select>
+        </div>
+        <label for="Serie">Þáttur</label>
+        <input type="checkbox" name="Serie" value="Þáttur" />
+        <label for="Movie">Kvikmynd</label>
+        <input type="checkbox" name="Movie" value="Kvikmynd" />
+    </div>
+</div>
+</div>
+
