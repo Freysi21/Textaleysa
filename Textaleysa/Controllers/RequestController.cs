@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Textaleysa.Models.Repositories;
 using Textaleysa.DAL;
 using Textaleysa.Models;
+using Textaleysa.Models.ViewModel;
+
 
 
 
@@ -17,7 +19,7 @@ namespace Textaleysa.Controllers
         RequestRepository repo = new RequestRepository();
         //
         // GET: /Request/
-        public ActionResult Request()
+        public ActionResult RequestView()
         {
             var model = repo.GetRequests();
             return View(model);

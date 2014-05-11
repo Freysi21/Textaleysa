@@ -13,5 +13,7 @@ namespace Textaleysa.Models
 		public string mediaType { get; set; }
 		public string mediaTitle { get; set; }
 		public string language { get; set; }
+        public List<String> votes { get; set; }
+
 	}
 }
