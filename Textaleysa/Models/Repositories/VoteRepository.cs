@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Textaleysa.DAL;
+using System.Data.Entity;
 
 namespace Textaleysa.Models.Repositories
 {
     public class VoteRepository
     {
+        RequestContext db = new RequestContext();
+
         private static VoteRepository instance;
 
         public static VoteRepository Instance
@@ -39,6 +43,17 @@ namespace Textaleysa.Models.Repositories
                 newID = votes.Max(x => x.ID) + 1;
             }
             v.ID = newID;
+        }
+        public IEnumerable<Vote> GetVoteForRequest(Vote vote)
+        {
+            var requests = from c in db.requests
+                           select c; // get all comments
+            var result = from r in requests
+                         join v in votes on r.ID equals v.requestID // getting only likes that are linked to a particular comment
+                         where v.requestID == vote.requestID
+                         select v;
+
+            return result;
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Textaleysa.Models.Repositories
 
 		public void Modify(Request r)
 		{
-			db.Entry(c).State = EntityState.Modified;
+			db.Entry(r).State = EntityState.Modified;
 			db.SaveChanges();
 		}
     }

@@ -4,47 +4,47 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Textaleysa.Models.Repositories;
+using Textaleysa.DAL;
+using Textaleysa.Models;
+
+
 
 namespace Textaleysa.Controllers
 {
     public class RequestController : Controller
     {
+        private RequestContext db = new RequestContext();
+        RequestRepository repo = new RequestRepository();
         //
         // GET: /Request/
         public ActionResult Request()
         {
-            var model = RequestRepository.Instance.GetRequests();
+            var model = repo.GetRequests();
             return View(model);
         }
         public ActionResult CreateRequest(Request request)
         {
-            Request r = new Request();
-            /*
-            var user = System.Security.Principal.WindowsIdentity.GetCurrent().Name; // get user name from computer username
-
-            // cuts of the 'WINDOWS\\' part of the username
-            int slashPos = user.IndexOf("\\");
-            if (slashPos != -1)
+            if (!User.Identity.IsAuthenticated)
             {
-                user = user.Substring(slashPos + 1);
-            } */
-            var user = User.Identity.Name;
-            r.userName = user;
+                Request r = new Request();
+                r.userName = User.Identity.Name;
+                r.mediaTitle = request.mediaTitle; // setting the CommentText we got from the input field
+                r.date = DateTime.Now;
+                r.mediaType = request.mediaType;
+                r.language = request.language;
+                repo.AddRequest(r); // add the comment to the db
 
-            r.mediaTitle = request.mediaTitle; // setting the CommentText we got from the input field
-            r.date = DateTime.Now;
-            r.mediaType = request.mediaType;
-            r.language = request.language;
-            RequestRepository.Instance.AddRequest(r); // add the comment to the db
-
-            return Json(r, JsonRequestBehavior.AllowGet);
+                return Json(r, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         public ActionResult getRequests()
         {
-            var requests = RequestRepository.Instance.GetRequests(); // get all the comments
-
-            // changes the format of CommentDate to a string to display it in a nice way 
+            var requests = repo.GetRequests();
             var res = from r in requests
                       select new
                       {
@@ -67,7 +67,6 @@ namespace Textaleysa.Controllers
             var result = from v in votes
                          select new
                          {
-                             date = v.date.ToString("dd. MMMM HH:mm"),
                              ID = v.ID,
                              requestID = v.requestID,
                              userName = v.userName
