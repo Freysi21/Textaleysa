@@ -51,22 +51,39 @@ namespace Textaleysa.Controllers
 			else
 			{
 				DisplayMovieView dmv = new DisplayMovieView();
+				dmv.ID = subtitleFile.ID;
 				dmv.title = movie.title;
 				dmv.yearReleased = movie.yearReleased;
 				dmv.grade = 10;
 				dmv.userName = subtitleFile.userName;
 				dmv.language = subtitleFile.language;
 				dmv.date = subtitleFile.date;
+				dmv.downloadCount = subtitleFile.downloadCount;
 				return View(dmv);
 			}
 			
 		}
 
-		public FileStreamResult DownloadFile()
+		public FileStreamResult DownloadFile(int? id)
 		{
+			if (id == null)
+			{
+				return null;
+			}
+
+			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+			if (subtitleFile == null)
+			{
+				return null;
+			}
+			var movie = meditaTitleRepo.GetMovieById(subtitleFile.mediaTitleID);
+			if (movie == null)
+			{
+				return null;
+			}
 
 			var subtitleFileChunks = from c in subtitleFileRepo.GetSubtitleFileChunks()
-									 where c.subtitleFileID == 8
+									 where c.subtitleFileID == id
 									 orderby c.lineID ascending
 									 select c;
 
@@ -97,7 +114,11 @@ namespace Textaleysa.Controllers
 			var byteArray = Encoding.ASCII.GetBytes(result);
 			var stream = new MemoryStream(byteArray);
 
-			return File(stream, "text/plain", "Die Hard 1988 Enska.srt");
+			var fileTitle = "";
+			fileTitle += (movie.title + " " + movie.yearReleased.ToString() + " " + subtitleFile.language + ".srt");
+
+			subtitleFile.downloadCount++;
+			return File(stream, "text/plain", fileTitle);
 		}
 
 		public ActionResult UploadMovieFile()
@@ -112,13 +133,13 @@ namespace Textaleysa.Controllers
 			if (file != null && fileInfo != null)
 			{
 				// Create new SubtitleFile
-				SubtitleFile f = new SubtitleFile();
+				SubtitleFile f = new SubtitleFile(); 
 				var movie = (from m in meditaTitleRepo.GetMovieTitles()
 							 where m.title == fileInfo.title
 							 select m).FirstOrDefault();
 
 				if (movie == null)
-				{
+				{ 
 					Movie m = new Movie();
 					m.title = fileInfo.title;
 					m.yearReleased = fileInfo.yearReleased;
@@ -127,7 +148,7 @@ namespace Textaleysa.Controllers
 					f.mediaTitleID = m.ID;
 				}
 				else 
-				{
+				{ 
 					f.mediaTitleID = movie.ID;
 				}
 

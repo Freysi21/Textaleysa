@@ -57,8 +57,20 @@
         <dd>
             @Html.DisplayFor(model => model.date)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.downloadCount)
+        </dt>
+
         <dd>
-            @Html.ActionLink("Download Text File", "DownloadFile", "SubtitleFile")
+            @Html.DisplayFor(model => model.downloadCount)
+        </dd>
+
+        <dt>
+            Download Link
+        </dt>
+        <dd>
+            @Html.ActionLink(Model.title, "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)
         </dd>
 
     </dl>
