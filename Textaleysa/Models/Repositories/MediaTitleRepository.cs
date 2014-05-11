@@ -11,10 +11,10 @@ namespace Textaleysa.Models.Repositories
     {
 		MovieContext movieDb = new MovieContext();
 
-		public Movie GetMovieById(int? id)
+		public Movie GetMovieById(int id)
 		{
 			var result = (from m in movieDb.movies
-						 where m.ID == id.Value
+						 where m.ID == id
 						 select m).SingleOrDefault();
 			return result;
 		}
@@ -22,6 +22,7 @@ namespace Textaleysa.Models.Repositories
         public IEnumerable<Movie> GetMovieTitles()
         {
 			var result = from m in movieDb.movies
+						 orderby m.ID
                          select m;
             return result;
         }
