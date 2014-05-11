@@ -256,7 +256,10 @@
     <Content Include="Views\SubtitleFile\UploadMovieFile.cshtml" />
     <Content Include="Views\SubtitleFile\EditMovie.cshtml" />
     <Content Include="Views\SubtitleFile\DisplayFile.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Request\RequestView.cshtml" />
+=======
+>>>>>>> 506bca90bc2e70c673ff623a8a1cab92f1cae3ce
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
