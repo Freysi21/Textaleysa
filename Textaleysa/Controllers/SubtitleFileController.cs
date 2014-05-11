@@ -210,9 +210,12 @@ namespace Textaleysa.Controllers
 					subtitleFileRepo.AddSubtitleChunk(sfc);
 
 				} while(!fileInput.EndOfStream);
+				int? ID = f.ID;
+
+				return RedirectToAction("DisplayFile", new { id = ID });
 			}
 			
-			return RedirectToAction("UploadMovieFile");
+			return RedirectToAction("UploadMovie");
 		}
 
 		protected override void Dispose(bool disposing)
