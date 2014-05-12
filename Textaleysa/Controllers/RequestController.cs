@@ -82,7 +82,7 @@ namespace Textaleysa.Controllers
             return View();
         }
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public ActionResult CreateRequest(UploadMovieRequestViewModel request)
         {
             if(request == null)
