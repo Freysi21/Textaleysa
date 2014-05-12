@@ -27,6 +27,18 @@
     height: 6em;
     text-align: center;
 }
+#PartialSearchCheckboxes{
+    font-weight: normal;
+}
+#PartialSearchCheckboxes2{
+    font-weight: normal;
+}
+#PartialSearchCheckboxes3{
+    font-weight: normal;
+}
+#PartialSearchCheckboxes4{
+    font-weight: normal;
+}
 #SearcFilterSpaceDiv{
 margin-right: 2.8em;
 margin-left: 0.8em;
