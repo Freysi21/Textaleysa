@@ -38,7 +38,7 @@ namespace Textaleysa.Controllers
                     UploadMovieRequestViewModel request = new UploadMovieRequestViewModel();
                     request.userName = f.userName;
                     request.mediaTitle = f.mediaTitle;
-                    request.year = f.year;
+                    request.yearReleased = f.yearReleased;
                     request.language = f.language;
                     requests.Add(request);
                 }
@@ -113,6 +113,7 @@ namespace Textaleysa.Controllers
                           mediaType = r.mediaType,
                           Username = r.userName,
                           language = r.language,
+                          yearReleased = r.yearReleased
                       };
 
             return Json(res, JsonRequestBehavior.AllowGet);

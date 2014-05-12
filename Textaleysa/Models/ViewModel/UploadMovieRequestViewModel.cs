@@ -12,7 +12,7 @@ namespace Textaleysa.Models.ViewModel
         [Display(Name = "mediaTitle")]
         public string mediaTitle { get; set; }
         [Display(Name = "Year Realeased")]
-        public int year { get; set; }
+        public int yearReleased { get; set; }
 
         [Display(Name = "language")]
         public string language { get; set; }
