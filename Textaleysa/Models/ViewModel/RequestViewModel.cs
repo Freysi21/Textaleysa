@@ -12,12 +12,16 @@ namespace Textaleysa.Models.ViewModel
     }
     public class UploadMovieRequestViewModel
     {
+
+        [Required(ErrorMessage="Vantar titil")]
         [Display(Name = "mediaTitle")]
         public string mediaTitle { get; set; }
 
+        [Required(ErrorMessage = "Vantar ártal")]
         [Display(Name = "Year Realeased")]
         public int yearReleased { get; set; }
 
+        [Required(ErrorMessage = "Vantar tungumál")]
         [Display(Name = "language")]
         public string language { get; set; }
     }
