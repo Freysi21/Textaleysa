@@ -264,6 +264,7 @@
     <Content Include="Views\Request\CreateRequest.cshtml" />
     <Content Include="Views\Home\MostPopular.cshtml" />
     <Content Include="Views\SubtitleFile\AddLanguageChoise.cshtml" />
+    <Content Include="Views\SubtitleFile\EditFile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

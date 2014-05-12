@@ -83,6 +83,15 @@ namespace Textaleysa.Models.ViewModel
 
 	}
 
+	public class EditFileView
+	{
+		public int ID { get; set; }
+
+		[Required]
+		[Display(Name = "Content of file")]
+		public string content { get; set; }
+	}
+
 	public class FileFrontPageList
 	{
 		public int ID { get; set; }
