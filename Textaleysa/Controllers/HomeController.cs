@@ -20,7 +20,28 @@ namespace Textaleysa.Controllers
 
 		public ActionResult Index()
 		{
-			return View();
+			var mostPopular = (from m in subtitleFileRepo.GetSubtitles()
+							   orderby m.downloadCount descending
+							   select m).Take(10);
+
+			List<FileFrontPageList> listPopular = new List<FileFrontPageList>();
+			foreach(var item in mostPopular)
+			{
+				FileFrontPageList popularItem = new FileFrontPageList();
+				popularItem.ID = item.ID;
+
+				var title = meditaTitleRepo.GetMovieById(item.mediaTitleID);
+				if (title != null)
+				{
+					popularItem.title = title.title + " (" + title.yearReleased.ToString() + ") " + item.language;
+					listPopular.Add(popularItem);
+				}
+			}
+			if (listPopular == null)
+			{
+				return View();
+			}
+			return View(listPopular);
 		}
 
 		public ActionResult Help()
