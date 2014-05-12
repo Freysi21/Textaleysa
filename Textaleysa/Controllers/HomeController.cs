@@ -21,6 +21,7 @@ namespace Textaleysa.Controllers
 		public ActionResult Index()
 		{
 			var mostPopular = (from m in subtitleFileRepo.GetSubtitles()
+							   where m.downloadCount >= 1
 							   orderby m.downloadCount descending
 							   select m).Take(10);
 
@@ -42,6 +43,39 @@ namespace Textaleysa.Controllers
 				return View();
 			}
 			return View(listPopular);
+		}
+
+		public ActionResult MostPopular()
+		{
+			var mostPopular = from m in subtitleFileRepo.GetSubtitles()
+							  where m.downloadCount >= 1
+							  orderby m.downloadCount descending
+							  select m;
+
+			if (mostPopular == null)
+			{
+				return View();
+			}
+			List<DisplayMovieView> popularList = new List<DisplayMovieView>();
+			foreach (var f in mostPopular)
+			{
+				var m = meditaTitleRepo.GetMovieById(f.mediaTitleID);
+				if (m == null)
+				{
+					return View("Error");
+				}
+				DisplayMovieView dmw = new DisplayMovieView();
+				dmw.title = m.title;
+				dmw.yearReleased = m.yearReleased;
+				dmw.userName = f.userName;
+				dmw.language = f.language;
+				dmw.date = f.date;
+				dmw.downloadCount = f.downloadCount;
+				dmw.ID = f.ID;
+				popularList.Add(dmw);
+			}
+		
+			return View(popularList);
 		}
 
 		public ActionResult Help()
