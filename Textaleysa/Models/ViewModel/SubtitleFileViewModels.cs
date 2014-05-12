@@ -85,4 +85,11 @@ namespace Textaleysa.Models.ViewModel
 		[Display(Name = "Title")]
 		public string title { get; set; }
 	}
+
+	public class LanguageView
+	{
+		[Required]
+		[Display(Name = "Language")]
+		public string language { get; set; }
+	}
 }

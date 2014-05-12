@@ -23,6 +23,8 @@ namespace Textaleysa.Controllers
 
 		private SubtitleFileChunkContext chunkDb = new SubtitleFileChunkContext();
 
+		private LanguageRepository langDb = new LanguageRepository();
+
         // GET: /SubtitleFile/
         public ActionResult Index()
         {
@@ -218,6 +220,21 @@ namespace Textaleysa.Controllers
 			}
 			
 			return RedirectToAction("UploadMovie");
+		}
+
+
+		public ActionResult AddLanguageChoise()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult AddLanguageChoise(LanguageView l)
+		{
+			Language lang = new Language();
+			lang.language = l.language;
+			langDb.AddLanguage(lang);
+			return RedirectToAction("UploadMovieFile");
 		}
 
 		protected override void Dispose(bool disposing)

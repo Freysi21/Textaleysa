@@ -1,0 +1,4 @@
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\UnitTestTextaleysa\bin\Debug\UnitTestTextaleysa.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\UnitTestTextaleysa\bin\Debug\UnitTestTextaleysa.pdb
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\UnitTestTextaleysa\obj\Debug\UnitTestTextaleysa.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\UnitTestTextaleysa\obj\Debug\UnitTestTextaleysa.pdb
