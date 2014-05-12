@@ -111,7 +111,8 @@ namespace Textaleysa.Controllers
 				result += Environment.NewLine;
 			}
 
-			var byteArray = Encoding.ASCII.GetBytes(result);
+			var byteArray = Encoding.UTF8.GetBytes(result);
+			//var byteArray = Encoding.ASCII.GetBytes(result);
 			var stream = new MemoryStream(byteArray);
 
 			var fileTitle = "";
@@ -119,7 +120,8 @@ namespace Textaleysa.Controllers
 			
 			subtitleFile.downloadCount++;
 			subtitleFileRepo.ModifySubtitleFile(subtitleFile);
-			return File(stream, "text/plain", fileTitle);
+			//return File(stream, "text/plain", fileTitle);
+			return File(stream, "charset=\"utf-8\"", fileTitle);
 		}
 
 		public ActionResult UploadMovieFile()
@@ -162,7 +164,7 @@ namespace Textaleysa.Controllers
 
 
 				// Read the whole input file
-				StreamReader fileInput = new StreamReader(file.InputStream);
+				StreamReader fileInput = new StreamReader(file.InputStream, System.Text.Encoding.UTF8, true);
 				do
 				{
 					SubtitleFileChunk sfc = new SubtitleFileChunk();
