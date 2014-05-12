@@ -18,12 +18,19 @@ namespace Textaleysa.Models.ViewModel
 		public string title { get; set; }
 
 		[Required]
+<<<<<<< HEAD
 		[Display(Name = "Tungumál")]
 		public string language { get; set; }
+=======
+		[Display(Name = "Language")]
+		public int languageID { get; set; }
+>>>>>>> 592425cdc2778d8118dbb54519fb7f7717d02ab9
 
 		[Required]
 		[Display(Name = "Útgáfuár")]
 		public int yearReleased { get; set; }
+
+		public IEnumerable<Language> languageOptions { get; set; }
 	}
 
 	public class UploadSerieModelView
@@ -76,6 +83,9 @@ namespace Textaleysa.Models.ViewModel
 
 		[Display(Name = "Fjöldi niðurhala")]
 		public int downloadCount { get; set; }
+
+		public IEnumerable<Language> CategoryTypeOptions { get; set; }
+
 	}
 
 	public class FileFrontPageList
@@ -84,5 +94,12 @@ namespace Textaleysa.Models.ViewModel
 
 		[Display(Name = "Titill")]
 		public string title { get; set; }
+	}
+
+	public class LanguageView
+	{
+		[Required]
+		[Display(Name = "Language")]
+		public string language { get; set; }
 	}
 }
