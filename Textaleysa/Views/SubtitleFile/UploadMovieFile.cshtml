@@ -23,11 +23,11 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.language, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.languageID, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(m => m.language, new SelectList(Model.CategoryTypeOptions, "ID", "language",
-                Model.CategoryTypeOptions.First().ID))
-                @Html.ValidationMessageFor(model => model.language)
+                @Html.DropDownListFor(m => m.languageID, new SelectList(Model.languageOptions, "ID", "language",
+         Model.languageOptions.First().ID))
+                @Html.ValidationMessageFor(model => model.languageID)
             </div>
         </div>
 

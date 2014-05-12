@@ -72,9 +72,11 @@
         <dd>
             @Html.ActionLink("Download Link", "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)
         </dd>
-
     </dl>
 </div>
+
+@Html.ActionLink("Delete", "DeleteFile", new { id = Model.ID }, null) 
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
