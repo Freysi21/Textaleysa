@@ -18,13 +18,11 @@ namespace Textaleysa.Models.ViewModel
 		public string title { get; set; }
 
 		[Required]
-<<<<<<< HEAD
 		[Display(Name = "Tungumál")]
 		public string language { get; set; }
-=======
+
 		[Display(Name = "Language")]
 		public int languageID { get; set; }
->>>>>>> 592425cdc2778d8118dbb54519fb7f7717d02ab9
 
 		[Required]
 		[Display(Name = "Útgáfuár")]
