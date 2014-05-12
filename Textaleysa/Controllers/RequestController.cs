@@ -17,28 +17,26 @@ namespace Textaleysa.Controllers
     {
         private RequestContext db = new RequestContext();
         RequestRepository repo = new RequestRepository();
-        MediaTitleRepository titleRepo = new MediaTitleRepository();
 
         //
         // GET: /Request/
-        [HttpGet]
+        //[HttpGet]
         public ActionResult RequestList()
         {
 
-            List<UploadMovieRequestViewModel> requests = new List<UploadMovieRequestViewModel>();
+            List<ListRequestViewModel> requests = new List<ListRequestViewModel>();
 
-                var files = from f in repo.GetRequests()
-                            select f;
+            var files = from f in repo.GetRequests()
+                        select f;
             if(files == null)
             {
                 return View("Error");
             }
                 foreach(var f in files)
                 {
-                    UploadMovieRequestViewModel request = new UploadMovieRequestViewModel();
+                    ListRequestViewModel request = new ListRequestViewModel();
                     request.userName = f.userName;
                     request.mediaTitle = f.mediaTitle;
-                    request.yearReleased = f.yearReleased;
                     request.language = f.language;
                     requests.Add(request);
                 }
@@ -91,10 +89,10 @@ namespace Textaleysa.Controllers
             }
                 Request r = new Request();
                 r.userName = User.Identity.Name;
-                r.mediaTitle = request.mediaTitle; // setting the CommentText we got from the input field
+                r.mediaTitle = (request.mediaTitle + " (" + (request.yearReleased.ToString()) + ")");
                 r.date = DateTime.Now;
                 r.language = request.language;
-                repo.AddRequest(r); // add the comment to the db
+                repo.AddRequest(r);
 
                 return RedirectToAction("RequestList");
                 //return Json(r, JsonRequestBehavior.AllowGet);
@@ -113,7 +111,6 @@ namespace Textaleysa.Controllers
                           mediaType = r.mediaType,
                           Username = r.userName,
                           language = r.language,
-                          yearReleased = r.yearReleased
                       };
 
             return Json(res, JsonRequestBehavior.AllowGet);

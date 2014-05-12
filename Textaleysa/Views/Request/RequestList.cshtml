@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Textaleysa.Models.ViewModel.UploadMovieRequestViewModel>
+﻿@model IEnumerable<Textaleysa.Models.ViewModel.ListRequestViewModel>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -26,7 +26,7 @@
             @Html.DisplayFor(modelItem => item.language)
         </td>
         <td>
-            @Html.DisplayNameFor(model => model.userName)
+            @Html.DisplayFor(modelItem => item.userName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
