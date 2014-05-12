@@ -34,6 +34,7 @@ namespace Textaleysa.Controllers
 			return RedirectToAction("SearchResult", s);
 		}
 
+
 		[HttpGet]
 		public ActionResult SearchResult(SearchViewModel s)
 		{
