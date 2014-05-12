@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Leitarniðurstöður";
 }
-
+﻿@Html.Partial("_SearchPartial") <!--Partial view fyrir leitina-->
 <h2>SearchResult</h2>
 
 <table class="table">
@@ -36,7 +36,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.title)
+            @Html.ActionLink(item.title, "DisplayFile", "SubtitleFile", new { id = item.ID }, null)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.language)
