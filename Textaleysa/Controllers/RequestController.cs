@@ -26,7 +26,41 @@ namespace Textaleysa.Controllers
             {
                 return View("Error");
             }
+            List<UploadMovieRequestViewModel> requests
             return View(model);
+
+            /*if (string.IsNullOrEmpty(s.searchString) || string.IsNullOrWhiteSpace(s.searchString))
+            {
+                return RedirectToAction("Index");
+            }
+
+            var movies = from m in meditaTitleRepo.GetMovieTitles()
+                         where m.title.Contains(s.searchString)
+                         select m;
+            if (movies == null)
+            {
+                return View("Error");
+            }
+
+            List<DisplayMovieView> ldmw = new List<DisplayMovieView>();
+            foreach (var m in movies)
+            {
+                var files = from f in subtitleFileRepo.GetSubtitles()
+                            where f.mediaTitleID == m.ID
+                            select f;
+                foreach (var f in files)
+                {
+                    DisplayMovieView dmw = new DisplayMovieView();
+                    dmw.title = m.title;
+                    dmw.yearReleased = m.yearReleased;
+                    dmw.userName = f.userName;
+                    dmw.language = f.language;
+                    dmw.date = f.date;
+                    dmw.downloadCount = f.downloadCount;
+                    ldmw.Add(dmw);
+                }
+            }
+            return View(ldmw);*/
         }
         public ActionResult CreateRequest()
         {
