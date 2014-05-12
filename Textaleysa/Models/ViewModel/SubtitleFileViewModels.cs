@@ -14,38 +14,38 @@ namespace Textaleysa.Models.ViewModel
 	public class UploadMovieModelView
 	{
 		[Required]
-		[Display(Name = "Title")]
+		[Display(Name = "Titill")]
 		public string title { get; set; }
 
 		[Required]
-		[Display(Name = "Language")]
+		[Display(Name = "Tungumál")]
 		public string language { get; set; }
 
 		[Required]
-		[Display(Name = "Year released")]
+		[Display(Name = "Útgáfuár")]
 		public int yearReleased { get; set; }
 	}
 
 	public class UploadSerieModelView
 	{
 		[Required]
-		[Display(Name = "Title")]
+		[Display(Name = "Titill")]
 		public string title { get; set; }
 		
 		[Required]
-		[Display(Name = "Language")]
+		[Display(Name = "Tungumál")]
 		public string language { get; set; }
 
 		[Required]
-		[Display(Name = "Season")]
+		[Display(Name = "Sería")]
 		public int season { get; set; }
 
 		[Required]
-		[Display(Name = "Episode")]
+		[Display(Name = "Þáttur nr.")]
 		public int episode { get; set; }
 
 		[Required]
-		[Display(Name = "Upload File")]
+		[Display(Name = "Hlaða upp")]
 		public HttpPostedFileBase file { get; set; }
 	}
 
@@ -53,28 +53,28 @@ namespace Textaleysa.Models.ViewModel
 	{
 		public int ID { get; set; }
 
-		[Display(Name = "Title")]
+		[Display(Name = "Titill")]
 		public string title { get; set; }
 
-		[Display(Name = "Language")]
+		[Display(Name = "Tungumál")]
 		public string language { get; set; }
 
-		[Display(Name = "Year released")]
+		[Display(Name = "Útgáfuár")]
 		public int yearReleased { get; set; }
 
-		[Display(Name = "User")]
+		[Display(Name = "Notandi")]
 		public string userName { get; set; }
 
-		[Display(Name = "Grade")]
+		[Display(Name = "Einkunn")]
 		public double grade { get; set; }
 
-		[Display(Name = "Date")]
+		[Display(Name = "Hlaðið upp")]
 		public DateTime date { get; set; }
 
-		[Display(Name = "Comments")]
+		[Display(Name = "Athugasemdir")]
 		public List<CommentAndLikeViewModel.CommentView> commentlist { get; set; }
 
-		[Display(Name = "Download count")]
+		[Display(Name = "Fjöldi niðurhala")]
 		public int downloadCount { get; set; }
 	}
 
@@ -82,7 +82,7 @@ namespace Textaleysa.Models.ViewModel
 	{
 		public int ID { get; set; }
 
-		[Display(Name = "Title")]
+		[Display(Name = "Titill")]
 		public string title { get; set; }
 	}
 }

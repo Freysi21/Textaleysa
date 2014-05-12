@@ -1,13 +1,12 @@
 ﻿@model Textaleysa.Models.ViewModel.DisplayMovieView
 
 @{
-    ViewBag.Title = "DiplayFile";
+    ViewBag.Title = "Nánar um skrá";
 }
 
-<h2>DisplayFile</h2>
+<h2>Nánar um @Html.DisplayFor(model => model.title)</h2>
 
 <div>
-    <h4>DisplayMovieView</h4>
 	<hr />
     <dl class="dl-horizontal">
         <dt>
@@ -67,15 +66,10 @@
         </dd>
 
         <dt>
-            Download
+            @Html.ActionLink("Hlaða niður", "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)
         </dt>
-        <dd>
-            @Html.ActionLink("Download Link", "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Breyta", "Edit", new { /* id = Model.PrimaryKey */ }) 
 </p>

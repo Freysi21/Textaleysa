@@ -141,8 +141,6 @@ namespace Textaleysa.Controllers
 
         public ActionResult About()
         {
-			ViewBag.Message = "Tekka hvort about message virkar frá HomeController";
-
 			return View();
         }
 
