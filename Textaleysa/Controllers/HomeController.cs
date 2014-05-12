@@ -43,7 +43,7 @@ namespace Textaleysa.Controllers
 			}
 
 			var movies = from m in meditaTitleRepo.GetMovieTitles()
-						 where m.title.Contains(s.searchString)
+						 where m.title.ToLower().Contains(s.searchString.ToLower())
 						 select m;
 			if (movies == null)
 			{
@@ -55,6 +55,7 @@ namespace Textaleysa.Controllers
 			{
 				var files = from f in subtitleFileRepo.GetSubtitles()
 							where f.mediaTitleID == m.ID
+							orderby f.downloadCount descending
 							select f;
 				foreach (var f in files)
 				{
@@ -65,10 +66,14 @@ namespace Textaleysa.Controllers
 					dmw.language = f.language;
 					dmw.date = f.date;
 					dmw.downloadCount = f.downloadCount;
+					dmw.ID = f.ID;
 					ldmw.Add(dmw);
 				}
 			}
-			return View(ldmw);
+			var result = from r in ldmw
+						 orderby r.downloadCount descending
+						 select r;
+			return View(result);
 		}
 
 		public ActionResult Popular()

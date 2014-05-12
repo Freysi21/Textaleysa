@@ -1,0 +1,5 @@
+C:\Users\Arnit13\Desktop\Textaleysa\Textaleysa\UnitTestTextaleysa\bin\Debug\UnitTestTextaleysa.dll
+C:\Users\Arnit13\Desktop\Textaleysa\Textaleysa\UnitTestTextaleysa\bin\Debug\UnitTestTextaleysa.pdb
+C:\Users\Arnit13\Desktop\Textaleysa\Textaleysa\UnitTestTextaleysa\obj\Debug\UnitTestTextaleysa.csprojResolveAssemblyReference.cache
+C:\Users\Arnit13\Desktop\Textaleysa\Textaleysa\UnitTestTextaleysa\obj\Debug\UnitTestTextaleysa.dll
+C:\Users\Arnit13\Desktop\Textaleysa\Textaleysa\UnitTestTextaleysa\obj\Debug\UnitTestTextaleysa.pdb
