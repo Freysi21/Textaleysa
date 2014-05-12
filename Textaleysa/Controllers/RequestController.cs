@@ -41,39 +41,6 @@ namespace Textaleysa.Controllers
                     requests.Add(request);
                 }
             return View(requests);
-                
-            /*if (string.IsNullOrEmpty(s.searchString) || string.IsNullOrWhiteSpace(s.searchString))
-            {
-                return RedirectToAction("Index");
-            }
-
-            var movies = from m in meditaTitleRepo.GetMovieTitles()
-                         where m.title.Contains(s.searchString)
-                         select m;
-            if (movies == null)
-            {
-                return View("Error");
-            }
-
-            List<DisplayMovieView> ldmw = new List<DisplayMovieView>();
-            foreach (var m in movies)
-            {
-                var files = from f in subtitleFileRepo.GetSubtitles()
-                            where f.mediaTitleID == m.ID
-                            select f;
-                foreach (var f in files)
-                {
-                    DisplayMovieView dmw = new DisplayMovieView();
-                    dmw.title = m.title;
-                    dmw.yearReleased = m.yearReleased;
-                    dmw.userName = f.userName;
-                    dmw.language = f.language;
-                    dmw.date = f.date;
-                    dmw.downloadCount = f.downloadCount;
-                    ldmw.Add(dmw);
-                }
-            }
-            return View(ldmw);*/
         }
         public ActionResult CreateRequest()
         {
@@ -87,6 +54,8 @@ namespace Textaleysa.Controllers
             {
                 return RedirectToAction("CreateRequest");
             }
+            if (ModelState.IsValid)
+            {
                 Request r = new Request();
                 r.userName = User.Identity.Name;
                 r.mediaTitle = (request.mediaTitle + " (" + (request.yearReleased.ToString()) + ")");
@@ -96,6 +65,11 @@ namespace Textaleysa.Controllers
 
                 return RedirectToAction("RequestList");
                 //return Json(r, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return View(request);
+            }
 
         }
 

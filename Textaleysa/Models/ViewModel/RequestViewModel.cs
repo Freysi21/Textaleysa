@@ -13,7 +13,7 @@ namespace Textaleysa.Models.ViewModel
     public class UploadMovieRequestViewModel
     {
 
-        [Required(ErrorMessage="Vantar titil")]
+        [Required(ErrorMessage = "Vantar titil")]
         [Display(Name = "mediaTitle")]
         public string mediaTitle { get; set; }
 
