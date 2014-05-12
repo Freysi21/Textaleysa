@@ -1,4 +1,12 @@
 ﻿
+#TextaleysaLogo{
+    width: 27em;
+    height: 7em;
+}
+#TextaleysaLogoNavbar{
+    width: 6em;
+    height: 3em;
+}
 .FullScreenContainer{
 height: 100%;
 bottom:0;
@@ -45,6 +53,12 @@ top:0;
 #PartialSearchCheckboxes4{
     font-weight: normal;
 }
+#LanguageButton{
+    background-color: #ffffff;
+}
+.FontWhite{
+    color: white;
+}
 #SearcFilterSpaceDiv{
 margin-right: 2.8em;
 margin-left: 0.8em;
@@ -62,6 +76,9 @@ margin-right: 0.8em;
 }
 .SecondDivOnPage{
     height: 2em;
+}
+#FirstDivOnFrontPage{
+    height: 11em;
 }
 #SearchBar{
     max-width: 35em;
