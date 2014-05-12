@@ -25,7 +25,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.language, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.language)
+                @Html.DropDownListFor(m => m.language, new SelectList(Model.CategoryTypeOptions, "ID", "language",
+                Model.CategoryTypeOptions.First().ID))
                 @Html.ValidationMessageFor(model => model.language)
             </div>
         </div>

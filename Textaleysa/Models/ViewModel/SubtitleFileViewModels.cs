@@ -19,11 +19,13 @@ namespace Textaleysa.Models.ViewModel
 
 		[Required]
 		[Display(Name = "Language")]
-		public string language { get; set; }
+		public int languageID { get; set; }
 
 		[Required]
 		[Display(Name = "Year released")]
 		public int yearReleased { get; set; }
+
+		public IEnumerable<Language> languageOptions { get; set; }
 	}
 
 	public class UploadSerieModelView
@@ -76,6 +78,9 @@ namespace Textaleysa.Models.ViewModel
 
 		[Display(Name = "Download count")]
 		public int downloadCount { get; set; }
+
+		public IEnumerable<Language> CategoryTypeOptions { get; set; }
+
 	}
 
 	public class FileFrontPageList

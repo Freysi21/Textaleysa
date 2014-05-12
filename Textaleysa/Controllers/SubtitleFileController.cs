@@ -128,7 +128,13 @@ namespace Textaleysa.Controllers
 
 		public ActionResult UploadMovieFile()
 		{
-			return View();
+			UploadMovieModelView u = new UploadMovieModelView();
+			u.CategoryTypeOptions = langDb.GetLanguages();
+			if (u == null)
+			{
+				return View("Error");
+			}
+			return View(u);
 		}
 
 		// TODO: Add authorized !
@@ -157,7 +163,8 @@ namespace Textaleysa.Controllers
 					f.mediaTitleID = movie.ID;
 				}
 
-				f.language = fileInfo.language;
+				var lan = langDb.GetLanguageById(fileInfo.languageID);
+				f.language = lan.language;
 				// Get the username
 				f.userName = User.Identity.Name;
 				
