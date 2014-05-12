@@ -42,6 +42,11 @@ namespace Textaleysa.Models.Repositories
 			db.SaveChanges();
 		}
 
+		public void DeleteSubtitleFile(SubtitleFile sf)
+		{
+			db.subtitleFile.Remove(sf);
+			db.SaveChanges();
+		}
 		// *************  SubtitleFileChunk starts here ***********
 
 		public IEnumerable<SubtitleFileChunk> GetSubtitleFileChunks()
@@ -64,5 +69,17 @@ namespace Textaleysa.Models.Repositories
 			chunkDb.SaveChanges();
 		}
 
+		public void DeleteSubtitleFileChunk(int? id)
+		{
+			var chunks = from c in chunkDb.subtitleFileChunk
+						 where c.subtitleFileID == id
+						 select c;
+
+			foreach (var item in chunks)
+			{
+				chunkDb.subtitleFileChunk.Remove(item);
+			}
+			chunkDb.SaveChanges();
+		}
     }
 }

@@ -161,8 +161,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentAndLikeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\SubtitleFileController.cs" />
+    <Compile Include="DAL\LanguageContext.cs" />
     <Compile Include="DAL\MovieContext.cs" />
+    <Compile Include="DAL\RequestContext.cs" />
     <Compile Include="DAL\SubtitleFileContext.cs" />
     <Compile Include="DAL\SubtitleFileChunkContext.cs" />
     <Compile Include="DAL\CommentContext.cs" />
@@ -173,6 +176,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
     <Compile Include="Models\Entities\Grade.cs" />
+    <Compile Include="Models\Entities\Language.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Entities\Like.cs" />
     <Compile Include="Models\Entities\MediaTitle.cs" />
@@ -182,6 +186,7 @@
     <Compile Include="Models\Entities\SubtitleFile.cs" />
     <Compile Include="Models\Entities\SubtitleFileChunk.cs" />
     <Compile Include="Models\Entities\Vote.cs" />
+    <Compile Include="Models\Repositories\LanguageRepository.cs" />
     <Compile Include="Models\Repositories\CommentRepository.cs" />
     <Compile Include="Models\Repositories\GradeRepository.cs" />
     <Compile Include="Models\Repositories\LikeRepository.cs" />
@@ -190,6 +195,7 @@
     <Compile Include="Models\Repositories\SubtitleFileRepository.cs" />
     <Compile Include="Models\Repositories\VoteRepository.cs" />
     <Compile Include="Models\ViewModel\CommentAndLikeViewModel.cs" />
+    <Compile Include="Models\ViewModel\RequestViewModel.cs" />
     <Compile Include="Models\ViewModel\SearchViewModels.cs" />
     <Compile Include="Models\ViewModel\SubtitleFileViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -247,14 +253,16 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_SearchPartial.cshtml" />
     <Content Include="Views\Home\Help.cshtml" />
-    <Content Include="Views\Home\Requests.cshtml" />
     <Content Include="Views\CommentAndLike\Index.cshtml" />
     <Content Include="Views\SubtitleFile\Index.cshtml" />
     <Content Include="Views\SubtitleFile\UploadMovieFile.cshtml" />
     <Content Include="Views\SubtitleFile\EditMovie.cshtml" />
     <Content Include="Views\SubtitleFile\DisplayFile.cshtml" />
     <Content Include="Views\Home\SearchResult.cshtml" />
+    <Content Include="Views\Request\RequestList.cshtml" />
+    <Content Include="Views\Request\CreateRequest.cshtml" />
     <Content Include="Views\Home\MostPopular.cshtml" />
+    <Content Include="Views\SubtitleFile\AddLanguageChoise.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

@@ -1,4 +1,10 @@
-﻿#SearchPartialRow{
+﻿
+.FullScreenContainer{
+height: 100%;
+bottom:0;
+top:0;
+}
+#SearchPartialRow{
     height: 6.5em;
     text-align: center;
     margin-top: 1em;
@@ -17,14 +23,14 @@
     color:black;
     text-align: center;
 }
-#SearchPartialBarDiv{
+#SearchPartialBarDiv{   
     height: 5em;
     color:black;
     text-align: center;
     padding-top:1.5em;
 }
 #SearchForFilter{
-    height: 6em;
+    height: 3em;
     text-align: center;
 }
 #PartialSearchCheckboxes{
@@ -51,7 +57,10 @@ margin-right: 0.8em;
     text-align: center;
     vertical-align: top;
 }
-#FirstDivFrontPage{
+.FirstDivOnPage{
+    height: 10em;
+}
+.SecondDivOnPage{
     height: 2em;
 }
 #SearchBar{
@@ -78,6 +87,20 @@ margin-right: 0.8em;
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.428571429;
+}
+.ContactInputFields{
+    width: 100%
+}
+#ContactContent{
+    width: 100%;
+    height: 16em;
+}
+#ContactSendButton{
+    margin-top: 6px;
+}
+
+.center{
+    text-align: center;
 }
 body {
     padding-top: 50px;

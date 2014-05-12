@@ -137,17 +137,10 @@ namespace Textaleysa.Controllers
 
 			return View();
 		}
-		public ActionResult Requests()
-		{
-			ViewBag.Message = "Tekka hvort requests message virkar frá HomeController";
 
-			return View();
-		}
 
         public ActionResult About()
         {
-			ViewBag.Message = "Tekka hvort about message virkar frá HomeController";
-
 			return View();
         }
 

@@ -5,10 +5,9 @@ using System.Web;
 
 namespace Textaleysa.Models
 {
-    public class Vote
+    public class Language
     {
         public int ID { get; set; }
-        public int requestID { get; set; }
-        public string userName { get; set; }
+		public string language { get; set; }
     }
 }

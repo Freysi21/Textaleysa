@@ -4109,7 +4109,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-collapse:before,
-.navbar-collapse:after {
   display: table;
   content: " ";
 }
@@ -4507,8 +4506,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background: #a0c9ec;
-  border-color: #a0c9ec;
+  background: #cbcbcb;
+  border-color: #cbcbcb;
 }
 
 .navbar-inverse .navbar-brand {

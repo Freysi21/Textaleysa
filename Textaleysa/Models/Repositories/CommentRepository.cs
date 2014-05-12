@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Textaleysa.DAL;
-
+using System.Data.Entity;
 
 namespace Textaleysa.Models.Repositories
 {

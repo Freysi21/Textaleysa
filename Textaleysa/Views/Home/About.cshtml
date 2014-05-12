@@ -1,47 +1,27 @@
-﻿@Html.Partial("_SearchPartial") <!--Partial view fyrir leitina-->
-@{
+﻿@{
     ViewBag.Title = "Um okkur";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+}   
+<div class="row center">
+    <div class="col-xs-12 FirstDivOnPage"></div>
+</div>
 
-
-<form action="" method="post" enctype="multipart/form-data">
-    <h3>Bíómynd</h3>
-    <label for="Titill">Titill:</label>
-    <input type="text" name="Titill" id="Titill" />
-    <label for="Ár">Ár:</label>
-    <input type="tel" name="Ár" id="Ár" />
-    <select>
-        <option selected="selected">Tungumál</option>
-        <option value="ICE">Icelandic</option>
-        <option value="ENG">English</option>
-    </select>
-    <label for="file">Velja Skrá:</label>
-    <input type="file" name="file" id="file" />
-
-    <input type="submit" />
-</form>
-
-<form action="" method="post" enctype="multipart/form-data">
-
-    <h3>Þættir</h3> 
-    <label for="Titill">Titil:l</label>
-    <input type="text" name="Titill" id="Titill" />
-    <label for="Sería">Sería:</label>
-    <input type="tel" name="Sería" id="Sería" />
-    <label for="Þáttur">Þáttur:</label>
-    <input type="tel" name="Þáttur" id="Þáttur" />
-    <select>
-        <option selected="selected">Tungumál</option>
-        <option value="ICE">Icelandic</option>
-        <option value="ENG">English</option>
-    </select>
-    <label for="file">Velja Skrá:</label>
-    <input type="file" name="file" id="file" />
-
-    <input type="submit" />
-</form>
-
-
-
+<div class="row center">
+    <div class="col-xs-12"><h2>Vinsælustu skjátextaskrár Textaleysu</h2></div>
+</div>
+<div class="row">
+    <div class="col-xs-12 SecondDivOnPage"></div>
+</div>
+<div class="row">
+    <div class="col-xs-12"></div>
+</div>
+    <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+            <h4>Verklegt námskeið í Háskólanum í Reykjavík</h4>
+            <p>
+                Síða þessi er smíðuð sem hluti af verklegu námskeiði af Arnari Kára Ágústssyni, Árna Frey Þorsteinssyni,
+                Eysteini Gunnlaugssyni, Gunnari Orra Kjartanssyni og Sverri Páli Pálssyni á vorönn árið 2014.
+            </p>
+        </div>
+        <div class="col-xs-3"></div>
+    </div>
