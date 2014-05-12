@@ -77,4 +77,12 @@ namespace Textaleysa.Models.ViewModel
 		[Display(Name = "Download count")]
 		public int downloadCount { get; set; }
 	}
+
+	public class FileFrontPageList
+	{
+		public int ID { get; set; }
+
+		[Display(Name = "Title")]
+		public string title { get; set; }
+	}
 }

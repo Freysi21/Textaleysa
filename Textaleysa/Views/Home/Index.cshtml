@@ -1,4 +1,5 @@
-﻿﻿@{
+﻿@model IEnumerable<Textaleysa.Models.ViewModel.FileFrontPageList>﻿
+@{
     ViewBag.Title = "Home Page";
 }
 ﻿<div class="container">
@@ -53,7 +54,12 @@
             <h2>Vinsælast</h2>
             <p>Vinsælustu skjátextaskrár Textaleysu frá upphafi.</p>
             <ol>
-                <li><a href="http://www.linkToFile.is">Die Hard 1</a></li>
+                @foreach(var item in Model)
+                { 
+                   <li> 
+                       @Html.ActionLink(item.title, "DisplayFile", "SubtitleFile", new { id = item.ID }, null)
+                   </li>
+                }
             </ol>
         </div>
         <div class="col-md-4">
