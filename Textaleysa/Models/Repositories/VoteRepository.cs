@@ -9,27 +9,13 @@ namespace Textaleysa.Models.Repositories
 {
     public class VoteRepository
     {
-        RequestContext db = new RequestContext();
+        VoteContext db = new VoteContext();
+        RequestContext rdb = new RequestContext();
 
-        private static VoteRepository instance;
 
-        public static VoteRepository Instance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new VoteRepository();
-                return instance;
-            }
-        }
-        private List<Vote> votes = null;
-        private VoteRepository()
-        {
-            this.votes = new List<Vote>();
-        }
         public IEnumerable<Vote> GetVotes()
         {
-            var result = from v in votes
+            var result = from v in db.votes
                          orderby v.requestID ascending
                          select v;
             return result;
@@ -37,19 +23,15 @@ namespace Textaleysa.Models.Repositories
 
         public void AddVote(Vote v)
         {
-            int newID = 1;
-            if (votes.Count() > 0)
-            {
-                newID = votes.Max(x => x.ID) + 1;
-            }
-            v.ID = newID;
+            db.votes.Add(v);
+            db.SaveChanges();
         }
         public IEnumerable<Vote> GetVoteForRequest(Vote vote)
         {
-            var requests = from c in db.requests
+            var requests = from c in rdb.requests
                            select c; // get all comments
             var result = from r in requests
-                         join v in votes on r.ID equals v.requestID // getting only likes that are linked to a particular comment
+                         join v in db.votes on r.ID equals v.requestID // getting only likes that are linked to a particular comment
                          where v.requestID == vote.requestID
                          select v;
 
