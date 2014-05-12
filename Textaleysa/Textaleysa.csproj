@@ -161,9 +161,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentAndLikeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\SubtitleFileController.cs" />
     <Compile Include="DAL\LanguageContext.cs" />
     <Compile Include="DAL\MovieContext.cs" />
+    <Compile Include="DAL\RequestContext.cs" />
     <Compile Include="DAL\SubtitleFileContext.cs" />
     <Compile Include="DAL\SubtitleFileChunkContext.cs" />
     <Compile Include="DAL\CommentContext.cs" />
@@ -193,6 +195,7 @@
     <Compile Include="Models\Repositories\SubtitleFileRepository.cs" />
     <Compile Include="Models\Repositories\VoteRepository.cs" />
     <Compile Include="Models\ViewModel\CommentAndLikeViewModel.cs" />
+    <Compile Include="Models\ViewModel\RequestViewModel.cs" />
     <Compile Include="Models\ViewModel\SearchViewModels.cs" />
     <Compile Include="Models\ViewModel\SubtitleFileViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -257,6 +260,8 @@
     <Content Include="Views\SubtitleFile\EditMovie.cshtml" />
     <Content Include="Views\SubtitleFile\DisplayFile.cshtml" />
     <Content Include="Views\Home\SearchResult.cshtml" />
+    <Content Include="Views\Request\RequestList.cshtml" />
+    <Content Include="Views\Request\CreateRequest.cshtml" />
     <Content Include="Views\Home\MostPopular.cshtml" />
     <Content Include="Views\SubtitleFile\AddLanguageChoise.cshtml" />
   </ItemGroup>

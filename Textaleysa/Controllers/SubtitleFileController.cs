@@ -26,6 +26,7 @@ namespace Textaleysa.Controllers
 		private LanguageRepository langDb = new LanguageRepository();
 
         // GET: /SubtitleFile/
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
