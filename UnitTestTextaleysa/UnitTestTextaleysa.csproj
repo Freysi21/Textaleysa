@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>ed7809f5-dd33-4ad7-bba7-ed42994734eb</ProjectGuid>
+    <ProjectGuid>{4FDF12DA-44C8-4DB8-B112-7D1ADFF86241}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UnitTestTextaleysa</RootNamespace>
