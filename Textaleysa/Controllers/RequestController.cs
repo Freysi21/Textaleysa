@@ -17,18 +17,33 @@ namespace Textaleysa.Controllers
     {
         private RequestContext db = new RequestContext();
         RequestRepository repo = new RequestRepository();
+        MediaTitleRepository titleRepo = new MediaTitleRepository();
+
         //
         // GET: /Request/
+        [HttpGet]
         public ActionResult RequestList()
         {
-            var model = repo.GetRequests();
-            if(model == null)
+
+            List<UploadMovieRequestViewModel> requests = new List<UploadMovieRequestViewModel>();
+
+                var files = from f in repo.GetRequests()
+                            select f;
+            if(files == null)
             {
                 return View("Error");
             }
-            List<UploadMovieRequestViewModel> requests
-            return View(model);
-
+                foreach(var f in files)
+                {
+                    UploadMovieRequestViewModel request = new UploadMovieRequestViewModel();
+                    request.userName = f.userName;
+                    request.mediaTitle = f.mediaTitle;
+                    request.year = f.year;
+                    request.language = f.language;
+                    requests.Add(request);
+                }
+            return View(requests);
+                
             /*if (string.IsNullOrEmpty(s.searchString) || string.IsNullOrWhiteSpace(s.searchString))
             {
                 return RedirectToAction("Index");
@@ -67,7 +82,7 @@ namespace Textaleysa.Controllers
             return View();
         }
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public ActionResult CreateRequest(UploadMovieRequestViewModel request)
         {
             if(request == null)

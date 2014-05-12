@@ -24,6 +24,7 @@ namespace Textaleysa.Controllers
 		private SubtitleFileChunkContext chunkDb = new SubtitleFileChunkContext();
 
         // GET: /SubtitleFile/
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
