@@ -257,12 +257,9 @@
     <Content Include="Views\SubtitleFile\EditMovie.cshtml" />
     <Content Include="Views\SubtitleFile\DisplayFile.cshtml" />
     <Content Include="Views\Home\SearchResult.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Request\RequestList.cshtml" />
     <Content Include="Views\Request\CreateRequest.cshtml" />
-=======
     <Content Include="Views\Home\MostPopular.cshtml" />
->>>>>>> d78f0c4faee980887c4dba308a265902c2837711
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
