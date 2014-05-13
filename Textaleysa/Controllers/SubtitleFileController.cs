@@ -323,10 +323,6 @@ namespace Textaleysa.Controllers
 		[HttpPost]
 		public ActionResult EditFile(EditFileView file)
 		{
-			if (file.ID == null)
-			{
-				return View("Error");
-			}
 			var subtitleFile = subtitleFileRepo.GetSubtitleById(file.ID);
 			if (subtitleFile == null)
 			{
@@ -338,7 +334,9 @@ namespace Textaleysa.Controllers
 			subtitleFileRepo.DeleteSubtitleFileChunk(subtitleFile.ID);
 			subtitleFileRepo.DeleteSubtitleFile(subtitleFile);
 
+
 			//StringReader fileInput = new StringReader(file.content);
+
 			StreamReader fileInput = new StreamReader(file.content, System.Text.Encoding.UTF8, true);
 
 			try
@@ -402,8 +400,6 @@ namespace Textaleysa.Controllers
 					subtitleFileRepo.DeleteSubtitleFile(newFile);
 					return View("Error");
 				}
-
-			return View();
 		}
 
 		protected override void Dispose(bool disposing)
