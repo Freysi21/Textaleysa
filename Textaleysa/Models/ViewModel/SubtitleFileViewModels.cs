@@ -85,9 +85,23 @@ namespace Textaleysa.Models.ViewModel
 		public IEnumerable<Language> CategoryTypeOptions { get; set; }
 	}
 
-	public class DisplayContentView
+	public class DisplayFileView
 	{
-		public int ID { get; set; }
+		[Display(Name = "Titill")]
+		public string title { get; set; }
+
+		[Display(Name = "Tungumál")]
+		public string language { get; set; }
+
+		[Display(Name = "Útgáfuár")]
+		public int yearReleased { get; set; }
+
+		public List<DisplayContentFileView> content { get; set; }
+	}
+
+	public class DisplayContentFileView
+	{
+		public int lineID { get; set; }
 
 		public string startTime { get; set; }
 

@@ -1,15 +1,19 @@
-﻿@model IEnumerable<Textaleysa.Models.ViewModel.DisplayContentView>
+﻿@model Textaleysa.Models.ViewModel.DisplayFileView
 
 @{
     ViewBag.Title = "DisplayContent";
 }
 
-<h2>DisplayContent</h2>
+<h2>@Html.DisplayFor(model => model.title) 
+    (@Html.DisplayFor(model => model.yearReleased))
+    @Html.DisplayFor(model => model.language)
+</h2>
 
-@foreach (var item in Model)
+
+@foreach (var item in Model.content)
 {
     <div class="jumbotron .col-md-6 .col-md-offset-3">
-        <h3>@Html.DisplayFor(model => item.ID)</h3>
+        <h3>@Html.DisplayFor(model => item.lineID)</h3>
         <div class="timegray">
             <span class="timeicon glyphicon glyphicon-time"></span>
             <span class="time-DateOfBlog">

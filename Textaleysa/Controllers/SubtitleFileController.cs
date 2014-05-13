@@ -425,27 +425,29 @@ namespace Textaleysa.Controllers
 			{
 				return View("Error");
 			}
-			/*
+			
 			var movieTitle = meditaTitleRepo.GetMovieById(subtitleFile.mediaTitleID);
 			if (movieTitle == null)
 			{
 				return View("Error");
-			} */
-
-			List<DisplayContentView> list = new List<DisplayContentView>();
-
+			}
+			DisplayFileView file = new DisplayFileView();
+			file.title = movieTitle.title;
+			file.yearReleased = movieTitle.yearReleased;
+			file.language = subtitleFile.language;
+			file.content = new List<DisplayContentFileView>();
 			foreach(var item in chunks)
 			{
-				DisplayContentView content = new DisplayContentView();
-				content.ID = item.lineID;
+				DisplayContentFileView content = new DisplayContentFileView();
+				content.lineID = item.lineID;
 				content.startTime = item.startTime;
 				content.stopTime = item.stopTime;
 				content.line1 = item.subtitleLine1;
 				content.line2 = item.subtitleLine2;
 				content.line3 = item.subtitleLine3;
-				list.Add(content);
+				file.content.Add(content);
 			}
-			return View(list);
+			return View(file);
 		}
 
 		protected override void Dispose(bool disposing)
