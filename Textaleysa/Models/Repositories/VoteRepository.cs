@@ -12,7 +12,6 @@ namespace Textaleysa.Models.Repositories
         VoteContext db = new VoteContext();
         RequestContext rdb = new RequestContext();
 
-
         public IEnumerable<Vote> GetVotes()
         {
             var result = from v in db.votes

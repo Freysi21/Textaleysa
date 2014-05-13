@@ -92,6 +92,8 @@ namespace Textaleysa.Controllers
             return Json(res, JsonRequestBehavior.AllowGet);
         }
 
+        //--------------VOTE START HERE----------
+
         public ActionResult getVotes()
         {
             var votes = vrepo.GetVotes(); // get all the likes 
@@ -109,11 +111,13 @@ namespace Textaleysa.Controllers
 
         public ActionResult postVotes(Vote vote)
         {
-            vote.requestID++; // some of by one error 
-            var votesForRequest = vrepo.GetVoteForRequest(vote); // get all the votes 
-
+            vote.ID++;
+            vote.requestID = vote.requestID + 12;
             var user = User.Identity.Name;
             vote.userName = user;
+            var votesForRequest = vrepo.GetVoteForRequest(vote); // get all the votes 
+
+            
 
             bool check = false;
             foreach (var v in votesForRequest) // go through the fixed list of votes

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Textaleysa.Models.ViewModel.ListRequestViewModel>
+<script type="text/javascript" src="~/Scripts/VoteScript.js"></script>
 
 <p>
     @Html.ActionLink("Create New", "CreateRequest")
@@ -6,22 +7,22 @@
 <table class="table">
     <tr>
         <th>
-            Fjöldi atkvæða
+            Fjöldi Atkvæða
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.mediaTitle)
+            Nafn Myndefnis
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.language)
+            Tungumál
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.userName)
+            Notandi
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr class="request-item">
         <td>
             <span class="qty">
             </span>
@@ -42,3 +43,4 @@
 }
 
 </table>
+
