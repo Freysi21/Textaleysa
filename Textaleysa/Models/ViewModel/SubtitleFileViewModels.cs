@@ -83,7 +83,44 @@ namespace Textaleysa.Models.ViewModel
 		public int downloadCount { get; set; }
 
 		public IEnumerable<Language> CategoryTypeOptions { get; set; }
+	}
 
+	public class DisplayFileView
+	{
+		[Display(Name = "Titill")]
+		public string title { get; set; }
+
+		[Display(Name = "Tungumál")]
+		public string language { get; set; }
+
+		[Display(Name = "Útgáfuár")]
+		public int yearReleased { get; set; }
+
+		public List<DisplayContentFileView> content { get; set; }
+	}
+
+	public class DisplayContentFileView
+	{
+		public int lineID { get; set; }
+
+		public string startTime { get; set; }
+
+		public string stopTime { get; set; }
+
+		public string line1 { get; set; }
+
+		public string line2 { get; set; }
+
+		public string line3 { get; set; }
+	}
+
+	public class EditFileView
+	{
+		public int ID { get; set; }
+
+		[Required]
+		[Display(Name = "Content of file")]
+		public string content { get; set; }
 	}
 
 	public class FileFrontPageList
