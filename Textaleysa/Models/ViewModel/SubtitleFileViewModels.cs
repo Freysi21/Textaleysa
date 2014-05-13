@@ -83,7 +83,21 @@ namespace Textaleysa.Models.ViewModel
 		public int downloadCount { get; set; }
 
 		public IEnumerable<Language> CategoryTypeOptions { get; set; }
+	}
 
+	public class DisplayContentView
+	{
+		public int ID { get; set; }
+
+		public string startTime { get; set; }
+
+		public string stopTime { get; set; }
+
+		public string line1 { get; set; }
+
+		public string line2 { get; set; }
+
+		public string line3 { get; set; }
 	}
 
 	public class EditFileView

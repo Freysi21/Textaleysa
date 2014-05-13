@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Textaleysa.Models.ViewModel.DisplayContentView>
+
+@{
+    ViewBag.Title = "DisplayContent";
+}
+
+<h2>DisplayContent</h2>
+
+@foreach (var item in Model)
+{
+    <div class="jumbotron .col-md-6 .col-md-offset-3">
+        <h3>@Html.DisplayFor(model => item.ID)</h3>
+        <div class="timegray">
+            <span class="timeicon glyphicon glyphicon-time"></span>
+            <span class="time-DateOfBlog">
+                @Html.DisplayFor(model => item.startTime)
+            -->
+            @Html.DisplayFor(modelItem => item.stopTime)
+        </span>
+    </div>
+    <p>@Html.DisplayFor(modelItem => item.line1)</p>
+    @if (item.line2 != null)
+    {
+        <p>@Html.DisplayFor(modelItem => item.line2)</p>
+    }
+    @if (item.line3 != null)
+    {
+        <p>@Html.DisplayFor(modelItem => item.line3)</p>
+    }
+</div>
+}

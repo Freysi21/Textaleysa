@@ -328,16 +328,19 @@ namespace Textaleysa.Controllers
 			{
 				return View("Error");
 			}
+
 			SubtitleFile newFile = new SubtitleFile();
-			newFile = subtitleFile;
+			#region newfile = subtitlFile 
+			newFile.language = subtitleFile.language;
+			newFile.mediaTitleID = subtitleFile.mediaTitleID;
+			newFile.userName = subtitleFile.userName;
+			newFile.downloadCount = subtitleFile.downloadCount;
+			newFile.date = subtitleFile.date;
+			#endregion
+			subtitleFileRepo.AddSubtitleFile(newFile);
 
-			subtitleFileRepo.DeleteSubtitleFileChunk(subtitleFile.ID);
-			subtitleFileRepo.DeleteSubtitleFile(subtitleFile);
-
-
-			//StringReader fileInput = new StringReader(file.content);
-
-			StreamReader fileInput = new StreamReader(file.content, System.Text.Encoding.UTF8, true);
+			MemoryStream tempContent = new MemoryStream(Encoding.UTF8.GetBytes(file.content));
+			StreamReader fileInput = new StreamReader(tempContent, System.Text.Encoding.UTF8, true);
 
 			try
 			{
@@ -389,9 +392,9 @@ namespace Textaleysa.Controllers
 						subtitleFileRepo.AddSubtitleChunk(sfc);
 
 					} while (!fileInput.EndOfStream);
-					int? ID = newFile.ID;
-					fileInput.Dispose();
-					return RedirectToAction("DisplayFile", new { id = ID });
+					subtitleFileRepo.DeleteSubtitleFileChunk(subtitleFile.ID);
+					subtitleFileRepo.DeleteSubtitleFile(subtitleFile);
+					return RedirectToAction("DisplayFile", newFile.ID);
 						#endregion
 				}
 				catch (Exception)
@@ -400,6 +403,49 @@ namespace Textaleysa.Controllers
 					subtitleFileRepo.DeleteSubtitleFile(newFile);
 					return View("Error");
 				}
+		}
+
+		public ActionResult DisplayContent(int? id)
+		{
+			if (id == null)
+			{
+				return View("Error");
+			}
+			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+			if (subtitleFileRepo == null)
+			{
+				return View("Error");
+			}
+
+			var chunks = from c in subtitleFileRepo.GetSubtitleFileChunks()
+						 where c.subtitleFileID == subtitleFile.ID
+						 select c;
+
+			if (chunks == null)
+			{
+				return View("Error");
+			}
+			/*
+			var movieTitle = meditaTitleRepo.GetMovieById(subtitleFile.mediaTitleID);
+			if (movieTitle == null)
+			{
+				return View("Error");
+			} */
+
+			List<DisplayContentView> list = new List<DisplayContentView>();
+
+			foreach(var item in chunks)
+			{
+				DisplayContentView content = new DisplayContentView();
+				content.ID = item.lineID;
+				content.startTime = item.startTime;
+				content.stopTime = item.stopTime;
+				content.line1 = item.subtitleLine1;
+				content.line2 = item.subtitleLine2;
+				content.line3 = item.subtitleLine3;
+				list.Add(content);
+			}
+			return View(list);
 		}
 
 		protected override void Dispose(bool disposing)
