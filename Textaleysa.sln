@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Textaleysa", "Textaleysa\Textaleysa.csproj", "{C817A2DD-2E9B-4299-B8EB-509A690ED94C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestTextaleysa", "UnitTestTextaleysa\UnitTestTextaleysa.csproj", "{4FDF12DA-44C8-4DB8-B112-7D1ADFF86241}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Textaleysa.Tests", "UnitTestTextaleysa\Textaleysa.Tests.csproj", "{4FDF12DA-44C8-4DB8-B112-7D1ADFF86241}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
