@@ -20,7 +20,62 @@ namespace Textaleysa.Controllers
 
 		public ActionResult Index()
 		{
-			return View();
+			var mostPopular = (from m in subtitleFileRepo.GetSubtitles()
+							   where m.downloadCount >= 1
+							   orderby m.downloadCount descending
+							   select m).Take(10);
+
+			List<FileFrontPageList> listPopular = new List<FileFrontPageList>();
+			foreach(var item in mostPopular)
+			{
+				FileFrontPageList popularItem = new FileFrontPageList();
+				popularItem.ID = item.ID;
+
+				var title = meditaTitleRepo.GetMovieById(item.mediaTitleID);
+				if (title != null)
+				{
+					popularItem.title = title.title + " (" + title.yearReleased.ToString() + ") " + item.language;
+					listPopular.Add(popularItem);
+				}
+			}
+			if (listPopular == null)
+			{
+				return View();
+			}
+			return View(listPopular);
+		}
+
+		public ActionResult MostPopular()
+		{
+			var mostPopular = from m in subtitleFileRepo.GetSubtitles()
+							  where m.downloadCount >= 1
+							  orderby m.downloadCount descending
+							  select m;
+
+			if (mostPopular == null)
+			{
+				return View();
+			}
+			List<DisplayMovieView> popularList = new List<DisplayMovieView>();
+			foreach (var f in mostPopular)
+			{
+				var m = meditaTitleRepo.GetMovieById(f.mediaTitleID);
+				if (m == null)
+				{
+					return View("Error");
+				}
+				DisplayMovieView dmw = new DisplayMovieView();
+				dmw.title = m.title;
+				dmw.yearReleased = m.yearReleased;
+				dmw.userName = f.userName;
+				dmw.language = f.language;
+				dmw.date = f.date;
+				dmw.downloadCount = f.downloadCount;
+				dmw.ID = f.ID;
+				popularList.Add(dmw);
+			}
+		
+			return View(popularList);
 		}
 
 		public ActionResult Help()
@@ -83,17 +138,10 @@ namespace Textaleysa.Controllers
 
 			return View();
 		}
-		public ActionResult Requests()
-		{
-			ViewBag.Message = "Tekka hvort requests message virkar frá HomeController";
 
-			return View();
-		}
 
         public ActionResult About()
         {
-			ViewBag.Message = "Tekka hvort about message virkar frá HomeController";
-
 			return View();
         }
 

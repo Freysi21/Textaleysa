@@ -316,7 +316,7 @@ body {
   line-height: 1.428571429;
   background-repeat: repeat-x;
   color: #333333;
-  background: rgba(0, 0, 0, 0.075);
+  background: #ffffff;
 }
 
 input,
@@ -4109,7 +4109,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-collapse:before,
-.navbar-collapse:after {
   display: table;
   content: " ";
 }
@@ -4507,8 +4506,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background: #a0c9ec;
-  border-color: #a0c9ec;
+  background: #368BC1;
+  border-color: #399cf0;
 }
 
 .navbar-inverse .navbar-brand {
@@ -4522,11 +4521,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-text {
-  color: #999999;
+  color: #ffffff;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #999999;
+  color: #ffffff;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,

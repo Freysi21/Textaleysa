@@ -23,7 +23,10 @@ namespace Textaleysa.Controllers
 
 		private SubtitleFileChunkContext chunkDb = new SubtitleFileChunkContext();
 
+		private LanguageRepository langDb = new LanguageRepository();
+
         // GET: /SubtitleFile/
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -126,7 +129,13 @@ namespace Textaleysa.Controllers
 
 		public ActionResult UploadMovieFile()
 		{
-			return View();
+			UploadMovieModelView u = new UploadMovieModelView();
+			u.languageOptions = langDb.GetLanguages();
+			if (u == null)
+			{
+				return View("Error");
+			}
+			return View(u);
 		}
 
 		// TODO: Add authorized !
@@ -136,13 +145,13 @@ namespace Textaleysa.Controllers
 			if (file != null && fileInfo != null)
 			{
 				// Create new SubtitleFile
-				SubtitleFile f = new SubtitleFile(); 
+				SubtitleFile f = new SubtitleFile();
 				var movie = (from m in meditaTitleRepo.GetMovieTitles()
 							 where m.title == fileInfo.title
 							 select m).FirstOrDefault();
 
 				if (movie == null)
-				{ 
+				{
 					Movie m = new Movie();
 					m.title = fileInfo.title;
 					m.yearReleased = fileInfo.yearReleased;
@@ -150,74 +159,119 @@ namespace Textaleysa.Controllers
 					meditaTitleRepo.AddMediaTitle(m);
 					f.mediaTitleID = m.ID;
 				}
-				else 
-				{ 
+				else
+				{
 					f.mediaTitleID = movie.ID;
 				}
 
-				f.language = fileInfo.language;
+				var lan = langDb.GetLanguageById(fileInfo.languageID);
+				f.language = lan.language;
 				// Get the username
 				f.userName = User.Identity.Name;
-				
+
 				// Add the subtitleFile in DB
 				subtitleFileRepo.AddSubtitleFile(f);
 
-
-				// Read the whole input file
-				StreamReader fileInput = new StreamReader(file.InputStream, System.Text.Encoding.UTF8, true);
-				do
+				try
 				{
-					SubtitleFileChunk sfc = new SubtitleFileChunk();
-					// sfc gets his ID when added to DB
-					sfc.subtitleFileID = f.ID;
+					// Read the whole input file
+					StreamReader fileInput = new StreamReader(file.InputStream, System.Text.Encoding.UTF8, true);
 
-					// Read the first line of SubtitleFileChunk which is the ID of SubtitleFileChunk
-					var line = fileInput.ReadLine(); 
-					sfc.lineID = Convert.ToInt32(line);
 
-					// Split the Subtitle time in to 3 parts (ex. line2[0] = "00:00:55,573" 
-					// line2[1] = "-->" line2[2] = "00:00:58,867")
-					var line2 = fileInput.ReadLine().Split(' ');
-					// TimeSpan startTime = TimeSpan.Parse(line2[0]);
-					sfc.startTime = line2[0];
-					//TimeSpan stopTime = TimeSpan.Parse(line2[2]);
-					sfc.stopTime = line2[2];
-
-					// Read the first line of text in the subtitlechunk
-					var line3 = fileInput.ReadLine(); 
-					sfc.subtitleLine1 = line3;
-
-					// Read the second line of text but if the line is empty
-					var line4 = fileInput.ReadLine(); 
-					if(!string.IsNullOrEmpty(line4))
+					do
 					{
-						sfc.subtitleLine2 = line4;
-						var line5 = fileInput.ReadLine(); // "" 
+						#region uploading the file
+						SubtitleFileChunk sfc = new SubtitleFileChunk();
+						// sfc gets his ID when added to DB
+						sfc.subtitleFileID = f.ID;
 
-						if(!string.IsNullOrEmpty(line5))
+						// Read the first line of SubtitleFileChunk which is the ID of SubtitleFileChunk
+						var line = fileInput.ReadLine();
+						sfc.lineID = Convert.ToInt32(line);
+
+						// Split the Subtitle time in to 3 parts (ex. line2[0] = "00:00:55,573" 
+						// line2[1] = "-->" line2[2] = "00:00:58,867")
+						var line2 = fileInput.ReadLine().Split(' ');
+						// TimeSpan startTime = TimeSpan.Parse(line2[0]);
+						sfc.startTime = line2[0];
+						//TimeSpan stopTime = TimeSpan.Parse(line2[2]);
+						sfc.stopTime = line2[2];
+
+						// Read the first line of text in the subtitlechunk
+						var line3 = fileInput.ReadLine();
+						sfc.subtitleLine1 = line3;
+
+						// Read the second line of text but if the line is empty
+						var line4 = fileInput.ReadLine();
+						if (!string.IsNullOrEmpty(line4))
 						{
-							sfc.subtitleLine3 = line5;
-							fileInput.ReadLine();
+							sfc.subtitleLine2 = line4;
+							var line5 = fileInput.ReadLine(); // "" 
+
+							if (!string.IsNullOrEmpty(line5))
+							{
+								sfc.subtitleLine3 = line5;
+								fileInput.ReadLine();
+							}
+							else
+							{
+								sfc.subtitleLine3 = null;
+							}
 						}
 						else
 						{
+							sfc.subtitleLine2 = null;
 							sfc.subtitleLine3 = null;
 						}
-					}
-					else
-					{
-						sfc.subtitleLine2 = null;
-						sfc.subtitleLine3 = null;
-					}
-					subtitleFileRepo.AddSubtitleChunk(sfc);
+						subtitleFileRepo.AddSubtitleChunk(sfc);
 
-				} while(!fileInput.EndOfStream);
-				int? ID = f.ID;
+					} while (!fileInput.EndOfStream);
+					int? ID = f.ID;
 
-				return RedirectToAction("DisplayFile", new { id = ID });
-			}
+					return RedirectToAction("DisplayFile", new { id = ID });
+						#endregion
+				}
+				catch (Exception)
+				{
+					subtitleFileRepo.DeleteSubtitleFileChunk(f.ID);
+					subtitleFileRepo.DeleteSubtitleFile(f);
+					return View("Error");
+				}
+			}	
 			
 			return RedirectToAction("UploadMovie");
+		}
+
+		public ActionResult DeleteFile(int? id)
+		{
+			if (id == null)
+			{
+				return View("Error");
+			}
+			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+			if (subtitleFile == null)
+			{
+				return View("Error");
+			}
+
+			subtitleFileRepo.DeleteSubtitleFileChunk(subtitleFile.ID);
+			subtitleFileRepo.DeleteSubtitleFile(subtitleFile);
+
+			return View("Index");
+		}
+
+		public ActionResult AddLanguageChoise()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult AddLanguageChoise(LanguageView l)
+		{
+			Language lang = new Language();
+			lang.language = l.language;
+			langDb.AddLanguage(lang);
+			return RedirectToAction("UploadMovieFile");
 		}
 
 		protected override void Dispose(bool disposing)
