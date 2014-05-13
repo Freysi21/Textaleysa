@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Textaleysa.DAL;
+using Textaleysa.Models.IRepos;
 
 namespace Textaleysa.Models.Repositories
 {
@@ -11,7 +12,6 @@ namespace Textaleysa.Models.Repositories
     {
 		SubtitleFileContext db = new SubtitleFileContext();
 		SubtitleFileChunkContext chunkDb = new SubtitleFileChunkContext();
-
         public IEnumerable<SubtitleFile> GetSubtitles()
         {
             var result = from f in db.subtitleFile

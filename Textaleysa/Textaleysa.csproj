@@ -186,6 +186,7 @@
     <Compile Include="Models\Entities\SubtitleFile.cs" />
     <Compile Include="Models\Entities\SubtitleFileChunk.cs" />
     <Compile Include="Models\Entities\Vote.cs" />
+    <Compile Include="Models\IRepos\ISubtitleFileRepository.cs" />
     <Compile Include="Models\Repositories\LanguageRepository.cs" />
     <Compile Include="Models\Repositories\CommentRepository.cs" />
     <Compile Include="Models\Repositories\GradeRepository.cs" />
