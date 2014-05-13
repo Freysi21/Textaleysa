@@ -21,7 +21,7 @@ namespace Textaleysa.Models.ViewModel
 		[Display(Name = "Tungumál")]
 		public string language { get; set; }
 
-		[Display(Name = "Language")]
+		[Display(Name = "Tungumál")]
 		public int languageID { get; set; }
 
 		[Required]
@@ -119,7 +119,7 @@ namespace Textaleysa.Models.ViewModel
 		public int ID { get; set; }
 
 		[Required]
-		[Display(Name = "Content of file")]
+		[Display(Name = "Innihald skráar")]
 		public string content { get; set; }
 	}
 
@@ -134,7 +134,7 @@ namespace Textaleysa.Models.ViewModel
 	public class LanguageView
 	{
 		[Required]
-		[Display(Name = "Language")]
+		[Display(Name = "Tungumál")]
 		public string language { get; set; }
 	}
 }
