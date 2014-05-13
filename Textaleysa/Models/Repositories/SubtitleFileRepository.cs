@@ -9,8 +9,7 @@ namespace Textaleysa.Models.Repositories
 {
     public class SubtitleFileRepository
     {
-		SubtitleFileContext db = new SubtitleFileContext();
-		SubtitleFileChunkContext chunkDb = new SubtitleFileChunkContext();
+		HRContext db = new HRContext();
 
         public IEnumerable<SubtitleFile> GetSubtitles()
         {
@@ -59,7 +58,7 @@ namespace Textaleysa.Models.Repositories
 
 		public SubtitleFileChunk GetSubtitleFileChunkById(int id)
 		{
-			var result = (from s in chunkDb.subtitleFileChunk
+			var result = (from s in db.subtitleFileChunk
 						 where s.ID == id
 						 select s).SingleOrDefault();
 			return result;
@@ -67,14 +66,14 @@ namespace Textaleysa.Models.Repositories
 
 		public IEnumerable<SubtitleFileChunk> GetSubtitleFileChunks()
 		{
-			var result = from s in chunkDb.subtitleFileChunk
+			var result = from s in db.subtitleFileChunk
 						 select s;
 			return result;
 		}
 
 		public IEnumerable<SubtitleFileChunk> GetChunksBySubtitleFileID(int id)
 		{
-			var result = from c in chunkDb.subtitleFileChunk
+			var result = from c in db.subtitleFileChunk
 								 where c.subtitleFileID == id
 								 orderby c.lineID ascending
 								 select c;
@@ -83,27 +82,27 @@ namespace Textaleysa.Models.Repositories
 
 		public void AddSubtitleChunk(SubtitleFileChunk sfc)
 		{
-			chunkDb.subtitleFileChunk.Add(sfc);
-			chunkDb.SaveChanges();
+			db.subtitleFileChunk.Add(sfc);
+			db.SaveChanges();
 		}
 
 		public void ModifySubtitleFileChunk(SubtitleFileChunk sfc)
 		{
-			chunkDb.Entry(sfc).State = EntityState.Modified;
-			chunkDb.SaveChanges();
+			db.Entry(sfc).State = EntityState.Modified;
+			db.SaveChanges();
 		}
 
 		public void DeleteSubtitleFileChunk(int? id)
 		{
-			var chunks = from c in chunkDb.subtitleFileChunk
+			var chunks = from c in db.subtitleFileChunk
 						 where c.subtitleFileID == id
 						 select c;
 
 			foreach (var item in chunks)
 			{
-				chunkDb.subtitleFileChunk.Remove(item);
+				db.subtitleFileChunk.Remove(item);
 			}
-			chunkDb.SaveChanges();
+			db.SaveChanges();
 		}
     }
 }

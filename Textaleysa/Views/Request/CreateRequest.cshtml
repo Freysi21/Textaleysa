@@ -4,16 +4,9 @@
 {
     @Html.AntiForgeryToken()
 }
-<div class="row center">
-    <div class="col-xs-12 FirstDivOnPage"></div>
-</div>
-
-<div class="row center">
-    <div class="col-xs-12"><h2>Ný beiðni</h2></div>
-</div>
-<div class="row">
-    <div class="col-xs-12 SecondDivOnPage"></div>
-</div>
+@{
+    ViewBag.Title = "Ný beiðni";
+}
     <div class="row">
         <div class="form-horizontal">
             <hr />

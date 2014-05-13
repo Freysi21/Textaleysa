@@ -46,6 +46,6 @@ C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\b
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache

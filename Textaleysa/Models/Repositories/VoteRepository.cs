@@ -9,7 +9,7 @@ namespace Textaleysa.Models.Repositories
 {
     public class VoteRepository
     {
-        RequestContext db = new RequestContext();
+		HRContext db = new HRContext();
 
         private static VoteRepository instance;
 

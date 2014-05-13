@@ -9,13 +9,20 @@ using Textaleysa.Models;
 
 namespace Textaleysa.DAL
 {
-	public class SubtitleFileChunkContext : DbContext
+	public class HRContext : DbContext
 	{
-		public SubtitleFileChunkContext(): base("HRConnection")
+		public HRContext() : base("HRConnection")
         {
         }
         
+		public DbSet<SubtitleFile> subtitleFile { get; set; }
 		public DbSet<SubtitleFileChunk> subtitleFileChunk { get; set; }
+		public DbSet<Language> languages { get; set; }
+		public DbSet<Comment> comments { get; set; }
+		public DbSet<Movie> movies { get; set; }
+		public DbSet<Serie> series { get; set; }
+		public DbSet<Vote> votes { get; set; }
+		public DbSet<Request> requests { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

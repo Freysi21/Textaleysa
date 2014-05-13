@@ -1,18 +1,14 @@
 ﻿@model Textaleysa.Models.ViewModel.LanguageView
 
 @{
-    ViewBag.Title = "AddLanguageChoise";
+    ViewBag.Title = "Bæta við tungumáli";
 }
-
-<h2>AddLanguageChoise</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>LanguageView</h4>
-        <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">

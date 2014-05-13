@@ -15,7 +15,7 @@ namespace Textaleysa.Controllers
 {
     public class RequestController : Controller
     {
-        private RequestContext db = new RequestContext();
+		private HRContext db = new HRContext();
         RequestRepository repo = new RequestRepository();
 
         //

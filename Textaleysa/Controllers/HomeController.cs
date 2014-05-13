@@ -16,7 +16,7 @@ namespace Textaleysa.Controllers
 	{
 		SubtitleFileRepository subtitleFileRepo = new SubtitleFileRepository();
 		MediaTitleRepository meditaTitleRepo = new MediaTitleRepository();
-		private MovieContext movieDb = new MovieContext();
+		private HRContext db = new HRContext();
 
 		public ActionResult Index()
 		{
