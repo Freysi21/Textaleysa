@@ -4,19 +4,15 @@ namespace Textaleysa.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using Textaleysa.Models;
 
-
-        internal sealed class Configuration : DbMigrationsConfiguration<Textaleysa.DAL.RequestContext>
-
+    internal sealed class Configuration : DbMigrationsConfiguration<Textaleysa.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Textaleysa.DAL.HRContext";
         }
 
-        protected override void Seed(Textaleysa.DAL.RequestContext context)
+        protected override void Seed(Textaleysa.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -30,27 +26,6 @@ namespace Textaleysa.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            context.requests.AddOrUpdate(
-                new Request
-                {
-                    ID = 1,
-                    userName = "Arnar",
-                    mediaTitle = "HVAAAAAAS SEEEGIR KJEEEEELIN!",
-                    date = DateTime.Now,
-                    mediaType = "Þáttur",
-                    language = "Íslenska"
-                },
-                new Request
-                {
-                    ID = 2,
-                    userName = "!C#",
-                    mediaTitle = "Ég er eyzisharp",
-                    date = DateTime.Now,
-                    mediaType = "Þáttur",
-                    language = "Íslenska"
-                }
-            );
-
         }
     }
 }

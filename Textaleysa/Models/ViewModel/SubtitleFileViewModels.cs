@@ -14,43 +14,38 @@ namespace Textaleysa.Models.ViewModel
 	public class UploadMovieModelView
 	{
 		[Required]
-		[Display(Name = "Titill")]
+		[Display(Name = "Title")]
 		public string title { get; set; }
 
 		[Required]
-		[Display(Name = "Tungumál")]
+		[Display(Name = "Language")]
 		public string language { get; set; }
 
-		[Display(Name = "Language")]
-		public int languageID { get; set; }
-
 		[Required]
-		[Display(Name = "Útgáfuár")]
+		[Display(Name = "Year released")]
 		public int yearReleased { get; set; }
-
-		public IEnumerable<Language> languageOptions { get; set; }
 	}
 
 	public class UploadSerieModelView
 	{
 		[Required]
-		[Display(Name = "Titill")]
+		[Display(Name = "Title")]
 		public string title { get; set; }
 		
 		[Required]
-		[Display(Name = "Tungumál")]
+		[Display(Name = "Language")]
 		public string language { get; set; }
 
 		[Required]
-		[Display(Name = "Sería")]
+		[Display(Name = "Season")]
 		public int season { get; set; }
 
 		[Required]
-		[Display(Name = "Þáttur nr.")]
+		[Display(Name = "Episode")]
 		public int episode { get; set; }
 
 		[Required]
-		[Display(Name = "Hlaða upp")]
+		[Display(Name = "Upload File")]
 		public HttpPostedFileBase file { get; set; }
 	}
 
@@ -58,46 +53,28 @@ namespace Textaleysa.Models.ViewModel
 	{
 		public int ID { get; set; }
 
-		[Display(Name = "Titill")]
+		[Display(Name = "Title")]
 		public string title { get; set; }
 
-		[Display(Name = "Tungumál")]
-		public string language { get; set; }
-
-		[Display(Name = "Útgáfuár")]
-		public int yearReleased { get; set; }
-
-		[Display(Name = "Notandi")]
-		public string userName { get; set; }
-
-		[Display(Name = "Einkunn")]
-		public double grade { get; set; }
-
-		[Display(Name = "Hlaðið upp")]
-		public DateTime date { get; set; }
-
-		[Display(Name = "Athugasemdir")]
-		public List<CommentAndLikeViewModel.CommentView> commentlist { get; set; }
-
-		[Display(Name = "Fjöldi niðurhala")]
-		public int downloadCount { get; set; }
-
-		public IEnumerable<Language> CategoryTypeOptions { get; set; }
-
-	}
-
-	public class FileFrontPageList
-	{
-		public int ID { get; set; }
-
-		[Display(Name = "Titill")]
-		public string title { get; set; }
-	}
-
-	public class LanguageView
-	{
-		[Required]
 		[Display(Name = "Language")]
 		public string language { get; set; }
+
+		[Display(Name = "Year released")]
+		public int yearReleased { get; set; }
+
+		[Display(Name = "User")]
+		public string userName { get; set; }
+
+		[Display(Name = "Grade")]
+		public double grade { get; set; }
+
+		[Display(Name = "Date")]
+		public DateTime date { get; set; }
+
+		[Display(Name = "Comments")]
+		public List<CommentAndLikeViewModel.CommentView> commentlist { get; set; }
+
+		[Display(Name = "Download count")]
+		public int downloadCount { get; set; }
 	}
 }

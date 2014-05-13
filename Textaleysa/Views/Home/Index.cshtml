@@ -1,23 +1,9 @@
-﻿@model IEnumerable<Textaleysa.Models.ViewModel.FileFrontPageList>﻿
-@{
+﻿﻿@{
     ViewBag.Title = "Home Page";
 }
-<div class="row center">
-    <div class="col-xs-12" id="FirstDivOnFrontPage"></div>
-</div>
-
-<div class="row center">
-    <div class="col-xs-12">
-        <img src="http://s29.postimg.org/am6ukuqhj/textaleysa_Logo.png" alt="TextaleysaLogo" id="TextaleysaLogo">
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12"></div>
-</div>
 ﻿<div class="container">
-    <!--
     <div class="row">
-        <div class="col-xs-12 FirstDivOnPage"></div>
+        <div class="col-xs-12" id="FirstDivFrontPage"></div>
     </div>
      <form action="~/Home/Index" method="post">
          <div class="row">
@@ -55,7 +41,6 @@
     <div class="row">
         <div class="col-xs-12" id=""></div>
     </div>
-    -->
     <div class="row">
         <div class="col-md-4">
             <h2>Vantar þig aðstoð?</h2>
@@ -70,12 +55,7 @@
             <h2>Vinsælast</h2>
             <p>Vinsælustu skjátextaskrár Textaleysu frá upphafi.</p>
             <ol>
-                @foreach(var item in Model)
-                { 
-                   <li> 
-                       @Html.ActionLink(item.title, "DisplayFile", "SubtitleFile", new { id = item.ID }, null)
-                   </li>
-                }
+                <li><a href="http://www.linkToFile.is">Die Hard 1</a></li>
             </ol>
         </div>
         <div class="col-md-4">

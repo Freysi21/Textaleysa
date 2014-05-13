@@ -29,7 +29,6 @@ namespace Textaleysa.Controllers
 
         //
         // GET: /Account/Login
-        [HttpGet]
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {

@@ -1,104 +1,81 @@
 ﻿@model Textaleysa.Models.ViewModel.DisplayMovieView
 
 @{
-    ViewBag.Title = "Nánar um skrá";
+    ViewBag.Title = "DiplayFile";
 }
-<div class="row center">
-    <div class="col-xs-12 FirstDivOnPage"></div>
+
+<h2>DisplayFile</h2>
+
+<div>
+    <h4>DisplayMovieView</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.language)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.language)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.yearReleased)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.yearReleased)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.grade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.downloadCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.downloadCount)
+        </dd>
+
+        <dt>
+            Download
+        </dt>
+        <dd>
+            @Html.ActionLink("Download Link", "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)
+        </dd>
+
+    </dl>
 </div>
-
-<div class="row center">
-    <div class="col-xs-12"><h2>Nánar um @Html.DisplayFor(model => model.title)</h2>
-</div>
-</div>
-<div class="row">
-    <div class="col-xs-12 SecondDivOnPage"></div>
-</div>
-
-<div class="row">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-4">
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.title)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.title)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.language)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.language)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.yearReleased)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.yearReleased)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.userName)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.userName)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.grade)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.grade)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.date)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.date)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.downloadCount)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.downloadCount)
-                </dd>
-
-                <dt>
-                    @Html.ActionLink("Hlaða niður", "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)
-                </dt>
-            </dl>
-        </div>
-    <div class="col-xs-4"></div>
-    </div>
-
-<div class="row">
-    <div class="col-xs-12 SecondDivOnPage"></div>
-</div>
-<div class="row center">
-    <div class="col-xs-4"></div>
-
-    <div class="col-xs-4">
-        
-            @Html.ActionLink("Breyta", "Edit", new { /* id = Model.PrimaryKey */ }) |
-            @Html.ActionLink("Eyða", "DeleteFile", new { id = Model.ID }, null)
-        
-    </div>
-    <div class="col-xs-4"></div>
-</div>
-
-
-
-
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
