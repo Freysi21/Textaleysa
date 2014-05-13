@@ -1,8 +1,11 @@
 ﻿@model Textaleysa.Models.ViewModel.EditFileView
 
 @{
-    ViewBag.Title = "Breyta skrá";
+    ViewBag.Title = "EditFile";
 }
+
+<h2>EditFile</h2>
+
 
 @using (Html.BeginForm())
 {
@@ -17,8 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.content, new { @class = "control-label col-md-2" })
             <div class="col-md-8">
-                @Html.TextAreaFor(model => model.content)
-                @Html.ValidationMessageFor(model => model.content)
+                @Html.TextAreaFor(model => model.content, new { style = "width:1000px; height: 500px;" })
             </div>
         </div>
 
