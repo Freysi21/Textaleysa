@@ -10,11 +10,16 @@ namespace Textaleysa.Models.Repositories
 {
     public class SubtitleFileRepository
     {
+        private ISubtitleFileRepository _data { get; set; }
+        public SubtitleFileRepository(ISubtitleFileRepository dataContext = null)
+        {
+            _data = dataContext ?? new SubtitleFileContext();
+        }
 		SubtitleFileContext db = new SubtitleFileContext();
 		SubtitleFileChunkContext chunkDb = new SubtitleFileChunkContext();
         public IEnumerable<SubtitleFile> GetSubtitles()
         {
-            var result = from f in db.subtitleFile
+            var result = from f in db.subtitles
                          orderby f.ID ascending
                          select f;
             return result;
@@ -22,7 +27,7 @@ namespace Textaleysa.Models.Repositories
 
 		public SubtitleFile GetSubtitleById(int? id)
 		{
-			var result = (from m in db.subtitleFile
+			var result = (from m in db.subtitles
 						  where m.ID == id.Value
 						  select m).FirstOrDefault();
 			return result;
@@ -32,7 +37,7 @@ namespace Textaleysa.Models.Repositories
 		{
 			sf.downloadCount = 0;
 			sf.date = DateTime.Now;
-			db.subtitleFile.Add(sf);
+			db.subtitles.Add(sf);
 			db.SaveChanges();
 		}
 
@@ -44,7 +49,7 @@ namespace Textaleysa.Models.Repositories
 
 		public void DeleteSubtitleFile(SubtitleFile sf)
 		{
-			db.subtitleFile.Remove(sf);
+			db.subtitles.Remove(sf);
 			db.SaveChanges();
 		}
 		// *************  SubtitleFileChunk starts here ***********

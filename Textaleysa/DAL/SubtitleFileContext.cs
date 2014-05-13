@@ -13,15 +13,10 @@ namespace Textaleysa.DAL
 {
 	public class SubtitleFileContext : DbContext , ISubtitleFileRepository
 	{
-        public IDbSet<SubtitleFile> subtitleFile { get; set; }
+        public IDbSet<SubtitleFile> subtitles { get; set; }
 		public SubtitleFileContext(): base("HRConnection")
         {
         }
-        public IDbSet<TEntity> Set<TEntity>() where TEntity : class
-        {
-            return base.Set<TEntity>();
-        }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
