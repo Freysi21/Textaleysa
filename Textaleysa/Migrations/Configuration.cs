@@ -8,7 +8,6 @@ namespace Textaleysa.Migrations
 
 
         internal sealed class Configuration : DbMigrationsConfiguration<Textaleysa.DAL.RequestContext>
-
     {
         public Configuration()
         {

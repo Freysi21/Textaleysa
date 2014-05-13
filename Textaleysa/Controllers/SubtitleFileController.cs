@@ -177,7 +177,6 @@ namespace Textaleysa.Controllers
 					// Read the whole input file
 					StreamReader fileInput = new StreamReader(file.InputStream, System.Text.Encoding.UTF8, true);
 
-
 					do
 					{
 						#region uploading the file
@@ -272,6 +271,183 @@ namespace Textaleysa.Controllers
 			lang.language = l.language;
 			langDb.AddLanguage(lang);
 			return RedirectToAction("UploadMovieFile");
+		}
+
+		public ActionResult EditFile(int? id)
+		{
+			if (id == null)
+			{
+				return View("Error");
+			}
+			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+			if (subtitleFile == null)
+			{
+				return View("Error");
+			}
+
+			var chunks = from c in subtitleFileRepo.GetSubtitleFileChunks()
+						 where c.subtitleFileID == subtitleFile.ID
+						 select c;
+			
+			string result = "";
+
+			foreach (var item in chunks)
+			{
+				result += item.lineID.ToString();
+				result += Environment.NewLine;
+
+				result += (item.startTime + " --> ");
+				result += item.stopTime;
+				result += Environment.NewLine;
+				result += item.subtitleLine1;
+				result += Environment.NewLine;
+				if (item.subtitleLine2 != null)
+				{
+					result += item.subtitleLine2;
+					result += Environment.NewLine;
+					if (item.subtitleLine3 != null)
+					{
+						result += item.subtitleLine3;
+						result += Environment.NewLine;
+					}
+				}
+				result += Environment.NewLine;
+			}
+
+			EditFileView file = new EditFileView();
+			file.content = result;
+			file.ID = subtitleFile.ID;
+			return View(file);
+		}
+
+		[HttpPost]
+		public ActionResult EditFile(EditFileView file)
+		{
+			var subtitleFile = subtitleFileRepo.GetSubtitleById(file.ID);
+			if (subtitleFile == null)
+			{
+				return View("Error");
+			}
+
+			SubtitleFile newFile = new SubtitleFile();
+			#region newfile = subtitlFile 
+			newFile.language = subtitleFile.language;
+			newFile.mediaTitleID = subtitleFile.mediaTitleID;
+			newFile.userName = subtitleFile.userName;
+			newFile.downloadCount = subtitleFile.downloadCount;
+			newFile.date = subtitleFile.date;
+			#endregion
+			subtitleFileRepo.AddSubtitleFile(newFile);
+
+			MemoryStream tempContent = new MemoryStream(Encoding.UTF8.GetBytes(file.content));
+			StreamReader fileInput = new StreamReader(tempContent, System.Text.Encoding.UTF8, true);
+
+			try
+			{
+					do
+					{
+						#region uploading the file
+						SubtitleFileChunk sfc = new SubtitleFileChunk();
+						// sfc gets his ID when added to DB
+						sfc.subtitleFileID = newFile.ID;
+
+						// Read the first line of SubtitleFileChunk which is the ID of SubtitleFileChunk
+						var line = fileInput.ReadLine();
+						sfc.lineID = Convert.ToInt32(line);
+
+						// Split the Subtitle time in to 3 parts (ex. line2[0] = "00:00:55,573" 
+						// line2[1] = "-->" line2[2] = "00:00:58,867")
+						var line2 = fileInput.ReadLine().Split(' ');
+						// TimeSpan startTime = TimeSpan.Parse(line2[0]);
+						sfc.startTime = line2[0];
+						//TimeSpan stopTime = TimeSpan.Parse(line2[2]);
+						sfc.stopTime = line2[2];
+
+						// Read the first line of text in the subtitlechunk
+						var line3 = fileInput.ReadLine();
+						sfc.subtitleLine1 = line3;
+
+						// Read the second line of text but if the line is empty
+						var line4 = fileInput.ReadLine();
+						if (!string.IsNullOrEmpty(line4))
+						{
+							sfc.subtitleLine2 = line4;
+							var line5 = fileInput.ReadLine(); // "" 
+
+							if (!string.IsNullOrEmpty(line5))
+							{
+								sfc.subtitleLine3 = line5;
+								fileInput.ReadLine();
+							}
+							else
+							{
+								sfc.subtitleLine3 = null;
+							}
+						}
+						else
+						{
+							sfc.subtitleLine2 = null;
+							sfc.subtitleLine3 = null;
+						}
+						subtitleFileRepo.AddSubtitleChunk(sfc);
+
+					} while (!fileInput.EndOfStream);
+					subtitleFileRepo.DeleteSubtitleFileChunk(subtitleFile.ID);
+					subtitleFileRepo.DeleteSubtitleFile(subtitleFile);
+					return RedirectToAction("DisplayFile", newFile.ID);
+						#endregion
+				}
+				catch (Exception)
+				{
+					subtitleFileRepo.DeleteSubtitleFileChunk(newFile.ID);
+					subtitleFileRepo.DeleteSubtitleFile(newFile);
+					return View("Error");
+				}
+		}
+
+		public ActionResult DisplayContent(int? id)
+		{
+			if (id == null)
+			{
+				return View("Error");
+			}
+			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+			if (subtitleFileRepo == null)
+			{
+				return View("Error");
+			}
+
+			var chunks = from c in subtitleFileRepo.GetSubtitleFileChunks()
+						 where c.subtitleFileID == subtitleFile.ID
+						 select c;
+
+			if (chunks == null)
+			{
+				return View("Error");
+			}
+			
+			var movieTitle = meditaTitleRepo.GetMovieById(subtitleFile.mediaTitleID);
+			if (movieTitle == null)
+			{
+				return View("Error");
+			}
+			DisplayFileView file = new DisplayFileView();
+			file.title = movieTitle.title;
+			file.yearReleased = movieTitle.yearReleased;
+			file.language = subtitleFile.language;
+			file.content = new List<DisplayContentFileView>();
+			foreach(var item in chunks)
+			{
+				DisplayContentFileView content = new DisplayContentFileView();
+				content.lineID = item.lineID;
+				content.startTime = item.startTime;
+				content.stopTime = item.stopTime;
+				content.line1 = item.subtitleLine1;
+				content.line2 = item.subtitleLine2;
+				content.line3 = item.subtitleLine3;
+				file.content.Add(content);
+			}
+			return View(file);
 		}
 
 		protected override void Dispose(bool disposing)

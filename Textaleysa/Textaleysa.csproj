@@ -163,6 +163,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\SubtitleFileController.cs" />
+    <Compile Include="DAL\FakeContext.cs" />
+    <Compile Include="DAL\FakeDBSet.cs" />
     <Compile Include="DAL\LanguageContext.cs" />
     <Compile Include="DAL\MovieContext.cs" />
     <Compile Include="DAL\RequestContext.cs" />
@@ -264,6 +266,8 @@
     <Content Include="Views\Request\CreateRequest.cshtml" />
     <Content Include="Views\Home\MostPopular.cshtml" />
     <Content Include="Views\SubtitleFile\AddLanguageChoise.cshtml" />
+    <Content Include="Views\SubtitleFile\EditFile.cshtml" />
+    <Content Include="Views\SubtitleFile\DisplayContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
