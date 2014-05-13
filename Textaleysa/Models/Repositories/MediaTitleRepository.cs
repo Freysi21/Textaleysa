@@ -18,6 +18,14 @@ namespace Textaleysa.Models.Repositories
 						 select m).SingleOrDefault();
 			return result;
 		}
+		
+		public Movie GetMovieByTitle(string s)
+		{
+			var result = (from m in movieDb.movies
+						 where m.title == s
+						 select m).FirstOrDefault();
+			return result;
+		}
 
         public IEnumerable<Movie> GetMovieTitles()
         {
@@ -26,6 +34,14 @@ namespace Textaleysa.Models.Repositories
                          select m;
             return result;
         }
+
+		public IEnumerable<Movie> SearchAfterTitle(string s)
+		{
+			var result  = from m in movieDb.movies
+						 where m.title.ToLower().Contains(s.ToLower())
+						 select m;
+			return result;
+		}
 
         public void AddMediaTitle(Movie mt)
         {

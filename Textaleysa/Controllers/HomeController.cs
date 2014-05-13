@@ -96,39 +96,38 @@ namespace Textaleysa.Controllers
 			{
 				return RedirectToAction("Index");
 			}
-
-			var movies = from m in meditaTitleRepo.GetMovieTitles()
-						 where m.title.ToLower().Contains(s.searchString.ToLower())
-						 select m;
-			if (movies == null)
+			var results = meditaTitleRepo.SearchAfterTitle(s.searchString);
+			if (results == null)
 			{
 				return View("Error");
 			}
 
-			List<DisplayMovieView> ldmw = new List<DisplayMovieView>();
-			foreach (var m in movies)
+			List<DisplayMovieView> modelList = new List<DisplayMovieView>();
+			foreach (var item in results)
 			{
-				var files = from f in subtitleFileRepo.GetSubtitles()
-							where f.mediaTitleID == m.ID
-							orderby f.downloadCount descending
-							select f;
+				var files = subtitleFileRepo.GetSubtitleFilesByMediaTitleId(item.ID);
+
 				foreach (var f in files)
 				{
 					DisplayMovieView dmw = new DisplayMovieView();
-					dmw.title = m.title;
-					dmw.yearReleased = m.yearReleased;
+					#region putting everything in place for the ModelView
+					dmw.title = item.title;
+					dmw.yearReleased = item.yearReleased;
 					dmw.userName = f.userName;
 					dmw.language = f.language;
 					dmw.date = f.date;
 					dmw.downloadCount = f.downloadCount;
 					dmw.ID = f.ID;
-					ldmw.Add(dmw);
+					#endregion
+
+					modelList.Add(dmw);
+				}
+				if (modelList == null)
+				{
+					return View("Error");
 				}
 			}
-			var result = from r in ldmw
-						 orderby r.downloadCount descending
-						 select r;
-			return View(result);
+			return View(modelList);
 		}
 
 		public ActionResult Popular()

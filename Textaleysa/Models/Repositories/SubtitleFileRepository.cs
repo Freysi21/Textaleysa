@@ -27,6 +27,14 @@ namespace Textaleysa.Models.Repositories
 						  select m).FirstOrDefault();
 			return result;
 		}
+		
+		public IEnumerable<SubtitleFile> GetSubtitleFilesByMediaTitleId(int id)
+		{
+			var results = from f in db.subtitleFile
+						  where f.mediaTitleID == id
+						  select f;
+			return results;
+		}
 
 		public void AddSubtitleFile(SubtitleFile sf)
 		{
@@ -49,11 +57,27 @@ namespace Textaleysa.Models.Repositories
 		}
 		// *************  SubtitleFileChunk starts here ***********
 
+		public SubtitleFileChunk GetSubtitleFileChunkById(int id)
+		{
+			var result = (from s in chunkDb.subtitleFileChunk
+						 where s.ID == id
+						 select s).SingleOrDefault();
+			return result;
+		}
+
 		public IEnumerable<SubtitleFileChunk> GetSubtitleFileChunks()
 		{
 			var result = from s in chunkDb.subtitleFileChunk
-						 orderby s.ID ascending
 						 select s;
+			return result;
+		}
+
+		public IEnumerable<SubtitleFileChunk> GetChunksBySubtitleFileID(int id)
+		{
+			var result = from c in chunkDb.subtitleFileChunk
+								 where c.subtitleFileID == id
+								 orderby c.lineID ascending
+								 select c;
 			return result;
 		}
 

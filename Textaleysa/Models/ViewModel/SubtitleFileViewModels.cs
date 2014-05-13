@@ -101,6 +101,8 @@ namespace Textaleysa.Models.ViewModel
 
 	public class DisplayContentFileView
 	{
+		public int ID { get; set; }
+
 		public int lineID { get; set; }
 
 		public string startTime { get; set; }
