@@ -100,7 +100,3 @@ C:\Users\Eysteinn\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAcc
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.csprojResolveAssemblyReference.cache
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.dll
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.pdb
-C:\Users\Eysteinn\textaleysa\Textaleysa\bin\EntityFramework.dll
-C:\Users\Eysteinn\textaleysa\Textaleysa\bin\EntityFramework.SqlServer.dll
-C:\Users\Eysteinn\textaleysa\Textaleysa\bin\EntityFramework.xml
-C:\Users\Eysteinn\textaleysa\Textaleysa\bin\EntityFramework.SqlServer.xml
