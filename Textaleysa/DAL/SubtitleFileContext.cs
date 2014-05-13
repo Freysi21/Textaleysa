@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Textaleysa.Models;
 using Textaleysa.Models.IRepos;
-using System.Data.Entity;
+
 
 
 namespace Textaleysa.DAL
@@ -25,11 +25,11 @@ namespace Textaleysa.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
+        }/*
         public void SaveChanges()
         {
             base.SaveChanges();
-        }
+        }*/
 	}
 }
 /*Old Version...before trying to change for fake Context
