@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<Textaleysa.Models.ViewModel.ListRequestViewModel>
+<script type="text/javascript" src="~/Scripts/VoteScript.js"></script>      
+@{
+    ViewBag.Title = "Listi yfir beiðnir";
+}
 
+<<<<<<< HEAD
 <p>
     @Html.ActionLink("Create New", "CreateRequest")
 </p>
@@ -12,46 +17,53 @@
 <div class="row">
     <div class="col-xs-12 SecondDivOnPage"></div>
 </div>
+=======
+>>>>>>> 5faa33e06cebb3113fdb3ae09ee5415e5558727a
 <div class="row">
-    <table class="table">
-        <tr>
-            <th>
-                Fjöldi atkvæða
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.mediaTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.language)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.userName)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+    <div class="col-xs-12">
+        <p class="center">
+            @Html.ActionLink("Senda inn nýja beiðni", "CreateRequest")
+        </p>
+        <table class="table">
             <tr>
-                <td>
-                    <span class="qty">
-                    </span>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.mediaTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.language)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.userName)
-                </td>
-                <td>
-                    @Html.ActionLink("Breyta", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Skoða", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Eyða", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
+                <th>
+                    Fjöldi atkvæða
+                </th>
+                <th>
+                    Titill
+                </th>
+                <th>
+                    Tungumál
+                </th>
+                <th>
+                    Notandi
+                </th>
+                <th></th>
             </tr>
-        }
-    </table>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <span class="qty">
+                        </span>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mediaTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.language)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.userName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Breyta", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Skoða", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Eyða", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 </div>

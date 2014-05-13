@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title | Textaleysa</title>
     @Styles.Render("~/Content/css")
     <link href="~/Content/Site.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
@@ -29,17 +29,29 @@
             </div>
         </div>
     </div>
+    <div class="row center">
+        <div class="col-xs-12 FirstDivOnPage"></div>
+    </div>
+    <div class="row center">
+        <div class="col-xs-12"><h2>@ViewBag.title</h2></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 SecondDivOnPage"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12"></div>
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-           <!-- <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p> -->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Um okkur", "About", "Home")</li>
                     <li>@Html.ActionLink("Hafa samband", "Contact", "Home")</li>
                 </ul>
             </div>
+            <p>&copy; @DateTime.Now.Year - Textaleysa</p>
         </footer>
     </div>
 

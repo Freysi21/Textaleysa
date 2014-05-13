@@ -46,6 +46,7 @@ C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+<<<<<<< HEAD
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
@@ -100,3 +101,8 @@ C:\Users\Eysteinn\Desktop\Textaleysa gamkla\Textaleysa\bin\Microsoft.Owin.Securi
 C:\Users\Eysteinn\Desktop\Textaleysa gamkla\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
 C:\Users\Eysteinn\Desktop\Textaleysa gamkla\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Eysteinn\Desktop\Textaleysa gamkla\Textaleysa\obj\Debug\Textaleysa.pdb
+=======
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
+>>>>>>> 5faa33e06cebb3113fdb3ae09ee5415e5558727a
