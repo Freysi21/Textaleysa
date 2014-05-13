@@ -1,5 +1,12 @@
+<<<<<<< HEAD
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\UnitTestTextaleysa\bin\Debug\UnitTestTextaleysa.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\UnitTestTextaleysa\bin\Debug\UnitTestTextaleysa.pdb
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\UnitTestTextaleysa\obj\Debug\UnitTestTextaleysa.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\UnitTestTextaleysa\obj\Debug\UnitTestTextaleysa.pdb
+=======
 C:\Users\Arnit13\Desktop\Textaleysa\Textaleysa\UnitTestTextaleysa\bin\Debug\UnitTestTextaleysa.dll
 C:\Users\Arnit13\Desktop\Textaleysa\Textaleysa\UnitTestTextaleysa\bin\Debug\UnitTestTextaleysa.pdb
 C:\Users\Arnit13\Desktop\Textaleysa\Textaleysa\UnitTestTextaleysa\obj\Debug\UnitTestTextaleysa.csprojResolveAssemblyReference.cache
 C:\Users\Arnit13\Desktop\Textaleysa\Textaleysa\UnitTestTextaleysa\obj\Debug\UnitTestTextaleysa.dll
 C:\Users\Arnit13\Desktop\Textaleysa\Textaleysa\UnitTestTextaleysa\obj\Debug\UnitTestTextaleysa.pdb
+>>>>>>> f50691e5479d28884911da8b822887858720ccd2

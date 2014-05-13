@@ -1,14 +1,20 @@
 ﻿@model IEnumerable<Textaleysa.Models.ViewModel.DisplayMovieView>
-
 @{
     ViewBag.Title = "MostPopular";
 }
-﻿@Html.Partial("_SearchPartial") <!--Partial view fyrir leitina-->
-<h2>MostPopular</h2>
+<div class="row center">
+    <div class="col-xs-12 FirstDivOnPage"></div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="row center">
+    <div class="col-xs-12"><h2>Vinsælustu skjátextaskrár Textaleysu</h2></div>
+</div>
+<div class="row">
+    <div class="col-xs-12 SecondDivOnPage"></div>
+</div>
+<div class="row">
+    <div class="col-xs-12"></div>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -59,9 +65,9 @@
             @Html.DisplayFor(modelItem => item.downloadCount)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Breyta", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Skoða", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Eyða", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

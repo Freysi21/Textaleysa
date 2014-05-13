@@ -39,5 +39,11 @@ namespace Textaleysa.Models.Repositories
 			movieDb.SaveChanges();
 		}
 
+		public void Delete(Movie mt)
+		{
+			movieDb.movies.Remove(mt);
+			movieDb.SaveChanges();
+
+		}
     }
 }

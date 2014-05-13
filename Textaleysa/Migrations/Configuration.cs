@@ -6,7 +6,9 @@ namespace Textaleysa.Migrations
     using System.Linq;
     using Textaleysa.Models;
 
+
         internal sealed class Configuration : DbMigrationsConfiguration<Textaleysa.DAL.RequestContext>
+
     {
         public Configuration()
         {

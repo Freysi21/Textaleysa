@@ -9,7 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top FontWhite">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,20 +17,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Textaleysa", "Index", "Home", null, new { @class = "navbar-brand" })
+                <a href="/"><img src="http://s29.postimg.org/am6ukuqhj/textaleysa_Logo.png" alt="TextaleysaLogo" id="TextaleysaLogoNavbar">
+</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Hjálp", "Help", "Home")</li>
-<<<<<<< HEAD
-                    <li>@Html.ActionLink("Vinsælast", "Popular", "Home")</li>
-                    <li>@Html.ActionLink("Beiðnir", "RequestList", "Request")</li>
-=======
                     <li>@Html.ActionLink("Vinsælast", "MostPopular", "Home")</li>
-                    <li>@Html.ActionLink("Beiðnir", "Requests", "Home")</li>
->>>>>>> d78f0c4faee980887c4dba308a265902c2837711
+                    <li>@Html.ActionLink("Beiðnir", "RequestList", "Request")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
+                ﻿@Html.Partial("_SearchPartial") <!--Partial view fyrir leitina-->
             </div>
         </div>
     </div>
@@ -39,13 +36,12 @@
         <hr />
         <footer>
            <!-- <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p> -->
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li>@Html.ActionLink("Um okkur", "About", "Home")</li>
-					<li>@Html.ActionLink("Hafa samband", "Contact", "Home")</li>
-				</ul>
-
-			</div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Um okkur", "About", "Home")</li>
+                    <li>@Html.ActionLink("Hafa samband", "Contact", "Home")</li>
+                </ul>
+            </div>
         </footer>
     </div>
 
