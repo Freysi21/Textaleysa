@@ -4512,6 +4512,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse .navbar-brand {
   color: #999999;
+  font-family:"Comic Sans MS", cursive, sans-serif
 }
 
 .navbar-inverse .navbar-brand:hover,
