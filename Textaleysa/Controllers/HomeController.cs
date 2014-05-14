@@ -20,7 +20,7 @@ namespace Textaleysa.Controllers
 
 		public ActionResult Index()
 		{
-			var mostPopular = (from m in subtitleFileRepo.GetSubtitles()
+			var mostPopular = (from m in subtitleFileRepo.GetAllSubtitles()
 							   where m.downloadCount >= 1
 							   orderby m.downloadCount descending
 							   select m).Take(10);
@@ -47,7 +47,7 @@ namespace Textaleysa.Controllers
 
 		public ActionResult MostPopular()
 		{
-			var mostPopular = from m in subtitleFileRepo.GetSubtitles()
+			var mostPopular = from m in subtitleFileRepo.GetAllSubtitles()
 							  where m.downloadCount >= 1
 							  orderby m.downloadCount descending
 							  select m;

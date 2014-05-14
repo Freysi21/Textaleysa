@@ -9,6 +9,40 @@ namespace Textaleysa.Models.DataTransferOpjects
 	public class SubtitleFileTransfer
 	{
 		SubtitleFileRepository repo = new SubtitleFileRepository();
+
+		public SubtitleFile GetSubtitleById(int? id)
+		{
+			var result = (from m in repo.GetAllSubtitles()
+						  where m.ID == id.Value
+						  select m).FirstOrDefault();
+			return result;
+		}
+
+		public IEnumerable<SubtitleFile> GetSubtitleFilesByMediaTitleId(int id)
+		{
+			var results = from f in repo.GetAllSubtitles()
+						  where f.mediaTitleID == id
+						  select f;
+			return results;
+		}
+
+		public SubtitleFileChunk GetSubtitleFileChunkById(int id)
+		{
+			var result = (from s in repo.GetAllSubtitles()
+						  where s.ID == id
+						  select s).SingleOrDefault();
+			return result;
+		}
+
+		public IEnumerable<SubtitleFileChunk> GetChunksBySubtitleFileID(int id)
+		{
+			var result = from c in repo.GetAllSubtitleFileChunks()
+						 where c.subtitleFileID == id
+						 orderby c.lineID ascending
+						 select c;
+			return result;
+		}
+
 	}
 
 	public class MediaTitleTransfer
