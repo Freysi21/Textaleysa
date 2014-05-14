@@ -81,9 +81,13 @@ namespace Textaleysa.Controllers
         {
             return View();
         }
+        public ActionResult CreateMovieRequest()
+        {
+            return View();
+        }
         [HttpPost]
         //[Authorize]
-        public ActionResult CreateRequest(UploadMovieRequestViewModel request)
+        public ActionResult CreateMovieRequest(UploadMovieRequestViewModel request)
         {
             if(request == null)
             {
@@ -93,11 +97,36 @@ namespace Textaleysa.Controllers
                 r.userName = User.Identity.Name;
                 r.mediaTitle = (request.mediaTitle + " (" + (request.yearReleased.ToString()) + ")");
                 r.date = DateTime.Now;
+                r.mediaType = "Kvikmynd";
                 r.language = request.language;
                 repo.AddRequest(r);
 
                 return RedirectToAction("RequestList");
                 //return Json(r, JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult CreateEpisodeRequest()
+        {
+            return View();
+        }
+        [HttpPost]
+        //[Authorize]
+        public ActionResult CreateEpisodeRequest(UploadEpisodeRequestViewModel request)
+        {
+            if (request == null)
+            {
+                return RedirectToAction("CreateRequest");
+            }
+            Request r = new Request();
+            r.userName = User.Identity.Name;
+            r.mediaTitle = (request.mediaTitle + "S" + (request.season) + "E" + (request.episode.ToString()));
+            r.date = DateTime.Now;
+            r.mediaType = "Þáttur";
+            r.language = request.language;
+            repo.AddRequest(r);
+
+            return RedirectToAction("RequestList");
+            //return Json(r, JsonRequestBehavior.AllowGet);
 
         }
 
@@ -138,7 +167,7 @@ namespace Textaleysa.Controllers
             var votesForRequest = vrepo.GetVoteForRequest(vote); // get all the votes 
 
             var user = User.Identity.Name;
-            vote.userName = user;
+            vote.userName = "Jóhann";
 
             bool check = false;
             foreach (var v in votesForRequest) // go through the fixed list of votes
