@@ -9,7 +9,7 @@ namespace Textaleysa.Models.Repositories
 {
 	public class LanguageRepository
 	{
-		LanguageContext db = new LanguageContext();
+		HRContext db = new HRContext();
 
 		public Language GetLanguageById(int id)
 		{

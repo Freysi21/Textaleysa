@@ -35,5 +35,8 @@ namespace Textaleysa.Models.ViewModel
 
         [Display(Name = "User")]
         public string userName { get; set; }
+
+        [Display(Name = "ID")]
+        public int ID { get; set; }
     }
 }

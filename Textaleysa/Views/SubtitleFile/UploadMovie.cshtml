@@ -1,10 +1,10 @@
 ﻿@model Textaleysa.Models.ViewModel.UploadMovieModelView
 
 @{
-    ViewBag.Title = "Hlaða upp skrá";
+    ViewBag.Title = "Hlaða upp skjátexta fyrir kvikmynd";
 }
 
-@using (Html.BeginForm("UploadMovieFile", "SubtitleFile", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+@using (Html.BeginForm("UploadMovie", "SubtitleFile", FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
     
@@ -41,7 +41,7 @@
                 <div class="col-md-10">
                     <input id="file" type="file" name="file" />
                 </div>
-    </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
