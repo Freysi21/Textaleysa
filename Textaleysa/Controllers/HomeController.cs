@@ -23,22 +23,6 @@ namespace Textaleysa.Controllers
 
 		public ActionResult Index()
 		{
-			/*
-			#region create admin
-			IdentityManager manager = new IdentityManager();
-			if (!manager.RoleExists("Administrators"))
-			{
-				manager.CreateRole("Administrators");
-			}
-			if (!manager.UserExists("Moss"))
-			{
-				ApplicationUser newAdmin = new ApplicationUser();
-				newAdmin.UserName = "Moss";
-				manager.CreateUser(newAdmin, "01189998819991197253");
-				manager.AddUserToRole(newAdmin.Id, "Administrators");
-			}
-			#endregion
-			*/
 			var mostPopular = (from m in subtitleFileRepo.GetAllSubtitles()
 							   where m.downloadCount >= 1
 							   orderby m.downloadCount descending
@@ -114,7 +98,37 @@ namespace Textaleysa.Controllers
 		{
 			if (string.IsNullOrEmpty(s.searchString) || string.IsNullOrWhiteSpace(s.searchString))
 			{
-				return RedirectToAction("Index");
+				List<DisplayMovieView> modelList = new List<DisplayMovieView>();
+				var titles = meditaTitleRepo.GetAllMovieTitles();
+				if (titles == null)
+				{
+					return View("Error");
+				}
+
+				foreach (var item in titles)
+				{
+					var files = subtitleFileRepo.GetAllSubtitles();
+					foreach (var f in files)
+					{
+						DisplayMovieView dmw = new DisplayMovieView();
+						#region putting everything in place for the ModelView
+						dmw.title = item.title;
+						dmw.yearReleased = item.yearReleased;
+						dmw.userName = f.userName;
+						dmw.language = f.language;
+						dmw.date = f.date;
+						dmw.downloadCount = f.downloadCount;
+						dmw.ID = f.ID;
+						#endregion
+
+						modelList.Add(dmw);
+					}
+					if (modelList == null)
+					{
+						return View("Error");
+					}
+				}
+				return View(modelList);
 			}
 			var results = mediaTitleTransfer.SearchAfterTitle(s.searchString);
 			if (results == null)
@@ -122,7 +136,7 @@ namespace Textaleysa.Controllers
 				return View("Error");
 			}
 
-			List<DisplayMovieView> modelList = new List<DisplayMovieView>();
+			List<DisplayMovieView> modelList2 = new List<DisplayMovieView>();
 			foreach (var item in results)
 			{
 				var files = subtitleFileTransfer.GetSubtitleFilesByMediaTitleId(item.ID);
@@ -140,14 +154,14 @@ namespace Textaleysa.Controllers
 					dmw.ID = f.ID;
 					#endregion
 
-					modelList.Add(dmw);
+					modelList2.Add(dmw);
 				}
-				if (modelList == null)
+				if (modelList2 == null)
 				{
 					return View("Error");
 				}
 			}
-			return View(modelList);
+			return View(modelList2);
 		}
 
 		public ActionResult Popular()
