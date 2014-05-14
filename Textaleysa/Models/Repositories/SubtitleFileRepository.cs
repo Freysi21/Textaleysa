@@ -14,7 +14,7 @@ namespace Textaleysa.Models.Repositories
 		HRContext db = new HRContext();
 
 
-        public IEnumerable<SubtitleFile> GetAllSubtitles()
+        public IQueryable<SubtitleFile> GetAllSubtitles()
         {
             var result = from f in db.subtitleFile
                          orderby f.ID ascending

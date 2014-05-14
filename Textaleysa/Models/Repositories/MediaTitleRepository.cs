@@ -13,7 +13,7 @@ namespace Textaleysa.Models.Repositories
 		
 		public IEnumerable<MediaTitle> GetAllMovieTitles()
         {
-			var result = from m in db.meditaTitles
+			var result = from m in db.mediaTitles
 						 where m.isMovie == true
 						 orderby m.ID
                          select m;
@@ -22,7 +22,7 @@ namespace Textaleysa.Models.Repositories
 
 		public IEnumerable<MediaTitle> GetAllSerieTitles()
 		{
-			var result = from m in db.meditaTitles
+			var result = from m in db.mediaTitles
 						 where m.isMovie == false
 						 orderby m.ID 
 						 select m;
@@ -31,7 +31,7 @@ namespace Textaleysa.Models.Repositories
 
 		public void AddMediaTitle(MediaTitle s)
 		{
-			db.meditaTitles.Add(s);
+			db.mediaTitles.Add(s);
 			db.SaveChanges();
 		}
 
@@ -43,7 +43,7 @@ namespace Textaleysa.Models.Repositories
 
 		public void Delete(MediaTitle s)
 		{
-			db.meditaTitles.Remove(s);
+			db.mediaTitles.Remove(s);
 			db.SaveChanges();
 
 		}
