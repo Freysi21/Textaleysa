@@ -9,7 +9,7 @@ namespace Textaleysa.Models.Repositories
 {
     public class MediaTitleRepository
     {
-		HRContext db = new HRContext();
+		ApplicationDbContext db = new ApplicationDbContext();
 		
 		public IEnumerable<MediaTitle> GetAllMovieTitles()
         {

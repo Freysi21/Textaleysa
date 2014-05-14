@@ -16,7 +16,7 @@ namespace Textaleysa.Controllers
     public class RequestController : Controller
     {
         #region Database and repo's
-        private HRContext db = new HRContext();
+		private ApplicationDbContext db = new ApplicationDbContext();
         RequestRepository repo = new RequestRepository();
         VoteRepository vrepo = new VoteRepository();
         #endregion

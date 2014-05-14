@@ -19,10 +19,26 @@ namespace Textaleysa.Controllers
 		MediaTitleRepository meditaTitleRepo = new MediaTitleRepository();
 		SubtitleFileTransfer subtitleFileTransfer = new SubtitleFileTransfer();
 		MediaTitleTransfer mediaTitleTransfer = new MediaTitleTransfer();
-		private HRContext db = new HRContext();
+		private ApplicationDbContext db = new ApplicationDbContext();
 
 		public ActionResult Index()
 		{
+			/*
+			#region create admin
+			IdentityManager manager = new IdentityManager();
+			if (!manager.RoleExists("Administrators"))
+			{
+				manager.CreateRole("Administrators");
+			}
+			if (!manager.UserExists("Moss"))
+			{
+				ApplicationUser newAdmin = new ApplicationUser();
+				newAdmin.UserName = "Moss";
+				manager.CreateUser(newAdmin, "01189998819991197253");
+				manager.AddUserToRole(newAdmin.Id, "Administrators");
+			}
+			#endregion
+			*/
 			var mostPopular = (from m in subtitleFileRepo.GetAllSubtitles()
 							   where m.downloadCount >= 1
 							   orderby m.downloadCount descending

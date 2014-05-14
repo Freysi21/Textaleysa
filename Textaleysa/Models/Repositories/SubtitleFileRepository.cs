@@ -9,7 +9,7 @@ namespace Textaleysa.Models.Repositories
 {
     public class SubtitleFileRepository
     {
-		HRContext db = new HRContext();
+		ApplicationDbContext db = new ApplicationDbContext();
 
 		#region SubtitleFile functions
 		public IEnumerable<SubtitleFile> GetAllSubtitles()

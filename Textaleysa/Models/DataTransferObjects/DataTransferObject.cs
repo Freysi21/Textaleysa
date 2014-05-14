@@ -43,6 +43,13 @@ namespace Textaleysa.Models.DataTransferOpjects
 			return result;
 		}
 
+		public SubtitleFileChunk GetCunkByID(int id)
+		{
+			var result = (from c in repo.GetAllSubtitleFileChunks()
+						 where c.ID == id
+						 select c).SingleOrDefault();
+			return result;
+		}
 	}
 
 	public class MediaTitleTransfer
