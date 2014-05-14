@@ -192,10 +192,11 @@ namespace Textaleysa.Controllers
 				// to the MediaTitle else we just connect.
 				if (movie == null)
 				{
-					Movie m = new Movie();
+					MediaTitle m = new MediaTitle();
 					#region Adding to db and connecting
 					m.title = fileInfo.title;
 					m.yearReleased = fileInfo.yearReleased;
+					m.isMovie = true;
 					meditaTitleRepo.AddMediaTitle(m);
 					subtitleFile.mediaTitleID = m.ID;
 					#endregion
@@ -288,11 +289,12 @@ namespace Textaleysa.Controllers
 				// to the MediaTitle else we just connect.
 				if (movie == null)
 				{
-					Serie s = new Serie();
+					MediaTitle s = new MediaTitle();
 					#region Adding to db and connecting
 					s.title = fileInfo.title;
 					s.season = fileInfo.season;
 					s.episode = fileInfo.episode;
+					s.isMovie = false;
 					meditaTitleRepo.AddMediaTitle(s);
 					subtitleFile.mediaTitleID = s.ID;
 					#endregion

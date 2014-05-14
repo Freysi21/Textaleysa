@@ -175,9 +175,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Entities\Like.cs" />
     <Compile Include="Models\Entities\MediaTitle.cs" />
-    <Compile Include="Models\Entities\Movie.cs" />
     <Compile Include="Models\Entities\Request.cs" />
-    <Compile Include="Models\Entities\Serie.cs" />
     <Compile Include="Models\Entities\SubtitleFile.cs" />
     <Compile Include="Models\Entities\SubtitleFileChunk.cs" />
     <Compile Include="Models\Entities\Vote.cs" />
