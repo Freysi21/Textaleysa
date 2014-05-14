@@ -10,6 +10,9 @@ namespace Textaleysa.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<Textaleysa.DAL.HRContext, Configuration>());
+            var appDbContext = new Textaleysa.DAL.HRContext();
+            appDbContext.Database.Initialize(true);
         }
 
         protected override void Seed(Textaleysa.DAL.HRContext context)
