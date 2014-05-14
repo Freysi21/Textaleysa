@@ -179,15 +179,14 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DataTransferObjects\DataTransferObject.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
     <Compile Include="Models\Entities\Grade.cs" />
     <Compile Include="Models\Entities\Language.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Entities\Like.cs" />
     <Compile Include="Models\Entities\MediaTitle.cs" />
-    <Compile Include="Models\Entities\Movie.cs" />
     <Compile Include="Models\Entities\Request.cs" />
-    <Compile Include="Models\Entities\Serie.cs" />
     <Compile Include="Models\Entities\SubtitleFile.cs" />
     <Compile Include="Models\Entities\SubtitleFileChunk.cs" />
     <Compile Include="Models\Entities\Vote.cs" />
@@ -274,16 +273,14 @@
     <Content Include="Views\SubtitleFile\DisplayContent.cshtml" />
     <Content Include="Views\SubtitleFile\UploadSerie.cshtml" />
     <Content Include="Views\SubtitleFile\EditSerie.cshtml" />
-
     <Content Include="Views\Request\CreateEpisodeRequest.cshtml" />
-
-
     <Content Include="Views\SubtitleFile\DisplayMovie.cshtml" />
     <Content Include="Views\SubtitleFile\DisplaySerie.cshtml" />
-
-
     <Content Include="Views\Request\CreateRequest.cshtml" />
-
+    <Content Include="Views\Request\CreateEpisodeRequest.cshtml" />
+    <Content Include="Views\SubtitleFile\DisplayMovie.cshtml" />
+    <Content Include="Views\SubtitleFile\DisplaySerie.cshtml" />
+    <Content Include="Views\Request\CreateRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

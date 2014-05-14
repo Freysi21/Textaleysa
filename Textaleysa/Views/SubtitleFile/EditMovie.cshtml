@@ -4,9 +4,6 @@
     ViewBag.Title = "Breyta skrá";
 }
 
-@using (Html.BeginForm("EditFile", "SubtitleFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         <h4>
@@ -15,6 +12,11 @@
             @Html.DisplayFor(model => model.language)
         </h4>
         <hr />
+    </div>
+@using (Html.BeginForm("EditFile", "SubtitleFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.ID)
 
@@ -31,7 +33,6 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
-    </div>
 }
 
 <div>

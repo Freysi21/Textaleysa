@@ -25,10 +25,10 @@ namespace Textaleysa.DAL
 		public IDbSet<Vote>              votes             { get; set; }
 		public IDbSet<Request>           requests          { get; set; }
 
-       /* protected override void OnModelCreating(DbModelBuilder modelBuilder)
+       protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }*/
+        }
 
 	}
 }
