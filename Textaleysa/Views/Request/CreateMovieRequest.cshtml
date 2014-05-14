@@ -1,12 +1,9 @@
 ﻿@model Textaleysa.Models.ViewModel.UploadMovieRequestViewModel
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-}
-@{
-    ViewBag.Title = "Ný beiðni";
-}
+
     <div class="row">
         <div class="form-horizontal">
             <hr />
@@ -41,7 +38,8 @@
                 </div>
             </div>
         </div>
-        <div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+    </div>
+}
+    <div>
+         @Html.ActionLink("Back to List", "RequestList")
     </div>

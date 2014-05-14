@@ -46,16 +46,19 @@ namespace Textaleysa.Models.ViewModel
     }
     public class ListRequestViewModel
     {
-        [Display(Name = "mediaTitle")]
+        [Display(Name = "Nafn myndefnis")]
         public string mediaTitle { get; set; }
 
-        [Display(Name = "language")]
+        [Display(Name = "Tungumál")]
         public string language { get; set; }
 
-        [Display(Name = "User")]
+        [Display(Name = "Hlaðið upp af")]
         public string userName { get; set; }
 
         [Display(Name = "ID")]
         public int ID { get; set; }
+
+        [Display(Name = "Fjöldi atkvæða")]
+        public int votes { get; set; }
     }
 }

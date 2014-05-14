@@ -29,9 +29,10 @@ namespace Textaleysa.Controllers
 
             var files = from f in repo.GetRequests()
                         select f;
+
             if(files == null)
             {
-                return View("Error");
+                return View();
             }
                 foreach(var f in files)
                 {
@@ -40,9 +41,10 @@ namespace Textaleysa.Controllers
                     request.mediaTitle = f.mediaTitle;
                     request.language = f.language;
                     request.ID = f.ID;
+                    request.votes = vrepo.GetVoteForRequest(request.ID).Count();
                     requests.Add(request);
                 }
-            return View(requests);   
+            return View(requests);
         }
 #endregion
 
@@ -93,9 +95,19 @@ namespace Textaleysa.Controllers
             {
                 return RedirectToAction("CreateRequest");
             }
+            string sstring = request.season.ToString();
+            string estring = request.episode.ToString();
+            if(sstring.Length == 1)
+            {
+                sstring = "0" + sstring; 
+            }
+            if(estring.Length == 1)
+            {
+                estring = "0" + estring;
+            }
             Request r = new Request();
             r.userName = User.Identity.Name;
-            r.mediaTitle = (request.mediaTitle + "S" + (request.season) + "E" + (request.episode.ToString()));
+            r.mediaTitle = (request.mediaTitle + " s" + (sstring) + "e" + (estring));
             r.date = DateTime.Now;
             r.mediaType = "Þáttur";
             r.language = request.language;
@@ -128,9 +140,9 @@ namespace Textaleysa.Controllers
         #endregion
 
         #region controllerar fyrir script fyrir UpVoteScript/VoteScript
-        public ActionResult getVotes()
+        public ActionResult getVotes(Request r)
         {
-            var votes = vrepo.GetVotes(); // get all the likes 
+            var votes = vrepo.GetVoteForRequest(r.ID); // get all the likes 
 
             // changes the format of LikeDate to a string to display it in a nice way 
             var result = from v in votes
@@ -143,9 +155,15 @@ namespace Textaleysa.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+
         public ActionResult postVotes(Vote vote)
         {
-            var votesForRequest = vrepo.GetVoteForRequest(vote); // get all the votes 
+            if(!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            Request request = repo.GetRequestById(vote.requestID);
+            var votesForRequest = vrepo.GetVoteForRequest(vote.requestID); // get all the votes 
 
             var user = User.Identity.Name;
             vote.userName = "Jóhann";
@@ -167,7 +185,7 @@ namespace Textaleysa.Controllers
             {
                 vote.userName = "";
             }
-            return Json(vote, JsonRequestBehavior.AllowGet);
+            return Json(request, JsonRequestBehavior.AllowGet);
         }
         #endregion
     }

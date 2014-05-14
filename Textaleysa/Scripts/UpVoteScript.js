@@ -1,35 +1,25 @@
-﻿jQuery(document).ready(function () {
-
+﻿$(document).ready(function () {
+    alert("hallo");
     //jQuery(".list-group-item").on("click", "#vote-request", function () {
-    jQuery(".vote-request").click(function () {
+    $(".vote-request").click(function () {
+        alert("Your IN");
         var new_vote = { requestID: this.id }
-        jQuery.post("/Request/postVotes", new_vote, function (data) {
-            getVote();
+        $.post("/Request/postVotes", new_vote, function (request) {
+            getVote(request);
         });
     });
-    function getVote(requests) {
-        jQuery.ajax({
+    function getVote(request) {
+        $.ajax({
             type: "GET",
             contentType: "application/json; charset=utf­8",
             url: "/Request/getVotes/",
             data: "{}",
             dataType: "json",
-            success: function (votes, requests) {
-                var requestID = 1;
-                for (var i = 0; i < requests.length; i++) {
-                    var counter = 0;
-                    for (var j = 0; j < votes.length; j++) {
-                        if (votes[j].requestID == requestID) {
-                            counter++;
-                        }
-                        //document.getElementById(ID_Dealer).innerHTML = counter;
-                        //var Vote = '#Vote' + i
-                        //document.getElementById(Vote) = counter.toString();
-                    }
-                    $('#vote' + i).html(counter);
-                    requestID++;
-                }
-            },
+            success: function (votes) {
+                var counter = 0;
+                counter = votes.length;
+                    $('#vote' + votes[0].requestID).html(counter);
+                },
             error: function (xhr, err) {
                 // Note: just for debugging purposes!
                 alert("readyState: " + xhr.readyState +
