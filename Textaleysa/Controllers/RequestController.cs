@@ -32,7 +32,7 @@ namespace Textaleysa.Controllers
 
             if(files == null)
             {
-                return View("Error");
+                return View();
             }
                 foreach(var f in files)
                 {
@@ -155,8 +155,13 @@ namespace Textaleysa.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+
         public ActionResult postVotes(Vote vote)
         {
+            if(!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             Request request = repo.GetRequestById(vote.requestID);
             var votesForRequest = vrepo.GetVoteForRequest(vote.requestID); // get all the votes 
 

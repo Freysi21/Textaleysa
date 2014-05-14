@@ -17,10 +17,8 @@
             dataType: "json",
             success: function (votes) {
                 var counter = 0;
-                for (var i = 0; i < votes.length; i++) {
-                    counter++;
-                    }
-                    $('#vote' + votes.requestID).html(counter);
+                counter = votes.length;
+                    $('#vote' + votes[0].requestID).html(counter);
                 },
             error: function (xhr, err) {
                 // Note: just for debugging purposes!
