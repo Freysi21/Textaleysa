@@ -266,6 +266,7 @@
     <Content Include="Views\SubtitleFile\UploadSerie.cshtml" />
     <Content Include="Views\SubtitleFile\EditSerie.cshtml" />
     <Content Include="Views\Request\CreateEpisodeRequest.cshtml" />
+    <Content Include="Views\Request\CreateRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
