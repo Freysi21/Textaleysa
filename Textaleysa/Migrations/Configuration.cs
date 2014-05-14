@@ -9,7 +9,7 @@ namespace Textaleysa.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Textaleysa.DAL.HRContext context)

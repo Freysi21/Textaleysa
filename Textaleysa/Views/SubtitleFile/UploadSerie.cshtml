@@ -4,7 +4,7 @@
     ViewBag.Title = "Hlaða upp skjátexta fyrir þátt";
 }
 
-@using (Html.BeginForm("UploadMovie", "SubtitleFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("UploadSerie", "SubtitleFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -21,17 +21,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.language, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.language)
-                @Html.ValidationMessageFor(model => model.language)
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.languageID, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.languageID)
+                @Html.DropDownListFor(m => m.languageID, new SelectList(Model.languageOptions, "ID", "language",
+         Model.languageOptions.First().ID))
                 @Html.ValidationMessageFor(model => model.languageID)
             </div>
         </div>

@@ -254,7 +254,6 @@
     <Content Include="Views\SubtitleFile\Index.cshtml" />
     <Content Include="Views\SubtitleFile\UploadMovie.cshtml" />
     <Content Include="Views\SubtitleFile\EditMovie.cshtml" />
-    <Content Include="Views\SubtitleFile\DisplayFile.cshtml" />
     <Content Include="Views\Home\SearchResult.cshtml" />
     <Content Include="Views\Request\RequestList.cshtml" />
     <Content Include="Views\Request\CreateRequest.cshtml" />
@@ -264,6 +263,8 @@
     <Content Include="Views\SubtitleFile\DisplayContent.cshtml" />
     <Content Include="Views\SubtitleFile\UploadSerie.cshtml" />
     <Content Include="Views\SubtitleFile\EditSerie.cshtml" />
+    <Content Include="Views\SubtitleFile\DisplayMovie.cshtml" />
+    <Content Include="Views\SubtitleFile\DisplaySerie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
