@@ -39,6 +39,7 @@ namespace Textaleysa.Controllers
                     request.userName = f.userName;
                     request.mediaTitle = f.mediaTitle;
                     request.language = f.language;
+                    request.ID = f.ID;
                     requests.Add(request);
                 }
             return View(requests);

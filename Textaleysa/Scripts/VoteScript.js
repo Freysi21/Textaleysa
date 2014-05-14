@@ -1,7 +1,6 @@
 ﻿jQuery(document).ready(function () {
     //jQuery(".list-group-item").on("click", "#vote-request", function () {
-    jQuery("#vote-request").click(function () {
-        alert("Hallo!");
+    jQuery(".vote-request").click(function () {
         var new_vote = { requestID: this.id }
         jQuery.post("/Request/postVotes", new_vote, function (data) {
             getVote();
@@ -24,7 +23,7 @@
 //        });
 //    });
 //});
-function getRequests() {
+/*function getRequests() {
     jQuery.ajax({
         type: "GET",
         contentType: "application/json; charset=utf­8",
@@ -53,7 +52,7 @@ function getRequests() {
             alert("responseText: " + xhr.responseText);
         }
     });
-}
+}*/
 
 function getVote(requests) {
     jQuery.ajax({
@@ -74,7 +73,7 @@ function getVote(requests) {
                     //var Vote = '#Vote' + i
                     //document.getElementById(Vote) = counter.toString();
                 }
-                $('#Vote' + i).html(counter);
+                $('#vote' + i).html(counter);
                 requestID++;
             }
         },
