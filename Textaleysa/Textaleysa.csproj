@@ -163,12 +163,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\SubtitleFileController.cs" />
-    <Compile Include="DAL\LanguageContext.cs" />
-    <Compile Include="DAL\MovieContext.cs" />
-    <Compile Include="DAL\RequestContext.cs" />
-    <Compile Include="DAL\SubtitleFileContext.cs" />
-    <Compile Include="DAL\SubtitleFileChunkContext.cs" />
-    <Compile Include="DAL\CommentContext.cs" />
+    <Compile Include="DAL\HRContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -208,10 +203,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\AddSubtitleFileChunkTemplate.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\CommentAndLikeScript.js" />
+    <Content Include="Scripts\EditSubtitleFile.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -255,7 +252,7 @@
     <Content Include="Views\Home\Help.cshtml" />
     <Content Include="Views\CommentAndLike\Index.cshtml" />
     <Content Include="Views\SubtitleFile\Index.cshtml" />
-    <Content Include="Views\SubtitleFile\UploadMovieFile.cshtml" />
+    <Content Include="Views\SubtitleFile\UploadMovie.cshtml" />
     <Content Include="Views\SubtitleFile\EditMovie.cshtml" />
     <Content Include="Views\SubtitleFile\DisplayFile.cshtml" />
     <Content Include="Views\Home\SearchResult.cshtml" />
@@ -265,6 +262,8 @@
     <Content Include="Views\SubtitleFile\AddLanguageChoise.cshtml" />
     <Content Include="Views\SubtitleFile\EditFile.cshtml" />
     <Content Include="Views\SubtitleFile\DisplayContent.cshtml" />
+    <Content Include="Views\SubtitleFile\UploadSerie.cshtml" />
+    <Content Include="Views\SubtitleFile\EditSerie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

@@ -1,8 +1,10 @@
-﻿@model Textaleysa.Models.ViewModel.EditMovieView
+﻿@model Textaleysa.Models.ViewModel.EditSerieView
 
 @{
     ViewBag.Title = "Breyta skrá";
 }
+
+<h2>EditSerie</h2>
 
 @using (Html.BeginForm("EditFile", "SubtitleFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -11,7 +13,8 @@
     <div class="form-horizontal">
         <h4>
             @Html.DisplayFor(model => model.title)
-            (@Html.DisplayFor(model => model.yearReleased))
+            (s@Html.DisplayFor(model => model.season)
+            e@Html.DisplayFor(model => model.episode))
             @Html.DisplayFor(model => model.language)
         </h4>
         <hr />

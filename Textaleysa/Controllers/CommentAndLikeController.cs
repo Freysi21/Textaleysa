@@ -11,7 +11,7 @@ namespace Textaleysa.Controllers
 {
     public class CommentAndLikeController : Controller
     {
-		private CommentContext db = new CommentContext();
+		private HRContext db = new HRContext();
 		CommentRepository repo = new CommentRepository();
 
         public ActionResult Index()
