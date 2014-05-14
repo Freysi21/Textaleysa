@@ -43,10 +43,7 @@
                         @Html.DisplayFor(modelItem => item.userName)
                     </td>
                     <td>
-                        @Html.ActionLink("Breyta", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Skoða", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Eyða", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>
+                        <button class="vote-request" id="@Html.DisplayFor(modelItem => item.ID)"><span class="glyphicon glyphicon-thumbs-up"></span></button></td>
                 </tr>
             }
         </table>
