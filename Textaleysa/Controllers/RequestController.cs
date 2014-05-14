@@ -15,13 +15,13 @@ namespace Textaleysa.Controllers
 {
     public class RequestController : Controller
     {
-		private HRContext db = new HRContext();
+        #region Database and repo's
+        private HRContext db = new HRContext();
         RequestRepository repo = new RequestRepository();
         VoteRepository vrepo = new VoteRepository();
+        #endregion
 
-        //
-        // GET: /Request/
-        //[HttpGet]
+        #region Yfirlit beiðna
         public ActionResult RequestList()
         {
 
@@ -42,45 +42,19 @@ namespace Textaleysa.Controllers
                     request.ID = f.ID;
                     requests.Add(request);
                 }
-            return View(requests);
-                
-            /*if (string.IsNullOrEmpty(s.searchString) || string.IsNullOrWhiteSpace(s.searchString))
-            {
-                return RedirectToAction("Index");
-            }
-
-            var movies = from m in meditaTitleRepo.GetMovieTitles()
-                         where m.title.Contains(s.searchString)
-                         select m;
-            if (movies == null)
-            {
-                return View("Error");
-            }
-
-            List<DisplayMovieView> ldmw = new List<DisplayMovieView>();
-            foreach (var m in movies)
-            {
-                var files = from f in subtitleFileRepo.GetSubtitles()
-                            where f.mediaTitleID == m.ID
-                            select f;
-                foreach (var f in files)
-                {
-                    DisplayMovieView dmw = new DisplayMovieView();
-                    dmw.title = m.title;
-                    dmw.yearReleased = m.yearReleased;
-                    dmw.userName = f.userName;
-                    dmw.language = f.language;
-                    dmw.date = f.date;
-                    dmw.downloadCount = f.downloadCount;
-                    ldmw.Add(dmw);
-                }
-            }
-            return View(ldmw);*/
+            return View(requests);   
         }
+#endregion
+
+        #region Velja þátt eða kvikmynd
         public ActionResult CreateRequest()
         {
             return View();
         }
+        #endregion
+
+        #region Búa til beiðni
+        #region Beiðni fyrir mynd
         public ActionResult CreateMovieRequest()
         {
             return View();
@@ -105,6 +79,8 @@ namespace Textaleysa.Controllers
                 //return Json(r, JsonRequestBehavior.AllowGet);
 
         }
+        #endregion
+        #region Beiðni fyrir þátt
         public ActionResult CreateEpisodeRequest()
         {
             return View();
@@ -129,7 +105,10 @@ namespace Textaleysa.Controllers
             //return Json(r, JsonRequestBehavior.AllowGet);
 
         }
+        #endregion
+        #endregion
 
+        #region Eyða, i think...
         public ActionResult getRequests()
         {
             var requests = repo.GetRequests();
@@ -146,7 +125,9 @@ namespace Textaleysa.Controllers
 
             return Json(res, JsonRequestBehavior.AllowGet);
         }
+        #endregion
 
+        #region controllerar fyrir script fyrir UpVoteScript/VoteScript
         public ActionResult getVotes()
         {
             var votes = vrepo.GetVotes(); // get all the likes 
@@ -188,5 +169,6 @@ namespace Textaleysa.Controllers
             }
             return Json(vote, JsonRequestBehavior.AllowGet);
         }
-	}
+        #endregion
+    }
 }

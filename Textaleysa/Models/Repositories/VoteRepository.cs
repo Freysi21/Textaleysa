@@ -10,7 +10,8 @@ namespace Textaleysa.Models.Repositories
     public class VoteRepository
     {
 		HRContext db = new HRContext();
-    
+
+        #region GetVotes
         public IEnumerable<Vote> GetVotes()
         {
             var result = from v in db.votes
@@ -18,12 +19,17 @@ namespace Textaleysa.Models.Repositories
                          select v;
             return result;
         }
+        #endregion
 
+        #region AddVote
         public void AddVote(Vote v)
         {
             db.votes.Add(v);
             db.SaveChanges();
         }
+        #endregion
+
+        #region GetVoteForRequest
         public IEnumerable<Vote> GetVoteForRequest(Vote vote)
         {
             var requests = from c in db.requests
@@ -35,5 +41,6 @@ namespace Textaleysa.Models.Repositories
 
             return result;
         }
+        #endregion
     }
 }
