@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Textaleysa.dll.config
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Textaleysa.dll
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Textaleysa.pdb
@@ -108,6 +109,8 @@ C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
 >>>>>>> 5faa33e06cebb3113fdb3ae09ee5415e5558727a
 =======
+=======
+>>>>>>> ce184f89c410456a6c015a3a53b4a34d10f43c96
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Textaleysa.dll.config
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Textaleysa.dll
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Textaleysa.pdb
@@ -160,8 +163,11 @@ C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\o
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> ddff84747a3c8a4a827edea60e24b3f1e552babb
 =======
+=======
+>>>>>>> ce184f89c410456a6c015a3a53b4a34d10f43c96
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.dll.config
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.dll
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.pdb
@@ -210,7 +216,13 @@ C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Microsoft.Owin.Security.OAuth
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+<<<<<<< HEAD
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.pdb
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
 >>>>>>> f5c4e1eadb64cac097771eeaca76e3a0c834af8e
+=======
+C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
+C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.dll
+C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.pdb
+>>>>>>> ce184f89c410456a6c015a3a53b4a34d10f43c96

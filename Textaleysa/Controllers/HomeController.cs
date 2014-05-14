@@ -8,6 +8,7 @@ using Textaleysa.Models;
 using Textaleysa.Models.DataTransferOpjects;
 using Textaleysa.Models.Repositories;
 using Textaleysa.Models.ViewModel;
+using Textaleysa.Repositories;
 
 
 
@@ -15,6 +16,11 @@ namespace Textaleysa.Controllers
 {
 	public class HomeController : Controller
 	{
+        private readonly ISubtitleRepository _repo;
+        public HomeController(ISubtitleRepository repo)
+        {
+            _repo = repo;
+        }
 		SubtitleFileRepository subtitleFileRepo = new SubtitleFileRepository();
 		MediaTitleRepository meditaTitleRepo = new MediaTitleRepository();
 		SubtitleFileTransfer subtitleFileTransfer = new SubtitleFileTransfer();
