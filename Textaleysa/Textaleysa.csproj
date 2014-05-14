@@ -264,16 +264,10 @@
     <Content Include="Views\SubtitleFile\DisplayContent.cshtml" />
     <Content Include="Views\SubtitleFile\UploadSerie.cshtml" />
     <Content Include="Views\SubtitleFile\EditSerie.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Request\CreateEpisodeRequest.cshtml" />
-<<<<<<< HEAD
-=======
     <Content Include="Views\SubtitleFile\DisplayMovie.cshtml" />
     <Content Include="Views\SubtitleFile\DisplaySerie.cshtml" />
->>>>>>> b6703fa8d63d73b51c3c59439ddf101604d14db5
-=======
     <Content Include="Views\Request\CreateRequest.cshtml" />
->>>>>>> Freystar
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
