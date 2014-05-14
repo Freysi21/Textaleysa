@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Textaleysa.DAL;
 using Textaleysa.Models;
+using Textaleysa.Models.DataTransferOpjects;
 using Textaleysa.Models.Repositories;
 using Textaleysa.Models.ViewModel;
 
@@ -17,7 +18,9 @@ namespace Textaleysa.Controllers
     {
 		HRContext db = new HRContext();
 		SubtitleFileRepository subtitleFileRepo = new SubtitleFileRepository();
-		MediaTitleRepository meditaTitleRepo = new MediaTitleRepository();
+		MediaTitleRepository mediaTitleRepo = new MediaTitleRepository();
+		SubtitleFileTransfer subtitleFileTransfer = new SubtitleFileTransfer();
+		MediaTitleTransfer mediaTitleTransfer = new MediaTitleTransfer();
 
 		private LanguageRepository langDb = new LanguageRepository();
 
@@ -35,13 +38,13 @@ namespace Textaleysa.Controllers
 				return View("Error");
 			}
 
-			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+			var subtitleFile = subtitleFileTransfer.GetSubtitleById(id.Value);
 			if (subtitleFile == null)
 			{
 				return View("Error");
 			}
 
-			var movie = meditaTitleRepo.GetMovieById(subtitleFile.mediaTitleID);
+			var movie = mediaTitleTransfer.GetMovieById(subtitleFile.mediaTitleID);
 			if (movie == null)
 			{
 				return View("Error");
@@ -70,13 +73,13 @@ namespace Textaleysa.Controllers
 				return View("Error");
 			}
 
-			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+			var subtitleFile = subtitleFileTransfer.GetSubtitleById(id.Value);
 			if (subtitleFile == null)
 			{
 				return View("Error");
 			}
 
-			var serie = meditaTitleRepo.GetSerieById(subtitleFile.mediaTitleID);
+			var serie = mediaTitleTransfer.GetSerieById(subtitleFile.mediaTitleID);
 			if (serie == null)
 			{
 				return View("Error");
@@ -106,18 +109,18 @@ namespace Textaleysa.Controllers
 				return null;
 			}
 
-			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+			var subtitleFile = subtitleFileTransfer.GetSubtitleById(id.Value);
 			if (subtitleFile == null)
 			{
 				return null;
 			}
-			var movie = meditaTitleRepo.GetMovieById(subtitleFile.mediaTitleID);
+			var movie = mediaTitleTransfer.GetMovieById(subtitleFile.mediaTitleID);
 			if (movie == null)
 			{
 				return null;
 			}
 
-			var subtitleFileChunks = subtitleFileRepo.GetChunksBySubtitleFileID(subtitleFile.ID);
+			var subtitleFileChunks = subtitleFileTransfer.GetChunksBySubtitleFileID(subtitleFile.ID);
 
 			var result = "";
 			#region result = subtittleFileChunks
@@ -187,7 +190,7 @@ namespace Textaleysa.Controllers
 			if (file != null && fileInfo != null)
 			{
 				SubtitleFile subtitleFile = new SubtitleFile();
-				var movie = meditaTitleRepo.GetMovieByTitle(fileInfo.title);
+				var movie = mediaTitleTransfer.GetMovieByTitle(fileInfo.title);
 				// If the MediaTitle is not in the db we create a new title and connect the SubtitleFile
 				// to the MediaTitle else we just connect.
 				if (movie == null)
@@ -197,7 +200,7 @@ namespace Textaleysa.Controllers
 					m.title = fileInfo.title;
 					m.yearReleased = fileInfo.yearReleased;
 					m.isMovie = true;
-					meditaTitleRepo.AddMediaTitle(m);
+					mediaTitleRepo.AddMediaTitle(m);
 					subtitleFile.mediaTitleID = m.ID;
 					#endregion
 				}
@@ -284,7 +287,7 @@ namespace Textaleysa.Controllers
 			if (file != null && fileInfo != null)
 			{
 				SubtitleFile subtitleFile = new SubtitleFile();
-				var movie = meditaTitleRepo.GetMovieByTitle(fileInfo.title);
+				var movie = mediaTitleTransfer.GetMovieByTitle(fileInfo.title);
 				// If the MediaTitle is not in the db we create a new title and connect the SubtitleFile
 				// to the MediaTitle else we just connect.
 				if (movie == null)
@@ -295,7 +298,7 @@ namespace Textaleysa.Controllers
 					s.season = fileInfo.season;
 					s.episode = fileInfo.episode;
 					s.isMovie = false;
-					meditaTitleRepo.AddMediaTitle(s);
+					mediaTitleRepo.AddMediaTitle(s);
 					subtitleFile.mediaTitleID = s.ID;
 					#endregion
 				}
@@ -385,7 +388,7 @@ namespace Textaleysa.Controllers
 			}
 			#endregion
 
-			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+			var subtitleFile = subtitleFileTransfer.GetSubtitleById(id.Value);
 			#region if (subtitleFile == null) return NOTFOUND
 			if (subtitleFile == null)
 			{
@@ -422,18 +425,18 @@ namespace Textaleysa.Controllers
 			}
 			#endregion
 
-			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+			var subtitleFile = subtitleFileTransfer.GetSubtitleById(id.Value);
 			if (subtitleFile == null)
 			{
 				return View("Error");
 			}
-			var movie = meditaTitleRepo.GetMovieById(subtitleFile.mediaTitleID);
+			var movie = mediaTitleTransfer.GetMovieById(subtitleFile.mediaTitleID);
 			if (movie == null)
 			{
 				return View("Error");
 			}
 
-			var chunks = subtitleFileRepo.GetChunksBySubtitleFileID(subtitleFile.ID);
+			var chunks = subtitleFileTransfer.GetChunksBySubtitleFileID(subtitleFile.ID);
 			string result = "";
 
 			foreach (var item in chunks)
@@ -479,18 +482,18 @@ namespace Textaleysa.Controllers
 			}
 			#endregion
 
-			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+			var subtitleFile = subtitleFileTransfer.GetSubtitleById(id.Value);
 			if (subtitleFile == null)
 			{
 				return View("Error");
 			}
-			var serie = meditaTitleRepo.GetSerieById(subtitleFile.mediaTitleID);
+			var serie = mediaTitleTransfer.GetSerieById(subtitleFile.mediaTitleID);
 			if (serie == null)
 			{
 				return View("Error");
 			}
 
-			var chunks = subtitleFileRepo.GetChunksBySubtitleFileID(subtitleFile.ID);
+			var chunks = subtitleFileTransfer.GetChunksBySubtitleFileID(subtitleFile.ID);
 			string result = "";
 
 			foreach (var item in chunks)
@@ -531,7 +534,7 @@ namespace Textaleysa.Controllers
 		[HttpPost]
 		public ActionResult EditFile(EditFileView file)
 		{
-			var subtitleFile = subtitleFileRepo.GetSubtitleById(file.ID);
+			var subtitleFile = subtitleFileTransfer.GetSubtitleById(file.ID);
 			#region if (subtitleFile == null) return NOTFOUND
 			if (subtitleFile == null)
 			{
@@ -623,7 +626,7 @@ namespace Textaleysa.Controllers
 			}
 			#endregion
 
-			var subtitleFile = subtitleFileRepo.GetSubtitleById(id.Value);
+			var subtitleFile = subtitleFileTransfer.GetSubtitleById(id.Value);
 			#region if (subtitleFile == null) return NOTFOUND
 			if (subtitleFile == null)
 			{
@@ -631,7 +634,7 @@ namespace Textaleysa.Controllers
 			}
 			#endregion
 
-			var chunks = subtitleFileRepo.GetChunksBySubtitleFileID(subtitleFile.ID);
+			var chunks = subtitleFileTransfer.GetChunksBySubtitleFileID(subtitleFile.ID);
 			#region if (chunks == null) return NOTFOUND
 			if (chunks == null)
 			{
@@ -639,7 +642,7 @@ namespace Textaleysa.Controllers
 			}
 			#endregion
 
-			var movieTitle = meditaTitleRepo.GetMovieById(subtitleFile.mediaTitleID);
+			var movieTitle = mediaTitleTransfer.GetMovieById(subtitleFile.mediaTitleID);
 			#region if (movieTitle == null) return NOTFOUND
 			if (movieTitle == null)
 			{
@@ -673,7 +676,7 @@ namespace Textaleysa.Controllers
 		
 		public ActionResult EditChunk(DisplayContentFileView chunkInput)
 		{
-			var chunk = subtitleFileRepo.GetSubtitleFileChunkById(chunkInput.ID);
+			var chunk = subtitleFileTransfer.GetSubtitleFileChunkById(chunkInput.ID);
 			#region if (chunk == null) return NOTFOUND
 			if (chunk == null)
 			{
@@ -681,7 +684,7 @@ namespace Textaleysa.Controllers
 			}
 			#endregion
 
-			var subtitleFile = subtitleFileRepo.GetSubtitleById(chunk.subtitleFileID);
+			var subtitleFile = subtitleFileTransfer.GetSubtitleById(chunk.subtitleFileID);
 			#region if (subtitlefile == null) return NOTFOUND
 			if (subtitleFile == null)
 			{

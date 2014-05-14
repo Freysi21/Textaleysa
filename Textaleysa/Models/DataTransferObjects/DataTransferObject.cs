@@ -28,7 +28,7 @@ namespace Textaleysa.Models.DataTransferOpjects
 
 		public SubtitleFileChunk GetSubtitleFileChunkById(int id)
 		{
-			var result = (from s in repo.GetAllSubtitles()
+			var result = (from s in repo.GetAllSubtitleFileChunks()
 						  where s.ID == id
 						  select s).SingleOrDefault();
 			return result;
