@@ -272,7 +272,7 @@ namespace Textaleysa.Controllers
 					} while (!fileInput.EndOfStream);
 					
 					int? ID = subtitleFile.ID;
-					return RedirectToAction("DisplayFile", new { id = ID });
+					return RedirectToAction("DisplayMovie", new { id = ID });
 				}
 				catch (Exception)
 				{
