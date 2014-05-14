@@ -268,6 +268,7 @@
     <Content Include="Views\SubtitleFile\DisplayMovie.cshtml" />
     <Content Include="Views\SubtitleFile\DisplaySerie.cshtml" />
     <Content Include="Views\Request\CreateRequest.cshtml" />
+    <Content Include="Views\SubtitleFile\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
