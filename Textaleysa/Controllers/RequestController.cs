@@ -15,13 +15,13 @@ namespace Textaleysa.Controllers
 {
     public class RequestController : Controller
     {
-		private HRContext db = new HRContext();
+        #region Database and repo's
+		private ApplicationDbContext db = new ApplicationDbContext();
         RequestRepository repo = new RequestRepository();
         VoteRepository vrepo = new VoteRepository();
+        #endregion
 
-        //
-        // GET: /Request/
-        //[HttpGet]
+        #region Yfirlit beiðna
         public ActionResult RequestList()
         {
 
@@ -29,9 +29,10 @@ namespace Textaleysa.Controllers
 
             var files = from f in repo.GetRequests()
                         select f;
+
             if(files == null)
             {
-                return View("Error");
+                return View();
             }
                 foreach(var f in files)
                 {
@@ -40,47 +41,22 @@ namespace Textaleysa.Controllers
                     request.mediaTitle = f.mediaTitle;
                     request.language = f.language;
                     request.ID = f.ID;
+                    request.votes = vrepo.GetVoteForRequest(request.ID).Count();
                     requests.Add(request);
                 }
             return View(requests);
-                
-            /*if (string.IsNullOrEmpty(s.searchString) || string.IsNullOrWhiteSpace(s.searchString))
-            {
-                return RedirectToAction("Index");
-            }
-
-            var movies = from m in meditaTitleRepo.GetMovieTitles()
-                         where m.title.Contains(s.searchString)
-                         select m;
-            if (movies == null)
-            {
-                return View("Error");
-            }
-
-            List<DisplayMovieView> ldmw = new List<DisplayMovieView>();
-            foreach (var m in movies)
-            {
-                var files = from f in subtitleFileRepo.GetSubtitles()
-                            where f.mediaTitleID == m.ID
-                            select f;
-                foreach (var f in files)
-                {
-                    DisplayMovieView dmw = new DisplayMovieView();
-                    dmw.title = m.title;
-                    dmw.yearReleased = m.yearReleased;
-                    dmw.userName = f.userName;
-                    dmw.language = f.language;
-                    dmw.date = f.date;
-                    dmw.downloadCount = f.downloadCount;
-                    ldmw.Add(dmw);
-                }
-            }
-            return View(ldmw);*/
         }
+#endregion
+
+        #region Velja þátt eða kvikmynd
         public ActionResult CreateRequest()
         {
             return View();
         }
+        #endregion
+
+        #region Búa til beiðni
+        #region Beiðni fyrir mynd
         public ActionResult CreateMovieRequest()
         {
             return View();
@@ -105,6 +81,8 @@ namespace Textaleysa.Controllers
                 //return Json(r, JsonRequestBehavior.AllowGet);
 
         }
+        #endregion
+        #region Beiðni fyrir þátt
         public ActionResult CreateEpisodeRequest()
         {
             return View();
@@ -117,9 +95,19 @@ namespace Textaleysa.Controllers
             {
                 return RedirectToAction("CreateRequest");
             }
+            string sstring = request.season.ToString();
+            string estring = request.episode.ToString();
+            if(sstring.Length == 1)
+            {
+                sstring = "0" + sstring; 
+            }
+            if(estring.Length == 1)
+            {
+                estring = "0" + estring;
+            }
             Request r = new Request();
             r.userName = User.Identity.Name;
-            r.mediaTitle = (request.mediaTitle + "S" + (request.season) + "E" + (request.episode.ToString()));
+            r.mediaTitle = (request.mediaTitle + " s" + (sstring) + "e" + (estring));
             r.date = DateTime.Now;
             r.mediaType = "Þáttur";
             r.language = request.language;
@@ -129,7 +117,10 @@ namespace Textaleysa.Controllers
             //return Json(r, JsonRequestBehavior.AllowGet);
 
         }
+        #endregion
+        #endregion
 
+        #region Eyða, i think...
         public ActionResult getRequests()
         {
             var requests = repo.GetRequests();
@@ -146,10 +137,12 @@ namespace Textaleysa.Controllers
 
             return Json(res, JsonRequestBehavior.AllowGet);
         }
+        #endregion
 
-        public ActionResult getVotes()
+        #region controllerar fyrir script fyrir UpVoteScript/VoteScript
+        public ActionResult getVotes(Request r)
         {
-            var votes = vrepo.GetVotes(); // get all the likes 
+            var votes = vrepo.GetVoteForRequest(r.ID); // get all the likes 
 
             // changes the format of LikeDate to a string to display it in a nice way 
             var result = from v in votes
@@ -162,9 +155,15 @@ namespace Textaleysa.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+
         public ActionResult postVotes(Vote vote)
         {
-            var votesForRequest = vrepo.GetVoteForRequest(vote); // get all the votes 
+            if(!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            Request request = repo.GetRequestById(vote.requestID);
+            var votesForRequest = vrepo.GetVoteForRequest(vote.requestID); // get all the votes 
 
             var user = User.Identity.Name;
             vote.userName = "Jóhann";
@@ -186,7 +185,8 @@ namespace Textaleysa.Controllers
             {
                 vote.userName = "";
             }
-            return Json(vote, JsonRequestBehavior.AllowGet);
+            return Json(request, JsonRequestBehavior.AllowGet);
         }
-	}
+        #endregion
+    }
 }

@@ -9,8 +9,9 @@ namespace Textaleysa.Models.Repositories
 {
     public class VoteRepository
     {
-		HRContext db = new HRContext();
-    
+		ApplicationDbContext db = new ApplicationDbContext();
+
+        #region GetVotes
         public IEnumerable<Vote> GetVotes()
         {
             var result = from v in db.votes
@@ -18,22 +19,28 @@ namespace Textaleysa.Models.Repositories
                          select v;
             return result;
         }
+        #endregion
 
+        #region AddVote
         public void AddVote(Vote v)
         {
             db.votes.Add(v);
             db.SaveChanges();
         }
-        public IEnumerable<Vote> GetVoteForRequest(Vote vote)
+        #endregion
+
+        #region GetVoteForRequest
+        public IEnumerable<Vote> GetVoteForRequest(int id)
         {
             var requests = from c in db.requests
                            select c; // get all comments
             var result = from r in requests
                          join v in db.votes on r.ID equals v.requestID // getting only likes that are linked to a particular comment
-                         where v.requestID == vote.requestID
+                         where v.requestID == id
                          select v;
 
             return result;
         }
+        #endregion
     }
 }

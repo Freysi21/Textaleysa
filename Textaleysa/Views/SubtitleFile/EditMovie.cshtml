@@ -8,18 +8,7 @@
 @using (Html.BeginForm("EditFile", "SubtitleFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    <div class="row">
-        <div class="col-xs-12">
-            <h4>
-                @Html.DisplayFor(model => model.title)
-                (@Html.DisplayFor(model => model.yearReleased))
-                @Html.DisplayFor(model => model.language)
-            </h4>
-        </div>
-    </div>
-    <div class="row form-horizontal" >
-        
-        <hr />
+
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.ID)
 
@@ -33,14 +22,14 @@
                 @Html.ValidationMessageFor(model => model.content)
             </div>
             <div class="col-xs-4"></div>
-        </div>
+    
     <div class="row">
         <div class="col-xs-4">@Html.ActionLink("Back to List", "Index")</div>
         <div class="col-xs-4"></div>
         <div class="col-xs-4">
             <input type="submit" value="Save" class="btn btn-default" />
         </div>
-    </div>
+       </div>
 }
 
 @section Scripts {

@@ -9,23 +9,28 @@ namespace Textaleysa.Models.Repositories
 {
     public class RequestRepository
     {
-		HRContext db = new HRContext();
+		ApplicationDbContext db = new ApplicationDbContext();
 
+        #region GetRequests()
         public IEnumerable<Request> GetRequests()
         {
             var result = from r in db.requests
                          select r;
             return result;
         }
+        #endregion
 
-		public Request GetRequestById(int id)
+        #region GetRequestById
+        public Request GetRequestById(int id)
 		{
 			var result = (from s in db.requests
 						  where s.ID == id
 						  select s).SingleOrDefault();
 			return result;
 		}
+        #endregion
 
+        #region AddRequest/Modify
         public void AddRequest(Request r) 
         {
 			db.requests.Add(r);
@@ -36,6 +41,7 @@ namespace Textaleysa.Models.Repositories
 		{
 			db.Entry(r).State = EntityState.Modified;
 			db.SaveChanges();
-		}
+        }
+        #endregion
     }
 }

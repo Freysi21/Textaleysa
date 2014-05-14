@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Textaleysa.DAL;
 using Textaleysa.Models;
+using Textaleysa.Models.DataTransferOpjects;
 using Textaleysa.Models.Repositories;
 using Textaleysa.Models.ViewModel;
 
@@ -16,11 +17,29 @@ namespace Textaleysa.Controllers
 	{
 		SubtitleFileRepository subtitleFileRepo = new SubtitleFileRepository();
 		MediaTitleRepository meditaTitleRepo = new MediaTitleRepository();
-		private HRContext db = new HRContext();
+		SubtitleFileTransfer subtitleFileTransfer = new SubtitleFileTransfer();
+		MediaTitleTransfer mediaTitleTransfer = new MediaTitleTransfer();
+		private ApplicationDbContext db = new ApplicationDbContext();
 
 		public ActionResult Index()
 		{
-			var mostPopular = (from m in subtitleFileRepo.GetSubtitles()
+			/*
+			#region create admin
+			IdentityManager manager = new IdentityManager();
+			if (!manager.RoleExists("Administrators"))
+			{
+				manager.CreateRole("Administrators");
+			}
+			if (!manager.UserExists("Moss"))
+			{
+				ApplicationUser newAdmin = new ApplicationUser();
+				newAdmin.UserName = "Moss";
+				manager.CreateUser(newAdmin, "01189998819991197253");
+				manager.AddUserToRole(newAdmin.Id, "Administrators");
+			}
+			#endregion
+			*/
+			var mostPopular = (from m in subtitleFileRepo.GetAllSubtitles()
 							   where m.downloadCount >= 1
 							   orderby m.downloadCount descending
 							   select m).Take(10);
@@ -31,7 +50,8 @@ namespace Textaleysa.Controllers
 				FileFrontPageList popularItem = new FileFrontPageList();
 				popularItem.ID = item.ID;
 
-				var title = meditaTitleRepo.GetMovieById(item.mediaTitleID);
+
+				var title = mediaTitleTransfer.GetMovieById(item.mediaTitleID);
 				if (title != null)
 				{
 					popularItem.title = title.title + " (" + title.yearReleased.ToString() + ") " + item.language;
@@ -47,7 +67,7 @@ namespace Textaleysa.Controllers
 
 		public ActionResult MostPopular()
 		{
-			var mostPopular = from m in subtitleFileRepo.GetSubtitles()
+			var mostPopular = from m in subtitleFileRepo.GetAllSubtitles()
 							  where m.downloadCount >= 1
 							  orderby m.downloadCount descending
 							  select m;
@@ -59,7 +79,7 @@ namespace Textaleysa.Controllers
 			List<DisplayMovieView> popularList = new List<DisplayMovieView>();
 			foreach (var f in mostPopular)
 			{
-				var m = meditaTitleRepo.GetMovieById(f.mediaTitleID);
+				var m = mediaTitleTransfer.GetMovieById(f.mediaTitleID);
 				if (m == null)
 				{
 					return View("Error");
@@ -96,7 +116,7 @@ namespace Textaleysa.Controllers
 			{
 				return RedirectToAction("Index");
 			}
-			var results = meditaTitleRepo.SearchAfterTitle(s.searchString);
+			var results = mediaTitleTransfer.SearchAfterTitle(s.searchString);
 			if (results == null)
 			{
 				return View("Error");
@@ -105,7 +125,7 @@ namespace Textaleysa.Controllers
 			List<DisplayMovieView> modelList = new List<DisplayMovieView>();
 			foreach (var item in results)
 			{
-				var files = subtitleFileRepo.GetSubtitleFilesByMediaTitleId(item.ID);
+				var files = subtitleFileTransfer.GetSubtitleFilesByMediaTitleId(item.ID);
 
 				foreach (var f in files)
 				{
