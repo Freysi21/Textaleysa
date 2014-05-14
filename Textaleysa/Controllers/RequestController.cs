@@ -17,6 +17,7 @@ namespace Textaleysa.Controllers
     {
         private RequestContext db = new RequestContext();
         RequestRepository repo = new RequestRepository();
+        VoteRepository vrepo = new VoteRepository();
 
         //
         // GET: /Request/
@@ -38,6 +39,7 @@ namespace Textaleysa.Controllers
                     request.userName = f.userName;
                     request.mediaTitle = f.mediaTitle;
                     request.language = f.language;
+                    request.ID = f.ID;
                     requests.Add(request);
                 }
             return View(requests);
@@ -79,9 +81,13 @@ namespace Textaleysa.Controllers
         {
             return View();
         }
+        public ActionResult CreateMovieRequest()
+        {
+            return View();
+        }
         [HttpPost]
         //[Authorize]
-        public ActionResult CreateRequest(UploadMovieRequestViewModel request)
+        public ActionResult CreateMovieRequest(UploadMovieRequestViewModel request)
         {
             if(request == null)
             {
@@ -91,11 +97,36 @@ namespace Textaleysa.Controllers
                 r.userName = User.Identity.Name;
                 r.mediaTitle = (request.mediaTitle + " (" + (request.yearReleased.ToString()) + ")");
                 r.date = DateTime.Now;
+                r.mediaType = "Kvikmynd";
                 r.language = request.language;
                 repo.AddRequest(r);
 
                 return RedirectToAction("RequestList");
                 //return Json(r, JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult CreateEpisodeRequest()
+        {
+            return View();
+        }
+        [HttpPost]
+        //[Authorize]
+        public ActionResult CreateEpisodeRequest(UploadEpisodeRequestViewModel request)
+        {
+            if (request == null)
+            {
+                return RedirectToAction("CreateRequest");
+            }
+            Request r = new Request();
+            r.userName = User.Identity.Name;
+            r.mediaTitle = (request.mediaTitle + "S" + (request.season) + "E" + (request.episode.ToString()));
+            r.date = DateTime.Now;
+            r.mediaType = "Þáttur";
+            r.language = request.language;
+            repo.AddRequest(r);
+
+            return RedirectToAction("RequestList");
+            //return Json(r, JsonRequestBehavior.AllowGet);
 
         }
 
@@ -118,7 +149,7 @@ namespace Textaleysa.Controllers
 
         public ActionResult getVotes()
         {
-            var votes = VoteRepository.Instance.GetVotes(); // get all the likes 
+            var votes = vrepo.GetVotes(); // get all the likes 
 
             // changes the format of LikeDate to a string to display it in a nice way 
             var result = from v in votes
@@ -133,11 +164,10 @@ namespace Textaleysa.Controllers
 
         public ActionResult postVotes(Vote vote)
         {
-            vote.requestID++; // some of by one error 
-            var votesForRequest = VoteRepository.Instance.GetVoteForRequest(vote); // get all the votes 
+            var votesForRequest = vrepo.GetVoteForRequest(vote); // get all the votes 
 
             var user = User.Identity.Name;
-            vote.userName = user;
+            vote.userName = "Jóhann";
 
             bool check = false;
             foreach (var v in votesForRequest) // go through the fixed list of votes
@@ -150,7 +180,7 @@ namespace Textaleysa.Controllers
 
             if (!check)
             {
-                VoteRepository.Instance.AddVote(vote);
+                vrepo.AddVote(vote);
             }
             else
             {

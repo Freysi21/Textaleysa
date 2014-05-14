@@ -1,33 +1,7 @@
 ﻿jQuery(document).ready(function () {
-
-    getRequests();
-
-    jQuery("#postbutton").click(function () {
-
-        jQuery(".request-item").remove();
-
-        var new_request = { "mediaTitle": jQuery("#mediaTitle").val()};
-
-        if (new_request.mediaTitle != null && new_request.mediaTitle.trim() != "") {
-
-            jQuery.post("/Request/CreateRequest/", new_request, function (requests) {
-
-                getRequests();
-
-            });
-            jQuery("#mediaTitle").val("");
-            jQuery("#mediaTitle").attr("placeholder", "Enter title");
-        }
-        else {
-            getRequests();
-            jQuery("#mediaTitle").attr("placeholder", "Title needed");
-        }
-        alert("Hallo!");
-    });
     //jQuery(".list-group-item").on("click", "#vote-request", function () {
-    jQuery("#vote-request").click(function () {
-        alert("Hallo!");
-        var new_vote = { requestID: jQuery(this).closest("tr.request-item").attr("id") }
+    jQuery(".vote-request").click(function () {
+        var new_vote = { requestID: this.id }
         jQuery.post("/Request/postVotes", new_vote, function (data) {
             getVote();
         });
@@ -49,7 +23,7 @@
 //        });
 //    });
 //});
-function getRequests() {
+/*function getRequests() {
     jQuery.ajax({
         type: "GET",
         contentType: "application/json; charset=utf­8",
@@ -78,7 +52,7 @@ function getRequests() {
             alert("responseText: " + xhr.responseText);
         }
     });
-}
+}*/
 
 function getVote(requests) {
     jQuery.ajax({
@@ -99,7 +73,7 @@ function getVote(requests) {
                     //var Vote = '#Vote' + i
                     //document.getElementById(Vote) = counter.toString();
                 }
-                $('#Vote' + i).html(counter);
+                $('#vote' + i).html(counter);
                 requestID++;
             }
         },

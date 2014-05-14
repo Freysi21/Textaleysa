@@ -11,7 +11,8 @@ namespace Textaleysa.DAL
 {
 	public class HRContext : DbContext, IContext
 	{
-		public HRContext() : base("HRConnection")
+		public HRContext()
+			: base("HRConnection")
         {
         }
         

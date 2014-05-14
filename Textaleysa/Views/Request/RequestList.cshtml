@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Textaleysa.Models.ViewModel.ListRequestViewModel>
-<script type="text/javascript" src="~/Scripts/VoteScript.js"></script>      
 @{
     ViewBag.Title = "Listi yfir beiðnir";
 }
@@ -45,7 +44,7 @@
             {
                 <tr>
                     <td>
-                        <span class="qty">
+                        <span class="voteGoHere" id="vote-@Html.DisplayFor(modelItem => item.ID)">
                         </span>
                     </td>
                     <td>
@@ -58,12 +57,13 @@
                         @Html.DisplayFor(modelItem => item.userName)
                     </td>
                     <td>
-                        @Html.ActionLink("Breyta", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Skoða", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Eyða", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>
+                        <button type="submit" class="vote-request" id="@Html.DisplayFor(modelItem => item.ID)"><span class="glyphicon glyphicon-thumbs-up"></span></button></td>
                 </tr>
             }
         </table>
     </div>
 </div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script type="text/javascript" src="~/Scripts/UpVoteScript.js"></script>
