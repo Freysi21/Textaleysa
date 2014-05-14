@@ -9,7 +9,7 @@ namespace Textaleysa.Models.Repositories
 {
     public class CommentRepository
     {
-		CommentContext db = new CommentContext();
+		HRContext db = new HRContext();
 
         public IEnumerable<Comment> GetComments()
         {

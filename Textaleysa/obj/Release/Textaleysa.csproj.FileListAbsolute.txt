@@ -100,3 +100,7 @@ C:\Users\Eysteinn\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAcc
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.csprojResolveAssemblyReference.cache
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.dll
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.pdb
+C:\Users\Eysteinn\textaleysa\Textaleysa\bin\Moq.dll
+C:\Users\Eysteinn\textaleysa\Textaleysa\bin\nunit.framework.dll
+C:\Users\Eysteinn\textaleysa\Textaleysa\bin\Moq.xml
+C:\Users\Eysteinn\textaleysa\Textaleysa\bin\nunit.framework.xml
