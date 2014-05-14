@@ -21,12 +21,8 @@ namespace Textaleysa.Models.Repositories
 
         public void AddVote(Vote v)
         {
-            int newID = 1;
-            if (db.votes.Count() > 0)
-            {
-                newID = db.votes.Max(x => x.ID) + 1;
-            }
-            v.ID = newID;
+            db.votes.Add(v);
+            db.SaveChanges();
         }
         public IEnumerable<Vote> GetVoteForRequest(Vote vote)
         {

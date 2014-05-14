@@ -49,8 +49,6 @@ C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\b
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
 C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
-C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
-C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.dll.config
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.dll
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.pdb
@@ -99,4 +97,6 @@ C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Microsoft.Owin.Security.OAuth
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
+C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.pdb
