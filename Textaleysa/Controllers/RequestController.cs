@@ -77,6 +77,10 @@ namespace Textaleysa.Controllers
             }
             return View(ldmw);*/
         }
+        public ActionResult CreateRequest()
+        {
+            return View();
+        }
         public ActionResult CreateMovieRequest()
         {
             return View();
