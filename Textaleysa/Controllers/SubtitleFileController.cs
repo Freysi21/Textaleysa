@@ -462,7 +462,7 @@ namespace Textaleysa.Controllers
 			EditMovieView file = new EditMovieView();
 			file.title = movie.title;
 			file.yearReleased = movie.yearReleased;
-			file.language = subtitleFile.userName;
+			file.language = subtitleFile.language;
 			file.ID = subtitleFile.ID;
 			file.content = result;
 			return View(file);
