@@ -24,14 +24,14 @@
                 </th>
                 <th></th>
             </tr>
-
+            <!-------- HÉR KOMA BEIÐNIR -------->
             @foreach (var item in Model)
             {
                 <tr>
                     <td>
                         <span class="voteGoHere" id="vote-@Html.DisplayFor(modelItem => item.ID)">
-                            @Html.DisplayFor(modelItem => item.votes)
-                        </span>
+                            <input value="@Html.DisplayFor(modelItem => item.votes)" type="hidden" id="hiddenVotes"/>
+                                   @Html.DisplayFor(modelItem => item.votes)</span>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.mediaTitle)
