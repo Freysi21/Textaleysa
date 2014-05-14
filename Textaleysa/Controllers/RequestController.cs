@@ -17,6 +17,7 @@ namespace Textaleysa.Controllers
     {
 		private HRContext db = new HRContext();
         RequestRepository repo = new RequestRepository();
+        VoteRepository vrepo = new VoteRepository();
 
         //
         // GET: /Request/
@@ -118,7 +119,7 @@ namespace Textaleysa.Controllers
 
         public ActionResult getVotes()
         {
-            var votes = VoteRepository.Instance.GetVotes(); // get all the likes 
+            var votes = vrepo.GetVotes(); // get all the likes 
 
             // changes the format of LikeDate to a string to display it in a nice way 
             var result = from v in votes
@@ -133,8 +134,7 @@ namespace Textaleysa.Controllers
 
         public ActionResult postVotes(Vote vote)
         {
-            vote.requestID++; // some of by one error 
-            var votesForRequest = VoteRepository.Instance.GetVoteForRequest(vote); // get all the votes 
+            var votesForRequest = vrepo.GetVoteForRequest(vote); // get all the votes 
 
             var user = User.Identity.Name;
             vote.userName = user;
@@ -150,7 +150,7 @@ namespace Textaleysa.Controllers
 
             if (!check)
             {
-                VoteRepository.Instance.AddVote(vote);
+                vrepo.AddVote(vote);
             }
             else
             {
