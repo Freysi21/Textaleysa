@@ -14,15 +14,34 @@ namespace Textaleysa.Models.ViewModel
     {
 
         [Required(ErrorMessage="Vantar titil")]
-        [Display(Name = "mediaTitle")]
+        [Display(Name = "Nafn kvikmyndar")]
         public string mediaTitle { get; set; }
 
         [Required(ErrorMessage = "Vantar ártal")]
-        [Display(Name = "Year Realeased")]
+        [Display(Name = "Útgáfuár")]
         public int yearReleased { get; set; }
 
         [Required(ErrorMessage = "Vantar tungumál")]
-        [Display(Name = "language")]
+        [Display(Name = "Tungumál")]
+        public string language { get; set; }
+    }
+    public class UploadEpisodeRequestViewModel
+    {
+
+        [Required(ErrorMessage = "Vantar titil")]
+        [Display(Name = "Seríunafn")]
+        public string mediaTitle { get; set; }
+
+        [Required(ErrorMessage = "Vinsamlegast tilgreindu seríu")]
+        [Display(Name = "Sería")]
+        public int season { get; set; }
+
+        [Required(ErrorMessage = "Vinsamlegast tilgreindu þátt")]
+        [Display(Name = "Þáttur")]
+        public int episode { get; set; }
+
+        [Required(ErrorMessage = "Vantar tungumál")]
+        [Display(Name = "Tungumál")]
         public string language { get; set; }
     }
     public class ListRequestViewModel
