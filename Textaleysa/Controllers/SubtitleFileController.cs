@@ -14,8 +14,8 @@ using Textaleysa.Models.ViewModel;
 
 namespace Textaleysa.Controllers
 {
-    public class SubtitleFileController : Controller
-    {
+	public class SubtitleFileController : Controller
+	{
 		ApplicationDbContext db = new ApplicationDbContext();
 		SubtitleFileRepository subtitleFileRepo = new SubtitleFileRepository();
 		MediaTitleRepository mediaTitleRepo = new MediaTitleRepository();
@@ -24,13 +24,13 @@ namespace Textaleysa.Controllers
 
 		private LanguageRepository langDb = new LanguageRepository();
 
-        // GET: /SubtitleFile/
-        [HttpGet]
-        public ActionResult Index()
-        {
-			
-            return View();
-        }
+		// GET: /SubtitleFile/
+		[HttpGet]
+		public ActionResult Index()
+		{
+
+			return View();
+		}
 
 		public ActionResult DisplayMovie(int? id)
 		{
@@ -155,7 +155,7 @@ namespace Textaleysa.Controllers
 
 			var fileTitle = "";
 			fileTitle += (movie.title + " " + movie.yearReleased.ToString() + " " + subtitleFile.language + ".srt");
-			
+
 			subtitleFile.downloadCount++;
 			subtitleFileRepo.ModifySubtitleFile(subtitleFile);
 			//return File(stream, "text/plain", fileTitle);
@@ -230,7 +230,7 @@ namespace Textaleysa.Controllers
 					StreamReader fileInput = new StreamReader(file.InputStream, System.Text.Encoding.UTF8, true);
 					do
 					{
-						
+
 						SubtitleFileChunk sfc = new SubtitleFileChunk();
 						#region putting everything in place
 						sfc.subtitleFileID = subtitleFile.ID;
@@ -255,7 +255,7 @@ namespace Textaleysa.Controllers
 						if (!string.IsNullOrEmpty(line4))
 						{
 							sfc.subtitleLine2 = line4;
-							var line5 = fileInput.ReadLine(); 
+							var line5 = fileInput.ReadLine();
 
 							if (!string.IsNullOrEmpty(line5))
 							{
@@ -276,7 +276,7 @@ namespace Textaleysa.Controllers
 						subtitleFileRepo.AddSubtitleChunk(sfc);
 
 					} while (!fileInput.EndOfStream);
-					
+
 					int? ID = subtitleFile.ID;
 					return RedirectToAction("DisplayMovie", new { id = ID });
 				}
@@ -286,7 +286,7 @@ namespace Textaleysa.Controllers
 					subtitleFileRepo.DeleteSubtitleFile(subtitleFile);
 					return View("Error");
 				}
-			}	
+			}
 			return RedirectToAction("UploadMovie");
 		}
 
@@ -411,6 +411,7 @@ namespace Textaleysa.Controllers
 
 			return View("Index");
 		}
+
 		[Authorize(Roles = "Administrators")]
 		public ActionResult AddLanguageChoise()
 		{
@@ -483,7 +484,7 @@ namespace Textaleysa.Controllers
 			file.content = result;
 			return View(file);
 		}
-		
+
 		[Authorize]
 		public ActionResult EditSerie(int? id)
 		{
@@ -555,7 +556,7 @@ namespace Textaleysa.Controllers
 			#endregion
 
 			SubtitleFile newFile = new SubtitleFile();
-			#region newfile = subtitlFile 
+			#region newfile = subtitlFile
 			newFile.language = subtitleFile.language;
 			newFile.mediaTitleID = subtitleFile.mediaTitleID;
 			newFile.userName = subtitleFile.userName;
@@ -568,65 +569,65 @@ namespace Textaleysa.Controllers
 			StreamReader fileInput = new StreamReader(tempContent, System.Text.Encoding.UTF8, true);
 			try
 			{
-					do
+				do
+				{
+					#region uploading the file
+					SubtitleFileChunk sfc = new SubtitleFileChunk();
+					// sfc gets his ID when added to DB
+					sfc.subtitleFileID = newFile.ID;
+
+					// Read the first line of SubtitleFileChunk which is the ID of SubtitleFileChunk
+					var line = fileInput.ReadLine();
+					sfc.lineID = Convert.ToInt32(line);
+
+					// Split the Subtitle time in to 3 parts (ex. line2[0] = "00:00:55,573" 
+					// line2[1] = "-->" line2[2] = "00:00:58,867")
+					var line2 = fileInput.ReadLine().Split(' ');
+					// TimeSpan startTime = TimeSpan.Parse(line2[0]);
+					sfc.startTime = line2[0];
+					//TimeSpan stopTime = TimeSpan.Parse(line2[2]);
+					sfc.stopTime = line2[2];
+
+					// Read the first line of text in the subtitlechunk
+					var line3 = fileInput.ReadLine();
+					sfc.subtitleLine1 = line3;
+
+					// Read the second line of text but if the line is empty
+					var line4 = fileInput.ReadLine();
+					if (!string.IsNullOrEmpty(line4))
 					{
-						#region uploading the file
-						SubtitleFileChunk sfc = new SubtitleFileChunk();
-						// sfc gets his ID when added to DB
-						sfc.subtitleFileID = newFile.ID;
+						sfc.subtitleLine2 = line4;
+						var line5 = fileInput.ReadLine(); // "" 
 
-						// Read the first line of SubtitleFileChunk which is the ID of SubtitleFileChunk
-						var line = fileInput.ReadLine();
-						sfc.lineID = Convert.ToInt32(line);
-
-						// Split the Subtitle time in to 3 parts (ex. line2[0] = "00:00:55,573" 
-						// line2[1] = "-->" line2[2] = "00:00:58,867")
-						var line2 = fileInput.ReadLine().Split(' ');
-						// TimeSpan startTime = TimeSpan.Parse(line2[0]);
-						sfc.startTime = line2[0];
-						//TimeSpan stopTime = TimeSpan.Parse(line2[2]);
-						sfc.stopTime = line2[2];
-
-						// Read the first line of text in the subtitlechunk
-						var line3 = fileInput.ReadLine();
-						sfc.subtitleLine1 = line3;
-
-						// Read the second line of text but if the line is empty
-						var line4 = fileInput.ReadLine();
-						if (!string.IsNullOrEmpty(line4))
+						if (!string.IsNullOrEmpty(line5))
 						{
-							sfc.subtitleLine2 = line4;
-							var line5 = fileInput.ReadLine(); // "" 
-
-							if (!string.IsNullOrEmpty(line5))
-							{
-								sfc.subtitleLine3 = line5;
-								fileInput.ReadLine();
-							}
-							else
-							{
-								sfc.subtitleLine3 = null;
-							}
+							sfc.subtitleLine3 = line5;
+							fileInput.ReadLine();
 						}
 						else
 						{
-							sfc.subtitleLine2 = null;
 							sfc.subtitleLine3 = null;
 						}
-						subtitleFileRepo.AddSubtitleChunk(sfc);
+					}
+					else
+					{
+						sfc.subtitleLine2 = null;
+						sfc.subtitleLine3 = null;
+					}
+					subtitleFileRepo.AddSubtitleChunk(sfc);
 
-					} while (!fileInput.EndOfStream);
-					subtitleFileRepo.DeleteSubtitleFileChunk(subtitleFile.ID);
-					subtitleFileRepo.DeleteSubtitleFile(subtitleFile);
-					return RedirectToAction("DisplayFile", newFile.ID);
-						#endregion
-				}
-				catch (Exception)
-				{
-					subtitleFileRepo.DeleteSubtitleFileChunk(newFile.ID);
-					subtitleFileRepo.DeleteSubtitleFile(newFile);
-					return View("Error");
-				}
+				} while (!fileInput.EndOfStream);
+				subtitleFileRepo.DeleteSubtitleFileChunk(subtitleFile.ID);
+				subtitleFileRepo.DeleteSubtitleFile(subtitleFile);
+				return RedirectToAction("DisplayFile", newFile.ID);
+					#endregion
+			}
+			catch (Exception)
+			{
+				subtitleFileRepo.DeleteSubtitleFileChunk(newFile.ID);
+				subtitleFileRepo.DeleteSubtitleFile(newFile);
+				return View("Error");
+			}
 		}
 
 		public ActionResult DisplayContent(int? id)
@@ -668,7 +669,7 @@ namespace Textaleysa.Controllers
 			file.yearReleased = movieTitle.yearReleased;
 			file.language = subtitleFile.language;
 			file.content = new List<DisplayContentFileView>();
-			foreach(var item in chunks)
+			foreach (var item in chunks)
 			{
 				DisplayContentFileView content = new DisplayContentFileView();
 				#region putting everything into place for the ViewModel list
@@ -701,14 +702,10 @@ namespace Textaleysa.Controllers
 			}
 
 			DisplayContentFileView subtitleChunk = new DisplayContentFileView();
-			subtitleChunk.ID = chunk.ID;
-			subtitleChunk.lineID = chunk.lineID;
-			subtitleChunk.startTime = chunk.startTime;
-			subtitleChunk.stopTime = chunk.stopTime;
-			subtitleChunk.line1 = chunk.subtitleLine1;
-			subtitleChunk.line2 = chunk.subtitleLine2;
-			subtitleChunk.line3 = chunk.subtitleLine3;
-
+			chunk.ID = subtitleChunk.ID;
+			chunk.lineID = subtitleChunk.lineID;
+			chunk.startTime = subtitleChunk.startTime;
+			chunk.stopTime = subtitleChunk.stopTime;
 			return View(subtitleChunk);
 		}
 
