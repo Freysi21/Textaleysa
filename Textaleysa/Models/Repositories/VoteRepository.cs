@@ -32,10 +32,7 @@ namespace Textaleysa.Models.Repositories
         #region GetVoteForRequest
         public IEnumerable<Vote> GetVoteForRequest(int id)
         {
-            var requests = from c in db.requests
-                           select c; // get all comments
-            var result = from r in requests
-                         join v in db.votes on r.ID equals v.requestID // getting only likes that are linked to a particular comment
+            var result = from v in db.votes
                          where v.requestID == id
                          select v;
 
