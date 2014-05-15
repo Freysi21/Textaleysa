@@ -11,25 +11,32 @@
 
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.ID)
-
+        <div class="row">
+        <div class="col-xs-12">
+            <h4>
+                @Html.LabelFor(model => model.content, new { @class = "control-label" })
+            </h4>
+        </div>
+            </div>
+    <div class="row">
+        <div class="col-xs-4"></div>
         <div class="col-xs-4">
-            @Html.LabelFor(model => model.content, new { @class = "control-label" })
-        </div>  
-            <div class="col-xs-4">
-                    <textarea class="center" cols="10" data-val="true" data-val-required="The Innihald skráar field is required." id="edit-content" 
-                              name="content">@Html.DisplayFor(Model => Model.content)</textarea>
-                       @* @Html.TextAreaFor(model => model.content) *@
+            <textarea data-val="true" data-val-required="The Innihald skráar field is required." id="edit-content"
+                      name="content">
+                @Html.DisplayFor(Model => Model.content)
+                </textarea>
+                @* @Html.TextAreaFor(model => model.content) *@
                 @Html.ValidationMessageFor(model => model.content)
             </div>
             <div class="col-xs-4"></div>
-    
+        </div>
     <div class="row">
-        <div class="col-xs-4">@Html.ActionLink("Back to List", "Index")</div>
+        <div class="col-xs-4"></div>
         <div class="col-xs-4"></div>
         <div class="col-xs-4">
             <input type="submit" value="Save" class="btn btn-default" />
         </div>
-       </div>
+    </div>
 }
 
 @section Scripts {
