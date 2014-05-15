@@ -16,8 +16,7 @@
             data: "{}",
             dataType: "json",
             success: function (votes) {
-                var counter = 0;
-                counter = votes.length;
+                var counter = $("#" + votes[0].requestID + ".vote-request").closest("#hiddenVotes").val() + 1;
                     $('#vote' + votes[0].requestID).html(counter);
                 },
             error: function (xhr, err) {
