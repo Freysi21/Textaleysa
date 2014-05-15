@@ -4,7 +4,7 @@ $(document).ready(function () { // function loads then the document is loaded
 
     getAllComments();
     console.log("hæhæh");
-    $("#postbutton").click(function () { // function runs when the post button is clicked
+    jQuery("#postbutton").click(function () { // function runs when the post button is clicked
 
         $(".comment-item").remove(); // first we remove all the comments 
 
