@@ -1,22 +1,23 @@
 ﻿$(document).ready(function () {
-    alert("hallo");
-    jQuery(".vote-request").click(function () {
-        var new_vote = { requestID: this.id }
-        jQuery.post("/Request/postVotes", new_vote, function (data) {
+    jQuery(".submit-grade").click(function () {
+        var give_grade = $("input#" + this.id).val();
+        alert(give_grade);
+        var new_grade = { fileID: this.id, mediaGrade: give_grade  }
+        jQuery.post("/SubtitleFile/postGrade", new_grade, function (data) {
             getVote(data);
         });
     });
 });
-function getVote(new_vote) {
+function getVote(new_grade) {
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf­8",
-        url: "/Request/getVotes/",
-        data: new_vote,
+        url: "/SubtitleFile/getGrades/",
+        data: new_grade,
         dataType: "json",
-        success: function (votes) {
+        success: function (avg) {
 
-            $('#vote-' + votes[0].requestID).html(votes.length);
+            $('#grade-' + avg.ID).html(avg.avrage);
         },
         error: function (xhr, err) {
             // Note: just for debugging purposes!

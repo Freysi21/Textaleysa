@@ -21,6 +21,8 @@ namespace Textaleysa.Controllers
 		MediaTitleRepository mediaTitleRepo = new MediaTitleRepository();
 		SubtitleFileTransfer subtitleFileTransfer = new SubtitleFileTransfer();
 		MediaTitleTransfer mediaTitleTransfer = new MediaTitleTransfer();
+        GradeRepository grepo = new GradeRepository();
+
 
 		private LanguageRepository langDb = new LanguageRepository();
 
@@ -57,7 +59,7 @@ namespace Textaleysa.Controllers
 				dmv.ID = subtitleFile.ID;
 				dmv.title = movie.title;
 				dmv.yearReleased = movie.yearReleased;
-				dmv.grade = 10;
+                dmv.grade = grepo.GetAvgForFile(id.Value);
 				dmv.userName = subtitleFile.userName;
 				dmv.language = subtitleFile.language;
 				dmv.date = subtitleFile.date;
@@ -97,7 +99,7 @@ namespace Textaleysa.Controllers
 				model.title = serie.title;
 				model.season = serie.season;
 				model.episode = serie.episode;
-				model.grade = 10;
+                model.grade = grepo.GetAvgForFile(id.Value);
 				#endregion
 				return View(model);
 			}
@@ -812,12 +814,10 @@ namespace Textaleysa.Controllers
 
         #region controllerar fyrir Script
 
-        GradeRepository grepo = new GradeRepository();
 
         public ActionResult getGrades(Grade grade)
         {
-            var avg = new { avrage = grepo.GetAvgForRequest(grade.fileID) };
-
+            var avg = new { avrage = grepo.GetAvgForFile(grade.fileID), ID = grade.fileID };
             return Json(avg, JsonRequestBehavior.AllowGet);
         }
         public ActionResult postGrade(Grade grade)
@@ -831,7 +831,7 @@ namespace Textaleysa.Controllers
             grade.userName = user;
 
             bool check = false;
-            if (gradeForFile.Count() != 0)
+            /*if (gradeForFile.Count() != 0)
             {
                 foreach (var g in gradeForFile) // go through the fixed list of votes
                 {
@@ -840,7 +840,7 @@ namespace Textaleysa.Controllers
                         check = true;
                     }
                 }
-            }
+            }*/
 
             if (!check)
             {
