@@ -750,5 +750,59 @@ namespace Textaleysa.Controllers
 			}
 			base.Dispose(disposing);
 		}
-	}
+
+        #region controllerar fyrir Script
+
+        GradeRepository grepo = new GradeRepository();
+
+        public ActionResult getGrades(Grade grade)
+        {
+            var avg = new { avrage = grepo.GetAvgForRequest(grade.fileID) };
+
+            return Json(avg, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult postGrade(Grade grade)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var gradeForFile = grepo.GetGradeForFile(grade.fileID); // get all the votes 
+            var user = User.Identity.Name;
+            grade.userName = user;
+
+            bool check = false;
+            if (gradeForFile.Count() != 0)
+            {
+                foreach (var g in gradeForFile) // go through the fixed list of votes
+                {
+                    if (grade.userName == g.userName) // if the usernames match we don't add the vote to the db
+                    {
+                        check = true;
+                    }
+                }
+            }
+
+            if (!check)
+            {
+                grepo.AddGrade(grade);
+            }
+            else
+            {
+                return Json("", JsonRequestBehavior.AllowGet);
+            }
+            /*string dateTime = request.date.ToString("dd. MMMM HH:mm");
+            var result = new  {
+                               ID = request.ID.ToString(),
+                               userName = request.userName,
+                               mediaType = request.mediaType,
+                               mediaTitle = request.mediaTitle,
+                               language = request.language, 
+                               date = dateTime
+                               };*/
+
+            return Json(grade, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+    }
 }

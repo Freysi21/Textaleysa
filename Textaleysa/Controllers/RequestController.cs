@@ -141,15 +141,14 @@ namespace Textaleysa.Controllers
         #region controllerar fyrir UpVoteScript/VoteScript
         public ActionResult getVotes(Vote vote)
         {
-            var votes = vrepo.GetVoteForRequest(vote.requestID); 
+            var votes = vrepo.GetVoteForRequest(vote.requestID);
             var result = from v in votes
                          select new
                          {
-                             ID = v.ID,
-                             requestID = v.requestID,
-                             userName = v.userName
-                         };
-
+                            ID = v.ID,
+                            requestID = v.requestID,
+                            userName = v.userName
+                          };
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
