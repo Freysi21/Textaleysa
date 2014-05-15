@@ -29,6 +29,13 @@ namespace Textaleysa.Models.Repositories
 			return result;
 		}
 
+		public IEnumerable<MediaTitle> GetAllMediaTitles()
+		{
+			var result = from m in db.meditaTitles
+						 select m;
+			return result;
+		}
+
 		public void AddMediaTitle(MediaTitle s)
 		{
 			db.meditaTitles.Add(s);
