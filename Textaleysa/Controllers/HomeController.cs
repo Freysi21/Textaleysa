@@ -105,17 +105,23 @@ namespace Textaleysa.Controllers
 			{
 				return View();
 			}
-			List<DisplayMovieView> popularList = new List<DisplayMovieView>();
+			List<SearchResultListView> popularList = new List<SearchResultListView>();
 			foreach (var f in mostPopular)
 			{
-				var m = mediaTitleTransfer.GetMovieById(f.mediaTitleID);
+				var m = mediaTitleTransfer.GetMediaTitleById(f.mediaTitleID);
 				if (m == null)
 				{
 					return View("Error");
 				}
-				DisplayMovieView dmw = new DisplayMovieView();
-				dmw.title = m.title;
-				dmw.yearReleased = m.yearReleased;
+				SearchResultListView dmw = new SearchResultListView();
+				if (m.isMovie)
+				{
+					dmw.title = m.title + " (" + m.yearReleased + ")";
+				}
+				else
+				{
+					dmw.title = m.title + " s" + m.season + "e" + m.episode;
+				}
 				dmw.userName = f.userName;
 				dmw.language = f.language;
 				dmw.date = f.date;

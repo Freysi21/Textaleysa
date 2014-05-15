@@ -3,12 +3,12 @@
 $(document).ready(function () { // function loads then the document is loaded
 
     getAllComments();
-  
+    console.log("hæhæh");
     $("#postbutton").click(function () { // function runs when the post button is clicked
 
         $(".comment-item").remove(); // first we remove all the comments 
 
-        var new_comment = { "comment": $("#comment").val() }; // get text from input box and make a json object
+        var new_comment = { "fileID":$(this.id) , "comment": $("#comment").val() }; // get text from input box and make a json object
 
         if (new_comment.comment != null && new_comment.comment.trim() != "") { // if the input field is nonempty 
             $.post("/CommentAndLike/PostComment/", new_comment, function (comments) { // post the comment 
