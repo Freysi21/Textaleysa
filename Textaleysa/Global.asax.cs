@@ -20,6 +20,21 @@ namespace Textaleysa
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 			Database.SetInitializer<ApplicationDbContext>(null);
+
+			#region create admin
+			IdentityManager manager = new IdentityManager();
+			if (!manager.RoleExists("Administrators"))
+			{
+				manager.CreateRole("Administrators");
+			}
+			if (!manager.UserExists("Moss"))
+			{
+				ApplicationUser newAdmin = new ApplicationUser();
+				newAdmin.UserName = "Moss";
+				manager.CreateUser(newAdmin, "01189998819991197253");
+				manager.AddUserToRole(newAdmin.Id, "Administrators");
+			}
+			#endregion
         }
     }
 }

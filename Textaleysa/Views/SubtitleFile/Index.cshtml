@@ -1,7 +1,15 @@
-﻿
+﻿@model Textaleysa.Models.ViewModel.EditMovieView
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
+<div class="form-group">
+    @Html.LabelFor(model => model.content, new { @class = "control-label col-md-2" })
+    <div class="col-md-8">
+        <textarea cols="20" data-val="true" data-val-required="The Innihald skráar field is required." 
+                  id="content" name="content" rows="2" style="margin: 0px; height: 22px; width: 163px;"></textarea>
+        @Html.ValidationMessageFor(model => model.content)
+    </div>
+</div>

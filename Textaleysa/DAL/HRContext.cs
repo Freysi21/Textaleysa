@@ -38,7 +38,6 @@ namespace Textaleysa.DAL
        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
         }
 
 <<<<<<< HEAD

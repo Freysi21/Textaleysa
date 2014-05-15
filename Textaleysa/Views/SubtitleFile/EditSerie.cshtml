@@ -4,8 +4,6 @@
     ViewBag.Title = "Breyta skrá";
 }
 
-<h2>EditSerie</h2>
-
 @using (Html.BeginForm("EditFile", "SubtitleFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -36,10 +34,6 @@
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -93,7 +93,11 @@
     <div class="col-xs-4">
 
         @Html.ActionLink("Breyta", "EditSerie", new { id = Model.ID }) |
-        @Html.ActionLink("Eyða", "DeleteFile", new { id = Model.ID }, null)
+        @if (User.IsInRole("Administrators"))
+        {
+            @Html.ActionLink("Eyða", "DeleteFile", new { id = Model.ID }, null) <span>|</span>
+        }
+        @Html.ActionLink("Skoða Innihald skráar", "DisplayContent", new { id = Model.ID }, null)
 
     </div>
     <div class="col-xs-4"></div>

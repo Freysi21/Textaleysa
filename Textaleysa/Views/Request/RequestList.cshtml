@@ -39,13 +39,13 @@
                 </th>
                 <th></th>
             </tr>
-
+            <!-------- HÉR KOMA BEIÐNIR -------->
             @foreach (var item in Model)
             {
                 <tr>
                     <td>
                         <span class="voteGoHere" id="vote-@Html.DisplayFor(modelItem => item.ID)">
-                            @Html.DisplayFor(modelItem => item.votes)
+                                   @Html.DisplayFor(modelItem => item.votes)
                         </span>
                     </td>
                     <td>

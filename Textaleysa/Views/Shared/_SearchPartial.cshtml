@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 
+=======
+﻿@model Textaleysa.Models.ViewModel.FrontPageViewModel
+>>>>>>> 53e62dfb7cfe14926451ea3730d055a414181050
 <form action="~/Home/Index" method="post">
     <div class="row" id="SearchPartialRow">
         <div class="col-xs-12" id="SearchPartialBarDiv">
@@ -8,6 +12,7 @@
             <button class="btn btn-default" type="button">Leita</button>
         </div>
     </div>
+<<<<<<< HEAD
 </form>
     <div class="row">
         <div class="col-xs-12" id="SearchForFilter">
@@ -22,15 +27,38 @@
             </div>
             <span id="SearcFilterSpaceDiv2">
                 <label for="Serie">Þáttur</label>
+=======
+
+    <div class="row FontWhite">
+        <div class=" col-xs-12" id="SearchForFilter">
+            <span>Leita eftir:</span>
+            <div class="btn-group" id="SearcFilterSpaceDiv">
+                @Html.LabelFor(model => model.languageID, new { @class = "form-control", @id = "LanguageButton" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.languageID, new SelectList(Model.languageOptions, "ID", "language",
+                   Model.languageOptions.First().ID))
+                    @Html.ValidationMessageFor(model => model.languageID)
+                </div>
+            </div>
+            <span id="SearcFilterSpaceDiv2">
+                <label id="PartialSearchCheckboxes" for="Serie">Þáttur</label>
+>>>>>>> 53e62dfb7cfe14926451ea3730d055a414181050
                 <input type="checkbox" name="Serie" value="Þáttur" />
             </span>
             <span id="SearcFilterSpaceDiv3">
                 <label id="PartialSearchCheckboxes2" for="Movie">Kvikmynd</label>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 53e62dfb7cfe14926451ea3730d055a414181050
                 <input type="checkbox" name="Movie" value="Kvikmynd" />
             </span>
         </div>
     </div>
+<<<<<<< HEAD
 
 
+=======
+</form>
+>>>>>>> 53e62dfb7cfe14926451ea3730d055a414181050
 

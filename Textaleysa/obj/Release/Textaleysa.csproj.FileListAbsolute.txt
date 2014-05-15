@@ -46,4 +46,3 @@ C:\Users\Eysteinn\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Eysteinn\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.dll
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.pdb
-C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Release\Textaleysa.csprojResolveAssemblyReference.cache
