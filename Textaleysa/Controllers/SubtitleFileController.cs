@@ -826,12 +826,16 @@ namespace Textaleysa.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
+            if (grade.mediaGrade > 10 || grade.mediaGrade < 0)
+            {
+                return Json("", JsonRequestBehavior.AllowGet);
+            }
             var gradeForFile = grepo.GetGradeForFile(grade.fileID); // get all the votes 
             var user = User.Identity.Name;
             grade.userName = user;
 
             bool check = false;
-            /*if (gradeForFile.Count() != 0)
+            if (gradeForFile.Count() != 0)
             {
                 foreach (var g in gradeForFile) // go through the fixed list of votes
                 {
@@ -840,7 +844,7 @@ namespace Textaleysa.Controllers
                         check = true;
                     }
                 }
-            }*/
+            }
 
             if (!check)
             {
