@@ -10,7 +10,6 @@ using Textaleysa.Models.ViewModel;
 
 
 
-
 namespace Textaleysa.Controllers
 {
     public class RequestController : Controller
@@ -139,19 +138,17 @@ namespace Textaleysa.Controllers
         }
         #endregion
 
-        #region controllerar fyrir script fyrir UpVoteScript/VoteScript
-        public ActionResult getVotes(Request r)
+        #region controllerar fyrir UpVoteScript/VoteScript
+        public ActionResult getVotes(Vote vote)
         {
-            var votes = vrepo.GetVoteForRequest(r.ID); // get all the likes 
-
-            // changes the format of LikeDate to a string to display it in a nice way 
+            var votes = vrepo.GetVoteForRequest(vote.requestID);
             var result = from v in votes
                          select new
                          {
-                             ID = v.ID,
-                             requestID = v.requestID,
-                             userName = v.userName
-                         };
+                            ID = v.ID,
+                            requestID = v.requestID,
+                            userName = v.userName
+                          };
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
@@ -164,16 +161,18 @@ namespace Textaleysa.Controllers
             }
             Request request = repo.GetRequestById(vote.requestID);
             var votesForRequest = vrepo.GetVoteForRequest(vote.requestID); // get all the votes 
-
             var user = User.Identity.Name;
-            vote.userName = "Jóhann";
+            vote.userName = user;
 
             bool check = false;
-            foreach (var v in votesForRequest) // go through the fixed list of votes
+            if (votesForRequest.Count() != 0)
             {
-                if (vote.userName == v.userName) // if the usernames match we don't add the vote to the db
+                foreach (var v in votesForRequest) // go through the fixed list of votes
                 {
-                    check = true;
+                    if (vote.userName == v.userName) // if the usernames match we don't add the vote to the db
+                    {
+                        check = true;
+                    }
                 }
             }
 
@@ -183,9 +182,19 @@ namespace Textaleysa.Controllers
             }
             else
             {
-                vote.userName = "";
+                return Json("", JsonRequestBehavior.AllowGet);
             }
-            return Json(request, JsonRequestBehavior.AllowGet);
+            /*string dateTime = request.date.ToString("dd. MMMM HH:mm");
+            var result = new  {
+                               ID = request.ID.ToString(),
+                               userName = request.userName,
+                               mediaType = request.mediaType,
+                               mediaTitle = request.mediaTitle,
+                               language = request.language, 
+                               date = dateTime
+                               };*/
+
+            return Json(vote, JsonRequestBehavior.AllowGet);
         }
         #endregion
     }
