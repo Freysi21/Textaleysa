@@ -82,13 +82,10 @@ margin-right: 0.8em;
     vertical-align: top;
 }
 .FirstDivOnPage{
-    height: 10em;
+    height: 8em;
 }
 .SecondDivOnPage{
     height: 2em;
-}
-#FirstDivOnFrontPage{
-    height: 11em;
 }
 #SearchBar{
     max-width: 35em;
