@@ -43,6 +43,8 @@ namespace Textaleysa.Models
 		public DbSet<MediaTitle> meditaTitles { get; set; }
 		public DbSet<Vote> votes { get; set; }
 		public DbSet<Request> requests { get; set; }
+        public DbSet<Grade> grades { get; set; }
+
 		new public DbSet<ApplicationRole> Roles { get; set; }
 
 		/*

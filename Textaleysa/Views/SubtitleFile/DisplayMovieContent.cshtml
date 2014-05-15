@@ -1,0 +1,49 @@
+﻿@model Textaleysa.Models.ViewModel.DisplayMovieFileView
+
+
+<div class="row center">
+    <div class="col-xs-12">
+        <h2>
+            Nánar um 
+            @Html.DisplayFor(model => model.title)
+            (@Html.DisplayFor(model => model.yearReleased))
+            @Html.DisplayFor(model => model.language)
+        </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 center" style="font-size:14px">
+        @foreach (var item in Model.content)
+        {
+            <div>
+                <h3>@Html.DisplayFor(model => item.lineID)</h3>
+                <div class="timegray">
+                    <p>
+                        <span class="timeicon glyphicon glyphicon-time"></span>
+                        <span class="time-DateOfBlog">
+                            @Html.DisplayFor(model => item.startTime)
+                            -->
+                            @Html.DisplayFor(modelItem => item.stopTime)
+                        </span>
+                    </p>
+                </div>
+                <p>@Html.DisplayFor(modelItem => item.line1)</p>
+                @if (item.line2 != null)
+                {
+                    <p>@Html.DisplayFor(modelItem => item.line2)</p>
+                }
+                @if (item.line3 != null)
+                {
+                    <p>@Html.DisplayFor(modelItem => item.line3)</p>
+                }
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.ActionLink("Breyta texta", "EditChunk", "SubtitleFile", new { id = item.ID }, null)
+                    </div>
+                </div>
+            </div>
+            }
+        }
+    </div>
+</div>
