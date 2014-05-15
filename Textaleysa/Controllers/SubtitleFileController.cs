@@ -163,6 +163,12 @@ namespace Textaleysa.Controllers
 		}
 
 		[Authorize]
+		public ActionResult Upload()
+		{
+			return View();
+		}
+
+		[Authorize]
 		public ActionResult UploadMovie()
 		{
 			UploadMovieModelView model = new UploadMovieModelView();
@@ -694,15 +700,13 @@ namespace Textaleysa.Controllers
 			{
 				return View("Error");
 			}
+
 			DisplayContentFileView subtitleChunk = new DisplayContentFileView();
 			chunk.ID = subtitleChunk.ID;
 			chunk.lineID = subtitleChunk.lineID;
 			chunk.startTime = subtitleChunk.startTime;
 			chunk.stopTime = subtitleChunk.stopTime;
-
-
-
-			return View();
+			return View(subtitleChunk);
 		}
 
 		[Authorize]
@@ -734,7 +738,7 @@ namespace Textaleysa.Controllers
 			#endregion
 
 			subtitleFileRepo.ModifySubtitleFileChunk(chunk);
-			return RedirectToAction("DisplayContent", subtitleFile.ID);
+			return View("DisplayContent", subtitleFile.ID);
 
 		}
 

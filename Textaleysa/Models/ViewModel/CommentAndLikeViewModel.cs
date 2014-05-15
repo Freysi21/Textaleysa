@@ -10,17 +10,8 @@ namespace Textaleysa.Models.ViewModel
 	{
 		public class CommentView
 		{
-			[Display(Name = "User")]
-			public string userName { get; set; }
-
-			[Display(Name = "Date of comment")]
-			public DateTime date { get; set; }
-
 			[Display(Name = "Content")]
-			public string content { get; set; }
-
-			[Display(Name = "Likes")]
-			public int nrOfLikes { get; set; }
+			public string comment { get; set; }
 		}
 	}
 }

@@ -8,19 +8,19 @@ $(document).ready(function () { // function loads then the document is loaded
 
         $(".comment-item").remove(); // first we remove all the comments 
 
-        var new_comment = { "content": $("#content").val() }; // get text from input box and make a json object
+        var new_comment = { "comment": $("#comment").val() }; // get text from input box and make a json object
 
-        if (new_comment.content != null && new_comment.content.trim() != "") { // if the input field is nonempty 
+        if (new_comment.comment != null && new_comment.comment.trim() != "") { // if the input field is nonempty 
             $.post("/CommentAndLike/PostComment/", new_comment, function (comments) { // post the comment 
                 getAllComments();
             });
-            $("#content").val(""); // resets the input field
-            $("#content").attr("placeholder", "Enter a comment."); // resets the placeholder
+            $("#comment").val(""); // resets the input field
+            $("#comment").attr("placeholder", "Enter a comment."); // resets the placeholder
         }
         else {
             getAllComments();
             // comment field was empty and we display another placeholder
-            $("#content").attr("placeholder", "Empty comments are not allowed.");
+            $("#comment").attr("placeholder", "Empty comments are not allowed.");
         }
     }); 
 });

@@ -1,4 +1,5 @@
-﻿<!--Partail view for the searchbar and its extras-->
+﻿@model Textaleysa.Models.ViewModel.FrontPageViewModel
+
 <form action="~/Home/Index" method="post">
     <div class="row" id="SearchPartialRow">
         <div class="col-xs-12" id="SearchPartialBarDiv">
@@ -8,26 +9,29 @@
             <button class="btn btn-default" type="submit">Leita</button>
         </div>
     </div>
-    </form>
+
     <div class="row FontWhite">
-    <div class=" col-xs-12" id="SearchForFilter">
-    <span>Leita eftir:</span>
-    <div class="btn-group" id="SearcFilterSpaceDiv">
-        <select class="form-control" id="LanguageButton">
-            <option value="" selected>Tungumál</option>
-            <option value="Danish">Danska</option>
-            <option value="English">Enska</option>
-            <option value="Icelandic">Íslenska</option>
-        </select>
+        <div class=" col-xs-12" id="SearchForFilter">
+            <span>Leita eftir:</span>
+            <div class="btn-group" id="SearcFilterSpaceDiv">
+                <div class="col-md-10">
+                    <select class="btn btn-default dropdown-toggle" data-val="true" data-val-number="The field Tungumál must be a number." data-val-required="The Tungumál field is required." id="languageID" name="languageID">
+                        <option value="1">Íslenska</option>
+                        <option value="2">Enska</option>
+                        <option value="3">Danska</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.languageID)
+                </div>
+            </div>
+            <span id="SearcFilterSpaceDiv2">
+                <label id="PartialSearchCheckboxes" for="Serie">Þáttur</label>
+                <input type="checkbox" name="Serie" value="Þáttur" />
+            </span>
+            <span id="SearcFilterSpaceDiv3">
+                <label id="PartialSearchCheckboxes2" for="Movie">Kvikmynd</label>
+                <input type="checkbox" name="Movie" value="Kvikmynd" />
+            </span>
+        </div>
     </div>
-    <span id="SearcFilterSpaceDiv2">
-        <label id="PartialSearchCheckboxes" for="Serie">Þáttur</label>
-        <input type="checkbox" name="Serie" value="Þáttur" />
-    </span>
-    <span id="SearcFilterSpaceDiv3">
-        <label id="PartialSearchCheckboxes2" for="Movie">Kvikmynd</label>
-        <input type="checkbox" name="Movie" value="Kvikmynd" />
-    </span>
-</div>
-</div>
+</form>
 

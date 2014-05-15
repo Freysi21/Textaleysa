@@ -56,6 +56,14 @@ namespace Textaleysa.Models.DataTransferOpjects
 	{
 		MediaTitleRepository repo = new MediaTitleRepository();
 
+		public MediaTitle GetMediaTitleById(int id)
+		{
+			var result = (from m in repo.GetAllMediaTitles()
+						 where m.ID == id
+						 select m).SingleOrDefault();
+			return result;
+		}
+
 		public MediaTitle GetMovieById(int id)
 		{
 			var result = (from m in repo.GetAllMovieTitles()
