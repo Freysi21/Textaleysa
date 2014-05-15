@@ -630,7 +630,7 @@ namespace Textaleysa.Controllers
 			}
 		}
 
-		public ActionResult DisplayContent(int? id)
+		public ActionResult DisplayMovieContent(int? id)
 		{
 			#region if (id == null) return NOTFOUND
 			if (id == null)
@@ -674,7 +674,65 @@ namespace Textaleysa.Controllers
 				DisplayContentFileView content = new DisplayContentFileView();
 				#region putting everything into place for the ViewModel list
 				content.ID = item.ID;
-				content.lineID = item.lineID;
+				content.lineID = item.subtitleFileID;
+				content.startTime = item.startTime;
+				content.stopTime = item.stopTime;
+				content.line1 = item.subtitleLine1;
+				content.line2 = item.subtitleLine2;
+				content.line3 = item.subtitleLine3;
+				#endregion
+				file.content.Add(content);
+			}
+			#endregion
+			return View(file);
+		}
+
+		public ActionResult DisplaySerieContent(int? id)
+		{
+			#region if (id == null) return NOTFOUND
+			if (id == null)
+			{
+				return View("Error");
+			}
+			#endregion
+
+			var subtitleFile = subtitleFileTransfer.GetSubtitleById(id.Value);
+			#region if (subtitleFile == null) return NOTFOUND
+			if (subtitleFile == null)
+			{
+				return View("Error");
+			}
+			#endregion
+
+			var chunks = subtitleFileTransfer.GetChunksBySubtitleFileID(subtitleFile.ID);
+			#region if (chunks == null) return NOTFOUND
+			if (chunks == null)
+			{
+				return View("Error");
+			}
+			#endregion
+
+			var serieTitle = mediaTitleTransfer.GetSerieById(subtitleFile.mediaTitleID);
+			#region if (serieTitle == null) return NOTFOUND
+			if (serieTitle == null)
+			{
+				return View("Error");
+			}
+			#endregion
+
+			DisplaySerieFileView file = new DisplaySerieFileView();
+			#region putting everything in place for the ViewModel
+			file.title = serieTitle.title;
+			file.season = serieTitle.season;
+			file.episode = serieTitle.episode;
+			file.language = subtitleFile.language;
+			file.content = new List<DisplayContentFileView>();
+			foreach (var item in chunks)
+			{
+				DisplayContentFileView content = new DisplayContentFileView();
+				#region putting everything into place for the ViewModel list
+				content.ID = item.ID;
+				content.lineID = item.subtitleFileID;
 				content.startTime = item.startTime;
 				content.stopTime = item.stopTime;
 				content.line1 = item.subtitleLine1;
@@ -738,7 +796,8 @@ namespace Textaleysa.Controllers
 			#endregion
 
 			subtitleFileRepo.ModifySubtitleFileChunk(chunk);
-			return View("DisplayContent", subtitleFile.ID);
+
+			return RedirectToAction("DisplayContent", subtitleFile.ID);
 
 		}
 
