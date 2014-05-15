@@ -4,21 +4,25 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Textaleysa.DAL;
+using Textaleysa.Repositories;
 
 namespace Textaleysa.Models.Repositories
 {
-    public class SubtitleFileRepository
+    public class SubtitleFileRepository : ISubtitleRepository
     {
 		ApplicationDbContext db = new ApplicationDbContext();
 
-		#region SubtitleFile functions
-		public IEnumerable<SubtitleFile> GetAllSubtitles()
+
+
+        public IQueryable<SubtitleFile> GetAllSubtitles()
         {
             var result = from f in db.subtitleFile
                          orderby f.ID ascending
                          select f;
             return result;
         }
+
+		#region SubtitleFile functions
 
 		public void AddSubtitleFile(SubtitleFile sf)
 		{

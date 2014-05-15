@@ -38,66 +38,9 @@
                     <p>@Html.DisplayFor(modelItem => item.line3)</p>
                 }
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
                         @Html.ActionLink("Breyta texta", "EditChunk", "SubtitleFile", new { id = item.ID }, null)
-                    </div>
                 </div>
             </div>
             }
-        }
     </div>
 </div>
-
-@*
-    <button id="edit-chunk" name="edit-chunk" class="edit-chunk btn btn-primary">Edit Subtitle</button>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button id="save-chunk" name="save-chunk" class="btn btn-default">Save</button>
-            </div>
-        </div>
-    <div class="form-for-chunk"></div>
-        <script type="text/html" id="template-for-chunk">
-                <div class="form-horizontal">
-                    <hr />
-                    @Html.HiddenFor(model => item.ID)
-                    @Html.HiddenFor(model => item.lineID)
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => item.startTime, new { @class = "control-label col-md-2" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => item.startTime)
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => item.stopTime, new { @class = "control-label col-md-2" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => item.stopTime)
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => item.line1, new { @class = "control-label col-md-2" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => item.line1)
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => item.line2, new { @class = "control-label col-md-2" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => item.line2)
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => item.line3, new { @class = "control-label col-md-2" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => item.line3)
-                        </div>
-                    </div>
-                </div>
-        </script> *@
-@*
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-<script src="~/Scripts/EditSubtitleFile.js"></script>
-<script src="~/Scripts/AddSubtitleFileChunkTemplate.js"></script>
-*@
-

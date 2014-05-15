@@ -229,7 +229,7 @@ namespace Textaleysa.Controllers
 				try
 				{
 					// Read the whole input file
-					StreamReader fileInput = new StreamReader(file.InputStream, System.Text.Encoding.UTF8, true);
+					StreamReader fileInput = new StreamReader(file.InputStream, System.Text.Encoding.Default, true);
 					do
 					{
 
@@ -327,7 +327,7 @@ namespace Textaleysa.Controllers
 				try
 				{
 					// Read the whole input file
-					StreamReader fileInput = new StreamReader(file.InputStream, System.Text.Encoding.UTF8, true);
+					StreamReader fileInput = new StreamReader(file.InputStream, System.Text.Encoding.Default, true);
 					do
 					{
 
@@ -676,7 +676,7 @@ namespace Textaleysa.Controllers
 				DisplayContentFileView content = new DisplayContentFileView();
 				#region putting everything into place for the ViewModel list
 				content.ID = item.ID;
-				content.lineID = item.subtitleFileID;
+				content.lineID = item.lineID;
 				content.startTime = item.startTime;
 				content.stopTime = item.stopTime;
 				content.line1 = item.subtitleLine1;
@@ -734,7 +734,7 @@ namespace Textaleysa.Controllers
 				DisplayContentFileView content = new DisplayContentFileView();
 				#region putting everything into place for the ViewModel list
 				content.ID = item.ID;
-				content.lineID = item.subtitleFileID;
+				content.lineID = item.lineID;
 				content.startTime = item.startTime;
 				content.stopTime = item.stopTime;
 				content.line1 = item.subtitleLine1;
