@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Textaleysa.Models.ViewModel.FileFrontPageList>﻿
+﻿@model Textaleysa.Models.ViewModel.FrontPageViewModel
 
 <div class="row center">
     <div class="col-xs-12">
@@ -21,7 +21,7 @@
             <h2>Vinsælast</h2>
             <p>Vinsælustu skjátextaskrár Textaleysu frá upphafi.</p>
             <ol>
-                @foreach(var item in Model)
+                @foreach(var item in Model.mostPopularFiles)
                 { 
                    <li> 
                        @Html.ActionLink(item.title, "DisplayFile", "SubtitleFile", new { id = item.ID }, null)
@@ -33,7 +33,21 @@
             <h2>Nýjast</h2>
             <p> Nýjustu skjátextaskrár Textaleysu.</p>
             <ol>
-                <li><a href="http://www.linkToFile.is">Kitty kitty bang bang</a></li>
+                @foreach(var item in Model.latestFiles)
+                { 
+                    if(item.isMovie)
+                    {
+                        <li>
+                            @Html.ActionLink(item.title, "DisplayMovie", "SubtitleFile", new { id = item.ID }, null)
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            @Html.ActionLink(item.title, "DisplaySerie", "SubtitleFile", new { id = item.ID }, null)
+                        </li>
+                    }
+                }
             </ol>
         </div>
     </div>

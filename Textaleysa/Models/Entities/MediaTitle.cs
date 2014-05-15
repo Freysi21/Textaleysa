@@ -9,5 +9,9 @@ namespace Textaleysa.Models
     {
         public int ID { get; set; }
         public string title { get; set; }
+		public int yearReleased { get; set; }
+		public int season { get; set; }
+		public int episode { get; set; }
+		public bool isMovie { get; set; }
     }
 }

@@ -3459,7 +3459,6 @@ input[type="button"].btn-block {
 }
 
 .btn-group > .btn:first-child {
-  margin-left: 0;
 }
 
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
@@ -4512,6 +4511,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse .navbar-brand {
   color: #999999;
+  font-family:"Comic Sans MS", cursive, sans-serif
 }
 
 .navbar-inverse .navbar-brand:hover,

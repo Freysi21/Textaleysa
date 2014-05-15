@@ -11,7 +11,7 @@ namespace Textaleysa.Controllers
 {
     public class CommentAndLikeController : Controller
     {
-		private HRContext db = new HRContext();
+		private ApplicationDbContext db = new ApplicationDbContext();
 		CommentRepository repo = new CommentRepository();
 
         public ActionResult Index()
@@ -36,14 +36,14 @@ namespace Textaleysa.Controllers
 		}
 
 		// Posts a new comment
-		public ActionResult PostComment(Comment comment)
+		public ActionResult PostComment(Textaleysa.Models.ViewModel.CommentAndLikeViewModel.CommentView comment)
 		{
-			if (!User.Identity.IsAuthenticated)
+			if (User.Identity.IsAuthenticated)
 			{ 
 				Comment c = new Comment();
 				// get the user name
 				c.userName = User.Identity.Name;
-				c.content = comment.content;
+				c.content = comment.comment;
 				c.date = DateTime.Now;
 				repo.AddComment(c);
 				return Json(c, JsonRequestBehavior.AllowGet);

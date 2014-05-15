@@ -215,14 +215,6 @@ namespace Textaleysa.Models.ViewModel
 		public string content { get; set; }
 	}
 
-	public class FileFrontPageList
-	{
-		public int ID { get; set; }
-
-		[Display(Name = "Titill")]
-		public string title { get; set; }
-	}
-
 	public class LanguageView
 	{
 		[Required]

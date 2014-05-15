@@ -9,31 +9,16 @@ namespace Textaleysa.Models.Repositories
 {
     public class SubtitleFileRepository
     {
-		HRContext db = new HRContext();
+		ApplicationDbContext db = new ApplicationDbContext();
 
-        public IEnumerable<SubtitleFile> GetSubtitles()
+		#region SubtitleFile functions
+		public IEnumerable<SubtitleFile> GetAllSubtitles()
         {
             var result = from f in db.subtitleFile
                          orderby f.ID ascending
                          select f;
             return result;
         }
-
-		public SubtitleFile GetSubtitleById(int? id)
-		{
-			var result = (from m in db.subtitleFile
-						  where m.ID == id.Value
-						  select m).FirstOrDefault();
-			return result;
-		}
-		
-		public IEnumerable<SubtitleFile> GetSubtitleFilesByMediaTitleId(int id)
-		{
-			var results = from f in db.subtitleFile
-						  where f.mediaTitleID == id
-						  select f;
-			return results;
-		}
 
 		public void AddSubtitleFile(SubtitleFile sf)
 		{
@@ -54,29 +39,14 @@ namespace Textaleysa.Models.Repositories
 			db.subtitleFile.Remove(sf);
 			db.SaveChanges();
 		}
-		// *************  SubtitleFileChunk starts here ***********
+		#endregion
+		
+		#region SubtitleFileChunk functions
 
-		public SubtitleFileChunk GetSubtitleFileChunkById(int id)
-		{
-			var result = (from s in db.subtitleFileChunk
-						 where s.ID == id
-						 select s).SingleOrDefault();
-			return result;
-		}
-
-		public IEnumerable<SubtitleFileChunk> GetSubtitleFileChunks()
+		public IEnumerable<SubtitleFileChunk> GetAllSubtitleFileChunks()
 		{
 			var result = from s in db.subtitleFileChunk
 						 select s;
-			return result;
-		}
-
-		public IEnumerable<SubtitleFileChunk> GetChunksBySubtitleFileID(int id)
-		{
-			var result = from c in db.subtitleFileChunk
-								 where c.subtitleFileID == id
-								 orderby c.lineID ascending
-								 select c;
 			return result;
 		}
 
@@ -104,5 +74,6 @@ namespace Textaleysa.Models.Repositories
 			}
 			db.SaveChanges();
 		}
-    }
+		#endregion
+	}
 }

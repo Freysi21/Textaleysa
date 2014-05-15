@@ -4,8 +4,6 @@
     ViewBag.Title = "Breyta skrá";
 }
 
-<h2>EditSerie</h2>
-
 @using (Html.BeginForm("EditFile", "SubtitleFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -13,8 +11,8 @@
     <div class="form-horizontal">
         <h4>
             @Html.DisplayFor(model => model.title)
-            (s@Html.DisplayFor(model => model.season)
-            e@Html.DisplayFor(model => model.episode))
+            (s @Html.DisplayFor(model => model.season)
+            e @Html.DisplayFor(model => model.episode))
             @Html.DisplayFor(model => model.language)
         </h4>
         <hr />
@@ -36,10 +34,6 @@
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

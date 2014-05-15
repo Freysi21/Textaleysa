@@ -1,0 +1,135 @@
+﻿@model Textaleysa.Models.ViewModel.DisplayMovieView
+
+<div class="row center">
+    <div class="col-xs-12">
+        <h2>Nánar um @Html.DisplayFor(model => model.title)</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.language)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.language)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.yearReleased)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.yearReleased)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.userName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.userName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.grade)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.grade)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.downloadCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.downloadCount)
+            </dd>
+
+            <dt>
+                @Html.ActionLink("Hlaða niður", "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)
+            </dt>
+        </dl>
+    </div>
+    <div class="col-xs-4"></div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 SecondDivOnPage"></div>
+</div>
+<div class="row center">
+    <div class="col-xs-4"></div>
+
+    <div class="col-xs-4">
+
+        @Html.ActionLink("Breyta", "EditMovie", new {  id = Model.ID }) |
+        @if(User.IsInRole("Administrators"))
+        { 
+            @Html.ActionLink("Eyða", "DeleteFile", new { id = Model.ID }, null) <span>|</span>
+        }
+        @Html.ActionLink("Skoða Innihald skráar", "DisplayContent", new { id = Model.ID}, null)
+
+    </div>
+    <div class="col-xs-4"></div>
+</div>
+
+<ul id="comment-list" class="list-group" style="max-width: 560px;">
+    <!--here comes the list of comments and likes-->
+</ul>
+
+<!--Input field for new comment and a post button-->
+<ul class="list-group" style="max-width: 560px;">
+    <li class="list-group-item">
+        <div class="form-horizontal">
+            <label class="sr-only" for="commentContent">Comment</label>
+            <textarea class="form-control" rows="3" id="comment" name="comment" placeholder="Enter a comment"></textarea>
+            <button type="button" id="postbutton" class="btn btn-primary">Send</button>
+        </div>
+    </li>
+</ul>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/CommentAndLikeScript.js"></script>
+<script type="text/html" id="template">
+    <li class="list-group-item comment-item">
+        <p>
+            <span class="glyphicon glyphicon-user"></span>
+            <span data-content="Username" class="text-primary username"></span>
+            <span data-content="CommentText"></span>
+        </p>
+        <p>
+            <span data-content="CommentDate" class="text-muted"></span>
+            <a class="like-comment" href="#!"> Like <span class="glyphicon glyphicon-thumbs-up"></span></a>
+            @if (User.IsInRole("Administrators"))
+            {
+                <button type="button" id="DeleteButton" class="btn btn-group-sm btn-danger">Delete</button>
+            }
+        </p>
+        <ul class="list-unstyled like-list">
+            <!--here comes the list of likes-->
+        </ul>
+    </li>
+</script>
+

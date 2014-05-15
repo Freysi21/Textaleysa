@@ -1,14 +1,19 @@
 ﻿
 @{
-    ViewBag.Title = "Senda inn beiðni fyrir þátt eða kvikmynd";
+    ViewBag.Title = "Senda inn beiðni";
 }
-<div>
-    <h1 class="center">Óskaru eftir þátt eða kvikmynd?</h1>
-    <button class="center">
-       @Html.ActionLink("Þáttur", "CreateEpisodeRequest")
-    </button>
-    <button class="center">
-     @Html.ActionLink("Kvikmyndir", "CreateMovieRequest")
-    </button>
-</div>
 
+<h4 class="center">Vilt þú óska eftir skjátextaskrá fyrir kvikmynd eða þátt?</h4>
+
+<div class="row">
+    <div class="SecondDivOnPage"></div>
+</div>
+<div class="row center">
+    <div class="col-xs-12"></div>
+        <div class="btn-group btn-group-lg">
+            <a class="btn btn-default upload-buttons" href="/Request/CreateMovieRequest">Kvikmynd</a>
+        </div>
+           <div class="btn-group btn-group-lg">
+            <a class="btn btn-default upload-buttons" href="/Request/CreateEpisodeRequest">Þátt</a>
+        </div>
+</div> 

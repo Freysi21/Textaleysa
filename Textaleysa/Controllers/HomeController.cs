@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Textaleysa.DAL;
 using Textaleysa.Models;
+using Textaleysa.Models.DataTransferOpjects;
 using Textaleysa.Models.Repositories;
 using Textaleysa.Models.ViewModel;
 
@@ -16,38 +17,93 @@ namespace Textaleysa.Controllers
 	{
 		SubtitleFileRepository subtitleFileRepo = new SubtitleFileRepository();
 		MediaTitleRepository meditaTitleRepo = new MediaTitleRepository();
-		private HRContext db = new HRContext();
+		SubtitleFileTransfer subtitleFileTransfer = new SubtitleFileTransfer();
+		MediaTitleTransfer mediaTitleTransfer = new MediaTitleTransfer();
+		LanguageRepository langRepo = new LanguageRepository();
+		private ApplicationDbContext db = new ApplicationDbContext();
 
 		public ActionResult Index()
 		{
-			var mostPopular = (from m in subtitleFileRepo.GetSubtitles()
+			FrontPageViewModel frontPage = new FrontPageViewModel();
+			#region get languages for dropdownlist
+			frontPage.languageOptions = langRepo.GetLanguages();
+			if (frontPage.languageOptions == null)
+			{
+				return View("Error");
+			}
+			#endregion
+
+			#region get most popular files
+			var mostPopular = (from m in subtitleFileRepo.GetAllSubtitles()
 							   where m.downloadCount >= 1
 							   orderby m.downloadCount descending
 							   select m).Take(10);
 
-			List<FileFrontPageList> listPopular = new List<FileFrontPageList>();
+			frontPage.mostPopularFiles = new List<ListOfFilesView>();
 			foreach(var item in mostPopular)
 			{
-				FileFrontPageList popularItem = new FileFrontPageList();
-				popularItem.ID = item.ID;
+				ListOfFilesView model = new ListOfFilesView();
+				model.ID = item.ID;
 
-				var title = meditaTitleRepo.GetMovieById(item.mediaTitleID);
+				var title = mediaTitleTransfer.GetMediaTitleById(item.mediaTitleID);
 				if (title != null)
 				{
-					popularItem.title = title.title + " (" + title.yearReleased.ToString() + ") " + item.language;
-					listPopular.Add(popularItem);
+					if (title.isMovie)
+					{
+						model.isMovie = true;
+						model.title = title.title + " (" + title.yearReleased.ToString() + ") " + item.language;
+					}
+					else
+					{
+						model.isMovie = false ;
+						model.title = title.title + " s" + title.season + "e" + title.episode + " " + item.language;
+					}
+					frontPage.mostPopularFiles.Add(model);
 				}
 			}
-			if (listPopular == null)
+			if (frontPage.mostPopularFiles == null)
 			{
 				return View();
 			}
-			return View(listPopular);
+			#endregion
+
+			#region get lates uploaded files
+			var latestFiles = (from l in subtitleFileRepo.GetAllSubtitles()
+							  orderby l.date descending
+							  select l).Take(10);
+
+			frontPage.latestFiles = new List<ListOfFilesView>();
+			foreach (var item in latestFiles)
+			{
+				ListOfFilesView model = new ListOfFilesView();
+				model.ID = item.ID;
+
+				var title = mediaTitleTransfer.GetMediaTitleById(item.mediaTitleID);
+				if (title != null)
+				{
+					if (title.isMovie)
+					{
+						model.title = title.title + " (" + title.yearReleased.ToString() + ") " + item.language;
+					}
+					else
+					{
+						model.title = title.title + " s" + title.season + "e" + title.episode + " " + item.language;
+					}
+					frontPage.latestFiles.Add(model);
+				}
+			}
+			if (frontPage.latestFiles == null)
+			{
+				return View();
+			}
+			#endregion
+
+			return View(frontPage);
 		}
 
 		public ActionResult MostPopular()
 		{
-			var mostPopular = from m in subtitleFileRepo.GetSubtitles()
+			var mostPopular = from m in subtitleFileRepo.GetAllSubtitles()
 							  where m.downloadCount >= 1
 							  orderby m.downloadCount descending
 							  select m;
@@ -59,7 +115,7 @@ namespace Textaleysa.Controllers
 			List<DisplayMovieView> popularList = new List<DisplayMovieView>();
 			foreach (var f in mostPopular)
 			{
-				var m = meditaTitleRepo.GetMovieById(f.mediaTitleID);
+				var m = mediaTitleTransfer.GetMovieById(f.mediaTitleID);
 				if (m == null)
 				{
 					return View("Error");
@@ -94,18 +150,48 @@ namespace Textaleysa.Controllers
 		{
 			if (string.IsNullOrEmpty(s.searchString) || string.IsNullOrWhiteSpace(s.searchString))
 			{
-				return RedirectToAction("Index");
+				List<DisplayMovieView> modelList = new List<DisplayMovieView>();
+				var titles = meditaTitleRepo.GetAllMovieTitles();
+				if (titles == null)
+				{
+					return View("Error");
+				}
+
+				foreach (var item in titles)
+				{
+					var files = subtitleFileRepo.GetAllSubtitles();
+					foreach (var f in files)
+					{
+						DisplayMovieView dmw = new DisplayMovieView();
+						#region putting everything in place for the ModelView
+						dmw.title = item.title;
+						dmw.yearReleased = item.yearReleased;
+						dmw.userName = f.userName;
+						dmw.language = f.language;
+						dmw.date = f.date;
+						dmw.downloadCount = f.downloadCount;
+						dmw.ID = f.ID;
+						#endregion
+
+						modelList.Add(dmw);
+					}
+					if (modelList == null)
+					{
+						return View("Error");
+					}
+				}
+				return View(modelList);
 			}
-			var results = meditaTitleRepo.SearchAfterTitle(s.searchString);
+			var results = mediaTitleTransfer.SearchAfterTitle(s.searchString);
 			if (results == null)
 			{
 				return View("Error");
 			}
 
-			List<DisplayMovieView> modelList = new List<DisplayMovieView>();
+			List<DisplayMovieView> modelList2 = new List<DisplayMovieView>();
 			foreach (var item in results)
 			{
-				var files = subtitleFileRepo.GetSubtitleFilesByMediaTitleId(item.ID);
+				var files = subtitleFileTransfer.GetSubtitleFilesByMediaTitleId(item.ID);
 
 				foreach (var f in files)
 				{
@@ -120,14 +206,14 @@ namespace Textaleysa.Controllers
 					dmw.ID = f.ID;
 					#endregion
 
-					modelList.Add(dmw);
+					modelList2.Add(dmw);
 				}
-				if (modelList == null)
+				if (modelList2 == null)
 				{
 					return View("Error");
 				}
 			}
-			return View(modelList);
+			return View(modelList2);
 		}
 
 		public ActionResult Popular()

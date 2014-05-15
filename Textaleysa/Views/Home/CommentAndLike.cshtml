@@ -2,9 +2,6 @@
 @{
     ViewBag.Title = "CommentAndLike";
 }
-
-<h2>CommentAndLike</h2>
-
 <ul id="comment-list" class="list-group" style="max-width: 560px;">
     <!--here comes the list of comments and likes-->
 </ul>
@@ -13,9 +10,9 @@
 <ul class="list-group" style="max-width: 560px;">
     <li class="list-group-item">
         <div class="form-horizontal">
-            <label class="sr-only" for="CommentText">Comment</label>
+            <label class="sr-only" for="CommentText">Athugasemd</label>
             <textarea class="form-control" rows="3" id="CommentText" name="CommentText" placeholder="Enter a comment"></textarea>
-            <button type="button" id="postbutton" class="btn btn-primary">Send</button>
+            <button type="button" id="postbutton" class="btn btn-primary">Senda</button>
         </div>
     </li>
 </ul>
@@ -34,7 +31,7 @@
             <a class="like-comment" href="#!"> Like <span class="glyphicon glyphicon-thumbs-up"></span></a>
             @if (User.IsInRole("Administrators"))
             {
-                <button type="button" id="DeleteButton" class="btn btn-group-sm btn-danger">Delete</button>
+                <button type="button" id="DeleteButton" class="btn btn-group-sm btn-danger">Eyða</button>
             }
         </p>
         <ul class="list-unstyled like-list">

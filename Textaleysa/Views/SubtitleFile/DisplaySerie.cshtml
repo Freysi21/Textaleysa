@@ -1,0 +1,108 @@
+﻿@model Textaleysa.Models.ViewModel.DisplaySerieView
+
+<div class="row center">
+    <div class="col-xs-12">
+        <h2>Nánar um @Html.DisplayFor(model => model.title)</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.season)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.season)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.episode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.episode)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.language)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.language)
+            </dd>
+
+           
+            <dt>
+                @Html.DisplayNameFor(model => model.userName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.userName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.grade)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.grade)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.downloadCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.downloadCount)
+            </dd>
+
+            <dt>
+                @Html.ActionLink("Hlaða niður", "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)
+            </dt>
+        </dl>
+    </div>
+    <div class="col-xs-4"></div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 SecondDivOnPage"></div>
+</div>
+<div class="row center">
+    <div class="col-xs-4"></div>
+
+    <div class="col-xs-4">
+
+        @Html.ActionLink("Breyta", "EditSerie", new { id = Model.ID }) |
+        @if (User.IsInRole("Administrators"))
+        {
+            @Html.ActionLink("Eyða", "DeleteFile", new { id = Model.ID }, null) <span>|</span>
+        }
+        @Html.ActionLink("Skoða Innihald skráar", "DisplayContent", new { id = Model.ID }, null)
+
+    </div>
+    <div class="col-xs-4"></div>
+</div>
+
+
+
+
