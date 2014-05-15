@@ -68,9 +68,9 @@
             </dd>
             <!--HÉR VINN ÉG NÚNA-->
             <dd>
-                <input type="number" class="grade-file" id="input-@Html.DisplayFor(model => model.ID)" />
+                <input type="number" class="grade-file" id="input-@Html.DisplayFor(model => model.ID)"/>
                 <button type="submit" class="submit-grade" id="@Html.DisplayFor(model => model.ID)">Einkunnargjöf</button>
-                <span id="gradeGoHere"></span>
+                <span id="error-message"></span>
             </dd>
             <dt>
                 @Html.ActionLink("Hlaða niður", "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)

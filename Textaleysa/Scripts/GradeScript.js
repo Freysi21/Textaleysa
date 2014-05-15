@@ -1,9 +1,28 @@
 ﻿$(document).ready(function () {
     jQuery(".submit-grade").click(function () {
-        var give_grade = $("input#" + this.id).val();
+        var give_grade = $("#input-" + this.id).val();
         if (give_grade > 10 || give_grade < 0) {
+<<<<<<< HEAD
             console.log("Einkunn verður að vera á bilinu 0-10");
+=======
+            $("#error-message").html("Einkunn verður að vera á bilinu 0-10")
+            //alert("Einkunn verður að vera á bilinu 0-10");
+>>>>>>> efcaf12900f91d22ba0bf5feaf8c9bd3efe3e7fd
         }
+<<<<<<< HEAD
+        else{
+            var new_grade = { fileID: this.id, mediaGrade: give_grade }
+
+            jQuery.post("/SubtitleFile/postGrade", new_grade, function (data) {
+                if (data == "") {
+                    $("#error-message").html("Ekki er hægt að gefa sömu skrá einkunn tvisvar.")
+                }
+                else {
+                    getVote(data);
+                }
+            });
+        }
+=======
         var new_grade = { fileID: this.id, mediaGrade: give_grade  }
         jQuery.post("/SubtitleFile/postGrade", new_grade, function (data) {
             if (data == "") {
@@ -13,6 +32,7 @@
                 getVote(data);
             }
         });
+>>>>>>> 6e59bdd26cb6c4aad4b01ec24abf7bd7d431992b
     });
 });
 function getVote(new_grade) {
@@ -34,3 +54,4 @@ function getVote(new_grade) {
         }
     });
 }
+        
