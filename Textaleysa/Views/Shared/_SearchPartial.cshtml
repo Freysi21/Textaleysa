@@ -1,5 +1,4 @@
-﻿@model Textaleysa.Models.ViewModel.FrontPageViewModel
-      
+﻿
 <form action="~/Home/Index" method="post">
     <div class="row" id="SearchPartialRow">
         <div class="col-xs-12" id="SearchPartialBarDiv">
@@ -7,28 +6,6 @@
                 <input type="text" id="SearchBar" name="searchString" maxlength="60">
             </span>
             <button class="btn btn-default" type="submit">Leita</button>
-        </div>
-    </div>
-
-    <div class="row FontWhite">
-        <div class=" col-xs-12" id="SearchForFilter">
-            <span>Leita eftir:</span>
-            <div class="btn-group" id="SearcFilterSpaceDiv">
-                @Html.LabelFor(model => model.languageID, new { @class = "form-control", @id = "LanguageButton" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(m => m.languageID, new SelectList(Model.languageOptions, "ID", "language",
-                   Model.languageOptions.First().ID))
-                    @Html.ValidationMessageFor(model => model.languageID)
-                </div>
-            </div>
-            <span id="SearcFilterSpaceDiv2">
-                <label id="PartialSearchCheckboxes" for="Serie">Þáttur</label>
-                <input type="checkbox" name="Serie" value="Þáttur" />
-            </span>
-            <span id="SearcFilterSpaceDiv3">
-                <label id="PartialSearchCheckboxes2" for="Movie">Kvikmynd</label>
-                <input type="checkbox" name="Movie" value="Kvikmynd" />
-            </span>
         </div>
     </div>
 </form>

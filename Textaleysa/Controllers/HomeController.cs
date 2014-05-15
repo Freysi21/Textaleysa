@@ -25,13 +25,6 @@ namespace Textaleysa.Controllers
 		public ActionResult Index()
 		{
 			FrontPageViewModel frontPage = new FrontPageViewModel();
-			#region get languages for dropdownlist
-			frontPage.languageOptions = langRepo.GetLanguages();
-			if (frontPage.languageOptions == null)
-			{
-				return View("Error");
-			}
-			#endregion
 
 			#region get most popular files
 			var mostPopular = (from m in subtitleFileRepo.GetAllSubtitles()
@@ -150,7 +143,9 @@ namespace Textaleysa.Controllers
 		{
 			if (string.IsNullOrEmpty(s.searchString) || string.IsNullOrWhiteSpace(s.searchString))
 			{
-				List<DisplayMovieView> modelList = new List<DisplayMovieView>();
+				SearchResultView model = new SearchResultView();
+				model.searchString = s.searchString;
+				model.searchResultList = new List<SearchResultListView>();
 				var titles = meditaTitleRepo.GetAllMovieTitles();
 				if (titles == null)
 				{
@@ -159,28 +154,37 @@ namespace Textaleysa.Controllers
 
 				foreach (var item in titles)
 				{
-					var files = subtitleFileRepo.GetAllSubtitles();
+					var files = subtitleFileTransfer.GetSubtitleFilesByMediaTitleId(item.ID);
 					foreach (var f in files)
 					{
-						DisplayMovieView dmw = new DisplayMovieView();
+						SearchResultListView result = new SearchResultListView();
 						#region putting everything in place for the ModelView
-						dmw.title = item.title;
-						dmw.yearReleased = item.yearReleased;
-						dmw.userName = f.userName;
-						dmw.language = f.language;
-						dmw.date = f.date;
-						dmw.downloadCount = f.downloadCount;
-						dmw.ID = f.ID;
+						if (item.isMovie)
+						{
+							result.isMovie = true;
+							result.title = item.title + " (" + item.yearReleased + ")";
+						}
+						else
+						{
+							result.isMovie = false;
+							result.title = item.title + " s" + item.season +
+										   "e" + item.episode;
+						}
+						result.userName = f.userName;
+						result.language = f.language;
+						result.date = f.date;
+						result.downloadCount = f.downloadCount;
+						result.ID = f.ID;
 						#endregion
 
-						modelList.Add(dmw);
+						model.searchResultList.Add(result);
 					}
-					if (modelList == null)
+					if (model.searchResultList == null)
 					{
 						return View("Error");
 					}
 				}
-				return View(modelList);
+				return View(model);
 			}
 			var results = mediaTitleTransfer.SearchAfterTitle(s.searchString);
 			if (results == null)
@@ -188,32 +192,43 @@ namespace Textaleysa.Controllers
 				return View("Error");
 			}
 
-			List<DisplayMovieView> modelList2 = new List<DisplayMovieView>();
+			SearchResultView model2 = new SearchResultView();
+			model2.searchString = s.searchString;
+			model2.searchResultList = new List<SearchResultListView>();
 			foreach (var item in results)
 			{
 				var files = subtitleFileTransfer.GetSubtitleFilesByMediaTitleId(item.ID);
 
 				foreach (var f in files)
 				{
-					DisplayMovieView dmw = new DisplayMovieView();
+					SearchResultListView result = new SearchResultListView();
 					#region putting everything in place for the ModelView
-					dmw.title = item.title;
-					dmw.yearReleased = item.yearReleased;
-					dmw.userName = f.userName;
-					dmw.language = f.language;
-					dmw.date = f.date;
-					dmw.downloadCount = f.downloadCount;
-					dmw.ID = f.ID;
+					if (item.isMovie)
+					{
+						result.isMovie = true;
+						result.title = item.title + " (" + item.yearReleased + ")";
+					}
+					else
+					{
+						result.isMovie = false;
+						result.title = item.title + " s" + item.season +
+									   "e" + item.episode;
+					}
+					result.userName = f.userName;
+					result.language = f.language;
+					result.date = f.date;
+					result.downloadCount = f.downloadCount;
+					result.ID = f.ID;
 					#endregion
 
-					modelList2.Add(dmw);
+					model2.searchResultList.Add(result);
 				}
-				if (modelList2 == null)
+				if (model2.searchResultList == null)
 				{
 					return View("Error");
 				}
 			}
-			return View(modelList2);
+			return View(model2);
 		}
 
 		public ActionResult Popular()
@@ -222,7 +237,6 @@ namespace Textaleysa.Controllers
 
 			return View();
 		}
-
 
         public ActionResult About()
         {

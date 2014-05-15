@@ -1,55 +1,55 @@
-﻿@model IEnumerable<Textaleysa.Models.ViewModel.DisplayMovieView>
+﻿@model Textaleysa.Models.ViewModel.SearchResultView
+
 @{
     ViewBag.Title = "Leitarniðurstöður";
+}
+@if (!string.IsNullOrEmpty(Model.searchString))
+{ 
+    <span id="search-string"> @Html.DisplayFor(model => model.searchString) </span>
 }
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.title)
+            @Html.DisplayNameFor(model => model.searchResultList.First().title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.language)
+            @Html.DisplayNameFor(model => model.searchResultList.First().language)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.yearReleased)
+            @Html.DisplayNameFor(model => model.searchResultList.First().downloadCount)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.userName)
+            @Html.DisplayNameFor(model => model.searchResultList.First().userName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.grade)
+            @Html.DisplayNameFor(model => model.searchResultList.First().date)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.downloadCount)
-        </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.searchResultList)
+{
     <tr>
         <td>
-            @Html.ActionLink(item.title, "DisplayMovie", "SubtitleFile", new { id = item.ID }, null)
+            @if(item.isMovie)
+            {
+                @Html.ActionLink(item.title, "DisplayMovie", "SubtitleFile", new { id = item.ID }, null)
+            }
+            else
+            {
+                @Html.ActionLink(item.title, "DisplaySerie", "SubtitleFile", new { id = item.ID }, null)
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.language)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.yearReleased)
+            @Html.DisplayFor(modelItem => item.downloadCount)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.userName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.grade)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.downloadCount)
         </td>
     </tr>
 }

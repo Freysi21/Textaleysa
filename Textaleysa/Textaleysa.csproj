@@ -218,6 +218,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SearchString.js" />
     <Content Include="Scripts\UploadFile.js" />
     <Content Include="Scripts\UpVoteScript.js" />
     <Content Include="Scripts\VoteScript.js" />
@@ -259,7 +260,7 @@
     <Content Include="Views\Home\MostPopular.cshtml" />
     <Content Include="Views\SubtitleFile\AddLanguageChoise.cshtml" />
     <Content Include="Views\SubtitleFile\EditFile.cshtml" />
-    <Content Include="Views\SubtitleFile\DisplayContent.cshtml" />
+    <Content Include="Views\SubtitleFile\DisplayMovieContent.cshtml" />
     <Content Include="Views\SubtitleFile\UploadSerie.cshtml" />
     <Content Include="Views\SubtitleFile\EditSerie.cshtml" />
     <Content Include="Views\Request\CreateEpisodeRequest.cshtml" />
@@ -268,6 +269,7 @@
     <Content Include="Views\Request\CreateRequest.cshtml" />
     <Content Include="Views\SubtitleFile\Upload.cshtml" />
     <Content Include="Views\SubtitleFile\EditChunk.cshtml" />
+    <Content Include="Views\SubtitleFile\DisplaySerieContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
