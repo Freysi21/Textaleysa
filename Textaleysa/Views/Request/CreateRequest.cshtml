@@ -1,58 +1,13 @@
-<<<<<<< HEAD
 ﻿@model Textaleysa.Models.ViewModel.UploadMovieRequestViewModel
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
 }
-<div class="row center">
-    <div class="col-xs-12 FirstDivOnPage"></div>
-</div>
-
-<div class="row center">
-    <div class="col-xs-12"><h2>Ný beiðni</h2></div>
-</div>
-<div class="row">
-    <div class="col-xs-12 SecondDivOnPage"></div>
-</div>
-    <div class="row">
-        <div class="form-horizontal">
-            <hr />
-            @Html.ValidationSummary(true)
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.mediaTitle, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.mediaTitle)
-                    @Html.ValidationMessageFor(model => model.mediaTitle)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.yearReleased, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.yearReleased)
-                    @Html.ValidationMessageFor(model => model.yearReleased)
-                </div>
-            </div>
-=======
 ﻿
 @{
     ViewBag.Title = "Senda inn beiðni";
 }
-<<<<<<< HEAD
-<div>
-    <h1 class="center">Óskaru eftir þátt eða kvikmynd?</h1>
-    <button class="center">
-       @Html.ActionLink("Þáttur", "CreateEpisodeRequest")
-    </button>
-    <button class="center">
-     @Html.ActionLink("Kvikmyndir", "CreateMovieRequest")
-    </button>
-</div>
->>>>>>> f5c4e1eadb64cac097771eeaca76e3a0c834af8e
-=======
->>>>>>> 53e62dfb7cfe14926451ea3730d055a414181050
 
 <h4 class="center">Vilt þú óska eftir skjátextaskrá fyrir kvikmynd eða þátt?</h4>
 
