@@ -270,7 +270,6 @@
     <Content Include="Views\Request\CreateEpisodeRequest.cshtml" />
     <Content Include="Views\SubtitleFile\DisplayMovie.cshtml" />
     <Content Include="Views\SubtitleFile\DisplaySerie.cshtml" />
-    <Content Include="Views\Request\CreateRequest.cshtml" />
     <Content Include="Views\Request\CreateEpisodeRequest.cshtml" />
     <Content Include="Views\SubtitleFile\DisplayMovie.cshtml" />
     <Content Include="Views\SubtitleFile\DisplaySerie.cshtml" />

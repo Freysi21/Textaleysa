@@ -9,7 +9,7 @@ using Textaleysa.Repositories;
 
 namespace TextaleysaTests.Mocks
 {
-    public class MockSubtitleRepository : ISubtitleRepository
+	public class MockSubtitleRepository : ISubtitleRepository
     {
         private readonly List<SubtitleFile> _subtitleFiles;
         public MockSubtitleRepository(List<SubtitleFile> subtitleFiles)
