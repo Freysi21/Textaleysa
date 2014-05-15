@@ -77,9 +77,6 @@ namespace Textaleysa.Models.ViewModel
 		[Display(Name = "Hlaðið upp")]
 		public DateTime date { get; set; }
 
-		[Display(Name = "Athugasemdir")]
-		public List<CommentAndLikeViewModel.CommentView> commentlist { get; set; }
-
 		[Display(Name = "Fjöldi niðurhala")]
 		public int downloadCount { get; set; }
 

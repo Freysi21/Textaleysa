@@ -68,9 +68,10 @@
             </dd>
             <!--HÉR VINN ÉG NÚNA-->
             <dd>
-                <input type="number" class="grade-file" id="@Html.DisplayFor(model => model.ID)"/>
+                <input type="number" class="grade-file" id="input-@Html.DisplayFor(model => model.ID)" />
                 <button type="submit" class="submit-grade" id="@Html.DisplayFor(model => model.ID)">Einkunnargjöf</button>
-                <span id="gradeGoHere"></span></dd>
+                <span id="gradeGoHere"></span>
+            </dd>
             <dt>
                 @Html.ActionLink("Hlaða niður", "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)
             </dt>
@@ -99,7 +100,7 @@
 </div>
 
 <ul id="comment-list" class="list-group" style="max-width: 560px;">
-    <!--here comes the list of comments and likes-->
+    <!--here comes the list of comments-->
 </ul>
 
 <!--Input field for new comment and a post button-->
@@ -122,20 +123,12 @@
     <li class="list-group-item comment-item">
         <p>
             <span class="glyphicon glyphicon-user"></span>
-            <span data-content="Username" class="text-primary username"></span>
-            <span data-content="CommentText"></span>
+            <span data-content="userName" class="text-primary username"></span>
+            <span data-content="comment"></span>
         </p>
         <p>
-            <span data-content="CommentDate" class="text-muted"></span>
-            <a class="like-comment" href="#!"> Like <span class="glyphicon glyphicon-thumbs-up"></span></a>
-            @if (User.IsInRole("Administrators"))
-            {
-                <button type="button" id="DeleteButton" class="btn btn-group-sm btn-danger">Delete</button>
-            }
+            <span data-content="commentDate" class="text-muted"></span>
         </p>
-        <ul class="list-unstyled like-list">
-            <!--here comes the list of likes-->
-        </ul>
     </li>
 </script>
 

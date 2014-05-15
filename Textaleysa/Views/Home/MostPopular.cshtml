@@ -27,7 +27,7 @@
 {
         <tr>
             <td>
-                @if(item.isMovie)
+                @if(!item.isMovie)
             {
                     @Html.ActionLink(item.title, "DisplayMovie", "SubtitleFile", new { id = item.ID }, null)
             }

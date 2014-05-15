@@ -2,7 +2,7 @@
     jQuery(".submit-grade").click(function () {
         var give_grade = $("input#" + this.id).val();
         if (give_grade > 10 || give_grade < 0) {
-            //alert("Einkunn verður að vera á bilinu 0-10");
+            console.log("Einkunn verður að vera á bilinu 0-10");
         }
         var new_grade = { fileID: this.id, mediaGrade: give_grade  }
         jQuery.post("/SubtitleFile/postGrade", new_grade, function (data) {

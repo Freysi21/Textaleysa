@@ -20,10 +20,12 @@ namespace Textaleysa.Controllers
         }
 
 		// Gets all the comments
-		public ActionResult GetComments()
+		public ActionResult GetComments(Comment comment)
 		{
 			// get all comments
-			var comments = repo.GetComments();
+			var comments = from c in repo.GetComments()
+						   where c.fileID == comment.fileID
+						   select c;
 			var result = from c in comments
 						 select new
 						 {
@@ -36,15 +38,16 @@ namespace Textaleysa.Controllers
 		}
 
 		// Posts a new comment
-		public ActionResult PostComment(Textaleysa.Models.ViewModel.CommentAndLikeViewModel.CommentView comment)
+		public ActionResult PostComment(Comment comment)
 		{
 			if (User.Identity.IsAuthenticated)
 			{ 
 				Comment c = new Comment();
 				// get the user name
 				c.userName = User.Identity.Name;
-				c.content = comment.comment;
+				c.content = comment.content;
 				c.date = DateTime.Now;
+				c.fileID = comment.fileID;
 				repo.AddComment(c);
 				return Json(c, JsonRequestBehavior.AllowGet);
 			}
@@ -54,7 +57,7 @@ namespace Textaleysa.Controllers
 			}
 		}
 
-		public ActionResult GetLikes()
+		public ActionResult GetLikes(Like like)
 		{
 			return View();
 		}
