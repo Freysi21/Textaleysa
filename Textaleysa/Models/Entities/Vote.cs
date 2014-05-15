@@ -10,5 +10,6 @@ namespace Textaleysa.Models
         public int ID { get; set; }
         public int requestID { get; set; }
         public string userName { get; set; }
+        public int fileID { get; set; }
     }
 }
