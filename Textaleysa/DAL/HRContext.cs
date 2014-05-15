@@ -15,23 +15,34 @@ namespace Textaleysa.DAL
 	public class HRContext : DbContext
 	{
 		public HRContext()
+<<<<<<< HEAD
+			: base("HRConnection")
+        {
+        }
+        
+		public DbSet<SubtitleFile>      subtitleFile      { get; set; }
+=======
 			: base("HRContext")
         {
         }
 	
 		public DbSet<SubtitleFile> subtitleFile { get; set; }
+>>>>>>> 5eba1e92f0ab962d933e4bb1ca0ea5d7977b294d
 		public DbSet<SubtitleFileChunk> subtitleFileChunk { get; set; }
-		public DbSet<Language> languages { get; set; }
-		public DbSet<Comment> comments { get; set; }
-		public DbSet<MediaTitle> meditaTitles { get; set; }
-		public DbSet<Vote> votes { get; set; }
-		public DbSet<Request> requests { get; set; }
+		public DbSet<Language>          languages         { get; set; }
+		public DbSet<Comment>           comments          { get; set; }
+        public DbSet<MediaTitle>        mediaTitles       { get; set; }
+		public DbSet<Vote>              votes             { get; set; }
+		public DbSet<Request>           requests          { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+       protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
+<<<<<<< HEAD
+	}
+=======
 		public class IdentityManager
 		{
 			public bool RoleExists(string name)

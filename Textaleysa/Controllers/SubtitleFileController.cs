@@ -227,7 +227,7 @@ namespace Textaleysa.Controllers
 				try
 				{
 					// Read the whole input file
-					StreamReader fileInput = new StreamReader(file.InputStream, System.Text.Encoding.UTF8, true);
+					StreamReader fileInput = new StreamReader(file.InputStream, System.Text.Encoding.Default, true);
 					do
 					{
 
@@ -325,7 +325,7 @@ namespace Textaleysa.Controllers
 				try
 				{
 					// Read the whole input file
-					StreamReader fileInput = new StreamReader(file.InputStream, System.Text.Encoding.UTF8, true);
+					StreamReader fileInput = new StreamReader(file.InputStream, System.Text.Encoding.Default, true);
 					do
 					{
 
