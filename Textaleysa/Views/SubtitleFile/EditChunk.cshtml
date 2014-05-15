@@ -1,0 +1,77 @@
+﻿@model Textaleysa.Models.ViewModel.DisplayContentFileView
+
+@{
+    ViewBag.Title = "EditChunk";
+}
+
+<h2>EditChunk</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>DisplayContentFileView</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.lineID, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.lineID)
+                @Html.ValidationMessageFor(model => model.lineID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.startTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.startTime)
+                @Html.ValidationMessageFor(model => model.startTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.stopTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.stopTime)
+                @Html.ValidationMessageFor(model => model.stopTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.line1, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.line1)
+                @Html.ValidationMessageFor(model => model.line1)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.line2, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.line2)
+                @Html.ValidationMessageFor(model => model.line2)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.line3, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.line3)
+                @Html.ValidationMessageFor(model => model.line3)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

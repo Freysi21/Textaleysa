@@ -84,7 +84,11 @@
     <div class="col-xs-4">
 
         @Html.ActionLink("Breyta", "EditMovie", new {  id = Model.ID }) |
-        @Html.ActionLink("Eyða", "DeleteFile", new { id = Model.ID }, null)
+        @if(User.IsInRole("Administrators"))
+        { 
+            @Html.ActionLink("Eyða", "DeleteFile", new { id = Model.ID }, null) <span>|</span>
+        }
+        @Html.ActionLink("Skoða Innihald skráar", "DisplayContent", new { id = Model.ID}, null)
 
     </div>
     <div class="col-xs-4"></div>
@@ -99,7 +103,7 @@
     <li class="list-group-item">
         <div class="form-horizontal">
             <label class="sr-only" for="commentContent">Comment</label>
-            <textarea class="form-control" rows="3" id="content" name="content" placeholder="Enter a comment"></textarea>
+            <textarea class="form-control" rows="3" id="comment" name="comment" placeholder="Enter a comment"></textarea>
             <button type="button" id="postbutton" class="btn btn-primary">Send</button>
         </div>
     </li>
@@ -108,4 +112,24 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 <script src="~/Scripts/CommentAndLikeScript.js"></script>
+<script type="text/html" id="template">
+    <li class="list-group-item comment-item">
+        <p>
+            <span class="glyphicon glyphicon-user"></span>
+            <span data-content="Username" class="text-primary username"></span>
+            <span data-content="CommentText"></span>
+        </p>
+        <p>
+            <span data-content="CommentDate" class="text-muted"></span>
+            <a class="like-comment" href="#!"> Like <span class="glyphicon glyphicon-thumbs-up"></span></a>
+            @if (User.IsInRole("Administrators"))
+            {
+                <button type="button" id="DeleteButton" class="btn btn-group-sm btn-danger">Delete</button>
+            }
+        </p>
+        <ul class="list-unstyled like-list">
+            <!--here comes the list of likes-->
+        </ul>
+    </li>
+</script>
 

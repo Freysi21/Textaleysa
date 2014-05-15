@@ -1,4 +1,4 @@
-﻿@model Textaleysa.Models.ViewModel.DisplayMovieView
+﻿@model Textaleysa.Models.ViewModel.DisplayMovieFileView
 
 
 <div class="row center">
@@ -37,7 +37,13 @@
                 {
                     <p>@Html.DisplayFor(modelItem => item.line3)</p>
                 }
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.ActionLink("Breyta texta", "EditChunk", "SubtitleFile", new { id = item.ID }, null)
+                    </div>
+                </div>
             </div>
+            }
         }
     </div>
 </div>

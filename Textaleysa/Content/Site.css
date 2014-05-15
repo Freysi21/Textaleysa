@@ -1,4 +1,14 @@
-﻿#TextaleysaLogo{
+﻿.upload-buttons{
+    width: 8em;
+    margin-left: 3em;
+    margin-right: 3em
+}
+#edit-content{
+    max-width:80em;
+    width: 100%;
+    height: 40em;
+}
+#TextaleysaLogo{
     width: 27em;
     height: 7em;
 }

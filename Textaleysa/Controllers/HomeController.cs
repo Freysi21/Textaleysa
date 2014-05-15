@@ -19,34 +19,86 @@ namespace Textaleysa.Controllers
 		MediaTitleRepository meditaTitleRepo = new MediaTitleRepository();
 		SubtitleFileTransfer subtitleFileTransfer = new SubtitleFileTransfer();
 		MediaTitleTransfer mediaTitleTransfer = new MediaTitleTransfer();
+		LanguageRepository langRepo = new LanguageRepository();
 		private ApplicationDbContext db = new ApplicationDbContext();
 
 		public ActionResult Index()
 		{
+			FrontPageViewModel frontPage = new FrontPageViewModel();
+			#region get languages for dropdownlist
+			frontPage.languageOptions = langRepo.GetLanguages();
+			if (frontPage.languageOptions == null)
+			{
+				return View("Error");
+			}
+			#endregion
+
+			#region get most popular files
 			var mostPopular = (from m in subtitleFileRepo.GetAllSubtitles()
 							   where m.downloadCount >= 1
 							   orderby m.downloadCount descending
 							   select m).Take(10);
 
-			List<FileFrontPageList> listPopular = new List<FileFrontPageList>();
+			frontPage.mostPopularFiles = new List<ListOfFilesView>();
 			foreach(var item in mostPopular)
 			{
-				FileFrontPageList popularItem = new FileFrontPageList();
-				popularItem.ID = item.ID;
+				ListOfFilesView model = new ListOfFilesView();
+				model.ID = item.ID;
 
-
-				var title = mediaTitleTransfer.GetMovieById(item.mediaTitleID);
+				var title = mediaTitleTransfer.GetMediaTitleById(item.mediaTitleID);
 				if (title != null)
 				{
-					popularItem.title = title.title + " (" + title.yearReleased.ToString() + ") " + item.language;
-					listPopular.Add(popularItem);
+					if (title.isMovie)
+					{
+						model.isMovie = true;
+						model.title = title.title + " (" + title.yearReleased.ToString() + ") " + item.language;
+					}
+					else
+					{
+						model.isMovie = false ;
+						model.title = title.title + " s" + title.season + "e" + title.episode + " " + item.language;
+					}
+					frontPage.mostPopularFiles.Add(model);
 				}
 			}
-			if (listPopular == null)
+			if (frontPage.mostPopularFiles == null)
 			{
 				return View();
 			}
-			return View(listPopular);
+			#endregion
+
+			#region get lates uploaded files
+			var latestFiles = (from l in subtitleFileRepo.GetAllSubtitles()
+							  orderby l.date descending
+							  select l).Take(10);
+
+			frontPage.latestFiles = new List<ListOfFilesView>();
+			foreach (var item in latestFiles)
+			{
+				ListOfFilesView model = new ListOfFilesView();
+				model.ID = item.ID;
+
+				var title = mediaTitleTransfer.GetMediaTitleById(item.mediaTitleID);
+				if (title != null)
+				{
+					if (title.isMovie)
+					{
+						model.title = title.title + " (" + title.yearReleased.ToString() + ") " + item.language;
+					}
+					else
+					{
+						model.title = title.title + " s" + title.season + "e" + title.episode + " " + item.language;
+					}
+					frontPage.latestFiles.Add(model);
+				}
+			}
+			if (frontPage.latestFiles == null)
+			{
+				return View();
+			}
+			#endregion
+
+			return View(frontPage);
 		}
 
 		public ActionResult MostPopular()

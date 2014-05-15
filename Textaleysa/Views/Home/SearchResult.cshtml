@@ -31,7 +31,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink(item.title, "DisplayFile", "SubtitleFile", new { id = item.ID }, null)
+            @Html.ActionLink(item.title, "DisplayMovie", "SubtitleFile", new { id = item.ID }, null)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.language)
