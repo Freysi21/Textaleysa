@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-    alert("hallo");
     jQuery(".vote-request").click(function () {
         var new_vote = { requestID: this.id }
         jQuery.post("/Request/postVotes", new_vote, function (data) {
