@@ -10,6 +10,8 @@ namespace Textaleysa.Models.ViewModel
 	{
 		public class CommentView
 		{
+			public int fileID { get; set; }
+
 			[Display(Name = "Content")]
 			public string comment { get; set; }
 		}

@@ -674,7 +674,7 @@ namespace Textaleysa.Controllers
 				DisplayContentFileView content = new DisplayContentFileView();
 				#region putting everything into place for the ViewModel list
 				content.ID = item.ID;
-				content.lineID = item.subtitleFileID;
+				content.lineID = item.lineID;
 				content.startTime = item.startTime;
 				content.stopTime = item.stopTime;
 				content.line1 = item.subtitleLine1;
@@ -732,7 +732,7 @@ namespace Textaleysa.Controllers
 				DisplayContentFileView content = new DisplayContentFileView();
 				#region putting everything into place for the ViewModel list
 				content.ID = item.ID;
-				content.lineID = item.subtitleFileID;
+				content.lineID = item.lineID;
 				content.startTime = item.startTime;
 				content.stopTime = item.stopTime;
 				content.line1 = item.subtitleLine1;

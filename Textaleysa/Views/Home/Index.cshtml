@@ -24,9 +24,18 @@
             <ol>
                 @foreach(var item in Model.mostPopularFiles)
                 { 
-                   <li> 
-                       @Html.ActionLink(item.title, "DisplayFile", "SubtitleFile", new { id = item.ID }, null)
-                   </li>
+                   if(item.isMovie)
+                    {
+                        <li>
+                            @Html.ActionLink(item.title, "DisplayMovie", "SubtitleFile", new { id = item.ID }, null)
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            @Html.ActionLink(item.title, "DisplaySerie", "SubtitleFile", new { id = item.ID }, null)
+                        </li>
+                    }
                 }
             </ol>
         </div>
@@ -36,7 +45,7 @@
             <ol>
                 @foreach(var item in Model.latestFiles)
                 { 
-                    if(item.isMovie)
+                    if(!item.isMovie)
                     {
                         <li>
                             @Html.ActionLink(item.title, "DisplayMovie", "SubtitleFile", new { id = item.ID }, null)

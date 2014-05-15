@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.dll.config
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.dll
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.pdb
@@ -99,3 +100,56 @@ C:\Users\Eysteinn\textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAcc
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
 C:\Users\Eysteinn\textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
+=======
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Textaleysa.dll.config
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Textaleysa.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Textaleysa.pdb
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Antlr3.Runtime.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Newtonsoft.Json.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Owin.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.Helpers.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.Mvc.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.Optimization.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.Razor.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.WebPages.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.WebPages.Razor.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\WebGrease.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.Helpers.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.Mvc.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.Optimization.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.Razor.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.WebPages.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\System.Web.WebPages.Razor.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Newtonsoft.Json.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Antlr3.Runtime.pdb
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
+>>>>>>> be6a1f4c1de02ffd6af23bca95bad2a4cd5ca1a5
