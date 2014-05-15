@@ -5,7 +5,7 @@
         <h2>Nánar um @Html.DisplayFor(model => model.title)</h2>
     </div>
 </div>
-
+<!--HÉR VINN ÉG Í BILI-->
 <div class="row">
     <div class="col-xs-4"></div>
     <div class="col-xs-4">
@@ -47,7 +47,7 @@
                 @Html.DisplayNameFor(model => model.grade)
             </dt>
 
-            <dd>
+            <dd id="grade-@Html.DisplayFor(model => model.ID)">
                 @Html.DisplayFor(model => model.grade)
             </dd>
 
@@ -66,8 +66,10 @@
             <dd>
                 @Html.DisplayFor(model => model.downloadCount)
             </dd>
+            <!--HÉR VINN ÉG NÚNA-->
             <dd>
-                <button type="submit" class="grade-file" id="@Html.DisplayFor(model => model.ID)"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                <input type="number" class="grade-file" id="@Html.DisplayFor(model => model.ID)"/>
+                <button type="submit" class="submit-grade" id="@Html.DisplayFor(model => model.ID)">Einkunnargjöf</button>
                 <span id="gradeGoHere"></span></dd>
             <dt>
                 @Html.ActionLink("Hlaða niður", "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)

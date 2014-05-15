@@ -8,6 +8,7 @@ using Textaleysa.Models;
 using Textaleysa.Models.DataTransferOpjects;
 using Textaleysa.Models.Repositories;
 using Textaleysa.Models.ViewModel;
+using Textaleysa.Repositories;
 
 
 
@@ -15,6 +16,15 @@ namespace Textaleysa.Controllers
 {
 	public class HomeController : Controller
 	{
+        private readonly ISubtitleRepository _repo;
+        public HomeController(ISubtitleRepository repo)
+        {
+            _repo = repo;
+        }
+        public HomeController()
+        {
+            _repo = new SubtitleFileRepository();
+        }
 		SubtitleFileRepository subtitleFileRepo = new SubtitleFileRepository();
 		MediaTitleRepository meditaTitleRepo = new MediaTitleRepository();
 		SubtitleFileTransfer subtitleFileTransfer = new SubtitleFileTransfer();
@@ -24,6 +34,8 @@ namespace Textaleysa.Controllers
 
 		public ActionResult Index()
 		{
+
+
 			FrontPageViewModel frontPage = new FrontPageViewModel();
 
 			#region get most popular files
@@ -143,6 +155,7 @@ namespace Textaleysa.Controllers
 		{
 			return RedirectToAction("SearchResult", s);
 		}
+
 
 		[HttpGet]
 		public ActionResult SearchResult(SearchViewModel s)

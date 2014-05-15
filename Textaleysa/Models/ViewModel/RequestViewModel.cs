@@ -14,15 +14,15 @@ namespace Textaleysa.Models.ViewModel
     {
 
         [Required(ErrorMessage="Vantar titil")]
-        [Display(Name = "Nafn kvikmyndar")]
+        [Display(Name = "mediaTitle")]
         public string mediaTitle { get; set; }
 
         [Required(ErrorMessage = "Vantar ártal")]
-        [Display(Name = "Útgáfuár")]
+        [Display(Name = "Year Realeased")]
         public int yearReleased { get; set; }
 
         [Required(ErrorMessage = "Vantar tungumál")]
-        [Display(Name = "Tungumál")]
+        [Display(Name = "language")]
         public string language { get; set; }
     }
     public class UploadEpisodeRequestViewModel

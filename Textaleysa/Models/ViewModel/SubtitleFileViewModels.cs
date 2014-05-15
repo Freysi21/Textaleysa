@@ -70,6 +70,7 @@ namespace Textaleysa.Models.ViewModel
 		[Display(Name = "Notandi")]
 		public string userName { get; set; }
 
+        [Required(ErrorMessage = "Einkunn verður að vera 0-10")]
 		[Display(Name = "Einkunn")]
 		public double grade { get; set; }
 

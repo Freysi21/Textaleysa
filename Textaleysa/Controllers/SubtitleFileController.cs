@@ -21,6 +21,8 @@ namespace Textaleysa.Controllers
 		MediaTitleRepository mediaTitleRepo = new MediaTitleRepository();
 		SubtitleFileTransfer subtitleFileTransfer = new SubtitleFileTransfer();
 		MediaTitleTransfer mediaTitleTransfer = new MediaTitleTransfer();
+        GradeRepository grepo = new GradeRepository();
+
 
 		private LanguageRepository langDb = new LanguageRepository();
 
@@ -57,7 +59,7 @@ namespace Textaleysa.Controllers
 				dmv.ID = subtitleFile.ID;
 				dmv.title = movie.title;
 				dmv.yearReleased = movie.yearReleased;
-				dmv.grade = 10;
+                dmv.grade = grepo.GetAvgForFile(id.Value);
 				dmv.userName = subtitleFile.userName;
 				dmv.language = subtitleFile.language;
 				dmv.date = subtitleFile.date;
@@ -97,7 +99,7 @@ namespace Textaleysa.Controllers
 				model.title = serie.title;
 				model.season = serie.season;
 				model.episode = serie.episode;
-				model.grade = 10;
+                model.grade = grepo.GetAvgForFile(id.Value);
 				#endregion
 				return View(model);
 			}
@@ -812,12 +814,10 @@ namespace Textaleysa.Controllers
 
         #region controllerar fyrir Script
 
-        GradeRepository grepo = new GradeRepository();
 
         public ActionResult getGrades(Grade grade)
         {
-            var avg = new { avrage = grepo.GetAvgForRequest(grade.fileID) };
-
+            var avg = new { avrage = grepo.GetAvgForFile(grade.fileID), ID = grade.fileID };
             return Json(avg, JsonRequestBehavior.AllowGet);
         }
         public ActionResult postGrade(Grade grade)
@@ -825,6 +825,10 @@ namespace Textaleysa.Controllers
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
+            }
+            if (grade.mediaGrade > 10 || grade.mediaGrade < 0)
+            {
+                return Json("", JsonRequestBehavior.AllowGet);
             }
             var gradeForFile = grepo.GetGradeForFile(grade.fileID); // get all the votes 
             var user = User.Identity.Name;
