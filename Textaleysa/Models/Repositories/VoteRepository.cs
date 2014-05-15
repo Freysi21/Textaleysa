@@ -9,7 +9,7 @@ namespace Textaleysa.Models.Repositories
 {
     public class VoteRepository
     {
-		HRContext db = new HRContext();
+		ApplicationDbContext db = new ApplicationDbContext();
 
         #region GetVotes
         public IEnumerable<Vote> GetVotes()

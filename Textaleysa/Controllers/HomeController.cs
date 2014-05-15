@@ -21,15 +21,19 @@ namespace Textaleysa.Controllers
         {
             _repo = repo;
         }
+        public HomeController()
+        {
+            _repo = new SubtitleFileRepository();
+        }
 		SubtitleFileRepository subtitleFileRepo = new SubtitleFileRepository();
 		MediaTitleRepository meditaTitleRepo = new MediaTitleRepository();
 		SubtitleFileTransfer subtitleFileTransfer = new SubtitleFileTransfer();
 		MediaTitleTransfer mediaTitleTransfer = new MediaTitleTransfer();
-		private HRContext db = new HRContext();
+		private ApplicationDbContext db = new ApplicationDbContext();
 
 		public ActionResult Index()
 		{
-			var mostPopular = (from m in subtitleFileRepo.GetAllSubtitles()
+			var mostPopular = (from m in _repo.GetAllSubtitles()
 							   where m.downloadCount >= 1
 							   orderby m.downloadCount descending
 							   select m).Take(10);

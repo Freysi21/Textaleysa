@@ -9,7 +9,7 @@ namespace Textaleysa.Models.Repositories
 {
     public class RequestRepository
     {
-		HRContext db = new HRContext();
+		ApplicationDbContext db = new ApplicationDbContext();
 
         #region GetRequests()
         public IEnumerable<Request> GetRequests()

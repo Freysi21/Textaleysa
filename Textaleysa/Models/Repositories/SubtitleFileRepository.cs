@@ -10,8 +10,8 @@ namespace Textaleysa.Models.Repositories
 {
     public class SubtitleFileRepository : ISubtitleRepository
     {
-        private HRContext _context;
-		HRContext db = new HRContext();
+		ApplicationDbContext db = new ApplicationDbContext();
+
 
 
         public IQueryable<SubtitleFile> GetAllSubtitles()
@@ -21,7 +21,6 @@ namespace Textaleysa.Models.Repositories
                          select f;
             return result;
         }
-
 
 		#region SubtitleFile functions
 

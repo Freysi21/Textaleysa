@@ -16,7 +16,7 @@ namespace Textaleysa.Controllers
 {
     public class SubtitleFileController : Controller
     {
-		HRContext db = new HRContext();
+		ApplicationDbContext db = new ApplicationDbContext();
 		SubtitleFileRepository subtitleFileRepo = new SubtitleFileRepository();
 		MediaTitleRepository mediaTitleRepo = new MediaTitleRepository();
 		SubtitleFileTransfer subtitleFileTransfer = new SubtitleFileTransfer();
@@ -28,6 +28,7 @@ namespace Textaleysa.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+			
             return View();
         }
 
@@ -161,6 +162,7 @@ namespace Textaleysa.Controllers
 			return File(stream, "charset=\"utf-8\"", fileTitle);
 		}
 
+		[Authorize]
 		public ActionResult UploadMovie()
 		{
 			UploadMovieModelView model = new UploadMovieModelView();
@@ -172,6 +174,7 @@ namespace Textaleysa.Controllers
 			return View(model);
 		}
 
+		[Authorize]
 		public ActionResult UploadSerie()
 		{
 			UploadSerieModelView model = new UploadSerieModelView();
@@ -379,6 +382,7 @@ namespace Textaleysa.Controllers
 			return RedirectToAction("UploadMovie");
 		}
 
+		[Authorize(Roles = "Administrators")]
 		public ActionResult DeleteFile(int? id)
 		{
 			#region if (id == null) return NOTFOUND
@@ -401,7 +405,7 @@ namespace Textaleysa.Controllers
 
 			return View("Index");
 		}
-
+		[Authorize(Roles = "Administrators")]
 		public ActionResult AddLanguageChoise()
 		{
 			return View();
@@ -416,6 +420,7 @@ namespace Textaleysa.Controllers
 			return RedirectToAction("Index");
 		}
 
+		[Authorize]
 		public ActionResult EditMovie(int? id)
 		{
 			#region if (id == null) return NOTFOUND
@@ -472,7 +477,8 @@ namespace Textaleysa.Controllers
 			file.content = result;
 			return View(file);
 		}
-
+		
+		[Authorize]
 		public ActionResult EditSerie(int? id)
 		{
 			#region if (id == null) return NOTFOUND
@@ -673,7 +679,33 @@ namespace Textaleysa.Controllers
 			#endregion
 			return View(file);
 		}
-		
+
+		[Authorize]
+		[HttpGet]
+		public ActionResult EditChunk(int? id)
+		{
+			if (id == null)
+			{
+				return View("Error");
+			}
+			var chunk = subtitleFileTransfer.GetCunkByID(id.Value);
+			if (chunk == null)
+			{
+				return View("Error");
+			}
+			DisplayContentFileView subtitleChunk = new DisplayContentFileView();
+			chunk.ID = subtitleChunk.ID;
+			chunk.lineID = subtitleChunk.lineID;
+			chunk.startTime = subtitleChunk.startTime;
+			chunk.stopTime = subtitleChunk.stopTime;
+			
+
+
+			return View();
+		}
+
+		[Authorize]
+		[HttpPost]
 		public ActionResult EditChunk(DisplayContentFileView chunkInput)
 		{
 			var chunk = subtitleFileTransfer.GetSubtitleFileChunkById(chunkInput.ID);
