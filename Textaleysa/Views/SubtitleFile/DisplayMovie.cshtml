@@ -66,6 +66,9 @@
             <dd>
                 @Html.DisplayFor(model => model.downloadCount)
             </dd>
+            <dd>
+                <button type="submit" class="vote-request" id="@Html.DisplayFor(modelItem => item.ID)"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+            </dd>
 
             <dt>
                 @Html.ActionLink("Hlaða niður", "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)

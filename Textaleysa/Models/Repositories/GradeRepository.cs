@@ -7,38 +7,50 @@ namespace Textaleysa.Models.Repositories
 {
     public class GradeRepository
     {
-private static GradeRepository instance;
+        ApplicationDbContext db = new ApplicationDbContext();
 
-        public static GradeRepository Instance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new GradeRepository();
-                return instance;
-            }
-        }
-        private List<Grade> grades = null;
-        private GradeRepository()
-        {
-            this.grades = new List<Grade>();
-        }
+        #region Get
         public IEnumerable<Grade> GetGrades()
         {
-            var result = from v in grades
+            var result = from v in db.grades
                          orderby v.fileID ascending
                          select v;
             return result;
         }
+        #endregion
 
+        #region Add
         public void AddGrade(Grade g)
         {
-            int newID = 1;
-            if (grades.Count() > 0)
+            db.grades.Add(g);
+            db.SaveChanges();
+        }
+        #endregion
+
+        #region GetGradeForFile
+        public IEnumerable<Grade> GetGradeForFile(int id)
+        {
+            var result = from v in db.grades
+                         where v.fileID == id
+                         select v;
+
+            return result;
+        }
+        #endregion
+        public double GetAvgForRequest(int id)
+        {
+            var result = from v in db.grades
+                         where v.fileID == id
+                         select v;
+            double sum = 0;
+            foreach(var g in result)
             {
-                newID = grades.Max(x => x.ID) + 1;
+                sum = g.mediaGrade + sum;
             }
-            g.ID = newID;
+
+            sum = (sum / result.Count());
+
+            return sum;
         }
     }
 }
