@@ -48,3 +48,4 @@ C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Microsoft.Owin.Security.Twitt
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.pdb
+C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
