@@ -66,7 +66,9 @@
             <dd>
                 @Html.DisplayFor(model => model.downloadCount)
             </dd>
-
+            <dd>
+                <button type="submit" class="grade-file" id="@Html.DisplayFor(model => model.ID)"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                <span id="gradeGoHere"></span></dd>
             <dt>
                 @Html.ActionLink("Hlaða niður", "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)
             </dt>
@@ -112,6 +114,8 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 <script src="~/Scripts/CommentAndLikeScript.js"></script>
+<script src="~/Scripts/GradeScript.js"></script>
+
 <script type="text/html" id="template">
     <li class="list-group-item comment-item">
         <p>

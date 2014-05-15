@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    alert("hallo");
     jQuery(".vote-request").click(function () {
         var new_vote = { requestID: this.id }
         jQuery.post("/Request/postVotes", new_vote, function (data) {
@@ -18,6 +19,10 @@ function getVote(new_vote) {
             $('#vote-' + votes[0].requestID).html(votes.length);
         },
         error: function (xhr, err) {
+            // Note: just for debugging purposes!
+            alert("readyState: " + xhr.readyState +
+            "\nstatus: " + xhr.status);
+            alert("responseText: " + xhr.responseText);
         }
     });
 }

@@ -10,14 +10,6 @@ namespace Textaleysa.Models.ViewModel
 		public class SearchViewModel
 		{
 			public string searchString { get; set; }
-
-			public bool isMoive {get; set;}
-
-			[Display(Name = "Tungumál")]
-			public int languageID { get; set; }
-
-			public IEnumerable<Language> languageOptions { get; set; }
-			
 		}
 
 		public class FrontPageViewModel : SearchViewModel
@@ -35,5 +27,37 @@ namespace Textaleysa.Models.ViewModel
 			public string title { get; set; }
 
 			public bool isMovie { get; set; }
+		}
+
+
+		public class SearchResultView
+		{
+			public string searchString { get; set; }
+
+			public List<SearchResultListView> searchResultList { get; set; }
+		}
+		
+		public class SearchResultListView
+		{
+			public int ID { get; set; }
+
+			[Display(Name = "Titill")]
+			public string title { get; set; }
+
+			[Display(Name = "Tungumál")]
+			public string language { get; set; }
+
+			[Display(Name = "Fjöldi Niðurhala")]
+			public int downloadCount { get; set; }
+
+			[Display(Name = "Notandi")]
+			public string userName { get; set; }
+
+			[Display(Name = "Hlaðið upp")]
+			public DateTime date { get; set; }
+
+			public bool isMovie { get; set; }
+
+			
 		}
 }
