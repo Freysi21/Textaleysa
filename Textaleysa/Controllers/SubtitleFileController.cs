@@ -416,7 +416,7 @@ namespace Textaleysa.Controllers
 			subtitleFileRepo.DeleteSubtitleFileChunk(subtitleFile.ID);
 			subtitleFileRepo.DeleteSubtitleFile(subtitleFile);
 
-			return View("Index");
+			return View("Home", "Index");
 		}
 
 		[Authorize(Roles = "Administrators")]
