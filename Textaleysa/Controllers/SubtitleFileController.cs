@@ -558,6 +558,8 @@ namespace Textaleysa.Controllers
 			}
 			#endregion
 
+			var mediaTitle = mediaTitleTransfer.GetMediaTitleById(subtitleFile.ID);
+
 			SubtitleFile newFile = new SubtitleFile();
 			#region newfile = subtitlFile
 			newFile.language = subtitleFile.language;
@@ -622,7 +624,14 @@ namespace Textaleysa.Controllers
 				} while (!fileInput.EndOfStream);
 				subtitleFileRepo.DeleteSubtitleFileChunk(subtitleFile.ID);
 				subtitleFileRepo.DeleteSubtitleFile(subtitleFile);
-				return RedirectToAction("DisplayFile", newFile.ID);
+				if (mediaTitle.isMovie)
+				{
+					return RedirectToAction("DisplayMovie", newFile.ID);
+				}
+				else
+				{
+					return RedirectToAction("DisplaySerie", newFile.ID);
+				}
 					#endregion
 			}
 			catch (Exception)
