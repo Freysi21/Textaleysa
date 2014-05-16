@@ -1,74 +1,74 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title | Textaleysa</title>
-    @Styles.Render("~/Content/css")
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top FontWhite">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <span>@Html.ActionLink("Textaleysa", "Index", "Home", null, new { @class = "navbar-brand" })</span>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title | Textaleysa</title>
+        @Styles.Render("~/Content/css")
+        <link href="~/Content/Site.css" rel="stylesheet" />
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top FontWhite">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span>@Html.ActionLink("Textaleysa", "Index", "Home", null, new { @class = "navbar-brand" })</span>
 
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Hjálp", "Help", "Home")</li>
-                    <li>@Html.ActionLink("Vinsælast", "MostPopular", "Home")</li>
-                    <li>@Html.ActionLink("Beiðnir", "RequestList", "Request")</li>
-                    <li>@Html.ActionLink("Hlaða upp skjátextaskrá", "Upload", "SubtitleFile")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")  
-                ﻿@Html.Partial("_SearchPartial")
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Hjálp", "Help", "Home")</li>
+                        <li>@Html.ActionLink("Vinsælast", "MostPopular", "Home")</li>
+                        <li>@Html.ActionLink("Beiðnir", "RequestList", "Request")</li>
+                        <li>@Html.ActionLink("Hlaða upp skjátextaskrá", "Upload", "SubtitleFile")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")  
+                    ﻿@Html.Partial("_SearchPartial")
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row center">
-        <div class="col-xs-12 FirstDivOnPage"></div>
-    </div>
-    <div class="row center">
-        <div class="col-xs-12"><h2>@ViewBag.title</h2></div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 SecondDivOnPage"></div>
-    </div>
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
+        <div class="row center">
+            <div class="col-xs-12 FirstDivOnPage"></div>
+        </div>
+        <div class="row center">
+            <div class="col-xs-12"><h2>@ViewBag.title</h2></div>
+        </div>
         <div class="row">
-            <div class="col-xs-4">
-                <footer>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Um okkur", "About", "Home")</li>
-                            <li>@Html.ActionLink("Hafa samband", "Contact", "Home")</li>
-                        </ul>
-                    </div>
-                    <p>&copy; @DateTime.Now.Year - Textaleysa</p>
-                </footer>
-            </div>
-            <div class="col-xs-4"></div>
-            <div class="col-xs-4">
-                <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.textaleysa.is&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80" 
-                        scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowtransparency="true"></iframe>
+            <div class="col-xs-12 SecondDivOnPage"></div>
+        </div>
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <div class="row">
+                <div class="col-xs-4">
+                    <footer>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Um okkur", "About", "Home")</li>
+                                <li>@Html.ActionLink("Hafa samband", "Contact", "Home")</li>
+                            </ul>
+                        </div>
+                        <p>&copy; @DateTime.Now.Year - Textaleysa</p>
+                    </footer>
+                </div>
+                <div class="col-xs-4"></div>
+                <div class="col-xs-4">
+                    <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.textaleysa.is&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80" 
+                            scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowtransparency="true"></iframe>
+                </div>
             </div>
         </div>
-    </div>
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    <script src="~/Scripts/jquery.loadTemplate-1.4.1.js"></script>
-</body>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        <script src="~/Scripts/jquery.loadTemplate-1.4.1.js"></script>
+    </body>
 </html>

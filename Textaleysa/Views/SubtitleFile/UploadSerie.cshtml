@@ -15,7 +15,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.title, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.title)
+                @Html.TextBoxFor(model => model.title, new { @class = "grade"})
                 @Html.ValidationMessageFor(model => model.title)
             </div>
         </div>
@@ -24,7 +24,7 @@
             @Html.LabelFor(model => model.languageID, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(m => m.languageID, new SelectList(Model.languageOptions, "ID", "language",
-         Model.languageOptions.First().ID))
+  Model.languageOptions.First().ID), new { @class = "grade" })
                 @Html.ValidationMessageFor(model => model.languageID)
             </div>
         </div>
@@ -32,7 +32,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.season, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.season)
+                @Html.TextBoxFor(model => model.season, new { @class = "grade" })
                 @Html.ValidationMessageFor(model => model.season)
             </div>
         </div>
@@ -40,7 +40,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.episode, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.episode)
+                @Html.TextBoxFor(model => model.episode, new { @class = "grade" })
                 @Html.ValidationMessageFor(model => model.episode)
             </div>
         </div>

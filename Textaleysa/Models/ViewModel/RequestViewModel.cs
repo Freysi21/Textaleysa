@@ -14,15 +14,15 @@ namespace Textaleysa.Models.ViewModel
     {
 
         [Required(ErrorMessage="Vantar titil")]
-        [Display(Name = "mediaTitle")]
+        [Display(Name = "Titill")]
         public string mediaTitle { get; set; }
 
         [Required(ErrorMessage = "Vantar ártal")]
-        [Display(Name = "Year Realeased")]
+        [Display(Name = "Útgáfuár")]
         public int yearReleased { get; set; }
 
-        [Required(ErrorMessage = "Vantar tungumál")]
-        [Display(Name = "language")]
+        [Required(ErrorMessage = "Tungumál vantar")]
+        [Display(Name = "Tungumál")]
         public string language { get; set; }
     }
     public class UploadEpisodeRequestViewModel
@@ -40,7 +40,7 @@ namespace Textaleysa.Models.ViewModel
         [Display(Name = "Þáttur")]
         public int episode { get; set; }
 
-        [Required(ErrorMessage = "Vantar tungumál")]
+        [Required(ErrorMessage = "Tungumál vantar")]
         [Display(Name = "Tungumál")]
         public string language { get; set; }
     }
