@@ -1,12 +1,10 @@
-﻿@model Textaleysa.Models.ViewModel.UploadMovieRequestViewModel
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
 }
 ﻿
 @{
-    ViewBag.Title = "Senda inn beiðni";
+    ViewBag.Title = "Ný beiðni";
 }
 
 <h4 class="center">Vilt þú óska eftir skjátextaskrá fyrir kvikmynd eða þátt?</h4>
@@ -23,3 +21,4 @@
             <a class="btn btn-default upload-buttons" href="/Request/CreateEpisodeRequest">Þátt</a>
         </div>
 </div> 
+

@@ -37,7 +37,7 @@ namespace Textaleysa.Models.Repositories
             return result;
         }
         #endregion
-        public double GetAvgForRequest(int id)
+        public double GetAvgForFile(int id)
         {
             var result = from v in db.grades
                          where v.fileID == id
@@ -47,8 +47,14 @@ namespace Textaleysa.Models.Repositories
             {
                 sum = g.mediaGrade + sum;
             }
-
-            sum = (sum / result.Count());
+            if (result.Count() != 0)
+            {
+                sum = (sum / result.Count());
+            }
+            else
+            {
+                sum = 0;
+            }
 
             return sum;
         }

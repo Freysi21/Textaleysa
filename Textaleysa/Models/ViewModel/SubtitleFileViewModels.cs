@@ -70,14 +70,12 @@ namespace Textaleysa.Models.ViewModel
 		[Display(Name = "Notandi")]
 		public string userName { get; set; }
 
+        [Required(ErrorMessage = "Einkunn verður að vera 0-10")]
 		[Display(Name = "Einkunn")]
 		public double grade { get; set; }
 
 		[Display(Name = "Hlaðið upp")]
 		public DateTime date { get; set; }
-
-		[Display(Name = "Athugasemdir")]
-		public List<CommentAndLikeViewModel.CommentView> commentlist { get; set; }
 
 		[Display(Name = "Fjöldi niðurhala")]
 		public int downloadCount { get; set; }
