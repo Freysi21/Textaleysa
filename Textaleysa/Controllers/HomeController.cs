@@ -34,8 +34,6 @@ namespace Textaleysa.Controllers
 
 		public ActionResult Index()
 		{
-
-
 			FrontPageViewModel frontPage = new FrontPageViewModel();
 
 			#region get most popular files
