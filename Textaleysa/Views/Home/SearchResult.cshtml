@@ -5,7 +5,11 @@
 }
 @if (!string.IsNullOrEmpty(Model.searchString))
 { 
-    <span id="search-string"> @Html.DisplayFor(model => model.searchString) </span>
+    
+    <div id="search-string"> 
+   
+    <h2> Þú leitaðir að: @Html.DisplayFor(model => model.searchString)</h2> 
+    </div>
 }
 <table class="table">
     <tr>

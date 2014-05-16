@@ -1,9 +1,4 @@
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-}
-﻿
-@{
+﻿@{
     ViewBag.Title = "Ný beiðni";
 }
 
@@ -17,7 +12,7 @@
         <div class="btn-group btn-group-lg">
             <a class="btn btn-default upload-buttons" href="/Request/CreateMovieRequest">Kvikmynd</a>
         </div>
-           <div class="btn-group btn-group-lg">
+        <div class="btn-group btn-group-lg">
             <a class="btn btn-default upload-buttons" href="/Request/CreateEpisodeRequest">Þátt</a>
         </div>
 </div> 
