@@ -54,7 +54,7 @@ namespace Textaleysa.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Ólöglegt notandanafn eða lyilorð.");
+                    ModelState.AddModelError("", "Ólöglegt notandanafn eða lykilorð.");
                 }
             }
 

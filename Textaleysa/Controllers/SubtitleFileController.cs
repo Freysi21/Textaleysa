@@ -426,7 +426,7 @@ namespace Textaleysa.Controllers
 			Language lang = new Language();
 			lang.language = l.language;
 			langDb.AddLanguage(lang);
-			return RedirectToAction("Index");
+			return RedirectToAction("Index", "Home");
 		}
 
 		[Authorize]

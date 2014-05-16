@@ -1,4 +1,56 @@
 <<<<<<< HEAD
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Textaleysa.dll.config
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Textaleysa.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Textaleysa.pdb
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Antlr3.Runtime.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Newtonsoft.Json.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Owin.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.Helpers.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.Mvc.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.Optimization.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.Razor.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.WebPages.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.WebPages.Razor.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\WebGrease.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.Mvc.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.Helpers.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.Optimization.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.Razor.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.WebPages.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\System.Web.WebPages.Razor.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Newtonsoft.Json.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Antlr3.Runtime.pdb
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
+C:\Users\Arnar\Desktop\Visual studio\Verklegt námskeið\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
+=======
+<<<<<<< HEAD
 =======
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.dll.config
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.dll
@@ -118,3 +170,4 @@ C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\
 >>>>>>> efcaf12900f91d22ba0bf5feaf8c9bd3efe3e7fd
 >>>>>>> eca44cbd0bcb69468f7b60bc5c887bc1819c402d
 >>>>>>> f285e80a5b713000be52a7edcd9fa9642ee70bf3
+>>>>>>> 2a9dd5969e062d52b5af5d0ad3d93ea1178893d5
