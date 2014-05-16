@@ -431,7 +431,9 @@ cite {
 }
 
 .text-primary {
-  color: #f3e284;
+    color: #D31818;
+    font-weight: bold;
+
 }
 
 .like-comment{
