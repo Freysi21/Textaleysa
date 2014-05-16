@@ -1,18 +1,16 @@
 ﻿/// <reference path="CommentScript.js" />
 
 $(document).ready(function () { // function loads then the document is loaded
-
-    getAllComments();
-    console.log("hæhæh");
-    $("#postbutton").click(function () { // function runs when the post button is clicked
-
+    var fileIDElem = document.getElementsByClassName("submit-grade");
+    var fileID = $(fileIDElem[0].getAttribute('id'));
+    var new_comment = { fileID: fileID.selector, content: $("#comment").val() }; // get text from input box and make a json object
+    getAllComments(new_comment);
+    jQuery("#postbutton").click(function () { // function runs when the post button is clicked
+        var new_comment = { fileID: fileID.selector, content: $("#comment").val() };
         $(".comment-item").remove(); // first we remove all the comments 
-
-        var new_comment = { "fileID":$(this.id) , "comment": $("#comment").val() }; // get text from input box and make a json object
-
-        if (new_comment.comment != null && new_comment.comment.trim() != "") { // if the input field is nonempty 
-            $.post("/CommentAndLike/PostComment/", new_comment, function (comments) { // post the comment 
-                getAllComments();
+        if (new_comment.content != null && new_comment.content.trim() != "") { // if the input field is nonempty 
+            jQuery.post("/CommentAndLike/PostComment/", new_comment, function (data) { // post the comment 
+                getAllComments(data);
             });
             $("#comment").val(""); // resets the input field
             $("#comment").attr("placeholder", "Enter a comment."); // resets the placeholder
@@ -22,15 +20,16 @@ $(document).ready(function () { // function loads then the document is loaded
             // comment field was empty and we display another placeholder
             $("#comment").attr("placeholder", "Empty comments are not allowed.");
         }
-    }); 
+    });
+
 });
 
-function getAllComments() {
+function getAllComments(new_comment) {
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf­8",
         url: "/CommentAndLike/GetComments/",
-        data: "{}",
+        data: new_comment,
         dataType: "json",
         success: function (comments) {
             // go through the comments
@@ -38,7 +37,7 @@ function getAllComments() {
                 // loads the comments list 
                 $("#comment-list").loadTemplate($("#template"), comments[i], { "append": true });
                 $("li.comment-item").each(function (i) { // sets id to each comment 
-                    $(this).attr("id", i)
+                    $(this).attr("id", "comment" + i)
                 });
             }
         },
