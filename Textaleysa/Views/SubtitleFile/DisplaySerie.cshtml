@@ -76,8 +76,8 @@
                 @Html.DisplayFor(model => model.downloadCount)
             </dd>
             <dd>
-                <input type="number" class="grade-file" id="input-@Html.DisplayFor(model => model.ID)" />
-                <button type="submit" class="submit-grade" id="@Html.DisplayFor(model => model.ID)">Einkunnargjöf</button>
+                <input type="number" class="grade-file grade" id="input-@Html.DisplayFor(model => model.ID)" />
+                <button type="submit" class="submit-grade btn btn-default"  id="@Html.DisplayFor(model => model.ID)">Einkunnargjöf</button>
             </dd>
             <dt>
                 @Html.ActionLink("Hlaða niður", "DownloadFile", "SubtitleFile", new { id = Model.ID }, null)
@@ -91,9 +91,9 @@
     <div class="col-xs-12 SecondDivOnPage"></div>
 </div>
 <div class="row center">
-    <div class="col-xs-4"></div>
+    <div class="col-xs-3"></div>
 
-    <div class="col-xs-4">
+    <div class="col-xs-6">
 
         @Html.ActionLink("Breyta", "EditSerie", new { id = Model.ID }) |
         @if (User.IsInRole("Administrators"))
@@ -103,7 +103,7 @@
         @Html.ActionLink("Skoða Innihald skráar", "DisplayContent", new { id = Model.ID }, null)
 
     </div>
-    <div class="col-xs-4"></div>
+    <div class="col-xs-3"></div>
 </div>
 
 <ul id="comment-list" class="list-group" style="max-width: 560px;">
@@ -114,9 +114,8 @@
 <ul class="list-group" style="max-width: 560px;">
     <li class="list-group-item">
         <div class="form-horizontal">
-            <label class="sr-only" for="commentContent">Comment</label>
-            <textarea class="form-control" rows="3" id="comment" name="comment" placeholder="Enter a comment"></textarea>
-            <button type="button" id="postbutton" class="btn btn-primary">Send</button>
+            <textarea class="form-control" rows="3" id="comment" name="comment" placeholder="Skildu eftir skilaboð"></textarea>
+            <button type="button" id="postbutton" class="btn btn-primary">Senda</button>
         </div>
     </li>
 </ul>
@@ -139,6 +138,4 @@
         </p>
     </li>
 </script>
-
-
 

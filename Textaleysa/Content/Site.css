@@ -29,13 +29,13 @@
     height: 40em;
 }
 #TextaleysaLogo{
-    width: 27em;
-    height: 7em;
+    width: 20em;
+    height: 8em;
 }
 #TextaleysaLogoNavbar{
-    width: 9em;
+    width: 8em;
     height: 3em;
-    padding-top: 0.5em;
+    margin-top: 10px;
 }
 .FullScreenContainer{
 height: 100%;
