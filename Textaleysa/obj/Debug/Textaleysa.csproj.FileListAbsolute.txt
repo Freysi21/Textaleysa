@@ -48,3 +48,11 @@ C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
+<<<<<<< HEAD
+=======
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\PagedList.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\PagedList.Mvc.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\PagedList.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\PagedList.Mvc.xml
+>>>>>>> Gunni
