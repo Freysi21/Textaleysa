@@ -205,6 +205,10 @@ namespace Textaleysa.Controllers
 				}
 				return View(model);
 			}
+			if (s.searchString == null)
+			{
+				return View("Index");
+			}
 			var results = mediaTitleTransfer.SearchAfterTitle(s.searchString);
 			if (results == null)
 			{

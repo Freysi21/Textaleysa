@@ -80,6 +80,14 @@ namespace Textaleysa.Models.DataTransferOpjects
 			return result;
 		}
 
+		public MediaTitle GetMovieByTitleAndYear(string s, int year)
+		{
+			var result = (from m in repo.GetAllMovieTitles()
+						  where m.title == s && m.yearReleased == year
+						  select m).FirstOrDefault();
+			return result;
+		}
+
 		public IEnumerable<MediaTitle> SearchAfterTitle(string s)
 		{
 			var result = from m in repo.GetAllMediaTitles()
@@ -101,6 +109,14 @@ namespace Textaleysa.Models.DataTransferOpjects
 			var result = (from m in repo.GetAllSerieTitles()
 						  where m.title == s && m.isMovie == false
 						  select m).FirstOrDefault();
+			return result;
+		}
+
+		public MediaTitle GetSerieByTitleAndInfo(string title, int season, int episode)
+		{
+			var result = (from s in repo.GetAllSerieTitles()
+						  where s.title == title && s.season == season && s.episode == episode
+						  select s).SingleOrDefault();
 			return result;
 		}
 	}
