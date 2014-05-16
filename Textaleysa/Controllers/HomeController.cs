@@ -60,7 +60,7 @@ namespace Textaleysa.Controllers
 					}
 					else
 					{
-						model.isMovie = false ;
+						model.isMovie = false;
 						model.title = title.title + " s" + title.season + "e" + title.episode + " " + item.language;
 					}
 					frontPage.mostPopularFiles.Add(model);
@@ -88,10 +88,12 @@ namespace Textaleysa.Controllers
 				{
 					if (title.isMovie)
 					{
+						model.isMovie = true;
 						model.title = title.title + " (" + title.yearReleased.ToString() + ") " + item.language;
 					}
 					else
 					{
+						model.isMovie = false;
 						model.title = title.title + " s" + title.season + "e" + title.episode + " " + item.language;
 					}
 					frontPage.latestFiles.Add(model);

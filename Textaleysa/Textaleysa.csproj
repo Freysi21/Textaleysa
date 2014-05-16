@@ -176,7 +176,6 @@
     <Compile Include="Models\Entities\Grade.cs" />
     <Compile Include="Models\Entities\Language.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Entities\Like.cs" />
     <Compile Include="Models\Entities\MediaTitle.cs" />
     <Compile Include="Models\Entities\Request.cs" />
     <Compile Include="Models\Entities\SubtitleFile.cs" />
@@ -185,7 +184,6 @@
     <Compile Include="Models\Repositories\LanguageRepository.cs" />
     <Compile Include="Models\Repositories\CommentRepository.cs" />
     <Compile Include="Models\Repositories\GradeRepository.cs" />
-    <Compile Include="Models\Repositories\LikeRepository.cs" />
     <Compile Include="Models\Repositories\MediaTitleRepository.cs" />
     <Compile Include="Models\Repositories\RequestRepository.cs" />
     <Compile Include="Models\Repositories\SubtitleFileRepository.cs" />
