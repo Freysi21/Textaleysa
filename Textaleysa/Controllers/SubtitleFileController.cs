@@ -223,6 +223,8 @@ namespace Textaleysa.Controllers
 				var lan = langDb.GetLanguageById(fileInfo.languageID);
 				subtitleFile.language = lan.language;
 				subtitleFile.userName = User.Identity.Name;
+				subtitleFile.downloadCount = 0;
+				subtitleFile.date = DateTime.Now;
 				// Add the subtitleFile in DB
 				subtitleFileRepo.AddSubtitleFile(subtitleFile);
 
@@ -322,6 +324,8 @@ namespace Textaleysa.Controllers
 				var lan = langDb.GetLanguageById(fileInfo.languageID);
 				subtitleFile.language = lan.language;
 				subtitleFile.userName = User.Identity.Name;
+				subtitleFile.downloadCount = 0;
+				subtitleFile.date = DateTime.Now;
 				// Add the subtitleFile in DB
 				subtitleFileRepo.AddSubtitleFile(subtitleFile);
 
@@ -412,7 +416,7 @@ namespace Textaleysa.Controllers
 			subtitleFileRepo.DeleteSubtitleFileChunk(subtitleFile.ID);
 			subtitleFileRepo.DeleteSubtitleFile(subtitleFile);
 
-			return View("Index");
+			return View("Home", "Index");
 		}
 
 		[Authorize(Roles = "Administrators")]
@@ -486,6 +490,101 @@ namespace Textaleysa.Controllers
 			file.ID = subtitleFile.ID;
 			file.content = result;
 			return View(file);
+		}
+
+		[HttpPost]
+		public ActionResult EditMovie(EditMovieView file)
+		{
+			var subtitleFile = subtitleFileTransfer.GetSubtitleById(file.ID);
+			#region if (subtitleFile == null) return NOTFOUND
+			if (subtitleFile == null)
+			{
+				return View("Error");
+			}
+			#endregion
+
+			var mediaTitle = mediaTitleTransfer.GetMediaTitleById(subtitleFile.ID);
+
+			SubtitleFile newFile = new SubtitleFile();
+			#region newfile = subtitlFile
+			newFile.language = subtitleFile.language;
+			newFile.mediaTitleID = subtitleFile.mediaTitleID;
+			newFile.userName = subtitleFile.userName;
+			newFile.downloadCount = subtitleFile.downloadCount;
+			newFile.date = subtitleFile.date;
+			#endregion
+			subtitleFileRepo.AddSubtitleFile(newFile);
+
+			MemoryStream tempContent = new MemoryStream(Encoding.Default.GetBytes(file.content));
+			StreamReader fileInput = new StreamReader(tempContent, System.Text.Encoding.Default, true);
+			try
+			{
+				do
+				{
+					#region uploading the file
+					SubtitleFileChunk sfc = new SubtitleFileChunk();
+					// sfc gets his ID when added to DB
+					sfc.subtitleFileID = newFile.ID;
+
+					// Read the first line of SubtitleFileChunk which is the ID of SubtitleFileChunk
+					var line = fileInput.ReadLine();
+					sfc.lineID = Convert.ToInt32(line);
+
+					// Split the Subtitle time in to 3 parts (ex. line2[0] = "00:00:55,573" 
+					// line2[1] = "-->" line2[2] = "00:00:58,867")
+					var line2 = fileInput.ReadLine().Split(' ');
+					// TimeSpan startTime = TimeSpan.Parse(line2[0]);
+					sfc.startTime = line2[0];
+					//TimeSpan stopTime = TimeSpan.Parse(line2[2]);
+					sfc.stopTime = line2[2];
+
+					// Read the first line of text in the subtitlechunk
+					var line3 = fileInput.ReadLine();
+					sfc.subtitleLine1 = line3;
+
+					// Read the second line of text but if the line is empty
+					var line4 = fileInput.ReadLine();
+					if (!string.IsNullOrEmpty(line4))
+					{
+						sfc.subtitleLine2 = line4;
+						var line5 = fileInput.ReadLine(); // "" 
+
+						if (!string.IsNullOrEmpty(line5))
+						{
+							sfc.subtitleLine3 = line5;
+							fileInput.ReadLine();
+						}
+						else
+						{
+							sfc.subtitleLine3 = null;
+						}
+					}
+					else
+					{
+						sfc.subtitleLine2 = null;
+						sfc.subtitleLine3 = null;
+					}
+					subtitleFileRepo.AddSubtitleChunk(sfc);
+
+				} while (!fileInput.EndOfStream);
+				subtitleFileRepo.DeleteSubtitleFileChunk(subtitleFile.ID);
+				subtitleFileRepo.DeleteSubtitleFile(subtitleFile);
+				if (mediaTitle.isMovie)
+				{
+					return RedirectToAction("DisplayMovie", new { id = newFile.ID } );
+				}
+				else
+				{
+					return RedirectToAction("DisplaySerie", new { id = newFile.ID } );
+				}
+					#endregion
+			}
+			catch (Exception)
+			{
+				subtitleFileRepo.DeleteSubtitleFileChunk(newFile.ID);
+				subtitleFileRepo.DeleteSubtitleFile(newFile);
+				return View("Error");
+			}
 		}
 
 		[Authorize]
@@ -819,11 +918,11 @@ namespace Textaleysa.Controllers
 			}
 			if (mediaTitle.isMovie)
 			{
-				return RedirectToAction("DisplayMovieContent", subtitleFile.ID);
+				return RedirectToAction("DisplayMovieContent", new { id = subtitleFile.ID });
 			}
 			else
 			{
-				return RedirectToAction("DisplaySerieContent", subtitleFile.ID);
+				return RedirectToAction("DisplaySerieContent", new { id = subtitleFile.ID });
 			}
 
 		}

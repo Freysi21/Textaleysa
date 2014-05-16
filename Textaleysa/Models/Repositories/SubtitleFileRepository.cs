@@ -26,8 +26,6 @@ namespace Textaleysa.Models.Repositories
 
 		public void AddSubtitleFile(SubtitleFile sf)
 		{
-			sf.downloadCount = 0;
-			sf.date = DateTime.Now;
 			db.subtitleFile.Add(sf);
 			db.SaveChanges();
 		}
