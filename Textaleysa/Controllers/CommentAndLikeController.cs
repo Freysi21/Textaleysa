@@ -57,16 +57,6 @@ namespace Textaleysa.Controllers
 			}
 		}
 
-		public ActionResult GetLikes(Like like)
-		{
-			return View();
-		}
-
-		public ActionResult PostLike(Like like)
-		{
-			return View();
-		}
-
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing)
