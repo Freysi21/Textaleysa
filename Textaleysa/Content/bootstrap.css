@@ -4109,7 +4109,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   clear: both;
 }
 
-.navbar-collapse:before,
+.navbar-collapse:before{
   display: table;
   content: " ";
 }

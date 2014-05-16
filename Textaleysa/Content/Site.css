@@ -1,8 +1,8 @@
 ﻿.grade{
-    max-width: 7em;
+    max-width: 15em;
     display: inline;
     padding: 5px;
-    width: 100%;
+    width: auto;
     height: 34px;
     font-size: 14px;
     line-height: 1.428571429;
