@@ -9,6 +9,7 @@ using Textaleysa.Models.DataTransferOpjects;
 using Textaleysa.Models.Repositories;
 using Textaleysa.Models.ViewModel;
 using Textaleysa.Repositories;
+using PagedList.Mvc;
 
 
 
@@ -160,8 +161,12 @@ namespace Textaleysa.Controllers
 
 
 		[HttpGet]
-		public ActionResult SearchResult(SearchViewModel s)
+		public ActionResult SearchResult(SearchViewModel s, int? page)
 		{
+			if (page == null)
+			{
+				page = 1;
+			}
 			if (string.IsNullOrEmpty(s.searchString) || string.IsNullOrWhiteSpace(s.searchString))
 			{
 				SearchResultView model = new SearchResultView();
@@ -205,6 +210,8 @@ namespace Textaleysa.Controllers
 						return View("Error");
 					}
 				}
+				int pageSize = 3;
+				int pageNumber = (page ?? 1);
 				return View(model);
 			}
 			var results = mediaTitleTransfer.SearchAfterTitle(s.searchString);
