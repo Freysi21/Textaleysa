@@ -298,10 +298,10 @@ namespace Textaleysa.Controllers
 			if (file != null && fileInfo != null)
 			{
 				SubtitleFile subtitleFile = new SubtitleFile();
-				var movie = mediaTitleTransfer.GetMovieByTitle(fileInfo.title);
+				var serie = mediaTitleTransfer.GetSerieByTitle(fileInfo.title);
 				// If the MediaTitle is not in the db we create a new title and connect the SubtitleFile
 				// to the MediaTitle else we just connect.
-				if (movie == null)
+				if (serie == null)
 				{
 					MediaTitle s = new MediaTitle();
 					#region Adding to db and connecting
@@ -315,7 +315,7 @@ namespace Textaleysa.Controllers
 				}
 				else
 				{
-					subtitleFile.mediaTitleID = movie.ID;
+					subtitleFile.mediaTitleID = serie.ID;
 				}
 
 				var lan = langDb.GetLanguageById(fileInfo.languageID);

@@ -82,8 +82,8 @@ namespace Textaleysa.Models.DataTransferOpjects
 
 		public IEnumerable<MediaTitle> SearchAfterTitle(string s)
 		{
-			var result = from m in repo.GetAllMovieTitles()
-						 where m.title.ToLower().Contains(s.ToLower()) && m.isMovie == true
+			var result = from m in repo.GetAllMediaTitles()
+						 where m.title.ToLower().Contains(s.ToLower())
 						 select m;
 			return result;
 		}
