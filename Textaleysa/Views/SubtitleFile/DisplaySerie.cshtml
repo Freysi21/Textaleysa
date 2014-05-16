@@ -76,7 +76,7 @@
                 @Html.DisplayFor(model => model.downloadCount)
             </dd>
             <dd>
-                <input type="number" class="grade-file" id="@Html.DisplayFor(model => model.ID)" />
+                <input type="number" class="grade-file" id="input-@Html.DisplayFor(model => model.ID)" />
                 <button type="submit" class="submit-grade" id="@Html.DisplayFor(model => model.ID)">Einkunnargjöf</button>
                 <span id="gradeGoHere"></span>
             </dd>
@@ -108,6 +108,9 @@
     <div class="col-xs-4"></div>
 </div>
 
-
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/CommentAndLikeScript.js"></script>
+<script src="~/Scripts/GradeScript.js"></script>
 
 

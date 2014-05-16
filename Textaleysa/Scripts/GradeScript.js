@@ -5,7 +5,6 @@
             $("#error-message").html("Einkunn verður að vera á bilinu 0-10")
             //alert("Einkunn verður að vera á bilinu 0-10");
         }
-<<<<<<< HEAD
         else{
             var new_grade = { fileID: this.id, mediaGrade: give_grade }
 
@@ -18,17 +17,6 @@
                 }
             });
         }
-=======
-        var new_grade = { fileID: this.id, mediaGrade: give_grade  }
-        jQuery.post("/SubtitleFile/postGrade", new_grade, function (data) {
-            if (data == "") {
-                //alert("BÍDDU HALLÓ, ÆTLAR ÞÚ GEFA EINKUNNIR EINS OG KENNARI Í HR Í LOK ANNAR");
-            }
-            else {
-                getVote(data);
-            }
-        });
->>>>>>> 6e59bdd26cb6c4aad4b01ec24abf7bd7d431992b
     });
 });
 function getVote(new_grade) {
