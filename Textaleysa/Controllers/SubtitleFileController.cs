@@ -802,7 +802,19 @@ namespace Textaleysa.Controllers
 
 			subtitleFileRepo.ModifySubtitleFileChunk(chunk);
 
-			return RedirectToAction("DisplayContent", subtitleFile.ID);
+			var mediaTitle = mediaTitleTransfer.GetMediaTitleById(subtitleFile.mediaTitleID);
+			if (mediaTitle == null)
+			{ 
+				return View("Error");
+			}
+			if (mediaTitle.isMovie)
+			{
+				return RedirectToAction("DisplayMovieContent", subtitleFile.ID);
+			}
+			else
+			{
+				return RedirectToAction("DisplaySerieContent", subtitleFile.ID);
+			}
 
 		}
 

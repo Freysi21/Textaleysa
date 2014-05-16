@@ -165,7 +165,7 @@ namespace Textaleysa.Controllers
 				SearchResultView model = new SearchResultView();
 				model.searchString = s.searchString;
 				model.searchResultList = new List<SearchResultListView>();
-				var titles = meditaTitleRepo.GetAllMovieTitles();
+				var titles = meditaTitleRepo.GetAllMediaTitles();
 				if (titles == null)
 				{
 					return View("Error");
