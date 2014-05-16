@@ -201,7 +201,7 @@ namespace Textaleysa.Controllers
 			if (file != null && fileInfo != null)
 			{
 				SubtitleFile subtitleFile = new SubtitleFile();
-				var movie = mediaTitleTransfer.GetMovieByTitle(fileInfo.title);
+				var movie = mediaTitleTransfer.GetMovieByTitleAndYear(fileInfo.title, fileInfo.yearReleased);
 				// If the MediaTitle is not in the db we create a new title and connect the SubtitleFile
 				// to the MediaTitle else we just connect.
 				if (movie == null)
@@ -298,7 +298,8 @@ namespace Textaleysa.Controllers
 			if (file != null && fileInfo != null)
 			{
 				SubtitleFile subtitleFile = new SubtitleFile();
-				var serie = mediaTitleTransfer.GetSerieByTitle(fileInfo.title);
+				var serie = mediaTitleTransfer.GetSerieByTitleAndInfo(
+					fileInfo.title, fileInfo.season, fileInfo.episode);
 				// If the MediaTitle is not in the db we create a new title and connect the SubtitleFile
 				// to the MediaTitle else we just connect.
 				if (serie == null)
@@ -763,7 +764,7 @@ namespace Textaleysa.Controllers
 
 			DisplayContentFileView subtitleChunk = new DisplayContentFileView();
 			subtitleChunk.ID = chunk.ID;
-			subtitleChunk.lineID = subtitleChunk.lineID;
+			subtitleChunk.lineID = chunk.lineID;
 			subtitleChunk.startTime = chunk.startTime;
 			subtitleChunk.stopTime = chunk.stopTime;
 			subtitleChunk.line1 = chunk.subtitleLine1;

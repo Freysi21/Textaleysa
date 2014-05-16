@@ -16,7 +16,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.lineID, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.lineID, new { @class = "grade"})
+                @Html.DisplayFor(model => model.lineID, new { @class = "grade"})
                 @Html.ValidationMessageFor(model => model.lineID)
             </div>
         </div>

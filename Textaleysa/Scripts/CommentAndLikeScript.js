@@ -13,12 +13,12 @@ $(document).ready(function () { // function loads then the document is loaded
                 getAllComments(data);
             });
             $("#comment").val(""); // resets the input field
-            $("#comment").attr("placeholder", "Enter a comment."); // resets the placeholder
+            $("#comment").attr("placeholder", "Bættu við athugasemd."); // resets the placeholder
         }
         else {
-            getAllComments();
+            getAllComments(new_comment);
             // comment field was empty and we display another placeholder
-            $("#comment").attr("placeholder", "Empty comments are not allowed.");
+            $("#comment").attr("placeholder", "Tómar athugasemdir eru ekki leyfðar.");
         }
     });
 

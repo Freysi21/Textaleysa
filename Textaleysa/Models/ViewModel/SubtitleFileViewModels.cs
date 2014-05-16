@@ -21,6 +21,7 @@ namespace Textaleysa.Models.ViewModel
 		[Display(Name = "Tungumál")]
 		public string language { get; set; }
 
+		[Required]
 		[Display(Name = "Tungumál")]
 		public int languageID { get; set; }
 
@@ -45,9 +46,11 @@ namespace Textaleysa.Models.ViewModel
 		[Display(Name = "Tungumál")]
 		public string language { get; set; }
 
+		[Required]
 		[Display(Name = "Tungumál")]
 		public int languageID { get; set; }
 
+		[Required]
 		[Display(Name = "Útgáfuár")]
 		public int yearReleased { get; set; }
 
@@ -154,10 +157,13 @@ namespace Textaleysa.Models.ViewModel
 
 		public int lineID { get; set; }
 
+		[Required]
 		public string startTime { get; set; }
 
+		[Required]
 		public string stopTime { get; set; }
 
+		[Required]
 		public string line1 { get; set; }
 
 		public string line2 { get; set; }
