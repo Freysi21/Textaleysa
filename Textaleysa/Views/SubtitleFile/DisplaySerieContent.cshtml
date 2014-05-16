@@ -1,12 +1,11 @@
-﻿@model Textaleysa.Models.ViewModel.DisplayMovieFileView
+﻿@model Textaleysa.Models.ViewModel.DisplaySerieFileView
 
 <div class="row center">
     <div class="col-xs-12">
         <h2>
             Nánar um
-            @Html.DisplayFor(model => model.title)
-            s @Html.DisplayFor(model => model.season)
-            e @Html.DisplayFor(model => model.episode)
+            @Html.DisplayFor(model => model.title) s-@Html.DisplayFor(model => model.season)e
+            @Html.DisplayFor(model => model.episode)
             @Html.DisplayFor(model => model.language)
         </h2>
     </div>

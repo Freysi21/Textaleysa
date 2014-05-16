@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.dll.config
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.dll
 C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\bin\Textaleysa.pdb
@@ -51,6 +53,7 @@ C:\Users\Arnit13\Desktop\TextaLeysa\Textaleysa\obj\Debug\Textaleysa.pdb
 <<<<<<< HEAD
 =======
 =======
+>>>>>>> f285e80a5b713000be52a7edcd9fa9642ee70bf3
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Textaleysa.dll.config
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Textaleysa.dll
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\Textaleysa.pdb
@@ -102,8 +105,16 @@ C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.dll
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.pdb
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\obj\Debug\Textaleysa.csprojResolveAssemblyReference.cache
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\PagedList.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\PagedList.Mvc.dll
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\PagedList.xml
+C:\Users\Gunnar O Kjartansson\Documents\Textaleysa.is\Textaleysa\Textaleysa\bin\PagedList.Mvc.xml
+>>>>>>> Gunni
 =======
 >>>>>>> 6e59bdd26cb6c4aad4b01ec24abf7bd7d431992b
 >>>>>>> efcaf12900f91d22ba0bf5feaf8c9bd3efe3e7fd
 >>>>>>> eca44cbd0bcb69468f7b60bc5c887bc1819c402d
+>>>>>>> f285e80a5b713000be52a7edcd9fa9642ee70bf3

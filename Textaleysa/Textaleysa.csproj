@@ -42,6 +42,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -176,7 +182,6 @@
     <Compile Include="Models\Entities\Grade.cs" />
     <Compile Include="Models\Entities\Language.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Entities\Like.cs" />
     <Compile Include="Models\Entities\MediaTitle.cs" />
     <Compile Include="Models\Entities\Request.cs" />
     <Compile Include="Models\Entities\SubtitleFile.cs" />
@@ -185,7 +190,6 @@
     <Compile Include="Models\Repositories\LanguageRepository.cs" />
     <Compile Include="Models\Repositories\CommentRepository.cs" />
     <Compile Include="Models\Repositories\GradeRepository.cs" />
-    <Compile Include="Models\Repositories\LikeRepository.cs" />
     <Compile Include="Models\Repositories\MediaTitleRepository.cs" />
     <Compile Include="Models\Repositories\RequestRepository.cs" />
     <Compile Include="Models\Repositories\SubtitleFileRepository.cs" />
@@ -200,6 +204,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
