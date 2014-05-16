@@ -762,10 +762,13 @@ namespace Textaleysa.Controllers
 			}
 
 			DisplayContentFileView subtitleChunk = new DisplayContentFileView();
-			chunk.ID = subtitleChunk.ID;
-			chunk.lineID = subtitleChunk.lineID;
-			chunk.startTime = subtitleChunk.startTime;
-			chunk.stopTime = subtitleChunk.stopTime;
+			subtitleChunk.ID = chunk.ID;
+			subtitleChunk.lineID = subtitleChunk.lineID;
+			subtitleChunk.startTime = chunk.startTime;
+			subtitleChunk.stopTime = chunk.stopTime;
+			subtitleChunk.line1 = chunk.subtitleLine1;
+			subtitleChunk.line2 = chunk.subtitleLine2;
+			subtitleChunk.line3 = chunk.subtitleLine3;
 			return View(subtitleChunk);
 		}
 
