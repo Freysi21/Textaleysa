@@ -117,8 +117,8 @@ namespace Textaleysa.Controllers
 			{
 				return null;
 			}
-			var movie = mediaTitleTransfer.GetMovieById(subtitleFile.mediaTitleID);
-			if (movie == null)
+			var title = mediaTitleTransfer.GetMediaTitleById(subtitleFile.mediaTitleID);
+			if (title == null)
 			{
 				return null;
 			}
@@ -156,7 +156,14 @@ namespace Textaleysa.Controllers
 			var stream = new MemoryStream(byteArray);
 
 			var fileTitle = "";
-			fileTitle += (movie.title + " " + movie.yearReleased.ToString() + " " + subtitleFile.language + ".srt");
+			if (title.isMovie)
+			{
+				fileTitle += (title.title + " " + title.yearReleased.ToString() + " " + subtitleFile.language + ".srt");
+			}
+			else
+			{
+				fileTitle += (title.title + " s" + title.season + "e" + title.episode + " " + subtitleFile.language + ".srt");
+			}
 
 			subtitleFile.downloadCount++;
 			subtitleFileRepo.ModifySubtitleFile(subtitleFile);
