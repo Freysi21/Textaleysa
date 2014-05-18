@@ -11,6 +11,12 @@
     <h2> Þú leitaðir að: @Html.DisplayFor(model => model.searchString)</h2> 
     </div>
 }
+@if (!Model.searchResultList.Any())
+{
+    <h3>Leitin skilaði engri niðurstöðu við þú @Html.ActionLink("búa til nýja beiðni", "CreateRequest", "Request") ?</h3> 
+}
+else
+{ 
 <table class="table">
     <tr>
         <th>
@@ -58,3 +64,4 @@
     </tr>
 }
 </table>
+}
