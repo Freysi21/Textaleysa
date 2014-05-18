@@ -40,7 +40,7 @@ namespace Textaleysa.Controllers
 			var mostPopular = (from m in subtitleFileRepo.GetAllSubtitles()
 							   where m.downloadCount >= 1
 							   orderby m.downloadCount descending
-							   select m).Take(10);
+							   select m).Take(5);
 
 			frontPage.mostPopularFiles = new List<ListOfFilesView>();
 			foreach(var item in mostPopular)
@@ -73,7 +73,7 @@ namespace Textaleysa.Controllers
 			#region get lates uploaded files
 			var latestFiles = (from l in subtitleFileRepo.GetAllSubtitles()
 							  orderby l.date descending
-							  select l).Take(10);
+							  select l).Take(5);
 
 			frontPage.latestFiles = new List<ListOfFilesView>();
 			foreach (var item in latestFiles)

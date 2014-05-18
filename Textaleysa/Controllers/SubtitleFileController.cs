@@ -392,7 +392,7 @@ namespace Textaleysa.Controllers
 					return View("Error");
 				}
 			}
-			return RedirectToAction("UploadMovie");
+			return RedirectToAction("UploadSerie");
 		}
 
 		[Authorize(Roles = "Administrators")]
